@@ -186,6 +186,20 @@ def main(
 ) -> None:
     if ctx.invoked_subcommand is not None:
         return
+
+    # First-run detection: no config + no provider env vars → offer setup.
+    if not _CONFIG_PATH.exists():
+        has_env = any(os.environ.get(v) for v in ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "DEEPSEEK_API_KEY", "GROQ_API_KEY", "OPENROUTER_API_KEY", "OLLAMA_HOST"])
+        auth = Path.home() / ".jalaagent" / "auth.json"
+        if not has_env and not auth.exists():
+            console.print("[yellow]First run detected! No config or API keys found.[/]")
+            if Confirm.ask("Run setup wizard now?", default=True):
+                from jala.setup import run_setup
+                run_setup()
+            else:
+                console.print("[dim]Run 'jala setup' later to configure.[/]")
+            return
+
     if telegram:
         _start_telegram(model, plan)
         return
