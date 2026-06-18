@@ -485,11 +485,29 @@ def _build_registry() -> CommandRegistry:
 
     async def _browser(ctx: CommandContext) -> CommandResult:
         sub = ctx.args[0] if ctx.args else "status"
+        # Check for BrowserOS MCP in config first.
+        cfg_path = Path.home() / ".jalaagent" / "config.yaml"
+        has_browseros = False
+        if cfg_path.exists():
+            import yaml as _yaml
+            cfg = _yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+            servers = cfg.get("mcp", {}).get("servers", [])
+            has_browseros = any(s.get("name") == "browseros" for s in servers)
         if sub == "connect":
-            return CommandResult("🌐 Browser: connecting... (Playwright tools registering)")
+            if has_browseros:
+                return CommandResult("🌐 BrowserOS: connecting via MCP at http://localhost:9876...\nRun 'browseros-cli init' first if not installed.")
+            return CommandResult(
+                "🌐 **BrowserOS recommended** — persistent sessions, 53+ tools.\n"
+                "Install: https://github.com/browseros-ai/BrowserOS\n"
+                "Then: `jala mcp add browseros` or run `jala setup`\n"
+                "Playwright fallback: /browser connect (limited, no session persistence)"
+            )
         if sub == "disconnect":
             return CommandResult("🌐 Browser: disconnected.")
-        return CommandResult("🌐 Browser: not connected. Use /browser connect.")
+        # Status
+        if has_browseros:
+            return CommandResult("🌐 BrowserOS MCP: configured ✓ (http://localhost:9876)")
+        return CommandResult("🌐 Browser: none active. BrowserOS recommended. /browser connect")
 
     async def _restart(ctx: CommandContext) -> CommandResult:
         return CommandResult("🔄 Gateway restart: drain → save → reinit → restore. Use `jala gateway` to restart.")

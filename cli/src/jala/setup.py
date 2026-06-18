@@ -80,6 +80,54 @@ def run_setup() -> None:
             mode = "normal"
             console.print("[green]Reverting to NORMAL mode.[/]")
 
+    # --- Step 5: Recommended Integrations ---
+    console.print("\n[bold]Step 5: Recommended Integrations (Optional)[/]")
+    console.print(
+        "[dim]These tools extend JalaAgent's capabilities. "
+        "They run separately and connect via MCP.[/]\n"
+    )
+    mcp_servers: list[dict[str, str]] = config.get("mcp", {}).get("servers", [])
+
+    integrations = [
+        {
+            "name": "BrowserOS",
+            "key": "browseros",
+            "description": "Agentic browser with session persistence, 53+ browser "
+                           "tools, and login state saved across sessions. "
+                           "Better than Playwright for web automation.",
+            "install_hint": {
+                "windows": "https://files.browseros.com/download/BrowserOS_installer.exe",
+                "mac": "https://files.browseros.com/download/BrowserOS.dmg",
+                "linux": "https://files.browseros.com/download/BrowserOS.AppImage",
+            },
+            "mcp": {
+                "name": "browseros",
+                "type": "http",
+                "url": "http://localhost:9876",
+                "auto_connect": True,
+                "description": "BrowserOS agentic browser - 53+ browser automation tools",
+            },
+            "post_install": "Run 'browseros-cli init' after installing BrowserOS.",
+        },
+        # Placeholder for future integrations.
+    ]
+
+    for integration in integrations:
+        name = integration["name"]
+        desc = integration["description"]
+        if Confirm.ask(f"Install {name}? {desc} [y/N]", default=False):
+            mcp_servers.append(integration["mcp"])
+            console.print(f"[green]✓ {name} added to MCP config.[/]")
+            import platform
+            plat = platform.system().lower()
+            hint = integration["install_hint"].get(plat, integration["install_hint"].get("linux", ""))
+            if hint:
+                console.print(f"[dim]Install from: {hint}[/]")
+            if integration.get("post_install"):
+                console.print(f"[dim]{integration['post_install']}[/]")
+        else:
+            console.print(f"[dim]Skipped. Add later: jala mcp add {integration['key']}[/]")
+
     # --- Build and write config ---
     new_config = {
         "agent": {"name": "JalaAgent", "model": "claude-sonnet-4-6", "max_iterations": 100},
@@ -111,7 +159,7 @@ def run_setup() -> None:
             "telegram": {"token": "${TELEGRAM_BOT_TOKEN}", "allowed_users": []},
             "cli": {"enabled": True},
         },
-        "mcp": {"idle_timeout": 300, "servers": []},
+        "mcp": {"idle_timeout": 300, "servers": mcp_servers},
     }
 
     _CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
