@@ -16,6 +16,7 @@ from agent_core.models import (
     ToolResult,
 )
 from agent_core.errors import ToolLoopError
+from agent_core.policy import PolicyPipeline
 
 logger = logging.getLogger(__name__)
 
@@ -49,6 +50,7 @@ class ToolRegistry:
         self._call_history: deque[tuple[str, int]] = deque(
             maxlen=self._loop_config.loop_detection_window
         )
+        self._policy: PolicyPipeline | None = None
 
     # ------------------------------------------------------------------
     # Registration
@@ -110,6 +112,17 @@ class ToolRegistry:
         return available
 
     # ------------------------------------------------------------------
+    # Policy
+    # ------------------------------------------------------------------
+
+    def set_policy(self, policy: PolicyPipeline) -> None:
+        self._policy = policy
+
+    @property
+    def policy(self) -> PolicyPipeline | None:
+        return self._policy
+
+    # ------------------------------------------------------------------
     # Execution
     # ------------------------------------------------------------------
 
@@ -125,10 +138,11 @@ class ToolRegistry:
         Pipeline:
 
         1. Resolve tool name (with fuzzy repair).
-        2. Check for loop detection.
-        3. Call the handler.
-        4. Handle overflow (> max chars → temp file).
-        5. Wrap untrusted results.
+        2. Check policy (if wired).
+        3. Check for loop detection.
+        4. Call the handler.
+        5. Handle overflow (> max chars → temp file).
+        6. Wrap untrusted results.
 
         Parameters
         ----------
@@ -159,7 +173,20 @@ class ToolRegistry:
         descriptor = self._tools[normalized]
         handler = self._handlers[normalized]
 
-        # 2. Loop detection.
+        # 2. Policy check.
+        if self._policy is not None:
+            decision = self._policy.check(descriptor.category)
+            if decision.value == "deny":
+                return ToolResult(
+                    content=f"Tool {name!r} denied by policy.",
+                    is_error=True,
+                )
+            if decision.value == "ask":
+                # In a real implementation this would trigger the approval
+                # callback. For v1, we log and proceed (CLI handles approval).
+                logger.debug("Policy requires approval for %r (category=%s)", name, descriptor.category.value)
+
+        # 3. Loop detection.
         self._check_loop(normalized, arguments)
 
         # 3. Call handler (sync or async).
