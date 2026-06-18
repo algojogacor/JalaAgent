@@ -1,0 +1,24 @@
+{
+  "include": [
+    "packages/**/src",
+    "extensions/**/src",
+    "cli/src"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+    "**/dist",
+    "**/build",
+    "**/tests"
+  ],
+  "typeCheckingMode": "standard",
+  "pythonVersion": "3.12",
+  "reportMissingTypeStubs": false,
+  "reportUnknownMemberType": false,
+  "reportUnknownArgumentType": false,
+  "reportUnknownVariableType": false,
+  "reportUnusedImport": true,
+  "reportUnusedClass": true,
+  "reportUnusedFunction": true
+}

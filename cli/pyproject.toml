@@ -1,0 +1,31 @@
+[project]
+name = "jalaagent-cli"
+version = "0.1.0"
+description = "JalaAgent CLI entry point — jala command"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.0",
+    "jalaagent-agent-core",
+    "jalaagent-memory-core",
+    "jalaagent-skill-core",
+    "jalaagent-channel-cli",
+    "typer",
+    "rich",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+jala = "jala.main:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/jala"]

@@ -1,0 +1,38 @@
+[project]
+name = "jalaagent"
+version = "0.1.0"
+description = "Open-source self-improving AI agent with hybrid memory system"
+requires-python = ">=3.12"
+
+[tool.uv.workspace]
+members = [
+    "packages/agent-core",
+    "packages/memory-core",
+    "packages/skill-core",
+    "extensions/channels/cli",
+    "extensions/channels/telegram",
+    "extensions/providers/anthropic",
+    "extensions/providers/ollama",
+    "extensions/providers/openai",
+    "extensions/providers/openrouter",
+    "cli",
+]
+
+[tool.uv.sources]
+"jalaagent-agent-core" = { workspace = true }
+"jalaagent-memory-core" = { workspace = true }
+"jalaagent-skill-core" = { workspace = true }
+"jalaagent-channel-cli" = { workspace = true }
+"jalaagent-channel-telegram" = { workspace = true }
+"jalaagent-provider-anthropic" = { workspace = true }
+"jalaagent-provider-ollama" = { workspace = true }
+"jalaagent-provider-openai" = { workspace = true }
+"jalaagent-provider-openrouter" = { workspace = true }
+"jalaagent-cli" = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.410",
+    "ruff>=0.15.17",
+]
+

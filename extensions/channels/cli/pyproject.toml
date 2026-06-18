@@ -1,0 +1,25 @@
+[project]
+name = "jalaagent-channel-cli"
+version = "0.1.0"
+description = "CLI channel for JalaAgent — typer + rich terminal interface"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.0",
+    "jalaagent-agent-core",
+    "typer",
+    "rich",
+    "prompt-toolkit>=3.0.52",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/channel_cli"]
