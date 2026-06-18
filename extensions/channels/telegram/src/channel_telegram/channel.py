@@ -39,13 +39,15 @@ class TelegramChannel:
         token: str,
         allowed_users: list[int] | None = None,
         agent_loop: Any = None,
+        command_registry: Any = None,
     ) -> None:
         self._token = token
         self._allowed_users = allowed_users or []
         self._agent_loop = agent_loop
         self._app: Application | None = None
-        self._handlers = TelegramHandlers(self)
+        self._handlers = TelegramHandlers(self, command_registry)
         self._pending_approvals: dict[str, asyncio.Future[bool]] = {}
+        self._registry = command_registry
 
     # ------------------------------------------------------------------
     # Public API
@@ -74,14 +76,15 @@ class TelegramChannel:
             )
         )
 
-        # Command handlers.
-        for cmd in [
-            "new", "reset", "mode", "skills", "memory",
-            "approve", "reject", "dream", "help",
-        ]:
-            self._app.add_handler(
-                CommandHandler(cmd, self._handlers.handle_message)
-            )
+        # Command handlers — dynamically from registry.
+        cmd_names = {"new", "help", "mode", "skills", "memory", "approve", "reject", "dream", "status", "stop", "agents", "version", "commands"}
+        if self._registry:
+            for cmd_def in self._registry.list_all():
+                cmd_names.add(cmd_def.name)
+                for a in cmd_def.aliases:
+                    cmd_names.add(a)
+        for cmd in sorted(cmd_names):
+            self._app.add_handler(CommandHandler(cmd, self._handlers.handle_message))
 
         # Callback handler.
         self._app.add_handler(

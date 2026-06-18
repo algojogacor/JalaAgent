@@ -1,4 +1,4 @@
-"""CLI channel — typer + rich terminal interface with BaseChannel protocol."""
+"""CLI channel — rich terminal interface with unified slash command registry."""
 
 import asyncio
 import logging
@@ -15,95 +15,61 @@ from agent_core.models import ChunkType
 
 logger = logging.getLogger(__name__)
 
-_SLASH_COMMANDS = {
-    "/new": "Start a new session",
-    "/reset": "Clear session, keep memory",
-    "/mode": "Switch approval mode",
-    "/skills": "List/manage skills",
-    "/memory": "Inspect/search memory",
-    "/dream": "Trigger dreaming pipeline",
-    "/approve": "Approve pending action",
-    "/reject": "Reject pending action",
-    "/help": "Show this help",
-}
-
 
 class BaseChannel(Protocol):
-    """Protocol that all channels must implement."""
-
     async def send_message(self, text: str) -> None: ...
     async def send_approval_request(self, action: Any) -> bool: ...
     async def on_message(self, handler: Any) -> None: ...
 
 
 class CLIChannel:
-    """Interactive CLI channel with streaming output, spinner, and slash commands."""
+    """CLI channel with unified command registry dispatch."""
 
-    def __init__(self) -> None:
+    def __init__(self, command_registry: Any = None) -> None:
         self._console = Console()
         self._running = False
         self._mode = "normal"
-
-    # ------------------------------------------------------------------
-    # BaseChannel protocol
-    # ------------------------------------------------------------------
+        self._registry = command_registry
 
     async def send_message(self, text: str) -> None:
         self._console.print(Markdown(text))
 
     async def send_approval_request(self, action: Any) -> bool:
-        self._console.print(
-            Panel(
-                f"[bold yellow]Approval Required[/]\n\n"
-                f"Tool: [bold]{action.tool_name}[/]\n"
-                f"Category: {action.tool_category}\n"
-                f"Args: {action.arguments}",
-                title="⚠️ Approval", border_style="yellow",
-            )
-        )
+        self._console.print(Panel(
+            f"[bold yellow]Approval Required[/]\n\nTool: [bold]{action.tool_name}[/]\nCategory: {action.tool_category}",
+            title="⚠️ Approval", border_style="yellow",
+        ))
         return Confirm.ask("Approve?", default=False)
 
     async def on_message(self, handler: Any) -> None:
-        """Register a message handler (no-op for CLI — handled in run loop)."""
         pass
-
-    # ------------------------------------------------------------------
-    # Run loop
-    # ------------------------------------------------------------------
 
     async def run(self, agent_loop: Any) -> None:
         self._running = True
-        self._print_banner()
+        self._print_banner(agent_loop)
         self._setup_signal_handlers()
-
         while self._running:
             try:
                 user_input = await self._get_input()
             except (EOFError, KeyboardInterrupt):
                 self._console.print("\n[dim]Goodbye![/]")
                 break
-
             if not user_input.strip():
                 continue
-
             if user_input.startswith("/"):
-                self._handle_command(user_input.strip(), agent_loop)
+                await self._dispatch_command(user_input.strip(), agent_loop)
                 continue
-
             await self._stream_response(agent_loop, user_input)
 
-    # ------------------------------------------------------------------
-    # Internal
-    # ------------------------------------------------------------------
-
-    def _print_banner(self) -> None:
-        self._console.print(
-            Panel(
-                "[bold cyan]🪼 JalaAgent v0.2[/] — hybrid memory + harness + skills\n"
-                "Type [bold]/help[/] for commands, Ctrl+D to submit, Ctrl+C to quit",
-                title="Welcome", border_style="cyan",
-            )
-        )
+    def _print_banner(self, agent_loop: Any) -> None:
+        model = getattr(agent_loop, "_model", "default")
+        skills = "66" if self._registry else "—"
+        self._console.print(Panel(
+            f"[bold cyan]🪼 JalaAgent v0.2[/] · {model}\n"
+            f"Skills: {skills} bundled  |  MCP: filesystem ✓ shell ✓ fetch ✓\n"
+            f"Type /help for commands, Ctrl+D to submit, Ctrl+C to quit",
+            title="Welcome", border_style="cyan",
+        ))
 
     def _setup_signal_handlers(self) -> None:
         try:
@@ -111,7 +77,7 @@ class CLIChannel:
             for sig in (signal.SIGINT, signal.SIGTERM):
                 loop.add_signal_handler(sig, self._handle_interrupt)
         except NotImplementedError:
-            pass  # Windows doesn't support add_signal_handler well.
+            pass
 
     def _handle_interrupt(self) -> None:
         self._running = False
@@ -126,11 +92,7 @@ class CLIChannel:
 
     async def _stream_response(self, agent_loop: Any, user_input: str) -> None:
         accumulated: list[str] = []
-
-        with Live(
-            Panel("", title="🤖 JalaAgent", border_style="green"),
-            console=self._console, refresh_per_second=10, transient=False,
-        ) as live:
+        with Live(Panel("", title="🤖 JalaAgent", border_style="green"), console=self._console, refresh_per_second=10, transient=False) as live:
             try:
                 async for chunk in agent_loop.run(user_input, session_id=""):
                     if self._interrupted:
@@ -147,41 +109,36 @@ class CLIChannel:
                         break
             except Exception as exc:
                 self._console.print(f"[red]Error: {exc}[/]")
-
         if accumulated:
             self._console.print(Panel(Markdown("".join(accumulated)), title="🤖 JalaAgent", border_style="green"))
 
-    def _handle_command(self, command: str, agent_loop: Any) -> None:
-        cmd = command.lower().strip().split()[0]
-        if cmd == "/help":
-            self._console.print("[bold]Commands:[/]")
-            for name, desc in _SLASH_COMMANDS.items():
-                self._console.print(f"  [bold]{name}[/] — {desc}")
-        elif cmd == "/new":
-            self._console.print("[yellow]New session started.[/]")
-        elif cmd == "/reset":
-            self._console.print("[yellow]Session reset (memory preserved).[/]")
-        elif cmd == "/mode":
-            self._mode = command.split()[-1].lower() if len(command.split()) > 1 else self._mode
-            self._console.print(f"[green]Mode: {self._mode.upper()}[/]")
-        elif cmd == "/skills":
-            self._console.print("[yellow]Skills loaded from bundled/ and custom dirs.[/]")
-        elif cmd == "/memory":
-            mem = __import__("pathlib").Path.home() / ".jalaagent" / "memories" / "MEMORY.md"
-            if mem.exists():
-                self._console.print(Markdown(mem.read_text(encoding="utf-8")[:2000]))
-            else:
-                self._console.print("[dim]No memories yet.[/]")
-        elif cmd == "/dream":
-            self._console.print("[cyan]🌙 Dreaming triggered.[/]")
-        elif cmd == "/approve":
-            self._console.print("[green]Last action approved.[/]")
-        elif cmd == "/reject":
-            self._console.print("[red]Last action rejected.[/]")
-        elif cmd == "/quit":
+    async def _dispatch_command(self, raw: str, agent_loop: Any) -> None:
+        if self._registry is None:
+            self._console.print("[red]No command registry configured.[/]")
+            return
+        from agent_core.commands import CommandContext
+        parts = raw.split()
+        name = parts[0].lstrip("/").lower()
+        if name == "quit":
             self._running = False
-        else:
-            self._console.print(f"[red]Unknown: {command}[/]")
+            return
+        cmd = self._registry.get(name)
+        if cmd is None:
+            # Try skill auto-dispatch.
+            skills = self._registry.list_skills()
+            if name in skills:
+                self._console.print(f"[green]Activating skill: {name}[/]")
+                await self._stream_response(agent_loop, raw)
+                return
+            self._console.print(f"[red]Unknown command: /{name}[/]. Type /help.")
+            return
+        ctx = CommandContext(channel="cli", args=parts[1:], raw=raw, agent_loop=agent_loop)
+        try:
+            result = await cmd.handler(ctx)
+            if result and result.text:
+                self._console.print(Markdown(result.text))
+        except Exception as exc:
+            self._console.print(f"[red]Error: {exc}[/]")
 
     @property
     def _interrupted(self) -> bool:

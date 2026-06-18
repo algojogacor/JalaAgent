@@ -1,4 +1,4 @@
-"""JalaAgent CLI — fully wired entry point."""
+"""JalaAgent CLI — gateway mode, unified commands, channels."""
 
 import asyncio
 import os
@@ -11,13 +11,12 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
-app = typer.Typer(name="jala", help="JalaAgent — your persistent personal AI agent")
+app = typer.Typer(name="jala", help="JalaAgent — persistent personal AI agent")
 console = Console()
 _CONFIG_PATH = Path.home() / ".jalaagent" / "config.yaml"
 
 
 def _build_agent(model: str | None = None, plan: bool = False) -> Any:
-    """Assemble a fully-wired AgentLoop."""
     from agent_core.loop import AgentLoop
     from agent_core.registry import ToolRegistry
     from agent_core.core_tools import register_all, wire_harness
@@ -26,7 +25,6 @@ def _build_agent(model: str | None = None, plan: bool = False) -> Any:
 
     registry = ToolRegistry()
     register_all(registry)
-
     sandbox = SandboxedShell(block_dangerous=True)
     diff_editor = DiffEditor()
     bg_tasks = BackgroundTaskManager()
@@ -43,7 +41,6 @@ def _build_agent(model: str | None = None, plan: bool = False) -> Any:
         creds.add_from_env(prov, env_var)
 
     provider = _pick_provider(model, creds)
-
     memory = None
     skill_loader = None
     try:
@@ -52,28 +49,21 @@ def _build_agent(model: str | None = None, plan: bool = False) -> Any:
         from memory_core.retrieval import MemoryRetriever
         from memory_core.models import MemoryConfig
         cfg = MemoryConfig()
-        fl = FileLayer(cfg)
-        vl = VectorLayer(cfg)
-        memory = MemoryRetriever(cfg, fl, vl)
-    except Exception:
-        pass
+        memory = MemoryRetriever(cfg, FileLayer(cfg), VectorLayer(cfg))
+    except Exception: pass
 
     try:
         from skill_core.loader import SkillLoader
         skill_loader = SkillLoader()
-    except Exception:
-        pass
+    except Exception: pass
 
     loop = AgentLoop(
-        provider=provider, registry=registry,
-        memory_retriever=memory, skill_loader=skill_loader,
-        sandbox=sandbox, bg_tasks=bg_tasks, plan_mode=plan_mode,
-        credential_pool=creds, model=model or "claude-sonnet-4-6",
+        provider=provider, registry=registry, memory_retriever=memory,
+        skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
+        plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
     )
-
     if skill_loader:
         asyncio.get_event_loop().run_until_complete(loop.load_skills())
-
     return loop
 
 
@@ -82,59 +72,91 @@ def _pick_provider(model: str | None, creds: Any) -> Any:
     if model_lower.startswith("claude") or os.environ.get("ANTHROPIC_API_KEY"):
         from provider_anthropic.provider import AnthropicProvider
         return AnthropicProvider(model=model or "claude-sonnet-4-6")
-    if "gpt" in model_lower or "o1" in model_lower or "o3" in model_lower or os.environ.get("OPENAI_API_KEY"):
+    if "gpt" in model_lower or "o1" in model_lower or os.environ.get("OPENAI_API_KEY"):
         from provider_openai.provider import OpenAIProvider
         return OpenAIProvider(model=model or "gpt-4o")
     from provider_ollama.provider import OllamaProvider
     return OllamaProvider(model=model or "qwen3:0.6b")
 
 
-async def _run_agent(agent_loop: Any) -> None:
-    """Interactive chat loop."""
+def _setup_registry(agent_loop: Any) -> Any:
+    """Setup command registry with auto-registered skill commands."""
+    from agent_core.commands import get_registry
+    reg = get_registry()
+    if agent_loop._skill_loader:
+        try:
+            skills = asyncio.get_event_loop().run_until_complete(agent_loop._skill_loader.load_all())
+            for sk in skills:
+                reg.register_skill(sk.slug, sk.frontmatter.description)
+        except Exception: pass
+    return reg
+
+
+def _gateway_banner(loop: Any, skills_count: int, tokens: dict[str, bool]) -> None:
+    model = getattr(loop, "_model", "default")
+    tg = "✓" if tokens.get("telegram") else "✗"
+    console.print(Panel(
+        f"[bold cyan]🪼 JalaAgent v0.2[/] · {model}\n\n"
+        f"Channels:  CLI ✓  Telegram {tg}\n"
+        f"Skills:    {skills_count} bundled\n"
+        f"MCP:       filesystem ✓  shell ✓  fetch ✓\n"
+        f"Memory:    ~/.jalaagent/memories/\n"
+        f"Mode:      NORMAL",
+        title="Gateway Active", border_style="cyan",
+    ))
+
+
+async def _run_gateway(loop: Any, reg: Any) -> None:
     from channel_cli.channel import CLIChannel
-    channel = CLIChannel()
-    await channel.run(agent_loop)
+    cli = CLIChannel(command_registry=reg)
+    tasks: list[asyncio.Task[Any]] = [asyncio.create_task(cli.run(loop), name="cli")]
+
+    tg_token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    if tg_token:
+        from channel_telegram.channel import TelegramChannel
+        tg = TelegramChannel(token=tg_token, agent_loop=loop, command_registry=reg)
+        await tg.start()
+        tasks.append(asyncio.create_task(tg.run_polling(), name="telegram"))
+
+    _gateway_banner(loop, len(reg.list_skills()), {"telegram": bool(tg_token)})
+    try:
+        await asyncio.gather(*tasks)
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        console.print("\n[dim]Shutting down...[/]")
+        for t in tasks:
+            t.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
 
 
 def main_cli() -> None:
-    """Sync entry point for `jala` console script."""
     asyncio.run(_main_async())
 
 
 async def _main_async() -> None:
     loop = _build_agent()
-    await _run_agent(loop)
+    reg = _setup_registry(loop)
+    cli = __import__("channel_cli.channel", fromlist=["CLIChannel"]).CLIChannel(command_registry=reg)
+    await cli.run(loop)
 
 
 # ---------------------------------------------------------------------------
-# Typer app (jala chat is default)
+# Typer app
 # ---------------------------------------------------------------------------
 
 @app.callback(invoke_without_command=True)
 def main(
     ctx: typer.Context,
-    model: str = typer.Option(None, "--model", "-m", help="Model to use"),
-    plan: bool = typer.Option(False, "--plan", help="Plan mode: design only"),
-    telegram: bool = typer.Option(False, "--telegram", help="Start Telegram bot"),
+    model: str = typer.Option(None, "--model", "-m", help="Model"),
+    plan: bool = typer.Option(False, "--plan", help="Plan mode"),
+    telegram: bool = typer.Option(False, "--telegram", help="Telegram only"),
     prompt: Optional[str] = typer.Option(None, "--prompt", "-p", help="Single prompt"),
 ) -> None:
     if ctx.invoked_subcommand is not None:
         return
-
     if telegram:
-        token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-        if not token:
-            console.print("[red]Set TELEGRAM_BOT_TOKEN[/]")
-            return
-        from channel_telegram.channel import TelegramChannel
-        channel = TelegramChannel(token=token, agent_loop=_build_agent(model, plan))
-        console.print("[green]Telegram bot starting...[/]")
-        asyncio.run(channel.start())
-        asyncio.run(asyncio.Event().wait())
+        _start_telegram(model, plan)
         return
-
     agent_loop = _build_agent(model, plan)
-
     if prompt:
         async def _single():
             async for chunk in agent_loop.run(prompt):
@@ -143,9 +165,37 @@ def main(
         asyncio.run(_single())
         console.print()
         return
+    # Default: gateway if telegram configured, CLI otherwise.
+    reg = _setup_registry(agent_loop)
+    asyncio.run(_run_gateway(agent_loop, reg))
 
-    console.print(Panel("[bold cyan]🪼 JalaAgent v0.2[/] — type /help for commands", border_style="cyan"))
-    asyncio.run(_run_agent(agent_loop))
+
+def _start_telegram(model: str | None, plan: bool) -> None:
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    if not token:
+        console.print("[red]Set TELEGRAM_BOT_TOKEN[/]")
+        return
+    agent_loop = _build_agent(model, plan)
+    reg = _setup_registry(agent_loop)
+    from channel_telegram.channel import TelegramChannel
+    channel = TelegramChannel(token=token, agent_loop=agent_loop, command_registry=reg)
+    console.print("[green]Telegram bot starting...[/]")
+    asyncio.run(channel.start())
+    asyncio.run(asyncio.Event().wait())
+
+
+# ---------------------------------------------------------------------------
+# Gateway command
+# ---------------------------------------------------------------------------
+
+@app.command()
+def gateway(
+    model: str = typer.Option(None, "--model", "-m", help="Model"),
+) -> None:
+    """Run all enabled channels simultaneously."""
+    agent_loop = _build_agent(model)
+    reg = _setup_registry(agent_loop)
+    asyncio.run(_run_gateway(agent_loop, reg))
 
 
 # ---------------------------------------------------------------------------
@@ -173,49 +223,31 @@ def skills(action: str = typer.Argument("list"), name: Optional[str] = typer.Arg
         from skill_core.loader import SkillLoader
         async def _l(): return await SkillLoader().load_all()
         sk = asyncio.run(_l())
-        table = Table(title=f"Skills ({len(sk)} loaded)")
-        table.add_column("Name"); table.add_column("Description"); table.add_column("Source")
-        for s in sk:
-            table.add_row(s.slug, s.frontmatter.description[:60], s.source.value)
+        table = Table(title=f"Skills ({len(sk)} loaded)"); table.add_column("Name"); table.add_column("Desc"); table.add_column("Source")
+        for s in sk: table.add_row(s.slug, s.frontmatter.description[:60], s.source.value)
         console.print(table)
     elif action == "info" and name:
         from skill_core.loader import SkillLoader
-        async def _info():
+        async def _i():
             skills = await SkillLoader().load_all()
             for s in skills:
                 if s.slug == name:
-                    console.print(Panel(s.body[:2000], title=f"{s.slug} ({s.source.value})"))
+                    console.print(Panel(s.body[:2000], title=f"{s.slug}"))
                     return
-            console.print(f"[red]Skill not found: {name}[/]")
-        asyncio.run(_info())
-    elif action == "manifest":
-        mp = Path(__file__).parent.parent.parent / "packages" / "skill-core" / "src" / "skill_core" / "bundled" / "SKILLS_MANIFEST.md"
-        if mp.exists():
-            from rich.markdown import Markdown
-            console.print(Markdown(mp.read_text(encoding="utf-8")))
-    elif action == "audit":
-        audit = Path("D:/JalaAgent/AUDIT.md")
-        if audit.exists():
-            from rich.markdown import Markdown
-            console.print(Markdown(audit.read_text(encoding="utf-8")[:3000]))
-        else:
-            console.print("[dim]No audit file found.[/]")
-    else:
-        console.print("[red]Usage: jala skills list|info <name>|manifest|audit[/]")
+            console.print(f"[red]Not found: {name}[/]")
+        asyncio.run(_i())
 
 @app.command()
 def mcp(action: str = typer.Argument("list"), server: Optional[str] = typer.Argument(None)) -> None:
-    if action == "list":
-        console.print("[dim]Base MCP: filesystem, shell, fetch[/]")
+    if action == "list": console.print("[dim]Base MCP: filesystem, shell, fetch[/]")
 
 @app.command()
 def dream() -> None:
-    console.print("[cyan]🌙 Dreaming pipeline triggered...[/]")
+    console.print("[cyan]🌙 Dreaming triggered...[/]")
 
 @app.command()
 def config() -> None:
     editor = os.environ.get("EDITOR", "notepad")
     _CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    if not _CONFIG_PATH.exists():
-        _CONFIG_PATH.write_text("# JalaAgent config\n", encoding="utf-8")
+    if not _CONFIG_PATH.exists(): _CONFIG_PATH.write_text("# JalaAgent config\n", encoding="utf-8")
     subprocess.run([editor, str(_CONFIG_PATH)], check=False)
