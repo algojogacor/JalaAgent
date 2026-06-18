@@ -341,6 +341,10 @@ def _build_registry() -> CommandRegistry:
         if not name:
             files = sorted(pdir.glob("*.yaml")) if pdir.is_dir() else []
             return CommandResult("**Personalities:**\n" + "\n".join(f"  • {f.stem}" for f in files))
+        # Prevent path traversal.
+        import re
+        if not re.match(r'^[a-zA-Z0-9_-]+$', name):
+            return CommandResult("Invalid personality name — use only letters, numbers, hyphens, underscores.")
         pf = pdir / f"{name}.yaml"
         if not pf.exists(): return CommandResult(f"Personality '{name}' not found.")
         import yaml as _yaml
