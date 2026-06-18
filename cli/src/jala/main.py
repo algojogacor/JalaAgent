@@ -57,15 +57,28 @@ def _build_agent(model: str | None = None, plan: bool = False) -> Any:
         skill_loader = SkillLoader()
     except Exception: pass
 
+    # Read fallback providers from config.
+    fallback = []
+    try:
+        cfg = _load_jala_config()
+        fallback = cfg.get("fallback_providers", ["deepseek", "openrouter", "groq", "mistral", "ollama"])
+    except Exception: pass
+
     loop = AgentLoop(
         provider=provider, registry=registry, memory_retriever=memory,
         skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
         plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
+        fallback_providers=fallback,
     )
     if skill_loader:
         asyncio.get_event_loop().run_until_complete(loop.load_skills())
     return loop
 
+
+def _load_jala_config() -> dict:
+    import yaml
+    p = Path.home() / ".jalaagent" / "config.yaml"
+    return yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
 
 def _pick_provider(model: str | None, creds: Any) -> Any:
     model_lower = (model or "").lower()
@@ -75,8 +88,28 @@ def _pick_provider(model: str | None, creds: Any) -> Any:
     if "gpt" in model_lower or "o1" in model_lower or os.environ.get("OPENAI_API_KEY"):
         from provider_openai.provider import OpenAIProvider
         return OpenAIProvider(model=model or "gpt-4o")
-    from provider_ollama.provider import OllamaProvider
-    return OllamaProvider(model=model or "qwen3:0.6b")
+    # Default to universal provider (config-driven).
+    try:
+        from provider_universal.provider import OpenAICompatibleProvider  # type: ignore[import-untyped]
+        cfg = _load_jala_config()
+        default_prov = cfg.get("model", {}).get("provider", "deepseek")
+        default_m = cfg.get("model", {}).get("default", "deepseek-chat")
+        return OpenAICompatibleProvider(default_provider=default_prov, default_model=default_m)
+    except Exception:
+        from provider_ollama.provider import OllamaProvider
+        return OllamaProvider(model=model or "qwen3:0.6b")
+
+def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used by dreaming_runner + bg tasks
+    """Build a cheaper auxiliary provider for dreaming + background tasks."""
+    cfg = _load_jala_config()
+    aux = cfg.get("auxiliary", {})
+    prov = aux.get("provider", "deepseek")
+    model = aux.get("model", "deepseek-chat")
+    try:
+        from provider_universal.provider import OpenAICompatibleProvider  # pyright: ignore
+        return OpenAICompatibleProvider(default_provider=prov, default_model=model)
+    except Exception:
+        return _pick_provider(model, None)
 
 
 def _setup_registry(agent_loop: Any) -> Any:

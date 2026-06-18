@@ -58,7 +58,7 @@ class CredentialPool:
         self._pools: dict[str, list[Credential]] = defaultdict(list)
         self._locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
         self._index: dict[str, int] = defaultdict(int)  # Round-robin index.
-        # Hooks for external credential sources.
+        self._strategies: dict[str, str] = defaultdict(lambda: "round_robin")
         self._env_resolvers: dict[str, Callable[[], list[str]]] = {}
 
     # ------------------------------------------------------------------
@@ -97,10 +97,14 @@ class CredentialPool:
     # Acquisition
     # ------------------------------------------------------------------
 
+    def set_strategy(self, provider: str, strategy: str) -> None:
+        """Set selection strategy: random, priority, or round_robin (default)."""
+        self._strategies[provider] = strategy
+
     async def acquire(self, provider: str) -> Credential | None:
         """Get the next healthy credential for *provider*.
 
-        Uses round-robin selection, skipping credentials in cooldown.
+        Supports strategies: round_robin (default), random, priority.
         Returns ``None`` if no healthy credential is available.
         """
         pool = self._pools.get(provider, [])
@@ -114,7 +118,24 @@ class CredentialPool:
             if not pool:
                 return None
 
+        strategy = self._strategies.get(provider, "round_robin")
         async with self._locks[provider]:
+            if strategy == "random":
+                import random
+                healthy = [c for c in pool if c.is_healthy]
+                if healthy:
+                    cred = random.choice(healthy)
+                    cred.last_used = time.monotonic()
+                    return cred
+                return None
+            if strategy == "priority":
+                healthy = sorted([c for c in pool if c.is_healthy], key=lambda c: c.metadata.get("priority", 99))
+                if healthy:
+                    cred = healthy[0]
+                    cred.last_used = time.monotonic()
+                    return cred
+                return None
+            # Default: round_robin.
             start = self._index[provider] % len(pool)
             for offset in range(len(pool)):
                 idx = (start + offset) % len(pool)

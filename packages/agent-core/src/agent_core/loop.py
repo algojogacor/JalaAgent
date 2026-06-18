@@ -101,6 +101,12 @@ class AgentLoop:
         self._last_user_message = user_message
         self._session_id = session_id
 
+        # Fire session hooks (fire-and-forget, don't block).
+        try:
+            from agent_core.hooks import run as run_hooks
+            asyncio.create_task(run_hooks("session_start", {"session_id": session_id, "user_message": user_message}))
+        except ImportError: pass
+
         # Plan mode: restrict tools.
         if self._plan_mode and getattr(self._plan_mode, "is_approved", False) is False:
             self._system_prompt += "\n\n[PLAN MODE] Design only. No implementation until plan is approved."
@@ -227,6 +233,11 @@ class AgentLoop:
                 messages.append(AgentMessage(role="tool", content=result.content, tool_call_id=tc.id))
 
         yield AgentChunk(type=ChunkType.DONE)
+        # Fire session end hooks.
+        try:
+            from agent_core.hooks import run as run_hooks
+            asyncio.create_task(run_hooks("session_end", {"session_id": session_id, "total_tool_calls": total_tool_calls}))
+        except ImportError: pass
         if total_tool_calls > 0 and self._memory:
             asyncio.create_task(self._self_improve(session_id, messages))
 
