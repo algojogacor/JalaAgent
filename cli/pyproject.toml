@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
-jala = "jala.main:app"
+jala = "jala.main:main_cli"
 
 [project.optional-dependencies]
 dev = [

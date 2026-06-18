@@ -5,7 +5,10 @@ version: 1.0.0
 author: JalaAgent
 license: Apache-2.0
 platforms: [windows, linux, macos, termux]
-metadata: jalaagent: always: false; emoji: 🎨
+metadata:
+  jalaagent:
+    always: false
+    emoji: 🎨
 ---
 
 # Frontend Design

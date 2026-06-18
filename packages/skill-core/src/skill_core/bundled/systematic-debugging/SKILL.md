@@ -1,6 +1,7 @@
 ---
 name: systematic-debugging
-description: Four-phase root cause debugging — investigate before fixing. No fixes without root cause identification. Rule of Three: after 3 failed attempts, question architecture.
+description: >-
+  Four-phase root cause debugging — investigate before fixing. No fixes without root cause identification. Rule of Three: after 3 failed attempts, question architecture.
 version: 1.0.0
 author: JalaAgent
 license: Apache-2.0

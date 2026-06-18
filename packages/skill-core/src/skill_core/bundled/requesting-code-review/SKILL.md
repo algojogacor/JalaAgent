@@ -1,11 +1,15 @@
 ---
 name: requesting-code-review
-description: Dispatch an independent reviewer subagent with precise git SHAs. Fail-closed: non-empty concerns = auto-fail. Auto-fix loop capped at 2 cycles.
+description: >-
+  Dispatch an independent reviewer subagent with precise git SHAs. Fail-closed: non-empty concerns = auto-fail. Auto-fix loop capped at 2 cycles.
 version: 1.0.0
 author: JalaAgent
 license: Apache-2.0
 platforms: [windows, linux, macos, termux]
-metadata: jalaagent: always: false; emoji: 👀
+metadata:
+  jalaagent:
+    always: false
+    emoji: 👀
 ---
 
 # Requesting Code Review

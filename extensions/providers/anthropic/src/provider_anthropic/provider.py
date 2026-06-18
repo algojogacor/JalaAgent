@@ -180,5 +180,10 @@ class AnthropicProvider:
     def _get_client(self) -> Any:
         if self._client is None:
             from anthropic import AsyncAnthropic
-            self._client = AsyncAnthropic(api_key=self._api_key)
+            self._client = AsyncAnthropic(
+                api_key=self._api_key,
+                default_headers={
+                    "anthropic-beta": "prompt-caching-2024-07-31",
+                },
+            )
         return self._client

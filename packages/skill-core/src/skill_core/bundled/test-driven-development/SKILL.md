@@ -6,7 +6,9 @@ author: JalaAgent
 license: Apache-2.0
 platforms: [windows, linux, macos, termux]
 metadata:
-  jalaagent: always: false; emoji: 🧪
+  jalaagent:
+    always: false
+    emoji: 🧪
 ---
 
 # Test-Driven Development
