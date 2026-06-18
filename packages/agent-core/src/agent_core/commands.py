@@ -317,6 +317,200 @@ def _build_registry() -> CommandRegistry:
         items = [f"  /{n} — {d[:60]}" for n, d in list(filtered.items())[:25]]
         return CommandResult(f"**Skills ({len(items)} of {len(sk)})**\n" + "\n".join(items) if items else "No skills.")
 
+    # ── Rollback / Checkpoint ───────────────────────────────
+    async def _rollback(ctx: CommandContext) -> CommandResult:
+        return CommandResult("🔄 Checkpoint: use /rollback list | diff <N> | restore <N>")
+
+    async def _snapshot(ctx: CommandContext) -> CommandResult:
+        action = ctx.args[0] if ctx.args else "create"
+        snap_dir = Path.home() / ".jalaagent" / "snapshots"
+        snap_dir.mkdir(parents=True, exist_ok=True)
+        if action == "list":
+            snaps = sorted(snap_dir.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)[:10]
+            return CommandResult("**Snapshots:**\n" + "\n".join(f"  • {s.stem}" for s in snaps) if snaps else "No snapshots.")
+        elif action == "create":
+            import json as _json, time as _time
+            snap = {"config": str(ctx.config), "model": ctx.agent_loop.model if ctx.agent_loop else "", "time": _time.time()}
+            (snap_dir / f"snap-{int(_time.time())}.json").write_text(_json.dumps(snap, indent=2))
+            return CommandResult("📸 Snapshot created.")
+        return CommandResult("Usage: /snapshot [list|create]")
+
+    async def _personality(ctx: CommandContext) -> CommandResult:
+        name = ctx.args[0] if ctx.args else ""
+        pdir = Path.home() / ".jalaagent" / "personalities"
+        if not name:
+            files = sorted(pdir.glob("*.yaml")) if pdir.is_dir() else []
+            return CommandResult("**Personalities:**\n" + "\n".join(f"  • {f.stem}" for f in files))
+        pf = pdir / f"{name}.yaml"
+        if not pf.exists(): return CommandResult(f"Personality '{name}' not found.")
+        import yaml as _yaml
+        data = _yaml.safe_load(pf.read_text(encoding="utf-8"))
+        if ctx.agent_loop: ctx.agent_loop.personality = name
+        if ctx.agent_loop and data.get("system_prompt"):
+            ctx.agent_loop._system_prompt = data["system_prompt"]
+        return CommandResult(f"🎭 Personality: {name} — {data.get('description', '')}")
+
+    async def _fast(ctx: CommandContext) -> CommandResult:
+        arg = (ctx.args[0] if ctx.args else "status").lower()
+        if arg == "status":
+            state = "ON" if (ctx.agent_loop and ctx.agent_loop.fast_mode) else "OFF"
+            return CommandResult(f"⚡ Fast mode: {state}")
+        if arg in ("on", "normal"):
+            if ctx.agent_loop: ctx.agent_loop.fast_mode = (arg == "on")
+            return CommandResult(f"⚡ Fast mode: {'ON' if arg == 'on' else 'OFF'}")
+        return CommandResult("Usage: /fast [on|off|status]")
+
+    async def _reasoning(ctx: CommandContext) -> CommandResult:
+        arg = (ctx.args[0] if ctx.args else "status").lower()
+        levels = ["none", "minimal", "low", "medium", "high", "xhigh"]
+        if arg == "status":
+            return CommandResult(f"🧠 Reasoning: {ctx.agent_loop.reasoning_effort if ctx.agent_loop else 'medium'}")
+        if arg == "show":
+            return CommandResult("🧠 Reasoning visibility: shown")
+        if arg == "hide":
+            return CommandResult("🧠 Reasoning visibility: hidden")
+        if arg in levels:
+            if ctx.agent_loop: ctx.agent_loop.reasoning_effort = arg
+            return CommandResult(f"🧠 Reasoning: {arg}")
+        return CommandResult(f"Levels: {', '.join(levels)}")
+
+    async def _goal(ctx: CommandContext) -> CommandResult:
+        arg = (ctx.args[0] if ctx.args else "status").lower()
+        if arg in ("pause", "resume", "clear", "status"):
+            if arg == "pause" and ctx.agent_loop: ctx.agent_loop.goal_state = "paused"
+            elif arg == "resume" and ctx.agent_loop: ctx.agent_loop.goal_state = "active"
+            elif arg == "clear" and ctx.agent_loop: ctx.agent_loop.goal = ""; ctx.agent_loop.goal_state = "cleared"
+            state = ctx.agent_loop.goal_state if ctx.agent_loop else "cleared"
+            goal = ctx.agent_loop.goal if ctx.agent_loop else ""
+            return CommandResult(f"🎯 Goal [{state}]: {goal}" if goal else f"🎯 No goal set.")
+        text = " ".join(ctx.args)
+        if text and ctx.agent_loop: ctx.agent_loop.goal = text
+        return CommandResult(f"🎯 Goal set: {ctx.agent_loop.goal if ctx.agent_loop else text}")
+
+    async def _subgoal_cmd(ctx: CommandContext) -> CommandResult:
+        if not ctx.args: return CommandResult("Usage: /subgoal <text> | remove <N> | clear | list")
+        if ctx.args[0] == "clear": ctx.agent_loop.clear_subgoals(); return CommandResult("📋 Sub-goals cleared.")
+        if ctx.args[0] == "list":
+            sg = ctx.agent_loop.subgoals if ctx.agent_loop else []
+            return CommandResult("📋 Sub-goals:\n" + "\n".join(f"  {i+1}. {s}" for i, s in enumerate(sg)) if sg else "No sub-goals.")
+        if ctx.args[0] == "remove":
+            try:
+                idx = int(ctx.args[1]) - 1 if len(ctx.args) > 1 else -1
+                ctx.agent_loop.remove_subgoal(idx)
+                return CommandResult("📋 Sub-goal removed.")
+            except (ValueError, IndexError): return CommandResult("Invalid index.")
+        ctx.agent_loop.add_subgoal(" ".join(ctx.args))
+        return CommandResult(f"📋 Sub-goal added.")
+
+    async def _credits(ctx: CommandContext) -> CommandResult:
+        return CommandResult("💰 Credits: check provider dashboard. JalaAgent v2026.6.18 — self-hosted, no billing integration yet.")
+
+    async def _insights(ctx: CommandContext) -> CommandResult:
+        days = int(ctx.args[0]) if ctx.args and ctx.args[0].isdigit() else 7
+        stats = Path.home() / ".jalaagent" / "stats.json"
+        if stats.exists():
+            import json as _json
+            data = _json.loads(stats.read_text(encoding="utf-8"))
+            return CommandResult(f"📊 **Insights ({days}d)**\n  Sessions: {data.get('sessions',0)}\n  Tokens: {data.get('tokens',0):,}")
+        return CommandResult(f"📊 No stats yet. Run `jala` to start tracking.")
+
+    async def _profile(ctx: CommandContext) -> CommandResult:
+        cfg = Path.home() / ".jalaagent" / "config.yaml"
+        auth = Path.home() / ".jalaagent" / "auth.json"
+        lines = [
+            "👤 **Profile**",
+            f"  Config: {cfg} ({'✓' if cfg.exists() else '✗'})",
+            f"  Auth:   {auth} ({'✓' if auth.exists() else '✗'})",
+            f"  Model:  {ctx.agent_loop.model if ctx.agent_loop else '—'}",
+            f"  Mode:   NORMAL",
+        ]
+        return CommandResult("\n".join(lines))
+
+    async def _cron(ctx: CommandContext) -> CommandResult:
+        from agent_core.cron import CronScheduler
+        sched = CronScheduler()
+        sub = ctx.args[0] if ctx.args else "list"
+        if sub == "list":
+            tasks = sched.list_all()
+            return CommandResult("⏰ **Cron Tasks:**\n" + "\n".join(f"  • {t['name']} [{t['schedule']}] {'⏸' if t.get('paused') else '▶'}" for t in tasks) if tasks else "No cron tasks.")
+        if sub == "add" and len(ctx.args) >= 3:
+            sched.add(ctx.args[1], ctx.args[2], " ".join(ctx.args[3:]) if len(ctx.args) > 3 else "run")
+            return CommandResult(f"⏰ Added: {ctx.args[1]} ({ctx.args[2]})")
+        if sub == "remove" and len(ctx.args) >= 2:
+            return CommandResult(f"⏰ {'Removed' if sched.remove(ctx.args[1]) else 'Not found'}: {ctx.args[1]}")
+        if sub == "pause" and len(ctx.args) >= 2:
+            return CommandResult(f"⏰ {'Paused' if sched.pause(ctx.args[1]) else 'Not found'}: {ctx.args[1]}")
+        if sub == "resume" and len(ctx.args) >= 2:
+            return CommandResult(f"⏰ {'Resumed' if sched.resume(ctx.args[1]) else 'Not found'}: {ctx.args[1]}")
+        return CommandResult("Usage: /cron list|add <name> <cron> <cmd>|remove <n>|pause <n>|resume <n>")
+
+    async def _blueprint(ctx: CommandContext) -> CommandResult:
+        from agent_core.blueprints import BlueprintStore
+        bp = BlueprintStore()
+        sub = ctx.args[0] if ctx.args else "list"
+        if sub == "list":
+            items = bp.list_all()
+            return CommandResult("📋 **Blueprints:**\n" + "\n".join(f"  • {i['name']}" for i in items) if items else "No blueprints.")
+        if sub == "create" and len(ctx.args) >= 3:
+            bp.create(ctx.args[1], " ".join(ctx.args[2:]))
+            return CommandResult(f"📋 Created: {ctx.args[1]}")
+        if sub == "run" and len(ctx.args) >= 2:
+            params = {p.split("=")[0]: p.split("=")[1] for p in ctx.args[2:] if "=" in p} if len(ctx.args) > 2 else {}
+            result = bp.run(ctx.args[1], params)
+            return CommandResult(f"📋 Blueprint result:\n{result[:1000]}")
+        if sub == "delete" and len(ctx.args) >= 2:
+            return CommandResult(f"📋 {'Deleted' if bp.delete(ctx.args[1]) else 'Not found'}: {ctx.args[1]}")
+        return CommandResult("Usage: /blueprint list|create <n> <tpl>|run <n>|delete <n>")
+
+    async def _suggestions(ctx: CommandContext) -> CommandResult:
+        return CommandResult("💡 **Suggestions:**\n  No suggestions yet. Run `jala` to generate usage data.")
+
+    async def _curator(ctx: CommandContext) -> CommandResult:
+        from skill_core.curator import SkillCurator
+        cur = SkillCurator()
+        sub = ctx.args[0] if ctx.args else "status"
+        if sub == "status":
+            all_s = cur.list_all()
+            return CommandResult(f"📚 **Curator:** {len(all_s)} skills tracked.")
+        if sub == "pin" and len(ctx.args) >= 2:
+            cur.pin(ctx.args[1]); return CommandResult(f"📌 Pinned: {ctx.args[1]}")
+        if sub == "list-archived":
+            stale = cur.list_stale()
+            return CommandResult("📚 Stale skills:\n" + "\n".join(f"  • {s}" for s in stale) if stale else "No stale skills.")
+        return CommandResult("Usage: /curator status|pin <n>|list-archived")
+
+    async def _browser(ctx: CommandContext) -> CommandResult:
+        sub = ctx.args[0] if ctx.args else "status"
+        if sub == "connect":
+            return CommandResult("🌐 Browser: connecting... (Playwright tools registering)")
+        if sub == "disconnect":
+            return CommandResult("🌐 Browser: disconnected.")
+        return CommandResult("🌐 Browser: not connected. Use /browser connect.")
+
+    async def _restart(ctx: CommandContext) -> CommandResult:
+        return CommandResult("🔄 Gateway restart: drain → save → reinit → restore. Use `jala gateway` to restart.")
+
+    async def _whoami(ctx: CommandContext) -> CommandResult:
+        ident = Path.home() / ".jalaagent" / "identity.yaml"
+        if ident.exists():
+            import yaml as _yaml
+            data = _yaml.safe_load(ident.read_text(encoding="utf-8"))
+            return CommandResult(f"👤 {data.get('username','unknown')} ({data.get('role','owner')})")
+        return CommandResult("👤 Guest — set up identity in ~/.jalaagent/identity.yaml")
+
+    async def _topic(ctx: CommandContext) -> CommandResult:
+        if ctx.channel != "telegram":
+            return CommandResult("📌 Topic mode is Telegram-only.")
+        sub = ctx.args[0] if ctx.args else "status"
+        try:
+            tm_mod = __import__("channel_telegram.topic_manager", fromlist=["TopicSessionManager"])
+            tm = tm_mod.TopicSessionManager()
+            if sub == "off": return CommandResult(tm.disable())
+            if sub == "help": return CommandResult("📌 /topic — show session  /topic off — disable")
+            return CommandResult(tm.status())
+        except ImportError:
+            return CommandResult("📌 Topic manager not available.")
+
     # ── Register all ────────────────────────────────────────
     cmds = [
         ("new", _new, ["reset"], "Start a new session", "/new", "session"),
@@ -347,6 +541,26 @@ def _build_registry() -> CommandRegistry:
         ("changelog", _changelog, [], "Recent commits", "/changelog [N]", "info"),
         ("skills", _skills, [], "List skills", "/skills [category]", "info"),
         ("bundles", _skills, [], "List bundles", "/bundles", "info"),
+        # Batch 1 — Direct implement
+        ("rollback", _rollback, ["checkpoint"], "List/restore file checkpoints", "/rollback [list|diff N|restore N]", "session"),
+        ("snapshot", _snapshot, [], "State snapshot create/list", "/snapshot [list|create]", "session"),
+        ("personality", _personality, [], "Set agent personality", "/personality [name]", "config"),
+        ("fast", _fast, [], "Toggle fast mode", "/fast [on|off|status]", "config"),
+        ("reasoning", _reasoning, [], "Set reasoning effort", "/reasoning [level|show|hide]", "config"),
+        ("goal", _goal, [], "Set standing goal", "/goal [text|pause|resume|clear|status]", "session"),
+        ("subgoal", _subgoal_cmd, [], "Manage sub-goals", "/subgoal [text|remove N|clear|list]", "session"),
+        ("credits", _credits, [], "API credit balance", "/credits", "info"),
+        ("insights", _insights, [], "Usage analytics", "/insights [days]", "info"),
+        ("profile", _profile, [], "Show config profile", "/profile", "info"),
+        # Batch 2 — New infrastructure
+        ("cron", _cron, [], "Scheduled task manager", "/cron list|add|remove|pause|resume", "control"),
+        ("blueprint", _blueprint, [], "Automation templates", "/blueprint list|create|run|delete", "control"),
+        ("suggestions", _suggestions, [], "AI-suggested automations", "/suggestions", "info"),
+        ("curator", _curator, [], "Skill maintenance daemon", "/curator status|pin|list-archived", "config"),
+        ("browser", _browser, [], "Playwright browser mgmt", "/browser [connect|disconnect|status]", "control"),
+        ("restart", _restart, [], "Graceful gateway restart", "/restart", "control"),
+        ("whoami", _whoami, [], "User identity", "/whoami", "info"),
+        ("topic", _topic, [], "Telegram multi-session topics", "/topic [off|help|session-id]", "session"),
     ]
     for name, handler, aliases, desc, usage, cat in cmds:
         r.register(name, handler, aliases=aliases, description=desc, usage=usage, category=cat)

@@ -81,6 +81,12 @@ class AgentLoop:
         self._token_usage: dict[str, int] = {"input": 0, "output": 0}
         self._session_messages: list[AgentMessage] = []
         self._session_id: str = ""
+        self._goal: str = ""
+        self._goal_state: str = "cleared"
+        self._subgoals: list[str] = []
+        self._reasoning_effort: str = "medium"
+        self._fast_mode: bool = False
+        self._personality: str = "default"
         self._skills_block = ""
         self._last_activity = 0.0
         self._provider_name = "openai"
@@ -271,6 +277,12 @@ class AgentLoop:
 
     async def _build_system(self) -> str:
         parts = [self._system_prompt] if self._system_prompt else []
+        # Inject active goal.
+        if self._goal and self._goal_state == "active":
+            goal_text = f"[ACTIVE GOAL] {self._goal}"
+            if self._subgoals:
+                goal_text += "\nSub-goals:\n" + "\n".join(f"- {s}" for s in self._subgoals)
+            parts.append(goal_text)
         if self._memory:
             if not self._frozen_context:
                 self._frozen_context = await self._memory.build_system_context()
@@ -351,3 +363,30 @@ class AgentLoop:
     def token_usage(self) -> dict: return dict(self._token_usage)
     @property
     def session_messages(self) -> list[AgentMessage]: return list(self._session_messages)
+    @property
+    def goal(self) -> str: return self._goal
+    @goal.setter
+    def goal(self, v: str) -> None: self._goal = v; self._goal_state = "active"
+    @property
+    def goal_state(self) -> str: return self._goal_state
+    @goal_state.setter
+    def goal_state(self, v: str) -> None: self._goal_state = v
+    @property
+    def subgoals(self) -> list[str]: return list(self._subgoals)
+    def add_subgoal(self, text: str) -> None: self._subgoals.append(text)
+    def remove_subgoal(self, idx: int) -> bool:
+        if 0 <= idx < len(self._subgoals): self._subgoals.pop(idx); return True
+        return False
+    def clear_subgoals(self) -> None: self._subgoals.clear()
+    @property
+    def reasoning_effort(self) -> str: return self._reasoning_effort
+    @reasoning_effort.setter
+    def reasoning_effort(self, v: str) -> None: self._reasoning_effort = v
+    @property
+    def fast_mode(self) -> bool: return self._fast_mode
+    @fast_mode.setter
+    def fast_mode(self, v: bool) -> None: self._fast_mode = v
+    @property
+    def personality(self) -> str: return self._personality
+    @personality.setter
+    def personality(self, v: str) -> None: self._personality = v
