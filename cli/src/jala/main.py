@@ -71,8 +71,6 @@ def _build_agent(model: str | None = None, plan: bool = False) -> Any:
         plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
         fallback_providers=fallback,
     )
-    if skill_loader:
-        asyncio.get_event_loop().run_until_complete(loop.load_skills())
     return loop
 
 
@@ -113,17 +111,16 @@ def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used
         return _pick_provider(model, None)
 
 
-def _setup_registry(agent_loop: Any) -> Any:
-    """Setup command registry with auto-registered skill commands + bodies."""
+def _get_registry_safe() -> Any:
     from agent_core.commands import get_registry
-    reg = get_registry()
-    if agent_loop._skill_loader:
-        try:
-            skills = asyncio.get_event_loop().run_until_complete(agent_loop._skill_loader.load_all())
-            for sk in skills:
-                reg.register_skill(sk.slug, sk.frontmatter.description, sk.body)
-        except Exception: pass
-    return reg
+    return get_registry()
+
+async def _load_skills_into_registry(loop: Any) -> None:
+    if loop._skill_loader:
+        skills = await loop._skill_loader.load_all()
+        reg = _get_registry_safe()
+        for sk in skills:
+            reg.register_skill(sk.slug, sk.frontmatter.description, sk.body)
 
 
 def _gateway_banner(loop: Any, skills_count: int, tokens: dict[str, bool]) -> None:
@@ -141,6 +138,7 @@ def _gateway_banner(loop: Any, skills_count: int, tokens: dict[str, bool]) -> No
 
 
 async def _run_gateway(loop: Any, reg: Any) -> None:
+    await _load_skills_into_registry(loop)
     from channel_cli.channel import CLIChannel
     cli = CLIChannel(command_registry=reg)
     tasks: list[asyncio.Task[Any]] = [asyncio.create_task(cli.run(loop), name="cli")]
@@ -168,8 +166,11 @@ def main_cli() -> None:
 
 async def _main_async() -> None:
     loop = _build_agent()
-    reg = _setup_registry(loop)
-    cli = __import__("channel_cli.channel", fromlist=["CLIChannel"]).CLIChannel(command_registry=reg)
+    if loop._skill_loader:
+        skills = await loop._skill_loader.load_all()
+        for sk in skills:
+            _get_registry_safe().register_skill(sk.slug, sk.frontmatter.description, sk.body)
+    cli = __import__("channel_cli.channel", fromlist=["CLIChannel"]).CLIChannel(command_registry=_get_registry_safe())
     await cli.run(loop)
 
 
@@ -214,8 +215,7 @@ def main(
         console.print()
         return
     # Default: gateway if telegram configured, CLI otherwise.
-    reg = _setup_registry(agent_loop)
-    asyncio.run(_run_gateway(agent_loop, reg))
+    asyncio.run(_run_gateway(agent_loop, _get_registry_safe()))
 
 
 def _start_telegram(model: str | None, plan: bool) -> None:
@@ -224,9 +224,8 @@ def _start_telegram(model: str | None, plan: bool) -> None:
         console.print("[red]Set TELEGRAM_BOT_TOKEN[/]")
         return
     agent_loop = _build_agent(model, plan)
-    reg = _setup_registry(agent_loop)
     from channel_telegram.channel import TelegramChannel
-    channel = TelegramChannel(token=token, agent_loop=agent_loop, command_registry=reg)
+    channel = TelegramChannel(token=token, agent_loop=agent_loop, command_registry=_get_registry_safe())
     console.print("[green]Telegram bot starting...[/]")
     asyncio.run(channel.start())
     asyncio.run(asyncio.Event().wait())
@@ -242,8 +241,7 @@ def gateway(
 ) -> None:
     """Run all enabled channels simultaneously."""
     agent_loop = _build_agent(model)
-    reg = _setup_registry(agent_loop)
-    asyncio.run(_run_gateway(agent_loop, reg))
+    asyncio.run(_run_gateway(agent_loop, _get_registry_safe()))
 
 
 # ---------------------------------------------------------------------------
