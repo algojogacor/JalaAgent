@@ -82,7 +82,8 @@ def create_app(token: str | None = None) -> FastAPI:
                     elif chunk.type == ProviderChunkType.DONE:
                         yield "data: {\"type\":\"message_stop\"}\n\n"; break
             except Exception as exc:
-                yield f"data: {json.dumps({'type':'error','error':{'type':'api_error','message':str(exc)}})}\n\n"
+                logger.exception("Streaming error for model %s", model)
+                yield f"data: {json.dumps({'type':'error','error':{'type':'api_error','message':'Internal server error'}})}\n\n"
         return StreamingResponse(_s(), media_type="text/event-stream")
 
     return app
@@ -90,7 +91,7 @@ def create_app(token: str | None = None) -> FastAPI:
 
 def run_server(host: str = "127.0.0.1", port: int = 8787, token: str | None = None) -> None:
     import uvicorn
-    a = f" (auth: {token[:8]}...)" if token else " (no auth)"
+    a = " (auth: enabled)" if token else " (no auth)"
     print(f"🪼 JalaAgent API v2026.6.18 — http://{host}:{port}{a}")
     print(f"   Models: http://{host}:{port}/v1/models")
     print(f"   Chat:   POST http://{host}:{port}/v1/messages")
