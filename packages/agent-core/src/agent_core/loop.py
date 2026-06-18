@@ -77,6 +77,10 @@ class AgentLoop:
         self._followup_queue: asyncio.Queue[AgentMessage] = asyncio.Queue()
         self._interrupted = False
         self._frozen_context = ""
+        self._last_user_message: str = ""
+        self._token_usage: dict[str, int] = {"input": 0, "output": 0}
+        self._session_messages: list[AgentMessage] = []
+        self._session_id: str = ""
         self._skills_block = ""
         self._last_activity = 0.0
         self._provider_name = "openai"
@@ -88,6 +92,8 @@ class AgentLoop:
     async def run(self, user_message: str, session_id: str = "") -> AsyncGenerator[AgentChunk, None]:
         self._interrupted = False
         self._last_activity = _time_module.monotonic()
+        self._last_user_message = user_message
+        self._session_id = session_id
 
         # Plan mode: restrict tools.
         if self._plan_mode and getattr(self._plan_mode, "is_approved", False) is False:
@@ -307,11 +313,41 @@ class AgentLoop:
             return len(skills)
         except Exception: return 0
 
+    def reset(self) -> None:
+        """Reset session state for /new command."""
+        self._session_messages = []
+        self._token_usage = {"input": 0, "output": 0}
+        self._interrupted = False
+
+    def retry(self) -> str:
+        """Return last user message for /retry command."""
+        return self._last_user_message
+
+    def undo(self, n: int = 1) -> int:
+        """Remove last N turns, return new count."""
+        removed = min(n * 2, len(self._session_messages))
+        self._session_messages = self._session_messages[:-removed] if removed else self._session_messages
+        return len(self._session_messages)
+
     @property
     def model(self) -> str: return self._model
+    @model.setter
+    def model(self, v: str) -> None: self._model = v
     @property
     def sandbox(self) -> Any: return self._sandbox
     @property
     def worktree(self) -> Any: return self._worktree
     @property
     def plan_mode(self) -> Any: return self._plan_mode
+    @property
+    def bg_tasks(self) -> Any: return self._bg_tasks
+    @property
+    def credential_pool(self) -> Any: return self._credential_pool
+    @property
+    def skill_loader(self) -> Any: return self._skill_loader
+    @property
+    def followup_queue(self) -> asyncio.Queue[AgentMessage]: return self._followup_queue
+    @property
+    def token_usage(self) -> dict: return dict(self._token_usage)
+    @property
+    def session_messages(self) -> list[AgentMessage]: return list(self._session_messages)

@@ -80,14 +80,14 @@ def _pick_provider(model: str | None, creds: Any) -> Any:
 
 
 def _setup_registry(agent_loop: Any) -> Any:
-    """Setup command registry with auto-registered skill commands."""
+    """Setup command registry with auto-registered skill commands + bodies."""
     from agent_core.commands import get_registry
     reg = get_registry()
     if agent_loop._skill_loader:
         try:
             skills = asyncio.get_event_loop().run_until_complete(agent_loop._skill_loader.load_all())
             for sk in skills:
-                reg.register_skill(sk.slug, sk.frontmatter.description)
+                reg.register_skill(sk.slug, sk.frontmatter.description, sk.body)
         except Exception: pass
     return reg
 

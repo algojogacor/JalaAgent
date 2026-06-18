@@ -125,11 +125,12 @@ class CLIChannel:
             return
         cmd = self._registry.get(name)
         if cmd is None:
-            # Try skill auto-dispatch.
             skills = self._registry.list_skills()
             if name in skills:
+                body = self._registry.get_skill_body(name)
+                prompt = f"<skill name=\"{name}\">\n{body}\n</skill>\n\n{raw}" if body else raw
                 self._console.print(f"[green]Activating skill: {name}[/]")
-                await self._stream_response(agent_loop, raw)
+                await self._stream_response(agent_loop, prompt)
                 return
             self._console.print(f"[red]Unknown command: /{name}[/]. Type /help.")
             return
