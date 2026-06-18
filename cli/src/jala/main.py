@@ -9,6 +9,7 @@ from typing import Any, Optional
 import typer
 from rich.console import Console
 from rich.panel import Panel
+from rich.prompt import Confirm
 from rich.table import Table
 
 app = typer.Typer(name="jala", help="JalaAgent — persistent personal AI agent")
