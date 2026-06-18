@@ -2,6 +2,8 @@
 
 Tools: read_file, write_file, patch_file, list_dir, shell, fetch,
        memory, delegate_task, skill_manage.
+
+Wired with SandboxedShell and DiffEditor when available.
 """
 
 import asyncio
@@ -15,7 +17,18 @@ import httpx
 
 logger = __import__("logging").getLogger(__name__)
 
-_MAX_RESULT = 50000  # Overflow threshold.
+_MAX_RESULT = 50000
+
+# Module-level harness references — set by CLI during wiring.
+_sandbox: Any = None
+_diff_editor: Any = None
+
+
+def wire_harness(sandbox: Any = None, diff_editor: Any = None) -> None:
+    """Wire harness pieces into core tools. Called by CLI at startup."""
+    global _sandbox, _diff_editor
+    _sandbox = sandbox
+    _diff_editor = diff_editor
 
 
 # ---------------------------------------------------------------------------
@@ -49,9 +62,16 @@ async def tool_write_file(args: dict[str, Any]) -> str:
 
 
 async def tool_patch_file(args: dict[str, Any]) -> str:
-    """Apply a unified diff patch to a file."""
+    """Apply a unified diff patch via DiffEditor if wired, else direct."""
     path = Path(args["path"]).expanduser().resolve()
     diff_text = args["diff"]
+    if _diff_editor is not None:
+        original = await asyncio.to_thread(path.read_text, encoding="utf-8") if path.exists() else ""
+        success = await _diff_editor.apply_diff(path, diff_text, expected_original=original)
+        if not success:
+            return "Error: file has changed since diff was generated (drift detected)"
+        return f"Patched {path}"
+    # Fallback.
     original = await asyncio.to_thread(path.read_text, encoding="utf-8") if path.exists() else ""
     patched = difflib.restore(diff_text.splitlines(True), 1)
     result = "".join(patched)
@@ -80,10 +100,20 @@ async def tool_list_dir(args: dict[str, Any]) -> str:
 
 
 async def tool_shell(args: dict[str, Any]) -> str:
-    """Execute a shell command (with timeout)."""
+    """Execute a shell command via SandboxedShell if wired, else direct."""
     cmd = args["command"]
     timeout = args.get("timeout", 60)
     cwd = args.get("cwd", ".")
+
+    if _sandbox is not None:
+        result = await _sandbox.execute(cmd, cwd=cwd, timeout=timeout)
+        out = result["stdout"]
+        if result["stderr"]:
+            out += "\n[stderr]\n" + result["stderr"]
+        if result["was_dangerous"] and not result["stdout"]:
+            return result["stderr"]
+        return out or "(no output)"
+
     try:
         proc = await asyncio.create_subprocess_shell(
             cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE, cwd=cwd
