@@ -240,6 +240,16 @@ def setup() -> None:
     from jala.setup import run_setup; run_setup()
 
 @app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1", "--host", "-h", help="Bind host"),
+    port: int = typer.Option(8787, "--port", "-p", help="Bind port"),
+    token: Optional[str] = typer.Option(None, "--token", "-t", help="Auth token"),
+) -> None:
+    """Start JalaAgent as an Anthropic-compatible API server."""
+    from jala.server import run_server
+    run_server(host=host, port=port, token=token or os.environ.get("JALA_SERVE_TOKEN"))
+
+@app.command()
 def memory(action: str = typer.Argument("inspect"), query: Optional[str] = typer.Argument(None)) -> None:
     mem = Path.home() / ".jalaagent" / "memories" / "MEMORY.md"
     if action == "search" and query:
