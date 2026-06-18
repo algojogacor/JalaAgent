@@ -173,10 +173,35 @@ def skills(action: str = typer.Argument("list"), name: Optional[str] = typer.Arg
         from skill_core.loader import SkillLoader
         async def _l(): return await SkillLoader().load_all()
         sk = asyncio.run(_l())
-        table = Table(title="Skills"); table.add_column("Name"); table.add_column("Description"); table.add_column("Source")
+        table = Table(title=f"Skills ({len(sk)} loaded)")
+        table.add_column("Name"); table.add_column("Description"); table.add_column("Source")
         for s in sk:
             table.add_row(s.slug, s.frontmatter.description[:60], s.source.value)
         console.print(table)
+    elif action == "info" and name:
+        from skill_core.loader import SkillLoader
+        async def _info():
+            skills = await SkillLoader().load_all()
+            for s in skills:
+                if s.slug == name:
+                    console.print(Panel(s.body[:2000], title=f"{s.slug} ({s.source.value})"))
+                    return
+            console.print(f"[red]Skill not found: {name}[/]")
+        asyncio.run(_info())
+    elif action == "manifest":
+        mp = Path(__file__).parent.parent.parent / "packages" / "skill-core" / "src" / "skill_core" / "bundled" / "SKILLS_MANIFEST.md"
+        if mp.exists():
+            from rich.markdown import Markdown
+            console.print(Markdown(mp.read_text(encoding="utf-8")))
+    elif action == "audit":
+        audit = Path("D:/JalaAgent/AUDIT.md")
+        if audit.exists():
+            from rich.markdown import Markdown
+            console.print(Markdown(audit.read_text(encoding="utf-8")[:3000]))
+        else:
+            console.print("[dim]No audit file found.[/]")
+    else:
+        console.print("[red]Usage: jala skills list|info <name>|manifest|audit[/]")
 
 @app.command()
 def mcp(action: str = typer.Argument("list"), server: Optional[str] = typer.Argument(None)) -> None:
