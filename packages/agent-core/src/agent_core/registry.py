@@ -182,9 +182,10 @@ class ToolRegistry:
                     is_error=True,
                 )
             if decision.value == "ask":
-                # In a real implementation this would trigger the approval
-                # callback. For v1, we log and proceed (CLI handles approval).
-                logger.debug("Policy requires approval for %r (category=%s)", name, descriptor.category.value)
+                return ToolResult(
+                    content=f"Tool {name!r} requires user approval — not available in unattended mode.",
+                    is_error=True,
+                )
 
         # 3. Loop detection.
         self._check_loop(normalized, arguments)
