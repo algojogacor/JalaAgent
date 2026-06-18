@@ -53,6 +53,12 @@ def run_setup() -> None:
 
     _CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
     _CONFIG_PATH.write_text(yaml.dump(new_config, default_flow_style=False, sort_keys=False), encoding="utf-8")
+    # Restrict permissions: config may contain credentials.
+    try:
+        _CONFIG_PATH.chmod(0o600)
+        _CONFIG_PATH.parent.chmod(0o700)
+    except OSError:
+        pass  # Windows doesn't support chmod well, but POSIX does.
     console.print(f"\n[green]✅ Config written to {_CONFIG_PATH}[/]")
     console.print("[bold]Next:[/] Set API keys in auth.json, then run [bold]jala[/] to start!")
 
