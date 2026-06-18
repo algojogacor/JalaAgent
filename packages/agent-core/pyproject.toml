@@ -1,6 +1,6 @@
 [project]
 name = "jalaagent-agent-core"
-version = "0.1.0"
+version = "2026.6.18"
 description = "Core agent loop, provider abstraction, and tool registry for JalaAgent"
 requires-python = ">=3.12"
 dependencies = [

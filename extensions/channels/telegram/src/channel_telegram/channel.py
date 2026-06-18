@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 # Rate limiting: edit messages at most every 500ms.
 _EDIT_INTERVAL = 0.5
+_APPROVAL_TIMEOUT = 60.0  # seconds — fail-closed (auto-deny on timeout)
 
 
 class TelegramChannel:
@@ -132,8 +133,10 @@ class TelegramChannel:
         future: asyncio.Future[bool] = asyncio.Future()
         self._pending_approvals[action.id] = future
         try:
-            result = await asyncio.wait_for(future, timeout=300.0)
+            result = await asyncio.wait_for(future, timeout=_APPROVAL_TIMEOUT)
         except asyncio.TimeoutError:
+            # Fail-closed: auto-deny on timeout. Never auto-approve.
+            logger.warning("Approval for %s timed out after %.0fs — auto-deny", action.id, _APPROVAL_TIMEOUT)
             result = False
         self._pending_approvals.pop(action.id, None)
         return result

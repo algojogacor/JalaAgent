@@ -35,11 +35,12 @@ class CLIChannel:
         self._console.print(Markdown(text))
 
     async def send_approval_request(self, action: Any) -> bool:
+        """Request approval — fail-closed: defaults to No (deny)."""
         self._console.print(Panel(
-            f"[bold yellow]Approval Required[/]\n\nTool: [bold]{action.tool_name}[/]\nCategory: {action.tool_category}",
+            f"[bold yellow]Approval Required[/]\n\nTool: [bold]{action.tool_name}[/]\nCategory: {action.tool_category}\nArgs: {action.arguments}",
             title="⚠️ Approval", border_style="yellow",
         ))
-        return Confirm.ask("Approve?", default=False)
+        return Confirm.ask("Approve?", default=False)  # default=No → fail-closed
 
     async def on_message(self, handler: Any) -> None:
         pass
@@ -65,7 +66,7 @@ class CLIChannel:
         model = getattr(agent_loop, "_model", "default")
         skills = "66" if self._registry else "—"
         self._console.print(Panel(
-            f"[bold cyan]🪼 JalaAgent v0.2[/] · {model}\n"
+            f"[bold cyan]🪼 JalaAgent v2026.6.18[/] · {model}\n"
             f"Skills: {skills} bundled  |  MCP: filesystem ✓ shell ✓ fetch ✓\n"
             f"Type /help for commands, Ctrl+D to submit, Ctrl+C to quit",
             title="Welcome", border_style="cyan",

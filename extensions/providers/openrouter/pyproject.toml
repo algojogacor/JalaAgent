@@ -1,6 +1,6 @@
 [project]
 name = "jalaagent-provider-openrouter"
-version = "0.1.0"
+version = "2026.6.18"
 description = "OpenRouter (unified API gateway) provider for JalaAgent"
 requires-python = ">=3.12"
 dependencies = [

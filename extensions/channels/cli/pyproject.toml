@@ -1,6 +1,6 @@
 [project]
 name = "jalaagent-channel-cli"
-version = "0.1.0"
+version = "2026.6.18"
 description = "CLI channel for JalaAgent — typer + rich terminal interface"
 requires-python = ">=3.12"
 dependencies = [

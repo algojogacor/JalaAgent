@@ -96,7 +96,7 @@ def _gateway_banner(loop: Any, skills_count: int, tokens: dict[str, bool]) -> No
     model = getattr(loop, "_model", "default")
     tg = "✓" if tokens.get("telegram") else "✗"
     console.print(Panel(
-        f"[bold cyan]🪼 JalaAgent v0.2[/] · {model}\n\n"
+        f"[bold cyan]🪼 JalaAgent v2026.6.18[/] · {model}\n\n"
         f"Channels:  CLI ✓  Telegram {tg}\n"
         f"Skills:    {skills_count} bundled\n"
         f"MCP:       filesystem ✓  shell ✓  fetch ✓\n"

@@ -1,6 +1,7 @@
 """Unified slash command registry — same commands work in CLI and Telegram."""
 
 import logging
+import subprocess
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -91,6 +92,16 @@ class CommandRegistry:
 # ---------------------------------------------------------------------------
 # Build the registry with all commands
 # ---------------------------------------------------------------------------
+
+def _get_git_hash() -> str:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short=8", "HEAD"],
+            capture_output=True, text=True, timeout=5, cwd=Path(__file__).parent.parent.parent.parent,
+        )
+        return result.stdout.strip()[:8] if result.returncode == 0 else "unknown"
+    except Exception:
+        return "unknown"
 
 _registry: CommandRegistry | None = None
 
@@ -196,7 +207,21 @@ def _build_registry() -> CommandRegistry:
         return CommandResult("No skills loaded.")
 
     async def _version(ctx: CommandContext) -> CommandResult:
-        return CommandResult("🪼 JalaAgent v0.2 — 82 source files, 336 tests, 66 skills")
+        git_hash = _get_git_hash()
+        return CommandResult(f"🪼 JalaAgent v2026.6.18 · {git_hash}")
+
+    async def _changelog(ctx: CommandContext) -> CommandResult:
+        n = int(ctx.args[0]) if ctx.args and ctx.args[0].isdigit() else 20
+        try:
+            result = subprocess.run(
+                ["git", "log", "--oneline", f"-{n}"],
+                capture_output=True, text=True, timeout=5,
+                cwd=Path(__file__).parent.parent.parent.parent,
+            )
+            log = result.stdout.strip() or "(no commits)"
+            return CommandResult(f"**Changelog (last {n})**\n```\n{log}\n```")
+        except Exception:
+            return CommandResult("Changelog unavailable.")
 
     # ── Register all ────────────────────────────────────────
     commands = [
@@ -224,7 +249,8 @@ def _build_registry() -> CommandRegistry:
         ("reload_mcp", _reload_skills, [], "Reload MCP", "/reload_mcp", "config"),
         ("help", _help, [], "Show help", "/help", "info"),
         ("commands", _help, [], "Command list", "/commands", "info"),
-        ("version", _version, ["v"], "Show version", "/version", "info"),
+        ("version", _version, ["v"], "Show version + git hash", "/version", "info"),
+        ("changelog", _changelog, [], "Show recent commits", "/changelog [N]", "info"),
         ("skills", _skills, [], "List skills", "/skills [category]", "info"),
         ("bundles", _skills, [], "List bundles", "/bundles", "info"),
     ]
