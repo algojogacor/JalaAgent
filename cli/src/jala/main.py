@@ -81,13 +81,14 @@ def _load_jala_config() -> dict:
 
 def _pick_provider(model: str | None, creds: Any) -> Any:
     model_lower = (model or "").lower()
-    if model_lower.startswith("claude") or os.environ.get("ANTHROPIC_API_KEY"):
+    # Prefer DeepSeek (free tier, always available). Only use OpenAI/Anthropic if explicitly configured.
+    if model_lower.startswith("claude") or (os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("DEEPSEEK_API_KEY")):
         from provider_anthropic.provider import AnthropicProvider
         return AnthropicProvider(model=model or "claude-sonnet-4-6")
-    if "gpt" in model_lower or "o1" in model_lower or os.environ.get("OPENAI_API_KEY"):
+    if model_lower.startswith("gpt") or model_lower.startswith("o1"):
         from provider_openai.provider import OpenAIProvider
         return OpenAIProvider(model=model or "gpt-4o")
-    # Default to universal provider (config-driven).
+    # Default: universal provider (tries DeepSeek first, falls back through config).
     try:
         from provider_universal.provider import OpenAICompatibleProvider  # type: ignore[import-untyped]
         cfg = _load_jala_config()

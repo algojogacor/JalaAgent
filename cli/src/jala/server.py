@@ -7,6 +7,7 @@ from typing import Any
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from fastapi.sse import EventSourceResponse  # Built-in SSE since FastAPI 0.100+
 
 logger = logging.getLogger(__name__)
 _TRIVIAL = {"hello", "hi", "ping", "test", "help", "what's up", "hey"}

@@ -93,7 +93,8 @@ class CLIChannel:
 
     async def _stream_response(self, agent_loop: Any, user_input: str) -> None:
         accumulated: list[str] = []
-        with Live(Panel("", title="🤖 JalaAgent", border_style="green"), console=self._console, refresh_per_second=10, transient=False) as live:
+        error_msg: str | None = None
+        with Live(Panel("🤔 Thinking...", title="🤖 JalaAgent", border_style="green"), console=self._console, refresh_per_second=10, transient=False) as live:
             try:
                 async for chunk in agent_loop.run(user_input, session_id=""):
                     if self._interrupted:
@@ -108,9 +109,16 @@ class CLIChannel:
                         live.console.print("[dim]✅ Done[/]")
                     elif chunk.type == ChunkType.DONE:
                         break
+                    elif hasattr(chunk.type, 'value') and chunk.type.value == "error":
+                        error_msg = chunk.content or "Unknown error"
+                        live.update(Panel(f"[red]{error_msg}[/]", title="🤖 JalaAgent — Error", border_style="red"))
             except Exception as exc:
-                self._console.print(f"[red]Error: {exc}[/]")
+                error_msg = str(exc)
+                live.update(Panel(f"[red]Provider error: {exc}[/]\n\n[dim]Run 'jala setup' to configure a working provider, or set a valid API key.[/]", title="🤖 JalaAgent — Error", border_style="red"))
         if accumulated:
+            self._console.print(Panel(Markdown("".join(accumulated)), title="🤖 JalaAgent", border_style="green"))
+        elif error_msg:
+            self._console.print(Panel(f"[red]{error_msg}[/]\n\n[dim]Tip: Run 'jala setup' to configure a provider, or check DEEPSEEK_API_KEY / ANTHROPIC_API_KEY.[/]", title="⚠️ No Response", border_style="yellow"))
             self._console.print(Panel(Markdown("".join(accumulated)), title="🤖 JalaAgent", border_style="green"))
 
     async def _dispatch_command(self, raw: str, agent_loop: Any) -> None:
