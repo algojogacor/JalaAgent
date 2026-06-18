@@ -95,7 +95,10 @@ class SkillLoader:
         plugin_dirs: list[Path] | None = None,
         extra_dirs: list[Path] | None = None,
     ) -> None:
-        self._bundled_dir = bundled_dir
+        # Auto-discover bundled skills if not explicitly provided.
+        if bundled_dir is None:
+            bundled_dir = Path(__file__).parent / "bundled"
+        self._bundled_dir = bundled_dir if bundled_dir.is_dir() else None
         self._user_dir = user_dir
         self._plugin_dirs = plugin_dirs or []
         self._extra_dirs = extra_dirs or []
