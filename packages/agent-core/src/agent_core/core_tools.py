@@ -217,6 +217,44 @@ async def tool_skill_manage(args: dict[str, Any]) -> str:
 # ---------------------------------------------------------------------------
 
 
+async def tool_claude_code(args: dict[str, Any]) -> str:
+    """Delegate coding to Claude Code in an isolated worktree.
+
+    Spawns `claude --print` with the prompt. Routes through JalaAgent's
+    universal provider via ANTHROPIC_BASE_URL if jala serve is running.
+    """
+    prompt = args["prompt"]
+    files = args.get("files", [])
+    max_turns = args.get("max_turns", 50)
+    worktree_path = args.get("worktree", None)
+    cwd = worktree_path or "."
+
+    env = {
+        **os.environ,
+        "ANTHROPIC_API_KEY": os.environ.get("ANTHROPIC_API_KEY", "jala"),
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    }
+    # Route through jala serve if running.
+    jala_port = os.environ.get("JALA_SERVE_PORT", "8787")
+    env["ANTHROPIC_BASE_URL"] = os.environ.get("ANTHROPIC_BASE_URL", f"http://127.0.0.1:{jala_port}")
+
+    try:
+        cmd = ["claude", "--print", "--max-turns", str(max_turns), "-p", prompt, *files]
+        proc = await asyncio.create_subprocess_exec(
+            *cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
+            cwd=str(cwd), env=env,
+        )
+        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=float(args.get("timeout", 300)))
+        out = stdout.decode("utf-8", errors="replace")
+        if stderr:
+            out += "\n[claude stderr]\n" + stderr.decode("utf-8", errors="replace")[:2000]
+        return out or "(no output — claude may not be installed: pip install claude-code)"
+    except FileNotFoundError:
+        return "Error: claude CLI not found. Install: `npm install -g @anthropic-ai/claude-code` or `pip install claude-code`"
+    except asyncio.TimeoutError:
+        return f"Claude Code timed out after {args.get('timeout', 300)}s."
+
+
 def _fmt_size(n: int) -> str:
     for unit in ("B", "KB", "MB", "GB"):
         if n < 1024:
@@ -244,6 +282,7 @@ def register_all(registry: Any) -> None:
         ("memory", "Read/write/search agent memory", ActionCategory.MEMORY_WRITE, tool_memory),
         ("delegate_task", "Spawn a sub-agent", ActionCategory.SHELL_EXEC, tool_delegate_task),
         ("skill_manage", "Create/edit/delete skills", ActionCategory.FILE_WRITE, tool_skill_manage),
+        ("claude_code", "Delegate coding to Claude Code in isolated worktree", ActionCategory.SHELL_EXEC, tool_claude_code),
     ]
     for name, desc, cat, handler in tools:
         registry.register(
