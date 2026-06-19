@@ -23,6 +23,27 @@ from fastapi.responses import StreamingResponse
 logger = logging.getLogger(__name__)
 _TRIVIAL = {"hello", "hi", "ping", "test", "help", "what's up", "hey"}
 
+# ---------------------------------------------------------------------------
+# In-memory rate limiter (per IP, 60 requests per 60-second window)
+# ---------------------------------------------------------------------------
+
+import time as _time
+
+_rate_limits: dict[str, list[float]] = {}
+
+
+def _check_rate_limit(ip: str, max_req: int = 60, window: int = 60) -> bool:
+    """Return True if the request is allowed, False if rate-limited."""
+    now = _time.time()
+    if ip not in _rate_limits:
+        _rate_limits[ip] = []
+    # Prune entries outside the window.
+    _rate_limits[ip] = [t for t in _rate_limits[ip] if now - t < window]
+    if len(_rate_limits[ip]) >= max_req:
+        return False
+    _rate_limits[ip].append(now)
+    return True
+
 
 async def _build_proxy_provider(model: str = "") -> Any:
     """Build the best available provider, pulling API keys from auth.json."""
@@ -110,6 +131,16 @@ def create_app(token: str | None = None) -> FastAPI:
                     iter([json.dumps({"error": {"type": "authentication_error", "message": "Invalid API key"}})]),
                     media_type="text/event-stream", status_code=401,
                 )
+        return await call_next(request)
+
+    @app.middleware("http")
+    async def _rate_limit(request: Request, call_next: Any) -> Any:  # pyright: ignore[reportUnusedFunction]
+        ip = request.client.host if request.client else "unknown"
+        if not _check_rate_limit(ip):
+            return StreamingResponse(
+                iter([json.dumps({"error": {"type": "rate_limit_error", "message": "Rate limit exceeded. Try again later.", "retry_after": 60}})]),
+                media_type="text/event-stream", status_code=429,
+            )
         return await call_next(request)
 
     @app.get("/v1/models")
