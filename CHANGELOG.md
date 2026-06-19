@@ -2,6 +2,27 @@
 
 All notable changes to JalaAgent.
 
+## v2026.6.20 (2026-06-20)
+
+### Added
+- **Provider/model system overhaul** — Hermes-level `/model` command with interactive picker (Telegram + CLI)
+- **Static model catalog** — 17 providers with curated model lists in `agent_core.model_catalog`
+- **Live API model discovery** — `GET /v1/models` with 1-hour disk cache, auto-discovers new models
+- **4-tier base_url resolution** — CLI flag → env var → config.yaml → static default per provider
+- **`--base-url` CLI flag** — override API endpoint on the command line
+- **Provider env var overrides** — `DASHSCOPE_BASE_URL`, `OPENAI_BASE_URL`, etc. for all 17 providers
+- **Qwen dual-endpoint support** — China (`dashscope.aliyuncs.com`) + International (`dashscope-intl.aliyuncs.com`)
+- **`/model --save`** — persist model switch to config.yaml
+- **`/model --refresh`** — force cache bust + live API re-fetch
+- **Model aliases** — `/model sonnet` → `claude-sonnet-4-6`, `/model ds` → `deepseek/deepseek-chat`
+- **Telegram inline keyboard picker** — multi-step provider → model selection with pagination
+- **CLI rich model select** — numbered prompts for provider → model selection
+
+### Changed
+- Universal provider cleaned of hardcoded PROVIDERS dict — now pure transport layer
+- ProviderRouter expanded to 18 known providers with base_url chain support
+- CLAUDE.md updated to enterprise-grade philosophy
+
 ## v2026.6.19 (2026-06-19)
 
 ### Added
