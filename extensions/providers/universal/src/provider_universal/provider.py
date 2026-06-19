@@ -47,6 +47,7 @@ class OpenAICompatibleProvider:
         self._default_model = default_model
         self._base_url = base_url
         self._model = model
+        self._api_key = api_key
         self._http: httpx.AsyncClient | None = None
 
         # Load config + auth.
@@ -54,6 +55,11 @@ class OpenAICompatibleProvider:
         self._auth = self._load_auth()
         self._pool = CredentialPool()
         self._load_keys_into_pool()
+        # Inject constructor-provided key as fallback (resolved by ProviderRouter).
+        if self._api_key:
+            self._pool.add(self._default_provider, self._api_key, {
+                "label": "constructor", "priority": 0,
+            })
         self._last_usage: dict[str, int] = {}
 
     @property
@@ -162,10 +168,15 @@ class OpenAICompatibleProvider:
         return {}
 
     def _load_auth(self) -> dict[str, list[dict[str, Any]]]:
-        if self._auth_path.exists():
-            return json.loads(self._auth_path.read_text(encoding="utf-8"))
-        # Fall back to env vars.
+        # Start with auth.json if it exists.
         result: dict[str, list[dict[str, Any]]] = {}
+        if self._auth_path.exists():
+            try:
+                result = json.loads(self._auth_path.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+
+        # Always merge env vars on top — auth.json may not have all providers.
         _ENV_MAP: dict[str, str] = {
             "openai": "OPENAI_API_KEY", "deepseek": "DEEPSEEK_API_KEY",
             "openrouter": "OPENROUTER_API_KEY", "groq": "GROQ_API_KEY",
