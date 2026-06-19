@@ -170,9 +170,10 @@ async def _load_skills_into_registry(loop: Any) -> None:
 def _gateway_banner(loop: Any, skills_count: int, tokens: dict[str, bool]) -> None:
     model = getattr(loop, "_model", "default")
     tg = "✓" if tokens.get("telegram") else "✗"
+    wa = "✓" if tokens.get("whatsapp") else "✗"
     console.print(Panel(
         f"[bold cyan]🪼 JalaAgent v2026.6.18[/] · {model}\n\n"
-        f"Channels:  CLI ✓  Telegram {tg}\n"
+        f"Channels:  CLI ✓  Telegram {tg}  WhatsApp {wa}\n"
         f"Skills:    {skills_count} bundled\n"
         f"MCP:       filesystem ✓  shell ✓  fetch ✓\n"
         f"Memory:    ~/.jalaagent/memories/\n"
@@ -185,23 +186,53 @@ async def _run_gateway(loop: Any, reg: Any) -> None:
     await _load_skills_into_registry(loop)
     from channel_cli.channel import CLIChannel
     cli = CLIChannel(command_registry=reg)
-    tasks: list[asyncio.Task[Any]] = [asyncio.create_task(cli.run(loop), name="cli")]
+
+    tasks: dict[str, asyncio.Task[Any]] = {}
+    tasks["cli"] = asyncio.create_task(cli.run(loop), name="cli")
 
     tg_token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     if tg_token:
         from channel_telegram.channel import TelegramChannel
         tg = TelegramChannel(token=tg_token, agent_loop=loop, command_registry=reg)
         await tg.start()
-        tasks.append(asyncio.create_task(tg.run_polling(), name="telegram"))
+        tasks["telegram"] = asyncio.create_task(tg.run_polling(), name="telegram")
 
-    _gateway_banner(loop, len(reg.list_skills()), {"telegram": bool(tg_token)})
+    wa_enabled = os.environ.get("WHATSAPP_BRIDGE_URL", "") or os.environ.get("WHATSAPP_AUTH_DIR", "")
+    if wa_enabled:
+        from channel_whatsapp.channel import WhatsAppChannel
+        wa = WhatsAppChannel(agent_loop=loop, command_registry=reg)
+        await wa.start()
+        tasks["whatsapp"] = asyncio.create_task(wa.run(), name="whatsapp")
+
+    _gateway_banner(loop, len(reg.list_skills()), {
+        "telegram": bool(tg_token),
+        "whatsapp": bool(wa_enabled),
+    })
+
+    # Wait for ALL tasks — don't cancel on first exit.
+    # CLI task may exit in headless mode; Telegram should keep running.
+    done, pending = await asyncio.wait(
+        tasks.values(),
+        return_when=asyncio.FIRST_COMPLETED,
+    )
+
+    # If the first completed task errored, log it but don't cancel others.
+    for t in done:
+        if t.exception():
+            logger.error("Channel %s crashed: %s", t.get_name(), t.exception())
+
+    # Keep waiting for remaining tasks.
+    console.print("\n[dim]Some channels exited. Press Ctrl+C to stop remaining.[/]")
     try:
-        await asyncio.gather(*tasks)
-    except (KeyboardInterrupt, asyncio.CancelledError):
-        console.print("\n[dim]Shutting down...[/]")
-        for t in tasks:
+        await asyncio.wait(pending, return_when=asyncio.ALL_COMPLETED)
+    except KeyboardInterrupt:
+        pass
+
+    # Cleanup.
+    for t in tasks.values():
+        if not t.done():
             t.cancel()
-        await asyncio.gather(*tasks, return_exceptions=True)
+    await asyncio.gather(*tasks.values(), return_exceptions=True)
 
 
 def main_cli() -> None:

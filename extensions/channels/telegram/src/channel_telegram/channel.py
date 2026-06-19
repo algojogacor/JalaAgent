@@ -296,6 +296,6 @@ class TelegramChannel:
 
     async def run_polling(self) -> None:
         """Start polling for updates (blocking)."""
-        if self._app and self._app.updater:
-            await self._app.updater.start_polling()
+        if self._app:
+            await self._app.run_polling(drop_pending_updates=True)
             logger.info("Telegram polling started")
