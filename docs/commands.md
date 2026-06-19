@@ -37,7 +37,11 @@
 ## Config (9)
 | Command | Description |
 |---------|-------------|
-| `/model <name>` | Switch model |
+| `/model` | Interactive provider→model picker (Telegram: inline keyboard, CLI: rich select) |
+| `/model <name>` | Direct switch (e.g., `/model qwen/qwen-plus`, `/model sonnet`) |
+| `/model --picker` | Force interactive picker |
+| `/model --save <name>` | Switch + persist to config.yaml |
+| `/model --refresh` | Bust cache + live API re-fetch |
 | `/yolo` | Toggle YOLO mode |
 | `/mode <mode>` | Set approval mode |
 | `/personality <name>` | Set personality |

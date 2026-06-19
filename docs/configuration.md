@@ -7,12 +7,33 @@ JalaAgent's `~/.jalaagent/config.yaml` has 8 blocks matching Hermes' structure.
 model: {default: deepseek-chat, provider: deepseek, context_length: 200000}
 providers:
   deepseek: {base_url: https://api.deepseek.com/v1, models: [{name: deepseek-chat, default: true}]}
+  qwen: {base_url: https://dashscope.aliyuncs.com/compatible-mode/v1}  # China endpoint override
   openrouter: {base_url: https://openrouter.ai/api/v1, models: [{name: anthropic/claude-sonnet-4, default: true}]}
-  # ... 14 more providers
+  # ... 16 more providers
 fallback_providers: [deepseek, openrouter, groq, mistral, ollama]
 credential_pool: {strategy: random, health_check_interval: 3600, max_retries: 3, jitter: true}
 auxiliary: {provider: deepseek, model: deepseek-chat}
 ```
+
+### Base URL Override (4-tier priority)
+
+Every provider supports a 4-tier base_url resolution chain:
+
+| Tier | Source | Example |
+|------|--------|---------|
+| 1 | `--base-url` CLI flag | `jala --base-url https://custom.api.com/v1` |
+| 2 | `<PROVIDER>_BASE_URL` env var | `DASHSCOPE_BASE_URL`, `OPENAI_BASE_URL` |
+| 3 | `providers.<name>.base_url` in config.yaml | See above |
+| 4 | Static default in `model_catalog.py` | Bundled with JalaAgent |
+
+### Model Discovery
+
+Models are sourced from three layers:
+1. **Static catalog** — curated lists per provider (offline fallback)
+2. **Live API fetch** — `GET /v1/models` with 1-hour disk cache at `~/.jalaagent/cache/`
+3. **User config** — `providers.<name>.models` in config.yaml
+
+Force refresh: `/model --refresh` or set `cache_ttl_seconds` per provider.
 
 ## Block 2: Agent Runtime
 ```yaml

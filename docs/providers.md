@@ -13,7 +13,8 @@ JalaAgent uses a universal provider that speaks OpenAI-compatible format. One ad
 | Together | api.together.xyz/v1 | ✅ |
 | Perplexity | api.perplexity.ai | ✅ |
 | xAI | api.x.ai/v1 | — |
-| Alibaba/Qwen | dashscope-intl.aliyuncs.com | — |
+| Alibaba/Qwen (Intl) | dashscope-intl.aliyuncs.com/compatible-mode/v1 | — |
+| Alibaba/Qwen (China) | dashscope.aliyuncs.com/compatible-mode/v1 | — |
 | Cohere | api.cohere.ai/v1 | ✅ |
 | Fireworks | api.fireworks.ai/inference/v1 | — |
 | Cerebras | api.cerebras.ai/v1 | ✅ |
@@ -41,6 +42,28 @@ Use `provider/model` syntax:
 jala --model deepseek/deepseek-chat
 jala --model openrouter/anthropic/claude-sonnet-4
 ```
+
+## Custom Base URL
+
+Override any provider's endpoint via env var or config:
+
+| Tier | Method | Example |
+|------|--------|---------|
+| 1 | CLI flag | `--base-url https://custom.api.com/v1` |
+| 2 | Env var | `DASHSCOPE_BASE_URL`, `OPENAI_BASE_URL`, etc. |
+| 3 | config.yaml | `providers.qwen.base_url` |
+| 4 | Static default | Bundled in `model_catalog.py` |
+
+**Qwen dual-endpoint example:**
+```bash
+# China endpoint (Aliyun keys)
+export DASHSCOPE_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+# International endpoint (default)
+export DASHSCOPE_BASE_URL="https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+```
+
+Every provider has a `<PROVIDER>_BASE_URL` env var: `OPENAI_BASE_URL`, `DEEPSEEK_BASE_URL`, `GROQ_BASE_URL`, etc.
 
 ## Fallback Chain
 
