@@ -42,6 +42,7 @@ from agent_core.models import (
     ToolDescriptor,
     ToolResult,
 )
+from agent_core.providers import DEFAULT_PROVIDERS, ProviderEntry, ProviderRouter
 from agent_core.registry import DESTRUCTIVE_CATEGORIES, ToolRegistry
 
 __all__ = [
@@ -79,6 +80,10 @@ __all__ = [
     "ToolLoopError",
     "APIErrorClassifier",
     "RetryPolicy",
+    # providers
+    "ProviderEntry",
+    "ProviderRouter",
+    "DEFAULT_PROVIDERS",
     # harness
     "WorktreeIsolation",
     "PlanMode",

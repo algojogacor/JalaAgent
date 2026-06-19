@@ -123,137 +123,15 @@ def _load_jala_config() -> dict:
     return yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
 
 def _pick_provider(model: str | None, creds: Any) -> Any:
-    """Pick the best provider based on available API keys (env + auth.json)."""
-    import json as _json
+    """Pick the best provider based on available API keys (env + auth.json).
 
-    model_lower = (model or "").lower()
+    Delegates to :class:`ProviderRouter` — a declarative registry that
+    replaces the old 130-line if/elif chain.
+    """
+    from agent_core.providers import ProviderRouter
 
-    # Read auth.json for API keys.
-    auth_keys: dict[str, str] = {}
-    auth_path = Path.home() / ".jalaagent" / "auth.json"
-    if auth_path.exists():
-        try:
-            auth = _json.loads(auth_path.read_text(encoding="utf-8"))
-            for prov, entries in auth.get("providers", {}).items():
-                for e in entries:
-                    k = e.get("key", "") or e.get("access_token", "")
-                    if k:
-                        auth_keys[prov] = k
-                        break
-        except Exception:
-            pass
-
-    # ── Determine requested provider from model string ──
-    requested_provider: str | None = None
-
-    # "provider/model" syntax (e.g. "deepseek/deepseek-chat", "openrouter/anthropic/claude-sonnet-4")
-    if "/" in model_lower:
-        candidate = model_lower.split("/", 1)[0].strip()
-        known = {"anthropic", "openai", "deepseek", "groq", "mistral", "openrouter", "ollama", "google"}
-        if candidate in known:
-            requested_provider = candidate
-
-    # Known model-name prefixes (no slash).
-    if requested_provider is None:
-        if model_lower.startswith("claude-"):
-            requested_provider = "anthropic"
-        elif model_lower.startswith(("gpt-", "o1-", "o3-")):
-            requested_provider = "openai"
-        elif model_lower.startswith("deepseek-"):
-            requested_provider = "deepseek"
-        elif model_lower.startswith("gemini-"):
-            requested_provider = "google"
-
-    # ── Route to the requested provider FIRST (if specified) ──
-    if requested_provider:
-        # Map provider name → (env_var, auth_key, import_path, class_name)
-        routes: dict[str, tuple[str, str, str, str]] = {
-            "anthropic": ("ANTHROPIC_API_KEY", "anthropic", "provider_anthropic.provider", "AnthropicProvider"),
-            "openai": ("OPENAI_API_KEY", "openai", "provider_openai.provider", "OpenAIProvider"),
-            "deepseek": ("DEEPSEEK_API_KEY", "deepseek", "provider_deepseek.provider", "DeepSeekProvider"),
-            "groq": ("GROQ_API_KEY", "groq", "provider_groq.provider", "GroqProvider"),
-            "mistral": ("MISTRAL_API_KEY", "mistral", "provider_mistral.provider", "MistralProvider"),
-            "openrouter": ("OPENROUTER_API_KEY", "openrouter", "provider_openrouter.provider", "OpenRouterProvider"),
-        }
-        if requested_provider in routes:
-            env_var, auth_key, mod_path, cls_name = routes[requested_provider]
-            key = os.environ.get(env_var, "") or auth_keys.get(auth_key, "")
-            if key:
-                try:
-                    import importlib
-                    mod = importlib.import_module(mod_path)
-                    provider_cls = getattr(mod, cls_name)
-                    return provider_cls(api_key=key, model=model)
-                except Exception:
-                    pass  # module unavailable or import failed — fall through
-
-    # ── Fallback chain: priority order ──
-    # Anthropic: env var or model name contains "claude".
-    ak = os.environ.get("ANTHROPIC_API_KEY", "") or auth_keys.get("anthropic", "")
-    if ak or model_lower.startswith("claude"):
-        try:
-            from provider_anthropic.provider import AnthropicProvider
-            return AnthropicProvider(api_key=ak or None, model=model or "claude-sonnet-4-6")
-        except Exception:
-            pass
-
-    # OpenAI.
-    ok = os.environ.get("OPENAI_API_KEY", "") or auth_keys.get("openai", "")
-    if ok and (model_lower.startswith("gpt") or model_lower.startswith("o1")):
-        from provider_openai.provider import OpenAIProvider
-        return OpenAIProvider(api_key=ok, model=model or "gpt-4o")
-
-    # DeepSeek — check env + auth.json.
-    ds_key = os.environ.get("DEEPSEEK_API_KEY", "") or auth_keys.get("deepseek", "")
-    if ds_key:
-        try:
-            from provider_deepseek.provider import DeepSeekProvider
-            return DeepSeekProvider(api_key=ds_key)
-        except Exception:
-            pass
-
-    # Groq.
-    gr_key = os.environ.get("GROQ_API_KEY", "") or auth_keys.get("groq", "")
-    if gr_key:
-        try:
-            from provider_groq.provider import GroqProvider
-            return GroqProvider(api_key=gr_key)
-        except Exception:
-            pass
-
-    # Mistral.
-    ms_key = os.environ.get("MISTRAL_API_KEY", "") or auth_keys.get("mistral", "")
-    if ms_key:
-        try:
-            from provider_mistral.provider import MistralProvider
-            return MistralProvider(api_key=ms_key)
-        except Exception:
-            pass
-
-    # OpenRouter.
-    or_key = os.environ.get("OPENROUTER_API_KEY", "") or auth_keys.get("openrouter", "")
-    if or_key:
-        try:
-            from provider_openrouter.provider import OpenRouterProvider
-            return OpenRouterProvider(api_key=or_key)
-        except Exception:
-            pass
-
-    # Universal provider (multi-provider, reads auth.json internally).
-    try:
-        from provider_universal.provider import OpenAICompatibleProvider
-        return OpenAICompatibleProvider()
-    except Exception:
-        pass
-
-    # Last resort: Ollama (local).
-    console.print(
-        "[yellow]No cloud API keys found.[/] "
-        "Falling back to local Ollama ([bold]qwen3:0.6b[/]).\n"
-        "[dim]Make sure Ollama is running. Run 'jala setup' to configure a cloud provider.[/]"
-    )
-    from provider_ollama.provider import OllamaProvider
-    return OllamaProvider(model="qwen3:0.6b")
+    router = ProviderRouter()
+    return router.resolve(model=model, creds=creds)
 
 def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used by dreaming_runner + bg tasks
     """Build a cheaper auxiliary provider for dreaming + background tasks."""
