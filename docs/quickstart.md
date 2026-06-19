@@ -9,7 +9,7 @@
 ```bash
 git clone https://github.com/algojogacor/JalaAgent
 cd JalaAgent
-uv sync
+uv sync --all-packages
 ```
 
 ## Setup
@@ -72,6 +72,6 @@ Or use environment variables: `DEEPSEEK_API_KEY`, `OPENROUTER_API_KEY`, etc.
 
 ## Next Steps
 - Read the [User Guide](user-guide.md) for full usage
-- Browse [Skills Catalog](skills.md) to see 67 bundled skills
+- Browse [Skills Catalog](skills.md) to see 65 bundled skills
 - Check [Commands Reference](commands.md) for 46 slash commands
 - See [Configuration](configuration.md) for all settings
