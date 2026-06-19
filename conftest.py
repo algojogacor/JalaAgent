@@ -30,3 +30,37 @@ for top in ["packages", "extensions", "cli"]:
     for member in top_dir.glob("*/*/src"):
         if member.is_dir():
             sys.path.insert(0, str(member))
+
+
+# ---------------------------------------------------------------------------
+# Shared fixtures
+# ---------------------------------------------------------------------------
+
+import tempfile
+
+import pytest
+
+
+@pytest.fixture
+def temp_dir():
+    """Create a temporary directory that auto-cleans after the test."""
+    with tempfile.TemporaryDirectory() as td:
+        yield Path(td)
+
+
+@pytest.fixture
+def test_config(temp_dir):
+    """MemoryConfig pointed at a temporary directory."""
+    from memory_core.models import MemoryConfig
+    return MemoryConfig(memory_dir=temp_dir / "memories")
+
+
+@pytest.fixture
+def mock_llm():
+    """DreamingLLMAdapter that returns predictable, high-confidence facts."""
+
+    class MockLLM:
+        async def generate(self, prompt: str) -> str:
+            return '[{"content": "Test fact from mock LLM", "confidence": 0.95}]'
+
+    return MockLLM()
