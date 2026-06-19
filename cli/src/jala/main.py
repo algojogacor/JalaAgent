@@ -429,23 +429,33 @@ def dream() -> None:
     except Exception as exc:
         console.print(f"[red]Dream failed: {exc}[/]")
 
-@app.command()
-def config() -> None:
-    """Show or edit JalaAgent configuration."""
+@app.command(name="config-show")
+def config_show() -> None:
+    """Print current configuration."""
+    import yaml
     config_path = Path.home() / ".jalaagent" / "config.yaml"
-    config_path.parent.mkdir(parents=True, exist_ok=True)
-    if not config_path.exists():
-        config_path.write_text("# JalaAgent configuration\n", encoding="utf-8")
-
-    # In non-TTY or if no editor, just display the config.
-    editor = os.environ.get("EDITOR", "")
-    if not editor or not sys.stdin.isatty():
-        console.print(Panel(
-            config_path.read_text(encoding="utf-8") or "(empty)",
-            title=str(config_path),
-            border_style="cyan",
+    if config_path.exists():
+        console.print(yaml.dump(
+            yaml.safe_load(config_path.read_text(encoding="utf-8")),
+            default_flow_style=False, sort_keys=False
         ))
-        console.print(f"[dim]Edit with: {editor or 'notepad'} {config_path}[/]")
-        return
+    else:
+        console.print("[yellow]No config found. Run 'jala setup' first.[/]")
 
-    subprocess.run([editor, str(config_path)], check=False)
+
+@app.command(name="config-get")
+def config_get(key: str = typer.Argument(...)) -> None:
+    """Get a specific config value by dot-notation key."""
+    import yaml
+    config_path = Path.home() / ".jalaagent" / "config.yaml"
+    if not config_path.exists():
+        console.print("[yellow]No config found.[/]")
+        return
+    cfg = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    for part in key.split("."):
+        if isinstance(cfg, dict):
+            cfg = cfg.get(part)
+        else:
+            console.print(f"[red]Cannot traverse '{part}'[/]")
+            return
+    console.print(cfg if cfg is not None else "[dim](not set)[/]")
