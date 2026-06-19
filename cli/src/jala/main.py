@@ -123,7 +123,14 @@ def _build_agent(model: str | None = None, plan: bool = False, base_url: str | N
 def _load_jala_config() -> dict:
     import yaml
     p = Path.home() / ".jalaagent" / "config.yaml"
-    return yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
+    raw = yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
+    try:
+        from agent_core.config_schema import JalaConfig
+        validated = JalaConfig(**raw)
+        return validated.model_dump()
+    except Exception as e:
+        logger.warning("Config validation warning: %s — using raw config", e)
+        return raw
 
 def _pick_provider(model: str | None, creds: Any, base_url: str | None = None) -> Any:
     """Pick the best provider based on available API keys (env + auth.json).
