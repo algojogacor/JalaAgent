@@ -79,6 +79,7 @@ class KnowledgeGraph:
         self._schema = schema or DEFAULT_SCHEMA
         self._conn: sqlite3.Connection | None = None
         self._init_lock: "asyncio.Lock | None" = None  # created lazily in _get_conn
+        self._write_lock: "asyncio.Lock | None" = None  # created lazily in _get_write_lock
 
     async def initialize(self) -> None:
         """Create tables if they don't exist."""
@@ -111,6 +112,18 @@ class KnowledgeGraph:
 
         await asyncio.to_thread(_sync)
 
+    async def _get_write_lock(self) -> "asyncio.Lock":
+        """Return a shared asyncio.Lock for write operations.
+
+        Created lazily so the lock lives on the same event loop as the
+        first caller.
+        """
+        import asyncio as _asyncio
+
+        if self._write_lock is None:
+            self._write_lock = _asyncio.Lock()
+        return self._write_lock
+
     async def _get_conn(self) -> sqlite3.Connection:
         """Lazy-initialize and return the SQLite connection.
 
@@ -133,14 +146,18 @@ class KnowledgeGraph:
     # ------------------------------------------------------------------
 
     async def ingest_page(self, path: Path, content: str, page_type: str = "concept") -> str:
-        """Ingest a markdown page, extracting entities and relations."""
+        """Ingest a markdown page, extracting entities and relations.
+
+        Write operations are serialised through an ``asyncio.Lock`` so
+        concurrent callers cannot interleave writes on the thread pool.
+        """
         import asyncio
 
         page_id = hashlib.sha256(str(path).encode()).hexdigest()[:16]
         title = path.stem.replace("-", " ").title()
         now = datetime.now(UTC).isoformat()
 
-        # Extract entities and relations.
+        # Extract entities and relations (pure Python, no lock needed).
         entities = self._extract_entities(content)
         edges = self._extract_relations(content, entities)
 
@@ -171,7 +188,10 @@ class KnowledgeGraph:
                     pass
             self._conn.commit()
 
-        await asyncio.to_thread(_sync)
+        # Serialise writes: only one ingest_page at a time.
+        write_lock = await self._get_write_lock()
+        async with write_lock:
+            await asyncio.to_thread(_sync)
         return page_id
 
     # ------------------------------------------------------------------
