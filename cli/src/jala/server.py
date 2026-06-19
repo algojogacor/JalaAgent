@@ -2,19 +2,11 @@
 
 import json
 import logging
-import sys
 from pathlib import Path
 from typing import Any
 
-# Ensure all provider/package src/ dirs are importable.
-_SERVE_ROOT = Path(__file__).resolve().parents[3]  # jalaagent/ root
-for _top in ["packages", "extensions", "cli"]:
-    _top_dir = _SERVE_ROOT / _top
-    if _top_dir.is_dir():
-        for _src in _top_dir.glob("*/src"):
-            sys.path.insert(0, str(_src))
-        for _src in _top_dir.glob("*/*/src"):
-            sys.path.insert(0, str(_src))
+from agent_core.paths import setup_import_paths
+setup_import_paths()
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware

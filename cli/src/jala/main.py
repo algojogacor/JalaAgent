@@ -8,6 +8,9 @@ if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
+from agent_core.paths import setup_import_paths
+setup_import_paths()
+
 import asyncio
 import logging
 import os
