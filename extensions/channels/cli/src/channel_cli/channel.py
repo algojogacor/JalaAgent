@@ -10,7 +10,7 @@ from rich.console import Console
 from rich.live import Live
 from rich.markdown import Markdown
 from rich.panel import Panel
-from rich.prompt import Confirm
+from rich.prompt import Confirm, Prompt
 
 logger = logging.getLogger(__name__)
 
@@ -159,10 +159,56 @@ class CLIChannel:
         ctx = CommandContext(channel="cli", args=parts[1:], raw=raw, agent_loop=agent_loop)
         try:
             result = await cmd.handler(ctx)
+            if result and result.action == "show_model_picker":
+                await self._show_model_picker(result)
+                return
             if result and result.text:
                 self._console.print(Markdown(result.text))
         except Exception as exc:
             self._console.print(f"[red]Error: {exc}[/]")
+
+    async def _show_model_picker(self, result: Any) -> None:
+        """Interactive model picker for CLI channel via rich prompts."""
+        provider_info = result.keyboard.get("providers", {}) if result.keyboard else {}
+        if not provider_info:
+            self._console.print(result.text)
+            return
+
+        provider_list = sorted(provider_info.items(), key=lambda x: x[0])
+        self._console.print()
+        self._console.print(Panel(
+            f"Current model: {getattr(self._agent_loop, 'model', 'unknown')}",
+            title="⚙ Model Configuration", border_style="cyan",
+        ))
+        self._console.print("\nSelect a provider:")
+        for i, (prov, count) in enumerate(provider_list, 1):
+            self._console.print(f"  {i}. {prov} ({count} models)")
+
+        choice = Prompt.ask("Provider number", default="1")
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(provider_list):
+                provider = provider_list[idx][0]
+                from agent_core.model_catalog import ModelCatalog
+                catalog = ModelCatalog()
+                models = catalog.get_models(provider)
+                if models:
+                    self._console.print(f"\n[bold]{provider}[/] — {len(models)} models")
+                    for i, m in enumerate(models[:20], 1):
+                        self._console.print(f"  {i}. {m}")
+                    model_choice = Prompt.ask("Model number", default="1")
+                    try:
+                        midx = int(model_choice) - 1
+                        if 0 <= midx < len(models):
+                            model = models[midx]
+                            model_id = f"{provider}/{model}" if "/" not in model else model
+                            if self._agent_loop:
+                                self._agent_loop.model = model_id
+                            self._console.print(f"[green]✅ Switched to: {model_id}[/]")
+                    except (ValueError, IndexError):
+                        self._console.print("[red]Invalid model selection.[/]")
+        except (ValueError, IndexError):
+            self._console.print("[red]Invalid provider selection.[/]")
 
     @property
     def _interrupted(self) -> bool:

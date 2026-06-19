@@ -47,6 +47,14 @@ class TelegramHandlers:
         ctx = CommandContext(channel="telegram", args=parts[1:], raw=raw, agent_loop=self._channel._agent_loop)
         try:
             result = await cmd.handler(ctx)
+            if result and result.action == "show_model_picker":
+                # Send a placeholder then show the model picker on it.
+                if update.message:
+                    message = await update.message.reply_text("⚙ Loading model picker...")
+                    await self._channel.show_model_picker(
+                        update.message.chat_id, message.message_id,
+                    )
+                return
             if result and result.text and update.message:
                 await update.message.reply_text(result.text[:4000], reply_markup=result.keyboard)
         except Exception as exc:
@@ -67,3 +75,67 @@ class TelegramHandlers:
             await query.edit_message_text("✅ All approved.")
         elif data.startswith("mode:"):
             await query.edit_message_text(f"Mode: {data.split(':', 1)[1]}")
+        # ── Model picker callbacks ──
+        elif data.startswith("mp:"):
+            await self._handle_model_picker_provider(query, data)
+        elif data.startswith("mm:"):
+            await self._handle_model_picker_select(query, data)
+        elif data.startswith("mg:"):
+            await self._handle_model_picker_page(query, data)
+        elif data in ("mb:", "mx:"):
+            await self._handle_model_picker_dismiss(query, data)
+
+    async def _handle_model_picker_provider(self, query: Any, data: str) -> None:
+        """User tapped a provider button (mp:<slug>). Show model list."""
+        provider = data.split(":", 1)[1]
+        from agent_core.model_catalog import ModelCatalog
+        catalog = ModelCatalog()
+        try:
+            models = catalog.get_models(provider)
+        except Exception:
+            models = []
+
+        chat_id = query.message.chat_id
+        self._channel._model_picker_state[chat_id] = {
+            "provider": provider, "models": models, "page": 0,
+        }
+        keyboard = self._channel._build_model_keyboard(provider, models, 0)
+        text = f"**{provider}** — {len(models)} models\n\nSelect a model:"
+        await query.edit_message_text(text=text, reply_markup=keyboard, parse_mode="Markdown")
+
+    async def _handle_model_picker_select(self, query: Any, data: str) -> None:
+        """User tapped a model button (mm:<provider>:<index>). Execute switch."""
+        parts = data.split(":", 2)
+        provider = parts[1]
+        idx = int(parts[2]) if len(parts) > 2 else 0
+        chat_id = query.message.chat_id
+        state = self._channel._model_picker_state.get(chat_id, {})
+        models = state.get("models", [])
+        if idx < len(models):
+            model = models[idx]
+            await self._channel._handle_model_selected(
+                chat_id, provider, model, query.message.message_id,
+            )
+
+    async def _handle_model_picker_page(self, query: Any, data: str) -> None:
+        """User tapped pagination (mg:<provider>:<page>)."""
+        parts = data.split(":", 2)
+        provider = parts[1]
+        page = int(parts[2]) if len(parts) > 2 else 0
+        chat_id = query.message.chat_id
+        state = self._channel._model_picker_state.get(chat_id, {})
+        models = state.get("models", [])
+        self._channel._model_picker_state[chat_id]["page"] = page
+        keyboard = self._channel._build_model_keyboard(provider, models, page)
+        await query.edit_message_reply_markup(reply_markup=keyboard)
+
+    async def _handle_model_picker_dismiss(self, query: Any, data: str) -> None:
+        """User tapped Cancel or Back."""
+        if data == "mb:":
+            # Back to provider selection.
+            await self._channel.show_model_picker(
+                query.message.chat_id, query.message.message_id,
+            )
+        else:
+            # Cancel — dismiss.
+            await query.edit_message_text("⚙ Model picker dismissed.")

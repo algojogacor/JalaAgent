@@ -1,8 +1,7 @@
-"""Universal OpenAI-compatible provider — 40+ APIs via a single adapter.
+"""Universal OpenAI-compatible provider — 16+ APIs via a single adapter.
 
-Replaces 8 individual provider files. Handles: OpenAI, DeepSeek, OpenRouter,
-Groq, Mistral, Together, Perplexity, xAI, SambaNova, Qwen, Cohere, Jina,
-NVIDIA, Fireworks, Cerebras, Ollama, and any custom endpoint.
+Receives base_url from ProviderRouter (4-tier resolution). No embedded
+provider catalog — all endpoint knowledge lives in agent_core.model_catalog.
 """
 
 import json
@@ -15,27 +14,10 @@ from typing import Any
 import httpx
 import yaml
 from agent_core.credentials import CredentialPool
+from agent_core.model_catalog import PROVIDER_BASE_URLS
 from agent_core.models import AgentMessage, ProviderChunk, ProviderChunkType, ToolCall
 
 logger = logging.getLogger(__name__)
-
-# Known provider endpoints.
-PROVIDERS: dict[str, dict[str, Any]] = {
-    "openai":       {"base": "https://api.openai.com/v1", "env": "OPENAI_API_KEY"},
-    "deepseek":     {"base": "https://api.deepseek.com/v1", "env": "DEEPSEEK_API_KEY"},
-    "openrouter":   {"base": "https://openrouter.ai/api/v1", "env": "OPENROUTER_API_KEY",
-                     "extra_headers": {"HTTP-Referer": "https://jalaagent.dev", "X-Title": "JalaAgent"}},
-    "groq":         {"base": "https://api.groq.com/openai/v1", "env": "GROQ_API_KEY"},
-    "mistral":      {"base": "https://api.mistral.ai/v1", "env": "MISTRAL_API_KEY"},
-    "together":     {"base": "https://api.together.xyz/v1", "env": "TOGETHER_API_KEY"},
-    "perplexity":   {"base": "https://api.perplexity.ai", "env": "PERPLEXITY_API_KEY"},
-    "xai":          {"base": "https://api.x.ai/v1", "env": "XAI_API_KEY"},
-    "qwen":         {"base": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1", "env": "DASHSCOPE_API_KEY"},
-    "cohere":       {"base": "https://api.cohere.ai/v1", "env": "COHERE_API_KEY"},
-    "fireworks":    {"base": "https://api.fireworks.ai/inference/v1", "env": "FIREWORKS_API_KEY"},
-    "cerebras":     {"base": "https://api.cerebras.ai/v1", "env": "CEREBRAS_API_KEY"},
-    "ollama":       {"base": "http://localhost:11434/v1", "env": ""},
-}
 
 _DEFAULT_CONFIG_PATH = Path.home() / ".jalaagent" / "config.yaml"
 _DEFAULT_AUTH_PATH = Path.home() / ".jalaagent" / "auth.json"
@@ -44,8 +26,9 @@ _DEFAULT_AUTH_PATH = Path.home() / ".jalaagent" / "auth.json"
 class OpenAICompatibleProvider:
     """Single provider for all OpenAI-compatible APIs.
 
-    Reads endpoints from config.yaml (or defaults). Reads keys from auth.json.
-    Supports model routing: `provider/model-name` → resolves provider + base URL.
+    base_url is resolved by ProviderRouter via the 4-tier priority chain
+    (CLI flag → env var → config.yaml → static default). The provider
+    itself is now a pure transport layer.
     """
 
     def __init__(
@@ -54,11 +37,16 @@ class OpenAICompatibleProvider:
         auth_path: Path | None = None,
         default_provider: str = "deepseek",
         default_model: str = "deepseek-chat",
+        api_key: str = "",
+        base_url: str = "",
+        model: str = "",
     ) -> None:
         self._config_path = config_path or _DEFAULT_CONFIG_PATH
         self._auth_path = auth_path or _DEFAULT_AUTH_PATH
         self._default_provider = default_provider
         self._default_model = default_model
+        self._base_url = base_url
+        self._model = model
         self._http: httpx.AsyncClient | None = None
 
         # Load config + auth.
@@ -143,22 +131,24 @@ class OpenAICompatibleProvider:
 
     def _resolve_model(self, model: str) -> tuple[str, str]:
         """Resolve model string to (provider, model_name)."""
-        model = model or f"{self._default_provider}/{self._default_model}"
+        model = model or self._model or f"{self._default_provider}/{self._default_model}"
         if "/" in model:
             prov, name = model.split("/", 1)
-            if prov in PROVIDERS or prov in self._config.get("providers", {}):
-                return prov, name
+            return prov, name
         return self._default_provider, model
 
     def _get_base_url(self, provider: str) -> str:
+        # Use constructor-provided base_url (from ProviderRouter) if available.
+        if self._base_url:
+            return self._base_url
+        # Fallback: config.yaml providers.<name>.base_url.
         cfg = self._config.get("providers", {}).get(provider, {})
-        return cfg.get("base_url") or PROVIDERS.get(provider, {}).get("base", "https://api.openai.com/v1")
+        return cfg.get("base_url", "") or PROVIDER_BASE_URLS.get(provider, "https://api.openai.com/v1")
 
     def _build_headers(self, provider: str, api_key: str) -> dict[str, str]:
         h = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        extra = PROVIDERS.get(provider, {}).get("extra_headers", {})
+        # config.yaml providers.<name>.extra_headers.
         cfg_extra = self._config.get("providers", {}).get(provider, {}).get("extra_headers", {})
-        h.update(extra)
         h.update(cfg_extra)
         return h
 
@@ -176,15 +166,22 @@ class OpenAICompatibleProvider:
             return json.loads(self._auth_path.read_text(encoding="utf-8"))
         # Fall back to env vars.
         result: dict[str, list[dict[str, Any]]] = {}
-        for prov, info in PROVIDERS.items():
-            env_var = info.get("env", "")
-            if env_var:
-                val = os.environ.get(env_var, "")
-                if val:
-                    for key in val.split(","):
-                        key = key.strip()
-                        if key:
-                            result.setdefault(prov, []).append({"key": key, "label": f"env:{env_var}", "priority": 1})
+        _ENV_MAP: dict[str, str] = {
+            "openai": "OPENAI_API_KEY", "deepseek": "DEEPSEEK_API_KEY",
+            "openrouter": "OPENROUTER_API_KEY", "groq": "GROQ_API_KEY",
+            "mistral": "MISTRAL_API_KEY", "qwen": "DASHSCOPE_API_KEY",
+            "together": "TOGETHER_API_KEY", "perplexity": "PERPLEXITY_API_KEY",
+            "xai": "XAI_API_KEY", "cohere": "COHERE_API_KEY",
+            "fireworks": "FIREWORKS_API_KEY", "cerebras": "CEREBRAS_API_KEY",
+        }
+        for prov, env_var in _ENV_MAP.items():
+            val = os.environ.get(env_var, "")
+            if val:
+                for key in val.split(","):
+                    key = key.strip()
+                    if key:
+                        result.setdefault(prov, []).append(
+                            {"key": key, "label": f"env:{env_var}", "priority": 1})
         return result
 
     def _load_keys_into_pool(self) -> None:

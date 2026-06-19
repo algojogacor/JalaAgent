@@ -246,11 +246,140 @@ def _build_registry() -> CommandRegistry:
             ctx.agent_loop._registry.policy.mode = ApprovalMode(m)
         return CommandResult(f"⚙️ Mode: {m.upper()}")
 
+    # Model aliases — short names → full model identifiers.
+    MODEL_ALIASES: dict[str, str] = {
+        "sonnet":    "claude-sonnet-4-6",
+        "opus":      "claude-opus-4-8",
+        "haiku":     "claude-haiku-4-5",
+        "4o":        "gpt-4o",
+        "4o-mini":   "gpt-4o-mini",
+        "ds":        "deepseek/deepseek-chat",
+        "dsr":       "deepseek/deepseek-reasoner",
+        "qwen-plus": "qwen/qwen-plus",
+        "qwen-max":  "qwen/qwen-max",
+    }
+
     async def _model(ctx: CommandContext) -> CommandResult:
-        m = ctx.args[0] if ctx.args else ""
-        if not m: return CommandResult(f"Current model: `{ctx.agent_loop.model}`")
-        if ctx.agent_loop: ctx.agent_loop.model = m
-        return CommandResult(f"🤖 Model switched to: `{m}`")
+        """Full model switch pipeline with interactive picker support.
+
+        /model                  → show current model + usage hint
+        /model --picker         → show interactive picker (Telegram: keyboard, CLI: select)
+        /model <name>           → direct switch
+        /model --save <name>    → persist to config.yaml
+        /model --refresh        → bust cache + re-fetch
+        """
+        from agent_core.model_catalog import ModelCatalog  # noqa: PLC0415
+
+        catalog = ModelCatalog()
+        args = ctx.args or []
+        model_input: str | None = None
+        persist_global = False
+        force_refresh = False
+        show_picker = False
+
+        # ── Parse flags ──
+        remaining: list[str] = []
+        for a in args:
+            if a == "--save":
+                persist_global = True
+            elif a == "--refresh":
+                force_refresh = True
+            elif a == "--picker":
+                show_picker = True
+            else:
+                remaining.append(a)
+
+        model_input = " ".join(remaining).strip() if remaining else None
+
+        loop = ctx.agent_loop
+        if loop is None:
+            return CommandResult("No agent loop available.")
+
+        # ── Resolve alias ──
+        if model_input and model_input.lower() in MODEL_ALIASES:
+            model_input = MODEL_ALIASES[model_input.lower()]
+
+        # ── No input + no picker → show status ──
+        current_model = getattr(loop, "model", "unknown")
+        current_provider = getattr(loop, "_provider", None)
+        prov_name = getattr(current_provider, "__class__.__name__", "unknown")
+
+        if not model_input and not show_picker:
+            providers = catalog.list_providers()
+            provider_info: dict[str, int] = {}
+            for prov in providers:
+                try:
+                    provider_info[prov] = len(catalog.get_models(prov))
+                except Exception:
+                    provider_info[prov] = 0
+
+            # If Telegram channel, show interactive picker automatically.
+            if ctx.channel == "telegram" and not model_input:
+                return CommandResult(
+                    "",
+                    keyboard={"type": "model_picker", "providers": provider_info},
+                    action="show_model_picker",
+                )
+
+            return CommandResult(
+                f"⚙ **Model Configuration**\n\n"
+                f"Current model: `{current_model}`\n"
+                f"Provider: {prov_name}\n\n"
+                f"Use `/model <name>` to switch, or `/model --picker` for interactive selection.\n"
+                f"Flags: `--save` (persist), `--refresh` (fetch latest models)"
+            )
+
+        # ── Interactive picker requested ──
+        if show_picker or (ctx.channel == "telegram" and not model_input):
+            providers = catalog.list_providers()
+            provider_info = {}
+            for prov in providers:
+                try:
+                    provider_info[prov] = len(catalog.get_models(prov))
+                except Exception:
+                    provider_info[prov] = 0
+
+            if ctx.channel == "telegram":
+                return CommandResult(
+                    "", keyboard={"type": "model_picker", "providers": provider_info},
+                    action="show_model_picker",
+                )
+            else:
+                lines = [f"⚙ **Model Configuration**\n  Current: `{current_model}`\n\nSelect a provider:"]
+                for prov, count in sorted(provider_info.items(), key=lambda x: x[0]):
+                    lines.append(f"  {prov} ({count} models)")
+                return CommandResult("\n".join(lines))
+
+        # ── Direct switch with model_input ──
+        new_model = model_input
+        new_provider = ""
+
+        # Parse provider/model syntax.
+        if "/" in new_model:
+            new_provider = new_model.split("/", 1)[0]
+
+        # Switch agent loop model.
+        loop.model = new_model
+
+        # Persist to config.yaml if --save.
+        if persist_global:
+            import yaml as _yaml  # noqa: PLC0415
+            cfg_path = Path.home() / ".jalaagent" / "config.yaml"
+            cfg: dict[str, Any] = {}
+            if cfg_path.exists():
+                cfg = _yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+            cfg.setdefault("model", {})["default"] = new_model
+            if new_provider:
+                cfg["model"]["provider"] = new_provider
+            cfg_path.parent.mkdir(parents=True, exist_ok=True)
+            cfg_path.write_text(
+                _yaml.dump(cfg, default_flow_style=False, sort_keys=False),
+                encoding="utf-8",
+            )
+
+        provider_info = f"\nProvider: `{new_provider}`" if new_provider else ""
+        save_info = "\nSaved to config.yaml" if persist_global else ""
+        return CommandResult(f"🤖 Switched to: `{new_model}`{provider_info}{save_info}")
 
     async def _yolo(ctx: CommandContext) -> CommandResult:
         if ctx.agent_loop and ctx.agent_loop._registry and ctx.agent_loop._registry.policy:

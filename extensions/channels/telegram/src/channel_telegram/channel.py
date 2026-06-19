@@ -50,6 +50,7 @@ class TelegramChannel:
         self._app: Application | None = None
         self._handlers = TelegramHandlers(self, command_registry)
         self._pending_approvals: dict[str, asyncio.Future[bool]] = {}
+        self._model_picker_state: dict[int, dict[str, Any]] = {}
         self._registry = command_registry
 
     # ------------------------------------------------------------------
@@ -183,6 +184,115 @@ class TelegramChannel:
             await placeholder.edit_text("".join(accumulated))
         else:
             await placeholder.edit_text("(no response)")
+
+    # ------------------------------------------------------------------
+    # Model picker (interactive provider → model selection)
+    # ------------------------------------------------------------------
+
+    async def show_model_picker(self, chat_id: int, message_id: int | None = None) -> None:
+        """Render the provider selection keyboard."""
+        from agent_core.model_catalog import ModelCatalog
+        catalog = ModelCatalog()
+        providers = catalog.list_providers()
+
+        provider_info: dict[str, int] = {}
+        for prov in providers:
+            try:
+                provider_info[prov] = len(catalog.get_models(prov))
+            except Exception:
+                provider_info[prov] = 0
+
+        keyboard = self._build_provider_keyboard(provider_info)
+        text = (
+            "⚙ **Model Configuration**\n\n"
+            f"Current model: `{getattr(self._agent_loop, 'model', 'unknown')}`\n\n"
+            "Select a provider:"
+        )
+        if message_id:
+            await self._app.bot.edit_message_text(
+                chat_id=chat_id, message_id=message_id,
+                text=text, reply_markup=keyboard, parse_mode="Markdown",
+            )
+        else:
+            await self._app.bot.send_message(
+                chat_id=chat_id, text=text, reply_markup=keyboard, parse_mode="Markdown",
+            )
+
+    @staticmethod
+    def _build_provider_keyboard(provider_info: dict[str, int]) -> Any:
+        """Build provider selection inline keyboard."""
+        from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
+        buttons: list[list[Any]] = []
+        row: list[Any] = []
+        for prov, count in sorted(provider_info.items(), key=lambda x: x[0]):
+            label = f"{prov} ({count})"
+            row.append(InlineKeyboardButton(label, callback_data=f"mp:{prov}"))
+            if len(row) == 2:
+                buttons.append(row)
+                row = []
+        if row:
+            buttons.append(row)
+        buttons.append([InlineKeyboardButton("✕ Cancel", callback_data="mx:")])
+        return InlineKeyboardMarkup(buttons)
+
+    @staticmethod
+    def _build_model_keyboard(
+        provider: str, models: list[str], page: int = 0
+    ) -> Any:
+        """Build model selection inline keyboard with pagination."""
+        from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
+        per_page = 8
+        start = page * per_page
+        page_models = models[start:start + per_page]
+        total_pages = (len(models) + per_page - 1) // per_page
+
+        buttons: list[list[Any]] = []
+        for i, m in enumerate(page_models):
+            idx = start + i
+            buttons.append([InlineKeyboardButton(m, callback_data=f"mm:{provider}:{idx}")])
+
+        nav: list[Any] = []
+        if page > 0:
+            nav.append(InlineKeyboardButton("◀ Prev", callback_data=f"mg:{provider}:{page - 1}"))
+        if page < total_pages - 1:
+            nav.append(InlineKeyboardButton("Next ▶", callback_data=f"mg:{provider}:{page + 1}"))
+        if nav:
+            buttons.append(nav)
+        buttons.append([
+            InlineKeyboardButton("◀ Back", callback_data="mb:"),
+            InlineKeyboardButton("✕ Cancel", callback_data="mx:"),
+        ])
+        return InlineKeyboardMarkup(buttons)
+
+    async def _handle_model_selected(
+        self, chat_id: int, provider: str, model: str, message_id: int
+    ) -> None:
+        """Execute model switch and show confirmation."""
+        from agent_core.model_catalog import resolve_base_url
+
+        model_id = f"{provider}/{model}" if "/" not in model else model
+        if self._agent_loop:
+            self._agent_loop.model = model_id
+
+        base_url = ""
+        try:
+            base_url = resolve_base_url(provider)
+        except KeyError:
+            pass
+
+        text = (
+            f"✅ **Switched to:** `{model_id}`\n"
+            f"Provider: {provider}\n"
+            + (f"Endpoint: {base_url}\n" if base_url else "")
+            + "\nUse `/model --save` to make this permanent."
+        )
+        await self._app.bot.edit_message_text(
+            chat_id=chat_id, message_id=message_id,
+            text=text, parse_mode="Markdown",
+        )
+        self._model_picker_state.pop(chat_id, None)
 
     async def run_polling(self) -> None:
         """Start polling for updates (blocking)."""

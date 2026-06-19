@@ -30,7 +30,7 @@ console = Console()
 _CONFIG_PATH = Path.home() / ".jalaagent" / "config.yaml"
 
 
-def _build_agent(model: str | None = None, plan: bool = False) -> Any:
+def _build_agent(model: str | None = None, plan: bool = False, base_url: str | None = None) -> Any:
     from agent_core.compaction import ContextCompactor
     from agent_core.core_tools import register_all, wire_harness
     from agent_core.credentials import CredentialPool
@@ -54,7 +54,7 @@ def _build_agent(model: str | None = None, plan: bool = False) -> Any:
     ]:
         creds.add_from_env(prov, env_var)
 
-    provider = _pick_provider(model, creds)
+    provider = _pick_provider(model, creds, base_url=base_url)
 
     # ── Registry + tools ──
     registry = ToolRegistry()
@@ -124,7 +124,7 @@ def _load_jala_config() -> dict:
     p = Path.home() / ".jalaagent" / "config.yaml"
     return yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
 
-def _pick_provider(model: str | None, creds: Any) -> Any:
+def _pick_provider(model: str | None, creds: Any, base_url: str | None = None) -> Any:
     """Pick the best provider based on available API keys (env + auth.json).
 
     Delegates to :class:`ProviderRouter` — a declarative registry that
@@ -132,8 +132,14 @@ def _pick_provider(model: str | None, creds: Any) -> Any:
     """
     from agent_core.providers import ProviderRouter
 
+    config = _load_jala_config()
+    config_providers = config.get("providers", {})
     router = ProviderRouter()
-    return router.resolve(model=model, creds=creds)
+    return router.resolve(
+        model=model, creds=creds,
+        cli_base_url=base_url,
+        config_providers=config_providers,
+    )
 
 def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used by dreaming_runner + bg tasks
     """Build a cheaper auxiliary provider for dreaming + background tasks."""
@@ -213,6 +219,7 @@ def main(
     plan: bool = typer.Option(False, "--plan", help="Plan mode"),
     telegram: bool = typer.Option(False, "--telegram", help="Telegram only"),
     prompt: str | None = typer.Option(None, "--prompt", "-p", help="Single prompt"),
+    base_url: str | None = typer.Option(None, "--base-url", help="Override API base URL"),
 ) -> None:
     if ctx.invoked_subcommand is not None:
         return
@@ -236,7 +243,7 @@ def main(
     if telegram:
         _start_telegram(model, plan)
         return
-    agent_loop = _build_agent(model, plan)
+    agent_loop = _build_agent(model, plan, base_url=base_url)
     if prompt:
         # Intercept slash commands — dispatch through command registry.
         if prompt.strip().startswith("/"):

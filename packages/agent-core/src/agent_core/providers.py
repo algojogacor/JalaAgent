@@ -50,6 +50,8 @@ class ProviderEntry:
     priority: int = 100
     default_model: str | None = None
     extra_kwargs: dict[str, Any] = field(default_factory=dict)
+    base_url: str | None = None          # Resolved base URL (set by router)
+    base_url_env_var: str = ""           # Env var for base_url override
 
 
 # ---------------------------------------------------------------------------
@@ -112,6 +114,16 @@ DEFAULT_PROVIDERS: list[ProviderEntry] = [
         priority=60,
     ),
     ProviderEntry(
+        "qwen",
+        "DASHSCOPE_API_KEY",
+        "qwen",
+        "provider_universal.provider",
+        "OpenAICompatibleProvider",
+        model_patterns=["qwen-", "qwen/", "qwq-"],
+        priority=35,
+        base_url_env_var="DASHSCOPE_BASE_URL",
+    ),
+    ProviderEntry(
         "universal",
         "",
         "",
@@ -134,7 +146,9 @@ DEFAULT_PROVIDERS: list[ProviderEntry] = [
 # Provider names that can appear in "provider/model" syntax.
 KNOWN_PROVIDERS = {
     "anthropic", "openai", "deepseek", "groq", "mistral",
-    "openrouter", "ollama", "google",
+    "openrouter", "ollama", "google", "qwen", "together",
+    "perplexity", "xai", "cohere", "fireworks", "cerebras",
+    "sambanova", "nvidia", "gemini", "universal",
 }
 
 
@@ -166,7 +180,13 @@ class ProviderRouter:
     # Public API
     # ------------------------------------------------------------------
 
-    def resolve(self, model: str | None = None, creds: Any = None) -> Any:
+    def resolve(
+        self,
+        model: str | None = None,
+        creds: Any = None,
+        cli_base_url: str | None = None,
+        config_providers: dict[str, Any] | None = None,
+    ) -> Any:
         """Return an instantiated provider, picking the best available.
 
         *creds* is accepted for API compatibility with the old signature
@@ -182,7 +202,7 @@ class ProviderRouter:
         requested = self._parse_requested_provider(model_lower)
         if requested and requested in self._by_name:
             entry = self._by_name[requested]
-            provider = self._try_entry(entry, model_lower, auth_keys)
+            provider = self._try_entry(entry, model_lower, auth_keys, cli_base_url, config_providers)
             if provider is not None:
                 return provider
 
@@ -190,7 +210,7 @@ class ProviderRouter:
         if requested is None:
             prefix_match = self._match_prefix(model_lower)
             if prefix_match:
-                provider = self._try_entry(prefix_match, model, auth_keys)
+                provider = self._try_entry(prefix_match, model, auth_keys, cli_base_url, config_providers)
                 if provider is not None:
                     return provider
 
@@ -199,7 +219,7 @@ class ProviderRouter:
             # Skip Ollama until the very end — it's the safety net.
             if entry.name == "ollama":
                 continue
-            provider = self._try_entry(entry, model, auth_keys)
+            provider = self._try_entry(entry, model, auth_keys, cli_base_url, config_providers)
             if provider is not None:
                 return provider
 
@@ -263,6 +283,8 @@ class ProviderRouter:
         entry: ProviderEntry,
         model: str | None,
         auth_keys: dict[str, str],
+        cli_base_url: str | None = None,
+        config_providers: dict[str, Any] | None = None,
     ) -> Any | None:
         """Try to instantiate *entry*.  Returns ``None`` on failure."""
         import os as _os
@@ -285,6 +307,19 @@ class ProviderRouter:
             resolved_model = model or entry.default_model
             if resolved_model:
                 kwargs["model"] = resolved_model
+
+            # Resolve base_url through 4-tier chain.
+            from agent_core.model_catalog import resolve_base_url  # noqa: PLC0415
+            try:
+                resolved_base = resolve_base_url(
+                    entry.name,
+                    cli_base_url=cli_base_url,
+                    config_providers=config_providers or {},
+                )
+                kwargs["base_url"] = resolved_base
+            except KeyError:
+                pass  # Unknown provider — let constructor use its own default.
+
             kwargs.update(entry.extra_kwargs)
             return cls(**kwargs)
         except Exception:
