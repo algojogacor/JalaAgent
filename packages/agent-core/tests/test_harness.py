@@ -5,14 +5,12 @@ import tempfile
 from pathlib import Path
 
 import pytest
-
 from agent_core.harness import (
     BackgroundTaskManager,
     DiffEditor,
     PlanMode,
     SandboxedShell,
 )
-
 
 # ---------------------------------------------------------------------------
 # Plan Mode

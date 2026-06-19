@@ -1,11 +1,10 @@
 """Integration test: approval modes against destructive tool calls."""
 
-import pytest
 from unittest.mock import AsyncMock
 
-from agent_core.models import ActionCategory, LoopConfig, ToolDescriptor, ToolResult
-from agent_core.registry import DESTRUCTIVE_CATEGORIES, ToolRegistry
-
+import pytest
+from agent_core.models import ActionCategory
+from agent_core.registry import DESTRUCTIVE_CATEGORIES
 
 # ---------------------------------------------------------------------------
 # Approval mode simulation

@@ -2,7 +2,7 @@
 
 import asyncio
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from memory_core.dreaming import DreamingPipeline
@@ -44,7 +44,11 @@ class DreamingRunner:
     - Schedules dreaming runs via cron-like sleep loop.
     - Supports manual triggering via `/dream` command.
     - Writes dream-diary.md after each run.
+    - Respects agent idle state to avoid competing for LLM resources.
     """
+
+    agent_is_idle: Any | None = None
+    """Optional callable ``() -> bool`` — when set, dreaming only fires if idle."""
 
     def __init__(
         self,
@@ -75,7 +79,7 @@ class DreamingRunner:
         )
 
         report = await pipeline.run()
-        self._last_run = datetime.now(timezone.utc)
+        self._last_run = datetime.now(UTC)
         logger.info(
             "Dreaming complete: %d signals, %d patterns, %d promoted",
             report.light_sleep_signals,
@@ -104,8 +108,12 @@ class DreamingRunner:
             if not self._running:
                 break
             try:
-                now = datetime.now(timezone.utc)
+                now = datetime.now(UTC)
                 if now.hour == 3 and (self._last_run is None or self._last_run.date() < now.date()):
+                    # Respect agent idle state — don't compete for LLM resources.
+                    if self.agent_is_idle and not self.agent_is_idle():
+                        logger.info("Skipping scheduled dreaming — agent is active")
+                        continue
                     logger.info("Scheduled dreaming starting...")
                     await self.run_once()
             except Exception:

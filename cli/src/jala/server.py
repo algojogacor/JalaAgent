@@ -2,7 +2,19 @@
 
 import json
 import logging
+import sys
+from pathlib import Path
 from typing import Any
+
+# Ensure all provider/package src/ dirs are importable.
+_SERVE_ROOT = Path(__file__).resolve().parents[3]  # jalaagent/ root
+for _top in ["packages", "extensions", "cli"]:
+    _top_dir = _SERVE_ROOT / _top
+    if _top_dir.is_dir():
+        for _src in _top_dir.glob("*/src"):
+            sys.path.insert(0, str(_src))
+        for _src in _top_dir.glob("*/*/src"):
+            sys.path.insert(0, str(_src))
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,13 +24,77 @@ logger = logging.getLogger(__name__)
 _TRIVIAL = {"hello", "hi", "ping", "test", "help", "what's up", "hey"}
 
 
-async def _build_proxy_provider() -> Any:
+async def _build_proxy_provider(model: str = "") -> Any:
+    """Build the best available provider, pulling API keys from auth.json."""
+    import json as _json
+    import yaml as _yaml
+
+    auth: dict[str, Any] = {}
+    auth_path = Path.home() / ".jalaagent" / "auth.json"
+    if auth_path.exists():
+        auth = _json.loads(auth_path.read_text(encoding="utf-8"))
+
+    def _first_key(provider: str) -> str:
+        """Return the first API key for a provider from auth.json."""
+        for entry in auth.get("providers", {}).get(provider, []):
+            k = entry.get("key", "") or entry.get("access_token", "")
+            if k:
+                return k
+        return ""
+
+    # Try Anthropic if key is available (env or auth.json).
+    import os as _os
+    ak = _os.environ.get("ANTHROPIC_API_KEY", "") or _first_key("anthropic")
+    if ak:
+        try:
+            from provider_anthropic.provider import AnthropicProvider
+            return AnthropicProvider(api_key=ak)
+        except Exception:
+            pass
+
+    # Try Groq.
+    gr_key = _first_key("groq")
+    if gr_key:
+        try:
+            from provider_groq.provider import GroqProvider
+            return GroqProvider(api_key=gr_key)
+        except Exception:
+            pass
+
+    # Try DeepSeek.
+    ds_key = _first_key("deepseek")
+    if ds_key:
+        try:
+            from provider_deepseek.provider import DeepSeekProvider
+            return DeepSeekProvider(api_key=ds_key)
+        except Exception:
+            pass
+
+    # Try Mistral.
+    ms_key = _first_key("mistral")
+    if ms_key:
+        try:
+            from provider_mistral.provider import MistralProvider
+            return MistralProvider(api_key=ms_key)
+        except Exception:
+            pass
+
+    # Try OpenRouter.
+    or_key = _first_key("openrouter")
+    if or_key:
+        try:
+            from provider_openrouter.provider import OpenRouterProvider
+            return OpenRouterProvider(api_key=or_key)
+        except Exception:
+            pass
+
+    # Last resort: Ollama (local, no key needed).
     try:
-        import importlib
-        return importlib.import_module("provider_universal.provider").OpenAICompatibleProvider()
-    except Exception:
         from provider_ollama.provider import OllamaProvider
         return OllamaProvider()
+    except Exception:
+        from provider_openai.provider import OpenAIProvider
+        return OpenAIProvider()
 
 
 def create_app(token: str | None = None) -> FastAPI:
@@ -38,12 +114,36 @@ def create_app(token: str | None = None) -> FastAPI:
 
     @app.get("/v1/models")
     async def _models() -> dict[str, Any]:  # pyright: ignore[reportUnusedFunction]
-        p = await _build_proxy_provider()
-        models = []
-        for name, info in p._config.get("providers", {}).items():
-            for m in info.get("models", []):
-                mn = m if isinstance(m, str) else m.get("name", "")
-                if mn: models.append({"id": mn, "object": "model", "owned_by": name})
+        """List available models from config and auth.json."""
+        from pathlib import Path
+        import yaml as _yaml
+
+        config_path = Path.home() / ".jalaagent" / "config.yaml"
+        models: list[dict[str, Any]] = []
+        if config_path.exists():
+            cfg = _yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+            prov_name = cfg.get("model", {}).get("provider", "deepseek")
+            default_model = cfg.get("model", {}).get("default", "deepseek-chat")
+            models.append({"id": default_model, "object": "model", "owned_by": prov_name})
+            # Add fallback provider models.
+            for fb in cfg.get("fallback_providers", []):
+                models.append({"id": f"{fb}/default", "object": "model", "owned_by": fb})
+
+        # Also list models from auth.json providers.
+        auth_path = Path.home() / ".jalaagent" / "auth.json"
+        if auth_path.exists():
+            auth = json.loads(auth_path.read_text(encoding="utf-8"))
+            for prov in auth.get("providers", {}):
+                if prov not in {m["owned_by"] for m in models}:
+                    models.append({"id": f"{prov}/default", "object": "model", "owned_by": prov})
+
+        # Hard-coded models for Anthropic-compatible clients.
+        models += [
+            {"id": "claude-sonnet-4-6", "object": "model", "owned_by": "anthropic"},
+            {"id": "claude-opus-4-8", "object": "model", "owned_by": "anthropic"},
+            {"id": "gpt-4o", "object": "model", "owned_by": "openai"},
+            {"id": "deepseek-chat", "object": "model", "owned_by": "deepseek"},
+        ]
         return {"object": "list", "data": models[:50]}
 
     @app.post("/v1/messages/count_tokens")
@@ -55,7 +155,8 @@ def create_app(token: str | None = None) -> FastAPI:
 
     @app.post("/v1/messages")
     async def _messages(body: dict[str, Any]) -> StreamingResponse:  # pyright: ignore[reportUnusedFunction]
-        p = await _build_proxy_provider()
+        model = body.get("model", "deepseek-chat")
+        p = await _build_proxy_provider(model)
         user_text = ""
         for m in body.get("messages", []):
             if m.get("role") == "user" and isinstance(m.get("content"), str):
@@ -65,7 +166,6 @@ def create_app(token: str | None = None) -> FastAPI:
                 yield f"data: {json.dumps({'type':'content_block_delta','delta':{'type':'text_delta','text':user_text.title()+'! How can I help?'}})}\n\n"
                 yield "data: {\"type\":\"message_stop\"}\n\n"
             return StreamingResponse(_t(), media_type="text/event-stream")
-        model = body.get("model", "claude-sonnet-4-6")
         system = body.get("system", "")
         tools = body.get("tools", [])
         from agent_core.models import AgentMessage, ProviderChunkType
@@ -81,7 +181,7 @@ def create_app(token: str | None = None) -> FastAPI:
                         yield f"data: {json.dumps({'type':'content_block_delta','delta':{'type':'text_delta','text':chunk.content}})}\n\n"
                     elif chunk.type == ProviderChunkType.DONE:
                         yield "data: {\"type\":\"message_stop\"}\n\n"; break
-            except Exception as exc:
+            except Exception:
                 logger.exception("Streaming error for model %s", model)
                 yield f"data: {json.dumps({'type':'error','error':{'type':'api_error','message':'Internal server error'}})}\n\n"
         return StreamingResponse(_s(), media_type="text/event-stream")
@@ -92,8 +192,8 @@ def create_app(token: str | None = None) -> FastAPI:
 def run_server(host: str = "127.0.0.1", port: int = 8787, token: str | None = None) -> None:
     import uvicorn
     a = " (auth: enabled)" if token else " (no auth)"
-    print(f"🪼 JalaAgent API v2026.6.18 — http://{host}:{port}{a}")
-    print(f"   Models: http://{host}:{port}/v1/models")
-    print(f"   Chat:   POST http://{host}:{port}/v1/messages")
-    print(f"   Use:    ANTHROPIC_BASE_URL=http://{host}:{port} claude")
+    logger.info("🪼 JalaAgent API v2026.6.18 — http://%s:%s%s", host, port, a)
+    logger.info("   Models: http://%s:%s/v1/models", host, port)
+    logger.info("   Chat:   POST http://%s:%s/v1/messages", host, port)
+    logger.info("   Use:    ANTHROPIC_BASE_URL=http://%s:%s claude", host, port)
     uvicorn.run(create_app(token=token), host=host, port=port, log_level="info")

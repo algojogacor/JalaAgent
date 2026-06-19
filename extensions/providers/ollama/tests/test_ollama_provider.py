@@ -1,8 +1,8 @@
 """Tests for Ollama provider (message/tool conversion, token estimation)."""
 
 import pytest
-from provider_ollama.provider import OllamaProvider
 from agent_core.models import AgentMessage
+from provider_ollama.provider import OllamaProvider
 
 
 @pytest.fixture

@@ -8,8 +8,14 @@ from pathlib import Path
 from typing import Any
 
 from agent_core.models import (
-    AgentChunk, AgentMessage, ChunkType, LoopConfig,
-    ProviderChunk, ProviderChunkType, ToolCall, ToolResult,
+    AgentChunk,
+    AgentMessage,
+    ChunkType,
+    LoopConfig,
+    ProviderChunk,
+    ProviderChunkType,
+    ToolCall,
+    ToolResult,
 )
 from agent_core.registry import ToolRegistry
 
@@ -89,7 +95,7 @@ class AgentLoop:
         self._personality: str = "default"
         self._skills_block = ""
         self._last_activity = 0.0
-        self._provider_name = "openai"
+        self._provider_name = getattr(provider, "_model", "openai")
 
     # ------------------------------------------------------------------
     # Public API
@@ -105,7 +111,8 @@ class AgentLoop:
         try:
             from agent_core.hooks import run as run_hooks
             asyncio.create_task(run_hooks("session_start", {"session_id": session_id, "user_message": user_message}))
-        except ImportError: pass
+        except ImportError:
+            logger.debug("hooks module not available")
 
         # Plan mode: restrict tools.
         if self._plan_mode and getattr(self._plan_mode, "is_approved", False) is False:
@@ -113,11 +120,21 @@ class AgentLoop:
 
         system = await self._build_system()
         messages: list[AgentMessage] = [AgentMessage(role="user", content=user_message)]
+        self._session_messages.append(messages[0])  # Track for undo/retry
 
+        # Memory context is injected via build_system_context() in the
+        # system prompt (frozen snapshot pattern).  Query-time retrieval
+        # is limited to episodic/session memory — never duplicate the
+        # curated MEMORY.md content that already lives in the system block.
         if self._memory:
             mem_ctx = await self._memory.retrieve(user_message)
             if mem_ctx:
-                messages.insert(0, AgentMessage(role="user", content=mem_ctx))
+                # Wrap retrieval results as an untrusted annotation so the
+                # provider does not treat them as user instructions.
+                messages.insert(0, AgentMessage(
+                    role="user",
+                    content=f"<memory-context ephemeral=\"true\">{mem_ctx}</memory-context>",
+                ))
         if self._skills_block:
             messages.insert(0, AgentMessage(role="user", content=self._skills_block))
 
@@ -141,9 +158,10 @@ class AgentLoop:
             if steering_msg:
                 messages.append(steering_msg)
 
-            # Compaction check — trigger at ~15K estimated tokens.
+            # Compaction check — always use heuristic (provider count_tokens is
+            # async and cannot be called from a sync static method).
             if self._compactor and len(messages) > 10:
-                estimated = sum(len(str(m.content)) for m in messages if hasattr(m, "content")) // 4
+                estimated = self._compactor._estimate_tokens(messages, token_counter=None)
                 threshold = int(self._config.compaction_threshold * 200000)
                 if estimated > threshold:
                     logger.info("Compacting: %d estimated tokens", estimated)
@@ -175,7 +193,7 @@ class AgentLoop:
                                 finish_reason = chunk.metadata.get("finish_reason", "")
                             break
                 retry_count = 0  # Success — reset.
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 logger.warning("TTFB timeout after %.1fs", TTFB_TIMEOUT)
                 if retry_count < MAX_RETRIES:
                     yield AgentChunk(type=ChunkType.TEXT, content="[Provider timed out — retrying...]")
@@ -208,6 +226,14 @@ class AgentLoop:
                     continue
                 break
 
+            # Append assistant message with tool_use blocks BEFORE tool results.
+            # Anthropic API requires: user → assistant(tool_use) → user(tool_result).
+            messages.append(AgentMessage(
+                role="assistant",
+                content=accumulated_text,
+                tool_calls=accumulated,
+            ))
+
             for tc in accumulated:
                 if self._interrupted:
                     break
@@ -233,11 +259,23 @@ class AgentLoop:
                 messages.append(AgentMessage(role="tool", content=result.content, tool_call_id=tc.id))
 
         yield AgentChunk(type=ChunkType.DONE)
+        # Persist conversation turns for undo/retry.
+        self._session_messages.extend(
+            m for m in messages if m.role in ("user", "assistant")
+        )
+        # Write session transcript to JSONL for dreaming pipeline.
+        self._write_session_jsonl(session_id, messages, total_tool_calls)
+        # Index episodes into vector DB for semantic search (fire-and-forget).
+        if self._memory and messages:
+            asyncio.create_task(
+                self._index_session_episodes(session_id, messages)
+            )
         # Fire session end hooks.
         try:
             from agent_core.hooks import run as run_hooks
             asyncio.create_task(run_hooks("session_end", {"session_id": session_id, "total_tool_calls": total_tool_calls}))
-        except ImportError: pass
+        except ImportError:
+            logger.debug("hooks module not available")
         if total_tool_calls > 0 and self._memory:
             asyncio.create_task(self._self_improve(session_id, messages))
 
@@ -268,8 +306,27 @@ class AgentLoop:
         elif reason == FailoverReason.AUTH_ERROR and self._credential_pool:
             cred = await self._credential_pool.acquire(self._provider_name)
             if cred:
-                # Rebuild provider with new key.
                 return True
+        elif reason == FailoverReason.CONTENT_POLICY and self._fallback_providers:
+            logger.info("Content policy violation — trying fallback provider")
+            return await self._try_fallback()
+        elif reason == FailoverReason.CONTEXT_TOO_LONG and self._compactor:
+            logger.info("Context too long — triggering compaction then retry")
+            return True
+        return False
+
+    async def _try_fallback(self) -> bool:
+        """Attempt to switch to a fallback provider (e.g. Ollama, DeepSeek)."""
+        for fallback_name in self._fallback_providers:
+            try:
+                if self._credential_pool:
+                    cred = await self._credential_pool.acquire(fallback_name)
+                    if cred:
+                        logger.info("Fallback provider: %s", fallback_name)
+                        self._provider_name = fallback_name
+                        return True
+            except Exception:
+                logger.debug("Fallback provider %s unavailable", fallback_name)
         return False
 
     # ------------------------------------------------------------------
@@ -317,6 +374,45 @@ class AgentLoop:
         try: return self._followup_queue.get_nowait()
         except asyncio.QueueEmpty: return None
 
+    def _write_session_jsonl(
+        self, session_id: str, messages: list[AgentMessage], total_tool_calls: int,
+    ) -> None:
+        """Persist session transcript as JSONL for the dreaming pipeline."""
+        import json as _json
+        from datetime import datetime, timezone
+
+        sid = session_id or datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+        sessions_dir = Path.home() / ".jalaagent" / "memories" / "sessions"
+        sessions_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            sessions_dir.chmod(0o700)
+        except OSError:
+            pass  # best-effort on Windows
+
+        entries: list[dict[str, Any]] = []
+        for msg in messages:
+            content = msg.content if isinstance(msg.content, str) else ""
+            entries.append({
+                "role": msg.role,
+                "content": content[:2000],
+                "tool_call_id": msg.tool_call_id,
+                "tool_calls": [
+                    {"id": tc.id, "name": tc.name, "arguments": tc.arguments}
+                    for tc in (msg.tool_calls or [])
+                ],
+            })
+
+        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        session_path = sessions_dir / f"{date_str}.jsonl"
+        session_path.touch(mode=0o600, exist_ok=True)
+        with session_path.open("a", encoding="utf-8") as f:
+            f.write(_json.dumps({
+                "session_id": sid,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "tool_calls": total_tool_calls,
+                "messages": entries,
+            }) + "\n")
+
     async def _self_improve(self, session_id: str, messages: list[AgentMessage]) -> None:
         try:
             logger.info("Self-improvement for %s", session_id)
@@ -327,6 +423,40 @@ class AgentLoop:
                     p.parent.mkdir(parents=True, exist_ok=True)
                     await asyncio.to_thread(p.write_text, f"# Session Review: {session_id}\n\n{summary}\n", encoding="utf-8")
         except Exception: logger.exception("Self-improvement failed")
+
+    async def _index_session_episodes(
+        self, session_id: str, messages: list[AgentMessage],
+    ) -> None:
+        """Index session messages as episodes in the vector layer.
+
+        Fire-and-forget: errors are logged and never raised, so a failing
+        embedding service or full disk never blocks the main loop.
+        """
+        from datetime import UTC, datetime as dt
+
+        for msg in messages:
+            if msg.role == "system":
+                continue
+            content = msg.content if isinstance(msg.content, str) else ""
+            if not content.strip():
+                continue
+            try:
+                # Import Episode lazily to keep agent-core free of a hard
+                # memory-core dependency.
+                from memory_core.models import Episode
+
+                episode = Episode(
+                    session_id=session_id or dt.now(UTC).strftime("%Y%m%d-%H%M%S"),
+                    role=msg.role,  # type: ignore[arg-type]
+                    content=content[:2000],
+                    timestamp=dt.now(UTC),
+                    tool_name=msg.tool_call_id if msg.role == "tool" else None,
+                    metadata={"tool_calls": len(msg.tool_calls or [])},
+                )
+                if self._memory:
+                    await self._memory.upsert_episode(episode)
+            except Exception:
+                logger.exception("Failed to index episode for session %s", session_id)
 
     async def load_skills(self) -> int:
         if self._skill_loader is None: return 0

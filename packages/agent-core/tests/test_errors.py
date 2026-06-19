@@ -1,7 +1,6 @@
 """Tests for agent-core error classification and retry policy."""
 
 import pytest
-
 from agent_core.errors import (
     APIErrorClassifier,
     AuthError,
@@ -11,7 +10,6 @@ from agent_core.errors import (
     RateLimitError,
     RetryPolicy,
     TimeoutError,
-    ToolLoopError,
     TransientError,
 )
 from agent_core.models import FailoverReason

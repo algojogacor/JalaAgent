@@ -1,16 +1,13 @@
 """Tests for agent-core tool registry."""
 
 import pytest
-
 from agent_core.errors import ToolLoopError
 from agent_core.models import (
     ActionCategory,
     LoopConfig,
     ToolDescriptor,
-    ToolResult,
 )
 from agent_core.registry import DESTRUCTIVE_CATEGORIES, ToolRegistry
-
 
 # ---------------------------------------------------------------------------
 # Fixtures

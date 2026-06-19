@@ -1,13 +1,12 @@
 """Core pydantic models for JalaAgent agent-core."""
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
 from pathlib import Path
 from typing import Any, Literal
 from uuid import uuid4
 
 from pydantic import BaseModel, Field
-
 
 # ---------------------------------------------------------------------------
 # Enums
@@ -149,7 +148,7 @@ class ApprovalRequest(BaseModel):
     arguments: dict[str, Any] = Field(default_factory=dict)
     reason: str = ""
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(timezone.utc)
+        default_factory=lambda: datetime.now(UTC)
     )
 
 

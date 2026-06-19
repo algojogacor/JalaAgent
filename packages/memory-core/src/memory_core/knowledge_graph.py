@@ -14,10 +14,9 @@ import hashlib
 import json
 import logging
 import re
-from datetime import datetime, timezone
-from pathlib import Path
-
 import sqlite3
+from datetime import UTC, datetime
+from pathlib import Path
 
 
 def _row_to_dict(row: sqlite3.Row) -> dict:
@@ -79,6 +78,7 @@ class KnowledgeGraph:
         self._db_path = db_path
         self._schema = schema or DEFAULT_SCHEMA
         self._conn: sqlite3.Connection | None = None
+        self._init_lock: "asyncio.Lock | None" = None  # created lazily in _get_conn
 
     async def initialize(self) -> None:
         """Create tables if they don't exist."""
@@ -111,6 +111,23 @@ class KnowledgeGraph:
 
         await asyncio.to_thread(_sync)
 
+    async def _get_conn(self) -> sqlite3.Connection:
+        """Lazy-initialize and return the SQLite connection.
+
+        Uses double-checked locking so multiple concurrent callers
+        only trigger initialization once.
+        """
+        import asyncio as _asyncio
+
+        if self._conn is None:
+            if self._init_lock is None:
+                self._init_lock = _asyncio.Lock()
+            async with self._init_lock:
+                if self._conn is None:  # double-check after acquiring lock
+                    await self.initialize()
+        assert self._conn is not None
+        return self._conn
+
     # ------------------------------------------------------------------
     # Ingestion
     # ------------------------------------------------------------------
@@ -121,17 +138,17 @@ class KnowledgeGraph:
 
         page_id = hashlib.sha256(str(path).encode()).hexdigest()[:16]
         title = path.stem.replace("-", " ").title()
-        now = datetime.now(timezone.utc).isoformat()
+        now = datetime.now(UTC).isoformat()
 
         # Extract entities and relations.
         entities = self._extract_entities(content)
         edges = self._extract_relations(content, entities)
 
+        await self._get_conn()  # ensure initialized
+
         def _sync() -> None:
-            if self._conn is None:
-                raise RuntimeError("Not initialized")
             # Store page.
-            self._conn.execute(
+            self._conn.execute(  # type: ignore[union-attr]
                 "INSERT OR REPLACE INTO pages(id, path, title, content, page_type, indexed_at) VALUES(?,?,?,?,?,?)",
                 (page_id, str(path), title, content, page_type, now),
             )
@@ -165,14 +182,14 @@ class KnowledgeGraph:
         """Traverse the graph from an entity, returning connected nodes."""
         import asyncio
 
+        await self._get_conn()  # ensure initialized
+
         def _sync() -> list[dict]:
-            if self._conn is None:
-                return []
             results: list[dict] = []
             visited: set[str] = set()
 
             # Find starting entity.
-            row = self._conn.execute(
+            row = self._conn.execute(  # type: ignore[union-attr]
                 "SELECT id, name, type FROM entities WHERE name LIKE ? LIMIT 1",
                 (f"%{entity_name}%",),
             ).fetchone()
@@ -206,10 +223,10 @@ class KnowledgeGraph:
         """Search entities by name (keyword match)."""
         import asyncio
 
+        await self._get_conn()  # ensure initialized
+
         def _sync() -> list[dict]:
-            if self._conn is None:
-                return []
-            rows = self._conn.execute(
+            rows = self._conn.execute(  # type: ignore[union-attr]
                 "SELECT * FROM entities WHERE name LIKE ? LIMIT ?",
                 (f"%{query}%", k),
             ).fetchall()
@@ -220,19 +237,20 @@ class KnowledgeGraph:
     async def get_stats(self) -> dict:
         import asyncio
 
+        await self._get_conn()  # ensure initialized
+
         def _sync() -> dict:
-            if self._conn is None:
-                return {}
             return {
-                "pages": self._conn.execute("SELECT COUNT(*) FROM pages").fetchone()[0],
-                "entities": self._conn.execute("SELECT COUNT(*) FROM entities").fetchone()[0],
-                "edges": self._conn.execute("SELECT COUNT(*) FROM edges").fetchone()[0],
+                "pages": self._conn.execute("SELECT COUNT(*) FROM pages").fetchone()[0],  # type: ignore[union-attr]
+                "entities": self._conn.execute("SELECT COUNT(*) FROM entities").fetchone()[0],  # type: ignore[union-attr]
+                "edges": self._conn.execute("SELECT COUNT(*) FROM edges").fetchone()[0],  # type: ignore[union-attr]
             }
 
         return await asyncio.to_thread(_sync)
 
     async def close(self) -> None:
         import asyncio
+
         def _sync() -> None:
             if self._conn:
                 self._conn.close()

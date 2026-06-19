@@ -128,7 +128,8 @@ def _build_registry() -> CommandRegistry:
 
     async def _title(ctx: CommandContext) -> CommandResult:
         t = " ".join(ctx.args) if ctx.args else "Untitled"
-        p = Path.home() / ".jalaagent" / "sessions" / f"{ctx.session_id}.meta.json"
+        sid = ctx.session_id or f"session-{int(time.time())}"
+        p = Path.home() / ".jalaagent" / "sessions" / f"{sid}.meta.json"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps({"title": t, "updated": time.time()}), encoding="utf-8")
         return CommandResult(f"📝 Title set: {t}")
@@ -166,7 +167,7 @@ def _build_registry() -> CommandRegistry:
         mem = Path.home() / ".jalaagent" / "memories" / "MEMORY.md"
         mem_size = len(mem.read_text(encoding="utf-8")) if mem.exists() else 0
         lines = [
-            f"📊 **Session Status**",
+            "📊 **Session Status**",
             f"  Model: `{model}`",
             f"  Tokens: {usage.get('input',0)} in / {usage.get('output',0)} out",
             f"  Skills: {skills} loaded",
@@ -193,7 +194,7 @@ def _build_registry() -> CommandRegistry:
     async def _approve(ctx: CommandContext) -> CommandResult:
         try:
             from agent_core.slash_confirm import resolve
-            result = resolve(ctx.session_id, "once")
+            result = await resolve(ctx.session_id, "once")
             return CommandResult(result or "✅ Approved.")
         except ImportError:
             return CommandResult("✅ Action approved.")
@@ -201,7 +202,7 @@ def _build_registry() -> CommandRegistry:
     async def _deny(ctx: CommandContext) -> CommandResult:
         try:
             from agent_core.slash_confirm import resolve
-            result = resolve(ctx.session_id, "cancel")
+            result = await resolve(ctx.session_id, "cancel")
             return CommandResult(result or "❌ Denied.")
         except ImportError:
             return CommandResult("❌ Action denied.")
@@ -329,37 +330,84 @@ def _build_registry() -> CommandRegistry:
             snaps = sorted(snap_dir.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)[:10]
             return CommandResult("**Snapshots:**\n" + "\n".join(f"  • {s.stem}" for s in snaps) if snaps else "No snapshots.")
         elif action == "create":
-            import json as _json, time as _time
+            import json as _json
+            import time as _time
             snap = {"config": str(ctx.config), "model": ctx.agent_loop.model if ctx.agent_loop else "", "time": _time.time()}
             (snap_dir / f"snap-{int(_time.time())}.json").write_text(_json.dumps(snap, indent=2))
             return CommandResult("📸 Snapshot created.")
         return CommandResult("Usage: /snapshot [list|create]")
 
     async def _personality(ctx: CommandContext) -> CommandResult:
+        import re
+        import yaml as _yaml
+
         name = ctx.args[0] if ctx.args else ""
         pdir = Path.home() / ".jalaagent" / "personalities"
+
+        # ── List available personalities ──
         if not name:
-            files = sorted(pdir.glob("*.yaml")) if pdir.is_dir() else []
-            return CommandResult("**Personalities:**\n" + "\n".join(f"  • {f.stem}" for f in files))
+            items: list[str] = []
+            # 1. Check config.yaml inline personalities.
+            try:
+                cfg = _load_config()
+                inline = cfg.get("personalities", {}).get("inline", {})
+                for n in inline:
+                    items.append(f"  • {n} (config.yaml)")
+            except Exception:
+                pass
+            # 2. Check personality files on disk.
+            if pdir.is_dir():
+                for f in sorted(pdir.glob("*.yaml")):
+                    items.append(f"  • {f.stem} (file)")
+            return CommandResult("**Personalities:**\n" + "\n".join(items) if items else "(none)")
+
         # Prevent path traversal.
-        import re
         if not re.match(r'^[a-zA-Z0-9_-]+$', name):
             return CommandResult("Invalid personality name — use only letters, numbers, hyphens, underscores.")
-        pf = pdir / f"{name}.yaml"
-        if not pf.exists(): return CommandResult(f"Personality '{name}' not found.")
-        import yaml as _yaml
-        data = _yaml.safe_load(pf.read_text(encoding="utf-8"))
-        if ctx.agent_loop: ctx.agent_loop.personality = name
-        if ctx.agent_loop and data.get("system_prompt"):
-            ctx.agent_loop._system_prompt = data["system_prompt"]
-        return CommandResult(f"🎭 Personality: {name} — {data.get('description', '')}")
+
+        prompt: str | None = None
+        desc: str = ""
+
+        # 1. Try config.yaml inline personalities first (Hermes pattern).
+        try:
+            cfg = _load_config()
+            inline = cfg.get("personalities", {}).get("inline", {})
+            if name in inline:
+                prompt = inline[name]
+                desc = f"config.yaml/{name}"
+        except Exception:
+            pass
+
+        # 2. Fall back to YAML files on disk.
+        if prompt is None:
+            pf = pdir / f"{name}.yaml"
+            if pf.exists():
+                data = _yaml.safe_load(pf.read_text(encoding="utf-8"))
+                prompt = data.get("system_prompt", "")
+                desc = data.get("description", "")
+            else:
+                return CommandResult(f"Personality '{name}' not found in config.yaml or {pdir}.")
+
+        if ctx.agent_loop:
+            ctx.agent_loop.personality = name
+            if prompt:
+                ctx.agent_loop._system_prompt = prompt
+        return CommandResult(f"🎭 Personality: {name} — {desc}" if desc else f"🎭 Personality: {name}")
+
+    def _load_config() -> dict[str, Any]:
+        """Lazy import-safe config loader for use in commands."""
+        try:
+            from jala.config import load_config
+            return load_config()
+        except Exception:
+            return {}
 
     async def _fast(ctx: CommandContext) -> CommandResult:
         arg = (ctx.args[0] if ctx.args else "status").lower()
         if arg == "status":
             state = "ON" if (ctx.agent_loop and ctx.agent_loop.fast_mode) else "OFF"
             return CommandResult(f"⚡ Fast mode: {state}")
-        if arg in ("on", "normal"):
+        if arg in ("on", "off", "normal"):
             if ctx.agent_loop: ctx.agent_loop.fast_mode = (arg == "on")
             return CommandResult(f"⚡ Fast mode: {'ON' if arg == 'on' else 'OFF'}")
         return CommandResult("Usage: /fast [on|off|status]")
@@ -386,7 +434,9 @@ def _build_registry() -> CommandRegistry:
             elif arg == "clear" and ctx.agent_loop: ctx.agent_loop.goal = ""; ctx.agent_loop.goal_state = "cleared"
             state = ctx.agent_loop.goal_state if ctx.agent_loop else "cleared"
             goal = ctx.agent_loop.goal if ctx.agent_loop else ""
-            return CommandResult(f"🎯 Goal [{state}]: {goal}" if goal else f"🎯 No goal set.")
+            if arg == "clear":
+                return CommandResult(f"🎯 Goal cleared (state: {state}).")
+            return CommandResult(f"🎯 Goal [{state}]: {goal}" if goal else "🎯 No goal set.")
         text = " ".join(ctx.args)
         if text and ctx.agent_loop: ctx.agent_loop.goal = text
         return CommandResult(f"🎯 Goal set: {ctx.agent_loop.goal if ctx.agent_loop else text}")
@@ -404,7 +454,7 @@ def _build_registry() -> CommandRegistry:
                 return CommandResult("📋 Sub-goal removed.")
             except (ValueError, IndexError): return CommandResult("Invalid index.")
         ctx.agent_loop.add_subgoal(" ".join(ctx.args))
-        return CommandResult(f"📋 Sub-goal added.")
+        return CommandResult("📋 Sub-goal added.")
 
     async def _credits(ctx: CommandContext) -> CommandResult:
         return CommandResult("💰 Credits: check provider dashboard. JalaAgent v2026.6.18 — self-hosted, no billing integration yet.")
@@ -416,7 +466,7 @@ def _build_registry() -> CommandRegistry:
             import json as _json
             data = _json.loads(stats.read_text(encoding="utf-8"))
             return CommandResult(f"📊 **Insights ({days}d)**\n  Sessions: {data.get('sessions',0)}\n  Tokens: {data.get('tokens',0):,}")
-        return CommandResult(f"📊 No stats yet. Run `jala` to start tracking.")
+        return CommandResult("📊 No stats yet. Run `jala` to start tracking.")
 
     async def _profile(ctx: CommandContext) -> CommandResult:
         cfg = Path.home() / ".jalaagent" / "config.yaml"
@@ -426,7 +476,7 @@ def _build_registry() -> CommandRegistry:
             f"  Config: {cfg} ({'✓' if cfg.exists() else '✗'})",
             f"  Auth:   {auth} ({'✓' if auth.exists() else '✗'})",
             f"  Model:  {ctx.agent_loop.model if ctx.agent_loop else '—'}",
-            f"  Mode:   NORMAL",
+            "  Mode:   NORMAL",
         ]
         return CommandResult("\n".join(lines))
 

@@ -1,7 +1,6 @@
 """Tests for agent-core context compaction."""
 
 import pytest
-
 from agent_core.compaction import ContextCompactor
 from agent_core.models import AgentMessage
 

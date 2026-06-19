@@ -6,6 +6,8 @@ older content.
 """
 
 import logging
+from typing import Any
+
 from agent_core.models import AgentMessage, ContentBlock
 
 logger = logging.getLogger(__name__)
@@ -42,6 +44,18 @@ class ContextCompactor:
        structured summary block.
     """
 
+    def __init__(self, token_counter: Any | None = None) -> None:
+        """Initialise with an optional provider token counter.
+
+        Parameters
+        ----------
+        token_counter:
+            A callable ``(messages, system) -> int`` that provides
+            accurate token counts.  If *None*, a character-based
+            heuristic (chars/4) is used as a fallback.
+        """
+        self._token_counter = token_counter
+
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
@@ -51,6 +65,7 @@ class ContextCompactor:
         messages: list[AgentMessage],
         model_context_limit: int,
         threshold: float = 0.8,
+        token_counter: Any | None = None,
     ) -> bool:
         """Check whether compaction should be triggered.
 
@@ -63,13 +78,16 @@ class ContextCompactor:
         threshold:
             Fraction of the context limit at which to trigger compaction
             (default: 0.8).
+        token_counter:
+            Optional callable for accurate token counting.  Falls back
+            to the char/4 heuristic if *None*.
 
         Returns
         -------
         bool
             ``True`` if the estimated token count exceeds the threshold.
         """
-        estimated = ContextCompactor._estimate_tokens(messages)
+        estimated = ContextCompactor._estimate_tokens(messages, token_counter)
         return estimated > int(model_context_limit * threshold)
 
     @staticmethod
@@ -257,12 +275,22 @@ class ContextCompactor:
     # ------------------------------------------------------------------
 
     @staticmethod
-    def _estimate_tokens(messages: list[AgentMessage]) -> int:
-        """Rough token count estimate (chars / 4).
+    def _estimate_tokens(
+        messages: list[AgentMessage],
+        token_counter: Any | None = None,
+    ) -> int:
+        """Token count estimate — uses provider counter when available.
 
-        Real counting is done by the provider's ``count_tokens`` method;
-        this is only a fast heuristic for compaction decisions.
+        If *token_counter* is provided it is called with ``(messages, "")``
+        and the return value is used directly.  Otherwise falls back to the
+        character-count / 4 heuristic.
         """
+        if token_counter is not None:
+            try:
+                return token_counter(messages, "")
+            except Exception:
+                logger.debug("Token counter failed, falling back to heuristic")
+
         total = 0
         for msg in messages:
             if isinstance(msg.content, str):

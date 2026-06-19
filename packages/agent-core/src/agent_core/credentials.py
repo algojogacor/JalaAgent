@@ -6,6 +6,7 @@ import os
 import time
 from collections import defaultdict
 from collections.abc import Callable
+from pathlib import Path
 from typing import Any
 
 logger = logging.getLogger(__name__)
@@ -86,6 +87,55 @@ class CredentialPool:
                 key = key.strip()
                 if key:
                     self.add(provider, key)
+
+    def add_from_auth_json(self, path: str | None = None) -> int:
+        """Bulk-load credentials from a JalaAgent/Hermes auth.json file.
+
+        Handles both key field names: ``key`` (JalaAgent) and ``access_token``
+        (Hermes).  The top-level ``providers`` key is expected; if absent the
+        flat provider→[entries] format is used as a fallback.
+
+        Returns the number of credentials loaded.
+        """
+        import json as _json
+
+        auth_path = Path(path) if path else (
+            Path.home() / ".jalaagent" / "auth.json"
+        )
+        if not auth_path.exists():
+            return 0
+
+        try:
+            data = _json.loads(auth_path.read_text(encoding="utf-8"))
+        except Exception:
+            return 0
+
+        providers = data.get("providers", {})
+        if not providers:
+            # Backward-compat: flat {provider: [entries]} format.
+            providers = {k: v for k, v in data.items() if isinstance(v, list)}
+
+        count = 0
+        for provider, entries in providers.items():
+            for entry in entries:
+                # Normalize key field: accept both "key" and "access_token".
+                key = entry.get("key", "") or entry.get("access_token", "")
+                if not key:
+                    continue
+                metadata = {
+                    "label": entry.get("label", ""),
+                    "priority": entry.get("priority", 1),
+                    "source": entry.get("source", "auth_json"),
+                }
+                self.add(provider, key, metadata)
+                count += 1
+
+        # Apply per-provider strategies from credential_pool config if present.
+        strategies = data.get("credential_pool_strategies", {})
+        for provider, strategy in strategies.items():
+            self.set_strategy(provider, strategy)
+
+        return count
 
     def register_env_resolver(
         self, provider: str, resolver: Callable[[], list[str]]

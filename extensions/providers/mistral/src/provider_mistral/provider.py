@@ -1,8 +1,10 @@
 """Mistral AI provider — OpenAI-compatible SDK."""
 
-import logging, os
+import logging
+import os
 from collections.abc import AsyncGenerator
 from typing import Any
+
 from agent_core.models import AgentMessage, ProviderChunk, ProviderChunkType
 
 logger = logging.getLogger(__name__)

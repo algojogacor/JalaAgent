@@ -1,8 +1,8 @@
 """Tests for Anthropic provider (message/tool conversion, token estimation)."""
 
 import pytest
+from agent_core.models import AgentMessage
 from provider_anthropic.provider import AnthropicProvider
-from agent_core.models import AgentMessage, ToolCall
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 """TopicSessionManager — Telegram multi-session topic routing."""
 
-from pathlib import Path
 import json
+from pathlib import Path
 
 
 class TopicSessionManager:

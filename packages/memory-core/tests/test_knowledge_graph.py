@@ -1,8 +1,8 @@
 """Tests for GBrain-inspired knowledge graph."""
 
-import os
 import tempfile
 from pathlib import Path
+
 import pytest
 from memory_core.knowledge_graph import KnowledgeGraph, sync_brain_repo
 

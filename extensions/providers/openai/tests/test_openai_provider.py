@@ -1,8 +1,8 @@
 """Tests for OpenAI provider (message/tool conversion, token estimation)."""
 
 import pytest
-from provider_openai.provider import OpenAIProvider
 from agent_core.models import AgentMessage, ToolCall
+from provider_openai.provider import OpenAIProvider
 
 
 @pytest.fixture

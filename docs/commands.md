@@ -1,6 +1,6 @@
 # Slash Commands — 46 Total
 
-## Session (7)
+## Session (9)
 | Command | Description |
 |---------|-------------|
 | `/new` | Start new session |
@@ -34,7 +34,7 @@
 | `/blueprint` | Automation templates |
 | `/browser` | Browser management |
 
-## Config (6)
+## Config (9)
 | Command | Description |
 |---------|-------------|
 | `/model <name>` | Switch model |
@@ -47,7 +47,7 @@
 | `/reload_mcp` | Reload MCP |
 | `/curator` | Skill maintenance |
 
-## Info (10)
+## Info (11)
 | Command | Description |
 |---------|-------------|
 | `/help` | Categorized help |

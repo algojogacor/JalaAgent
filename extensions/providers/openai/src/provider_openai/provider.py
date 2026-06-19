@@ -85,12 +85,17 @@ class OpenAIProvider:
     def _convert_tools(tools: list[dict[str, Any]]) -> list[dict[str, Any]]:
         result: list[dict[str, Any]] = []
         for t in tools:
+            schema = t.get("input_schema")
+            if not schema or not isinstance(schema, dict):
+                schema = {"type": "object", "properties": {}}
+            elif "type" not in schema:
+                schema = {"type": "object", "properties": schema}
             result.append({
                 "type": "function",
                 "function": {
                     "name": t["name"],
                     "description": t.get("description", ""),
-                    "parameters": t.get("input_schema", {}),
+                    "parameters": schema,
                 },
             })
         return result
@@ -108,6 +113,11 @@ class OpenAIProvider:
                 content = msg.content
             elif isinstance(msg.content, list):
                 content = " ".join(b.text for b in msg.content if b.text)
+            elif msg.content is None:
+                content = ""
+            else:
+                logger.warning("Unexpected content type %s for message, using str()", type(msg.content).__name__)
+                content = str(msg.content)
             entry: dict[str, Any] = {"role": msg.role, "content": content}
             if msg.tool_call_id:
                 entry["tool_call_id"] = msg.tool_call_id

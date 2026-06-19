@@ -5,13 +5,12 @@ import logging
 import signal
 from typing import Any, Protocol
 
+from agent_core.models import ChunkType
 from rich.console import Console
 from rich.live import Live
 from rich.markdown import Markdown
 from rich.panel import Panel
 from rich.prompt import Confirm
-
-from agent_core.models import ChunkType
 
 logger = logging.getLogger(__name__)
 
@@ -73,12 +72,19 @@ class CLIChannel:
         ))
 
     def _setup_signal_handlers(self) -> None:
+        # Prefer asyncio signal handlers, but they raise NotImplementedError
+        # on Windows.  Fall back to the classic signal.signal() which works
+        # everywhere (the callback is invoked from the main thread on SIGINT).
         try:
             loop = asyncio.get_event_loop()
             for sig in (signal.SIGINT, signal.SIGTERM):
                 loop.add_signal_handler(sig, self._handle_interrupt)
         except NotImplementedError:
-            pass
+            for sig in (signal.SIGINT, signal.SIGTERM):
+                try:
+                    signal.signal(sig, lambda _signum, _frame: self._handle_interrupt())
+                except (ValueError, OSError):
+                    pass
 
     def _handle_interrupt(self) -> None:
         self._running = False
@@ -103,15 +109,23 @@ class CLIChannel:
                     if chunk.type == ChunkType.TEXT and chunk.content:
                         accumulated.append(chunk.content)
                         live.update(Panel(Markdown("".join(accumulated)), title="🤖 JalaAgent", border_style="green"))
+                    elif chunk.type == ChunkType.THINKING and chunk.content:
+                        live.console.print(f"[dim italic]{chunk.content}[/]", end="")
                     elif chunk.type == ChunkType.TOOL_START:
                         live.console.print(f"[dim]🔧 {chunk.content}...[/]")
                     elif chunk.type == ChunkType.TOOL_RESULT:
-                        live.console.print("[dim]✅ Done[/]")
+                        status = "❌" if chunk.metadata and chunk.metadata.get("is_error") else "✅"
+                        live.console.print(f"[dim]{status} Done[/]")
                     elif chunk.type == ChunkType.DONE:
                         break
-                    elif hasattr(chunk.type, 'value') and chunk.type.value == "error":
+                    elif chunk.type == ChunkType.ERROR:
                         error_msg = chunk.content or "Unknown error"
-                        live.update(Panel(f"[red]{error_msg}[/]", title="🤖 JalaAgent — Error", border_style="red"))
+                        live.update(Panel(
+                            f"[red]{error_msg}[/]\n\n"
+                            "[dim]Tip: Run 'jala setup' to configure a provider, "
+                            "or check your API keys in ~/.jalaagent/auth.json[/]",
+                            title="🤖 JalaAgent — Error", border_style="red",
+                        ))
             except Exception as exc:
                 error_msg = str(exc)
                 live.update(Panel(f"[red]Provider error: {exc}[/]\n\n[dim]Run 'jala setup' to configure a working provider, or set a valid API key.[/]", title="🤖 JalaAgent — Error", border_style="red"))

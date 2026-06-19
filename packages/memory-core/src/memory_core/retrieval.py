@@ -76,6 +76,18 @@ class MemoryRetriever:
         self._vector_layer = vector_layer
         self._kg = knowledge_graph
 
+    async def upsert_episode(self, episode: "Episode") -> None:
+        """Index an episode in the vector layer for semantic search.
+
+        Delegates to the underlying ``VectorLayer``.  Errors are logged
+        and silently swallowed — this is a best-effort operation that
+        must never block the caller.
+        """
+        try:
+            await self._vector_layer.upsert_episode(episode)
+        except Exception:
+            logger.exception("Failed to upsert episode %s", episode.id)
+
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------

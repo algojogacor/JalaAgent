@@ -15,6 +15,7 @@ members = [
     "extensions/providers/ollama",
     "extensions/providers/openai",
     "extensions/providers/openrouter",
+    "extensions/providers/universal",
     "cli",
 ]
 
@@ -29,6 +30,15 @@ members = [
 "jalaagent-provider-openai" = { workspace = true }
 "jalaagent-provider-openrouter" = { workspace = true }
 "jalaagent-cli" = { workspace = true }
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+testpaths = [
+    "packages/agent-core/tests",
+    "packages/memory-core/tests",
+    "packages/skill-core/tests",
+    "tests",
+]
 
 [dependency-groups]
 dev = [

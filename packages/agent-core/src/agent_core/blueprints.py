@@ -4,6 +4,7 @@ import re
 import time
 from pathlib import Path
 from typing import Any
+
 import yaml
 
 _DEFAULT_PATH = Path.home() / ".jalaagent" / "blueprints"
@@ -48,4 +49,9 @@ class BlueprintStore:
         if not bp: return f"Blueprint {name} not found."
         text = bp["template"]
         for k, v in params.items(): text = text.replace(f"{{{{{k}}}}}", v)
+        # Warn if template placeholders remain after substitution.
+        remaining = set(re.findall(r"\{\{(\w+)\}\}", text))
+        if remaining:
+            missing = ", ".join(sorted(remaining))
+            text += f"\n\n⚠️ Unresolved parameters: {missing}"
         return text

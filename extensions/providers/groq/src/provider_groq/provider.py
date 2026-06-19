@@ -1,8 +1,10 @@
 """Groq provider — OpenAI-compatible with ultra-fast inference."""
 
-import logging, os
+import logging
+import os
 from collections.abc import AsyncGenerator
 from typing import Any
+
 from agent_core.models import AgentMessage, ProviderChunk, ProviderChunkType
 
 logger = logging.getLogger(__name__)
@@ -40,7 +42,13 @@ class GroqProvider:
     def _build_messages(messages: list[AgentMessage], system: str) -> list[dict]:
         result: list[dict] = [{"role": "system", "content": system}] if system else []
         for msg in messages:
-            result.append({"role": msg.role, "content": msg.content if isinstance(msg.content, str) else ""})
+            content = msg.content if isinstance(msg.content, str) else ""
+            if isinstance(msg.content, list):
+                content = " ".join(b.text for b in msg.content if b.text)
+            entry: dict[str, Any] = {"role": msg.role, "content": content}
+            if msg.tool_call_id:
+                entry["tool_call_id"] = msg.tool_call_id
+            result.append(entry)
         return result
 
     @staticmethod

@@ -160,6 +160,20 @@ D:\JalaAgent\
 | Phase 1 — Wiring Sprint | ✅ Complete | `5b96c5c` |
 | Phase 2 — Production-Ready | ✅ Complete | `eaaa5c4` |
 | Phase 3 — Skill Absorption | ✅ Complete | `a2f27cd` |
+| Phase 4 — Production Hardening | ✅ Complete | `f79d65c` |
+| Phase 5 — Config + Credential System | ✅ Complete | current |
+
+### Phase 5 — Config Expansion + Hermes Parity
+
+- **config.py** expanded from 5 sections to 16 with full Hermes-parity defaults
+- **Shared credential pool** — ONE CredentialPool per agent, bulk loads from auth.json
+- **`add_from_auth_json()`** — bulk loader handling both `key` and `access_token` fields
+- **Inline personalities** — 6 bundled (coder, debugger, researcher, concise, brainstorming, auditor) with config.yaml fallback
+- **AuxiliaryRouter** — task-specific sub-provider routing for compression/dreaming/title_generation/vision
+- **Anthropic prompt caching** — cache_control breakpoints with configurable TTL
+- **Tool loop guardrails** — config-sourced thresholds wired to registry
+- **Tool output limits** — config-sourced max_bytes wired to core_tools
+- **Compaction thresholds** — config-sourced wired via ContextCompactor
 | Phase 4 — Production Hardening | ✅ Complete | `25824b9` |
 
 ### Totals

@@ -4,6 +4,8 @@ import asyncio
 import logging
 from typing import Any
 
+from agent_core.models import ChunkType
+
 from telegram import Update
 from telegram.ext import (
     Application,
@@ -118,7 +120,7 @@ class TelegramChannel:
         if not self._app or not self._app.bot:
             return False
 
-        msg = await self._app.bot.send_message(
+        _ = await self._app.bot.send_message(
             chat_id=chat_id,
             text=(
                 f"⚠️ **Approval Required**\n\n"
@@ -134,7 +136,7 @@ class TelegramChannel:
         self._pending_approvals[action.id] = future
         try:
             result = await asyncio.wait_for(future, timeout=_APPROVAL_TIMEOUT)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             # Fail-closed: auto-deny on timeout. Never auto-approve.
             logger.warning("Approval for %s timed out after %.0fs — auto-deny", action.id, _APPROVAL_TIMEOUT)
             result = False
@@ -155,12 +157,22 @@ class TelegramChannel:
 
         try:
             async for chunk in self._agent_loop.run(text, session_id=str(chat_id)):
-                if hasattr(chunk, "type") and str(chunk.type) == "text" and chunk.content:
+                ctype = str(chunk.type) if hasattr(chunk, "type") else ""
+                if chunk.type == ChunkType.TEXT and chunk.content:
                     accumulated.append(chunk.content)
                     now = asyncio.get_event_loop().time()
                     if now - last_edit >= _EDIT_INTERVAL:
                         await placeholder.edit_text("".join(accumulated))
                         last_edit = now
+                elif chunk.type == ChunkType.THINKING and chunk.content:
+                    # Append reasoning as italic prefix.
+                    accumulated.append(f"\n_{chunk.content}_\n")
+                elif chunk.type == ChunkType.TOOL_START:
+                    accumulated.append(f"\n🔧 {chunk.content}...\n")
+                elif chunk.type == ChunkType.ERROR and chunk.content:
+                    accumulated.append(f"\n❌ {chunk.content}\n")
+                elif chunk.type == ChunkType.DONE:
+                    break
         except Exception as exc:
             logger.exception("Agent loop error")
             await placeholder.edit_text(f"❌ Error: {exc}")

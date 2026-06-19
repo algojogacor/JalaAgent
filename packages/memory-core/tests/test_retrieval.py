@@ -318,6 +318,7 @@ class TestKnowledgeGraphIntegration:
         """Knowledge graph results appear in retrieval when KG is provided."""
         import tempfile as _tempfile
         from pathlib import Path as _Path
+
         from memory_core.knowledge_graph import KnowledgeGraph as _KG
 
         td = _tempfile.mkdtemp()

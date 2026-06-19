@@ -5,6 +5,7 @@ import logging
 import time
 from pathlib import Path
 from typing import Any
+
 import yaml
 
 logger = logging.getLogger(__name__)
@@ -78,9 +79,16 @@ class CronScheduler:
 
 def _cron_match(parts: list[str], now: list[str]) -> bool:
     for i, pat in enumerate(parts):
-        if pat == "*": continue
+        if pat == "*":
+            continue
         if pat.startswith("*/"):
             interval = int(pat[2:])
-            if int(now[i]) % interval != 0: return False
-        elif pat != now[i]: return False
+            if int(now[i]) % interval != 0:
+                return False
+        elif "," in pat:
+            allowed = {v.strip() for v in pat.split(",")}
+            if now[i] not in allowed:
+                return False
+        elif pat != now[i]:
+            return False
     return True

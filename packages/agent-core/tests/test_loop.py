@@ -1,11 +1,9 @@
 """Tests for agent-core conversation loop."""
 
-import asyncio
 from collections.abc import AsyncGenerator
 from typing import Any
 
 import pytest
-
 from agent_core.loop import AgentLoop
 from agent_core.models import (
     ActionCategory,
@@ -18,7 +16,6 @@ from agent_core.models import (
     ToolDescriptor,
 )
 from agent_core.registry import ToolRegistry
-
 
 # ---------------------------------------------------------------------------
 # Mock provider

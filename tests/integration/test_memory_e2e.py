@@ -6,12 +6,11 @@ from pathlib import Path
 from unittest.mock import AsyncMock
 
 import pytest
-
-from memory_core.models import Episode, Fact, MemoryConfig
-from memory_core.file_layer import FileLayer
-from memory_core.vector_layer import VectorLayer
 from memory_core.drift import DriftDetector
+from memory_core.file_layer import FileLayer
+from memory_core.models import Episode, Fact, MemoryConfig
 from memory_core.retrieval import MemoryRetriever
+from memory_core.vector_layer import VectorLayer
 
 
 @pytest.fixture

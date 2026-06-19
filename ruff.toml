@@ -12,11 +12,18 @@ select = [
     "C4",  # flake8-comprehensions
     "SIM", # flake8-simplify
 ]
-ignore = []
+ignore = [
+    "E701",  # allow single-line `if x: do()` idiom (project style)
+    "E702",  # allow semicolons in rare safety guards
+]
 
 [lint.per-file-ignores]
 "__init__.py" = ["F401"]
-"**/tests/**" = ["SIM105", "SIM108"]
+"**/tests/**" = ["SIM105", "SIM108", "E501"]
+"**/providers/**" = ["E501"]
+"cli/src/jala/main.py" = ["E501"]
+"cli/src/jala/config.py" = ["E501"]
+"packages/agent-core/src/agent_core/commands.py" = ["E501"]
 
 [format]
 quote-style = "double"

@@ -347,7 +347,7 @@ class SandboxedShell:
             stdout_bytes, stderr_bytes = await asyncio.wait_for(
                 proc.communicate(), timeout=timeout
             )
-        except asyncio.TimeoutError:
+        except TimeoutError:
             return {
                 "stdout": "", "stderr": f"Command timed out after {timeout}s",
                 "exit_code": -1, "timed_out": True,
@@ -429,7 +429,6 @@ def _apply_hunk(
     """Apply a single hunk to result_lines, adjusting for line count changes."""
     pos = hunk["start"] + offset
     old_idx = 0
-    new_lines: list[str] = []
 
     for action, content in hunk["lines"]:
         if action == " ":  # Context line.
@@ -495,7 +494,7 @@ class BackgroundTaskManager:
         if not task.done() and timeout:
             try:
                 await asyncio.wait_for(task, timeout=timeout)
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 return {"status": "running"}
         if task.done():
             return self._results.get(name, {"status": "running"})

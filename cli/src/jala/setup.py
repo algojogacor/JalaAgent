@@ -27,6 +27,34 @@ def run_setup() -> None:
     provider = Prompt.ask("Default provider", choices=["deepseek", "anthropic", "openai", "openrouter", "ollama", "groq", "mistral"], default=config.get("agent", {}).get("default_provider", "deepseek"))
     default_model = Prompt.ask("Default model", default=config.get("agent", {}).get("default_model", "deepseek-chat"))
 
+    # Collect API key and create auth.json.
+    api_key = Prompt.ask(f"API key for [bold]{provider}[/] (press Enter to skip)", password=True, default="")
+    if api_key.strip():
+        auth_path = Path.home() / ".jalaagent" / "auth.json"
+        auth_path.parent.mkdir(parents=True, exist_ok=True)
+        import json as _json
+        auth_data: dict = {}
+        if auth_path.exists():
+            try:
+                auth_data = _json.loads(auth_path.read_text(encoding="utf-8")) or {}
+            except Exception:
+                pass
+        auth_data.setdefault("providers", {})[provider] = [{"key": api_key.strip(), "priority": 1}]
+        auth_path.write_text(_json.dumps(auth_data, indent=2), encoding="utf-8")
+        try:
+            auth_path.chmod(0o600)
+            auth_path.parent.chmod(0o700)
+        except OSError:
+            pass  # chmod is best-effort on Windows
+        console.print(f"[green]✓ API key saved to {auth_path}[/]")
+    else:
+        console.print(
+            f"[yellow]No API key provided.[/] "
+            f"Set [bold]{provider.upper()}_API_KEY[/] as an env var "
+            f"or add it to [bold]~/.jalaagent/auth.json[/]:\n"
+            f'[dim]{{"{provider}": [{{"key": "sk-your-key", "priority": 1}}]}}[/]'
+        )
+
     # ── Step 3: Telegram ──
     console.print("\n[bold]Step 3: Telegram (optional)[/]")
     use_telegram = Confirm.ask("Set up Telegram bot?", default=False)

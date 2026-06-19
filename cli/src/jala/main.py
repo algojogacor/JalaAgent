@@ -1,10 +1,19 @@
 """JalaAgent CLI — gateway mode, unified commands, channels."""
 
+import sys
+
+# Force UTF-8 on Windows terminals so emoji and Unicode render correctly.
+# Without this, Rich crashes with UnicodeEncodeError on cmd.exe / PowerShell.
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import asyncio
+import logging
 import os
 import subprocess
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import typer
 from rich.console import Console
@@ -12,64 +21,98 @@ from rich.panel import Panel
 from rich.prompt import Confirm
 from rich.table import Table
 
+logger = logging.getLogger(__name__)
+
 app = typer.Typer(name="jala", help="JalaAgent — persistent personal AI agent")
 console = Console()
 _CONFIG_PATH = Path.home() / ".jalaagent" / "config.yaml"
 
 
 def _build_agent(model: str | None = None, plan: bool = False) -> Any:
+    from agent_core.compaction import ContextCompactor
+    from agent_core.core_tools import register_all, wire_harness
+    from agent_core.credentials import CredentialPool
+    from agent_core.harness import BackgroundTaskManager, DiffEditor, PlanMode, SandboxedShell
     from agent_core.loop import AgentLoop
     from agent_core.registry import ToolRegistry
-    from agent_core.core_tools import register_all, wire_harness
-    from agent_core.harness import SandboxedShell, DiffEditor, BackgroundTaskManager, PlanMode
-    from agent_core.credentials import CredentialPool
+    from agent_core.repair import ToolArgRepairer
 
-    registry = ToolRegistry()
-    register_all(registry)
-    sandbox = SandboxedShell(block_dangerous=True)
-    diff_editor = DiffEditor()
-    bg_tasks = BackgroundTaskManager()
-    plan_mode = PlanMode() if plan else None
+    jala_cfg = _load_jala_config()
+
+    # ── ONE shared credential pool for the entire agent ──
     creds = CredentialPool()
-    wire_harness(sandbox=sandbox, diff_editor=diff_editor)
-
+    # Bulk-load from auth.json (handles both "key" and "access_token" fields).
+    loaded = creds.add_from_auth_json()
+    logger.debug("Credential pool: %d keys loaded from auth.json", loaded)
+    # Also load from env vars.
     for prov, env_var in [
         ("anthropic", "ANTHROPIC_API_KEY"), ("openai", "OPENAI_API_KEY"),
-        ("openrouter", "OPENROUTER_API_KEY"), ("gemini", "GEMINI_API_KEY"),
-        ("deepseek", "DEEPSEEK_API_KEY"), ("groq", "GROQ_API_KEY"),
-        ("mistral", "MISTRAL_API_KEY"),
+        ("openrouter", "OPENROUTER_API_KEY"), ("deepseek", "DEEPSEEK_API_KEY"),
+        ("groq", "GROQ_API_KEY"), ("mistral", "MISTRAL_API_KEY"),
     ]:
         creds.add_from_env(prov, env_var)
 
     provider = _pick_provider(model, creds)
+
+    # ── Registry + tools ──
+    registry = ToolRegistry()
+    register_all(registry)
+
+    # Wire config-sourced tool loop guardrails into registry.
+    guardrails = jala_cfg.get("tool_loop_guardrails", {})
+    if guardrails:
+        registry.warn_threshold = guardrails.get("warn_after", {}).get("same_tool_failure", 3)
+        registry.hard_stop_threshold = guardrails.get("hard_stop_after", {}).get("same_tool_failure", 5)
+
+    sandbox = SandboxedShell(block_dangerous=True)
+    diff_editor = DiffEditor()
+    bg_tasks = BackgroundTaskManager()
+    plan_mode = PlanMode() if plan else None
+    wire_harness(sandbox=sandbox, diff_editor=diff_editor)
+
+    # ── Compactor with configured thresholds ──
+    comp_cfg = jala_cfg.get("compression", {})
+    compactor: Any | None = None
+    if comp_cfg.get("enabled", True):
+        compactor = ContextCompactor(token_counter=None)
+
+    # ── Tool repairer ──
+    repairer = ToolArgRepairer()
+
+    # ── Memory (all 4 layers wired) ──
     memory = None
-    skill_loader = None
     try:
         from memory_core.file_layer import FileLayer
-        from memory_core.vector_layer import VectorLayer
-        from memory_core.retrieval import MemoryRetriever
+        from memory_core.knowledge_graph import KnowledgeGraph
         from memory_core.models import MemoryConfig
+        from memory_core.retrieval import MemoryRetriever
+        from memory_core.vector_layer import VectorLayer
         cfg = MemoryConfig()
-        memory = MemoryRetriever(cfg, FileLayer(cfg), VectorLayer(cfg))
-    except Exception: pass
+        file_layer = FileLayer(cfg)
+        vector_layer = VectorLayer(cfg)
+        kg_db = Path.home() / ".jalaagent" / "db" / "graph.db"
+        kg_db.parent.mkdir(parents=True, exist_ok=True)
+        kg = KnowledgeGraph(db_path=kg_db)
+        memory = MemoryRetriever(cfg, file_layer, vector_layer, knowledge_graph=kg)
+    except Exception:
+        logger.debug("Optional subsystem unavailable, continuing without it")
 
+    # ── Skill loader ──
+    skill_loader = None
     try:
         from skill_core.loader import SkillLoader
         skill_loader = SkillLoader()
-    except Exception: pass
+    except Exception:
+        logger.debug("Optional subsystem unavailable, continuing without it")
 
-    # Read fallback providers from config.
-    fallback = []
-    try:
-        cfg = _load_jala_config()
-        fallback = cfg.get("fallback_providers", ["deepseek", "openrouter", "groq", "mistral", "ollama"])
-    except Exception: pass
+    # ── Fallback providers ──
+    fallback = jala_cfg.get("fallback_providers", ["deepseek", "openrouter", "groq", "mistral", "ollama"])
 
     loop = AgentLoop(
         provider=provider, registry=registry, memory_retriever=memory,
         skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
         plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
-        fallback_providers=fallback,
+        fallback_providers=fallback, compactor=compactor, repairer=repairer,
     )
     return loop
 
@@ -80,24 +123,137 @@ def _load_jala_config() -> dict:
     return yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
 
 def _pick_provider(model: str | None, creds: Any) -> Any:
+    """Pick the best provider based on available API keys (env + auth.json)."""
+    import json as _json
+
     model_lower = (model or "").lower()
-    # Prefer DeepSeek (free tier, always available). Only use OpenAI/Anthropic if explicitly configured.
-    if model_lower.startswith("claude") or (os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("DEEPSEEK_API_KEY")):
-        from provider_anthropic.provider import AnthropicProvider
-        return AnthropicProvider(model=model or "claude-sonnet-4-6")
-    if model_lower.startswith("gpt") or model_lower.startswith("o1"):
+
+    # Read auth.json for API keys.
+    auth_keys: dict[str, str] = {}
+    auth_path = Path.home() / ".jalaagent" / "auth.json"
+    if auth_path.exists():
+        try:
+            auth = _json.loads(auth_path.read_text(encoding="utf-8"))
+            for prov, entries in auth.get("providers", {}).items():
+                for e in entries:
+                    k = e.get("key", "") or e.get("access_token", "")
+                    if k:
+                        auth_keys[prov] = k
+                        break
+        except Exception:
+            pass
+
+    # ── Determine requested provider from model string ──
+    requested_provider: str | None = None
+
+    # "provider/model" syntax (e.g. "deepseek/deepseek-chat", "openrouter/anthropic/claude-sonnet-4")
+    if "/" in model_lower:
+        candidate = model_lower.split("/", 1)[0].strip()
+        known = {"anthropic", "openai", "deepseek", "groq", "mistral", "openrouter", "ollama", "google"}
+        if candidate in known:
+            requested_provider = candidate
+
+    # Known model-name prefixes (no slash).
+    if requested_provider is None:
+        if model_lower.startswith("claude-"):
+            requested_provider = "anthropic"
+        elif model_lower.startswith(("gpt-", "o1-", "o3-")):
+            requested_provider = "openai"
+        elif model_lower.startswith("deepseek-"):
+            requested_provider = "deepseek"
+        elif model_lower.startswith("gemini-"):
+            requested_provider = "google"
+
+    # ── Route to the requested provider FIRST (if specified) ──
+    if requested_provider:
+        # Map provider name → (env_var, auth_key, import_path, class_name)
+        routes: dict[str, tuple[str, str, str, str]] = {
+            "anthropic": ("ANTHROPIC_API_KEY", "anthropic", "provider_anthropic.provider", "AnthropicProvider"),
+            "openai": ("OPENAI_API_KEY", "openai", "provider_openai.provider", "OpenAIProvider"),
+            "deepseek": ("DEEPSEEK_API_KEY", "deepseek", "provider_deepseek.provider", "DeepSeekProvider"),
+            "groq": ("GROQ_API_KEY", "groq", "provider_groq.provider", "GroqProvider"),
+            "mistral": ("MISTRAL_API_KEY", "mistral", "provider_mistral.provider", "MistralProvider"),
+            "openrouter": ("OPENROUTER_API_KEY", "openrouter", "provider_openrouter.provider", "OpenRouterProvider"),
+        }
+        if requested_provider in routes:
+            env_var, auth_key, mod_path, cls_name = routes[requested_provider]
+            key = os.environ.get(env_var, "") or auth_keys.get(auth_key, "")
+            if key:
+                try:
+                    import importlib
+                    mod = importlib.import_module(mod_path)
+                    provider_cls = getattr(mod, cls_name)
+                    return provider_cls(api_key=key, model=model)
+                except Exception:
+                    pass  # module unavailable or import failed — fall through
+
+    # ── Fallback chain: priority order ──
+    # Anthropic: env var or model name contains "claude".
+    ak = os.environ.get("ANTHROPIC_API_KEY", "") or auth_keys.get("anthropic", "")
+    if ak or model_lower.startswith("claude"):
+        try:
+            from provider_anthropic.provider import AnthropicProvider
+            return AnthropicProvider(api_key=ak or None, model=model or "claude-sonnet-4-6")
+        except Exception:
+            pass
+
+    # OpenAI.
+    ok = os.environ.get("OPENAI_API_KEY", "") or auth_keys.get("openai", "")
+    if ok and (model_lower.startswith("gpt") or model_lower.startswith("o1")):
         from provider_openai.provider import OpenAIProvider
-        return OpenAIProvider(model=model or "gpt-4o")
-    # Default: universal provider (tries DeepSeek first, falls back through config).
+        return OpenAIProvider(api_key=ok, model=model or "gpt-4o")
+
+    # DeepSeek — check env + auth.json.
+    ds_key = os.environ.get("DEEPSEEK_API_KEY", "") or auth_keys.get("deepseek", "")
+    if ds_key:
+        try:
+            from provider_deepseek.provider import DeepSeekProvider
+            return DeepSeekProvider(api_key=ds_key)
+        except Exception:
+            pass
+
+    # Groq.
+    gr_key = os.environ.get("GROQ_API_KEY", "") or auth_keys.get("groq", "")
+    if gr_key:
+        try:
+            from provider_groq.provider import GroqProvider
+            return GroqProvider(api_key=gr_key)
+        except Exception:
+            pass
+
+    # Mistral.
+    ms_key = os.environ.get("MISTRAL_API_KEY", "") or auth_keys.get("mistral", "")
+    if ms_key:
+        try:
+            from provider_mistral.provider import MistralProvider
+            return MistralProvider(api_key=ms_key)
+        except Exception:
+            pass
+
+    # OpenRouter.
+    or_key = os.environ.get("OPENROUTER_API_KEY", "") or auth_keys.get("openrouter", "")
+    if or_key:
+        try:
+            from provider_openrouter.provider import OpenRouterProvider
+            return OpenRouterProvider(api_key=or_key)
+        except Exception:
+            pass
+
+    # Universal provider (multi-provider, reads auth.json internally).
     try:
-        from provider_universal.provider import OpenAICompatibleProvider  # type: ignore[import-untyped]
-        cfg = _load_jala_config()
-        default_prov = cfg.get("model", {}).get("provider", "deepseek")
-        default_m = cfg.get("model", {}).get("default", "deepseek-chat")
-        return OpenAICompatibleProvider(default_provider=default_prov, default_model=default_m)
+        from provider_universal.provider import OpenAICompatibleProvider
+        return OpenAICompatibleProvider()
     except Exception:
-        from provider_ollama.provider import OllamaProvider
-        return OllamaProvider(model=model or "qwen3:0.6b")
+        pass
+
+    # Last resort: Ollama (local).
+    console.print(
+        "[yellow]No cloud API keys found.[/] "
+        "Falling back to local Ollama ([bold]qwen3:0.6b[/]).\n"
+        "[dim]Make sure Ollama is running. Run 'jala setup' to configure a cloud provider.[/]"
+    )
+    from provider_ollama.provider import OllamaProvider
+    return OllamaProvider(model="qwen3:0.6b")
 
 def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used by dreaming_runner + bg tasks
     """Build a cheaper auxiliary provider for dreaming + background tasks."""
@@ -162,17 +318,8 @@ async def _run_gateway(loop: Any, reg: Any) -> None:
 
 
 def main_cli() -> None:
-    asyncio.run(_main_async())
-
-
-async def _main_async() -> None:
-    loop = _build_agent()
-    if loop._skill_loader:
-        skills = await loop._skill_loader.load_all()
-        for sk in skills:
-            _get_registry_safe().register_skill(sk.slug, sk.frontmatter.description, sk.body)
-    cli = __import__("channel_cli.channel", fromlist=["CLIChannel"]).CLIChannel(command_registry=_get_registry_safe())
-    await cli.run(loop)
+    """Entry point — delegates to typer app for full CLI routing."""
+    app()
 
 
 # ---------------------------------------------------------------------------
@@ -185,7 +332,7 @@ def main(
     model: str = typer.Option(None, "--model", "-m", help="Model"),
     plan: bool = typer.Option(False, "--plan", help="Plan mode"),
     telegram: bool = typer.Option(False, "--telegram", help="Telegram only"),
-    prompt: Optional[str] = typer.Option(None, "--prompt", "-p", help="Single prompt"),
+    prompt: str | None = typer.Option(None, "--prompt", "-p", help="Single prompt"),
 ) -> None:
     if ctx.invoked_subcommand is not None:
         return
@@ -195,23 +342,75 @@ def main(
         has_env = any(os.environ.get(v) for v in ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "DEEPSEEK_API_KEY", "GROQ_API_KEY", "OPENROUTER_API_KEY", "OLLAMA_HOST"])
         auth = Path.home() / ".jalaagent" / "auth.json"
         if not has_env and not auth.exists():
-            console.print("[yellow]First run detected! No config or API keys found.[/]")
-            if Confirm.ask("Run setup wizard now?", default=True):
-                from jala.setup import run_setup
-                run_setup()
-            else:
-                console.print("[dim]Run 'jala setup' later to configure.[/]")
-            return
+            try:
+                console.print("[yellow]First run detected! No config or API keys found.[/]")
+                console.print("[dim]Run 'jala setup' to configure, or set DEEPSEEK_API_KEY / ANTHROPIC_API_KEY.[/]")
+                if sys.stdin.isatty() and Confirm.ask("Run setup wizard now?", default=True):
+                    from jala.setup import run_setup
+                    run_setup()
+            except Exception:
+                pass
+            if not _CONFIG_PATH.exists():
+                console.print("[yellow]Provider may not be configured. Use 'jala setup' first.[/]")
 
     if telegram:
         _start_telegram(model, plan)
         return
     agent_loop = _build_agent(model, plan)
     if prompt:
+        # Intercept slash commands — dispatch through command registry.
+        if prompt.strip().startswith("/"):
+            from agent_core.commands import CommandContext, get_registry
+            console.print(f"[dim]Dispatching slash command: {prompt.strip()}[/]")
+            parts = prompt.strip().split()
+            name = parts[0].lstrip("/").lower()
+            reg = get_registry()
+            cmd = reg.get(name)
+            if cmd is not None:
+                ctx = CommandContext(
+                    channel="cli", args=parts[1:], raw=prompt,
+                    agent_loop=agent_loop,
+                )
+                async def _dispatch():
+                    return await cmd.handler(ctx)
+                result = asyncio.run(_dispatch())
+                if result and result.text:
+                    console.print(result.text)
+                return
+            # Fallback: check skills (matching channel_cli/channel.py dispatch).
+            skills = reg.list_skills()
+            if name in skills:
+                body = reg.get_skill_body(name)
+                skill_prompt = f"<skill name=\"{name}\">\n{body}\n</skill>\n\n{prompt}" if body else prompt
+                console.print(f"[green]Activating skill: {name}[/]")
+                async def _single_skill():
+                    async for chunk in agent_loop.run(skill_prompt):
+                        if chunk.type.value == "text" and chunk.content:
+                            console.print(chunk.content, end="")
+                        elif chunk.type.value == "error" and chunk.content:
+                            console.print(f"\n[red]{chunk.content}[/]")
+                        elif chunk.type.value == "tool_start":
+                            console.print(f"[dim]🔧 {chunk.content}...[/]")
+                        elif chunk.type.value == "tool_result":
+                            status = "❌" if chunk.metadata and chunk.metadata.get("is_error") else "✅"
+                            console.print(f"[dim]{status} Done[/]")
+                asyncio.run(_single_skill())
+                console.print()
+                return
+            console.print(f"[red]Unknown slash command: /{name}. Type /help for list.[/]")
+            return
+
         async def _single():
             async for chunk in agent_loop.run(prompt):
                 if chunk.type.value == "text" and chunk.content:
                     console.print(chunk.content, end="")
+                elif chunk.type.value == "error" and chunk.content:
+                    console.print(f"\n[red]{chunk.content}[/]")
+                elif chunk.type.value == "tool_start":
+                    console.print(f"[dim]🔧 {chunk.content}...[/]")
+                elif chunk.type.value == "tool_result":
+                    status = "❌" if chunk.metadata and chunk.metadata.get("is_error") else "✅"
+                    console.print(f"[dim]{status} Done[/]")
         asyncio.run(_single())
         console.print()
         return
@@ -257,14 +456,14 @@ def setup() -> None:
 def serve(
     host: str = typer.Option("127.0.0.1", "--host", "-h", help="Bind host"),
     port: int = typer.Option(8787, "--port", "-p", help="Bind port"),
-    token: Optional[str] = typer.Option(None, "--token", "-t", help="Auth token"),
+    token: str | None = typer.Option(None, "--token", "-t", help="Auth token"),
 ) -> None:
     """Start JalaAgent as an Anthropic-compatible API server."""
     from jala.server import run_server
     run_server(host=host, port=port, token=token or os.environ.get("JALA_SERVE_TOKEN"))
 
 @app.command()
-def memory(action: str = typer.Argument("inspect"), query: Optional[str] = typer.Argument(None)) -> None:
+def memory(action: str = typer.Argument("inspect"), query: str | None = typer.Argument(None)) -> None:
     mem = Path.home() / ".jalaagent" / "memories" / "MEMORY.md"
     if action == "search" and query:
         if mem.exists():
@@ -275,36 +474,97 @@ def memory(action: str = typer.Argument("inspect"), query: Optional[str] = typer
         console.print(Panel(mem.read_text(encoding="utf-8") if mem.exists() else "(empty)", title="MEMORY.md"))
 
 @app.command()
-def skills(action: str = typer.Argument("list"), name: Optional[str] = typer.Argument(None)) -> None:
+def skills(action: str = typer.Argument("list"), name: str | None = typer.Argument(None)) -> None:
+    from skill_core.loader import SkillLoader
+
+    async def _load():
+        return await SkillLoader().load_all()
+
     if action == "list":
-        from skill_core.loader import SkillLoader
-        async def _l(): return await SkillLoader().load_all()
-        sk = asyncio.run(_l())
-        table = Table(title=f"Skills ({len(sk)} loaded)"); table.add_column("Name"); table.add_column("Desc"); table.add_column("Source")
-        for s in sk: table.add_row(s.slug, s.frontmatter.description[:60], s.source.value)
+        sk = asyncio.run(_load())
+        table = Table(title=f"Skills ({len(sk)} loaded)")
+        table.add_column("Name"); table.add_column("Desc"); table.add_column("Source")
+        for s in sk:
+            table.add_row(s.slug, s.frontmatter.description[:60], s.source.value)
         console.print(table)
     elif action == "info" and name:
-        from skill_core.loader import SkillLoader
         async def _i():
-            skills = await SkillLoader().load_all()
+            skills = await _load()
             for s in skills:
                 if s.slug == name:
                     console.print(Panel(s.body[:2000], title=f"{s.slug}"))
                     return
             console.print(f"[red]Not found: {name}[/]")
         asyncio.run(_i())
+    elif action == "manifest":
+        from pathlib import Path as _Path
+        manifest_path = _Path(__file__).resolve().parents[3] / "SKILLS_MANIFEST.md"
+        if manifest_path.exists():
+            console.print(manifest_path.read_text(encoding="utf-8")[:5000])
+        else:
+            console.print("[dim]SKILLS_MANIFEST.md not found — run 'jala skills list' to see loaded skills.[/]")
+    elif action == "audit":
+        from pathlib import Path as _Path
+        audit_path = _Path(__file__).resolve().parents[3] / "AUDIT.md"
+        if audit_path.exists():
+            console.print(audit_path.read_text(encoding="utf-8")[:3000])
+        else:
+            console.print("[dim]AUDIT.md not found.[/]")
+    else:
+        console.print(f"[yellow]Unknown action: {action}. Try: list, info <name>, manifest, audit[/]")
 
 @app.command()
-def mcp(action: str = typer.Argument("list"), server: Optional[str] = typer.Argument(None)) -> None:
+def mcp(action: str = typer.Argument("list"), server: str | None = typer.Argument(None)) -> None:
     if action == "list": console.print("[dim]Base MCP: filesystem, shell, fetch[/]")
 
 @app.command()
 def dream() -> None:
-    console.print("[cyan]🌙 Dreaming triggered...[/]")
+    """Trigger the dreaming pipeline manually."""
+    console.print("[cyan]🌙 Dreaming pipeline triggered...[/]")
+    try:
+        loop = _build_agent()
+        if loop._memory:
+            async def _run():
+                from memory_core.dreaming_runner import DreamingRunner
+                if hasattr(loop._memory, '_file_layer') and hasattr(loop._memory, '_vector_layer'):
+                    runner = DreamingRunner(
+                        config=loop._memory.config,
+                        file_layer=loop._memory._file_layer,
+                        vector_layer=loop._memory._vector_layer,
+                        provider=loop._provider,
+                    )
+                    report = await runner.run_once()
+                    console.print(
+                        f"[green]✅ Dream complete:[/] "
+                        f"{report.light_sleep_signals} signals, "
+                        f"{report.rem_patterns} patterns, "
+                        f"{report.deep_sleep_promotions} promoted"
+                    )
+                else:
+                    console.print("[yellow]Memory layers not fully wired — dream skipped.[/]")
+            asyncio.run(_run())
+        else:
+            console.print("[yellow]Memory subsystem not available.[/]")
+    except Exception as exc:
+        console.print(f"[red]Dream failed: {exc}[/]")
 
 @app.command()
 def config() -> None:
-    editor = os.environ.get("EDITOR", "notepad")
-    _CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    if not _CONFIG_PATH.exists(): _CONFIG_PATH.write_text("# JalaAgent config\n", encoding="utf-8")
-    subprocess.run([editor, str(_CONFIG_PATH)], check=False)
+    """Show or edit JalaAgent configuration."""
+    config_path = Path.home() / ".jalaagent" / "config.yaml"
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    if not config_path.exists():
+        config_path.write_text("# JalaAgent configuration\n", encoding="utf-8")
+
+    # In non-TTY or if no editor, just display the config.
+    editor = os.environ.get("EDITOR", "")
+    if not editor or not sys.stdin.isatty():
+        console.print(Panel(
+            config_path.read_text(encoding="utf-8") or "(empty)",
+            title=str(config_path),
+            border_style="cyan",
+        ))
+        console.print(f"[dim]Edit with: {editor or 'notepad'} {config_path}[/]")
+        return
+
+    subprocess.run([editor, str(config_path)], check=False)

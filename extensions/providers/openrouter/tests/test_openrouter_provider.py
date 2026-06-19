@@ -1,8 +1,8 @@
 """Tests for OpenRouter provider (message/tool conversion, token estimation)."""
 
 import pytest
-from provider_openrouter.provider import OpenRouterProvider
 from agent_core.models import AgentMessage
+from provider_openrouter.provider import OpenRouterProvider
 
 
 @pytest.fixture

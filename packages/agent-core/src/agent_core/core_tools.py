@@ -7,7 +7,6 @@ Wired with SandboxedShell and DiffEditor when available.
 """
 
 import asyncio
-import difflib
 import os
 import tempfile
 from pathlib import Path
@@ -17,7 +16,16 @@ import httpx
 
 logger = __import__("logging").getLogger(__name__)
 
-_MAX_RESULT = 50000
+def _get_max_result() -> int:
+    """Read tool_output.max_bytes from config, or return default."""
+    try:
+        from jala.config import load_config
+        cfg = load_config()
+        return cfg.get("tool_output", {}).get("max_bytes", 50000)
+    except Exception:
+        return 50000
+
+_MAX_RESULT = 50000  # Fallback; _get_max_result() used at runtime.
 
 # Module-level harness references — set by CLI during wiring.
 _sandbox: Any = None
@@ -42,7 +50,8 @@ async def tool_read_file(args: dict[str, Any]) -> str:
     if not path.exists():
         return f"Error: file not found: {path}"
     content = await asyncio.to_thread(path.read_text, encoding="utf-8", errors="replace")
-    if len(content) > _MAX_RESULT:
+    limit = _get_max_result()
+    if len(content) > limit:
         tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False, encoding="utf-8")
         tmp.write(content)
         tmp.close()
@@ -71,10 +80,17 @@ async def tool_patch_file(args: dict[str, Any]) -> str:
         if not success:
             return "Error: file has changed since diff was generated (drift detected)"
         return f"Patched {path}"
-    # Fallback.
+    # Fallback: apply unified diff using our own parser (difflib.restore
+    # was removed in Python 3.13).  Uses the same hunk-application logic
+    # as DiffEditor in harness.py.
+    from agent_core.harness import _apply_hunk, _parse_unified_diff
     original = await asyncio.to_thread(path.read_text, encoding="utf-8") if path.exists() else ""
-    patched = difflib.restore(diff_text.splitlines(True), 1)
-    result = "".join(patched)
+    result_lines = original.splitlines(True)
+    hunks = _parse_unified_diff(diff_text)
+    offset = 0
+    for hunk in hunks:
+        result_lines, offset = _apply_hunk(result_lines, hunk, offset)
+    result = "".join(result_lines)
     tmp = path.parent / f".{path.name}.tmp"
     await asyncio.to_thread(tmp.write_text, result, encoding="utf-8")
     os.replace(tmp, path)
@@ -123,7 +139,7 @@ async def tool_shell(args: dict[str, Any]) -> str:
         if stderr:
             result += "\n[stderr]\n" + stderr.decode("utf-8", errors="replace")
         return result or "(no output)"
-    except asyncio.TimeoutError:
+    except TimeoutError:
         return f"Command timed out after {timeout}s"
 
 
@@ -161,10 +177,29 @@ async def tool_memory(args: dict[str, Any]) -> str:
         return "(no memory yet)"
     elif action == "write":
         content = args.get("content", "")
-        mem_path.parent.mkdir(parents=True, exist_ok=True)
-        existing = await asyncio.to_thread(mem_path.read_text, encoding="utf-8") if mem_path.exists() else ""
-        await asyncio.to_thread(mem_path.write_text, existing + "\n" + content, encoding="utf-8")
-        return f"Memory updated: {content[:100]}..."
+        # Write to staging area to preserve frozen snapshot pattern.
+        # MEMORY.md is never mutated mid-session — writes go to pending/
+        # and are reviewed/merged post-session by the dreaming pipeline.
+        pending_dir = Path.home() / ".jalaagent" / "memories" / "pending"
+        pending_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            pending_dir.chmod(0o700)
+        except OSError:
+            pass  # best-effort on Windows
+        import time as _time
+        ts = _time.strftime("%Y%m%d-%H%M%S")
+        pending_path = pending_dir / f"memory-write-{ts}.md"
+        await asyncio.to_thread(
+            pending_path.write_text,
+            f"# Pending memory write ({ts})\n\n{content}\n",
+            encoding="utf-8",
+        )
+        try:
+            pending_path.chmod(0o600)
+        except OSError:
+            pass  # best-effort on Windows
+        logger.info("Memory write queued to %s (frozen snapshot preserved)", pending_path)
+        return f"Memory write queued for post-session review: {pending_path.name} — {content[:100]}..."
     elif action == "search":
         query = args.get("query", "").lower()
         if mem_path.exists():
@@ -226,7 +261,7 @@ async def tool_claude_code(args: dict[str, Any]) -> str:
     prompt = args["prompt"]
     files = args.get("files", [])
     max_turns = args.get("max_turns", 50)
-    worktree_path = args.get("worktree", None)
+    worktree_path = args.get("worktree")
     cwd = worktree_path or "."
 
     env = {
@@ -251,7 +286,7 @@ async def tool_claude_code(args: dict[str, Any]) -> str:
         return out or "(no output — claude may not be installed: pip install claude-code)"
     except FileNotFoundError:
         return "Error: claude CLI not found. Install: `npm install -g @anthropic-ai/claude-code` or `pip install claude-code`"
-    except asyncio.TimeoutError:
+    except TimeoutError:
         return f"Claude Code timed out after {args.get('timeout', 300)}s."
 
 

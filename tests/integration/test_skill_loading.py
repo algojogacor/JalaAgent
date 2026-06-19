@@ -1,12 +1,10 @@
 """Verify all bundled skills load without errors."""
 
-import os
-import pytest
-from pathlib import Path
-from skill_core.loader import SkillLoader
-
-
 import asyncio
+from pathlib import Path
+
+import pytest
+from skill_core.loader import SkillLoader
 from skill_core.models import SkillSource
 
 

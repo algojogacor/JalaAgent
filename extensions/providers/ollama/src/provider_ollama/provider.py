@@ -6,7 +6,6 @@ from collections.abc import AsyncGenerator
 from typing import Any
 
 import httpx
-
 from agent_core.models import (
     AgentMessage,
     ProviderChunk,
@@ -135,7 +134,8 @@ class OllamaProvider:
                 content = msg.content
             elif isinstance(msg.content, list):
                 content = " ".join(b.text for b in msg.content if b.text)
-            result.append({"role": msg.role, "content": content})
+            result.append({"role": msg.role, "content": content,
+                           **({"tool_call_id": msg.tool_call_id} if msg.tool_call_id else {})})
         return result
 
     @staticmethod

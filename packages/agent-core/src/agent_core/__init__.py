@@ -1,5 +1,18 @@
 """JalaAgent Agent Core — agent loop, provider abstraction, tool registry, credentials."""
 
+from agent_core.compaction import ContextCompactor
+from agent_core.errors import (
+    APIErrorClassifier,
+    AuthError,
+    ContentPolicyError,
+    ContextTooLongError,
+    JalaAgentError,
+    RateLimitError,
+    RetryPolicy,
+    TimeoutError,
+    ToolLoopError,
+    TransientError,
+)
 from agent_core.harness import (
     BackgroundTaskManager,
     DiffEditor,
@@ -7,11 +20,11 @@ from agent_core.harness import (
     SandboxedShell,
     WorktreeIsolation,
 )
+from agent_core.loop import AgentLoop
 
 # Credential pool and core tools available via direct import:
 #   from agent_core.credentials import CredentialPool
 #   from agent_core.core_tools import register_all
-
 from agent_core.models import (
     ActionCategory,
     AgentChunk,
@@ -30,20 +43,6 @@ from agent_core.models import (
     ToolResult,
 )
 from agent_core.registry import DESTRUCTIVE_CATEGORIES, ToolRegistry
-from agent_core.loop import AgentLoop
-from agent_core.compaction import ContextCompactor
-from agent_core.errors import (
-    APIErrorClassifier,
-    AuthError,
-    ContentPolicyError,
-    ContextTooLongError,
-    JalaAgentError,
-    RateLimitError,
-    RetryPolicy,
-    TimeoutError,
-    ToolLoopError,
-    TransientError,
-)
 
 __all__ = [
     # models

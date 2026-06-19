@@ -9,13 +9,13 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+from agent_core.errors import ToolLoopError
 from agent_core.models import (
     ActionCategory,
     LoopConfig,
     ToolDescriptor,
     ToolResult,
 )
-from agent_core.errors import ToolLoopError
 from agent_core.policy import PolicyPipeline
 
 logger = logging.getLogger(__name__)

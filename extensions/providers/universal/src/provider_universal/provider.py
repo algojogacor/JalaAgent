@@ -14,7 +14,6 @@ from typing import Any
 
 import httpx
 import yaml
-
 from agent_core.credentials import CredentialPool
 from agent_core.models import AgentMessage, ProviderChunk, ProviderChunkType, ToolCall
 
@@ -190,11 +189,19 @@ class OpenAICompatibleProvider:
         return result
 
     def _load_keys_into_pool(self) -> None:
-        for provider, keys in self._auth.items():
+        # auth.json has a top-level "providers" key mapping provider → [keys].
+        providers = self._auth.get("providers", {})
+        if not providers:
+            # Backward-compat: auth.json might be flat provider → [keys].
+            providers = {k: v for k, v in self._auth.items() if isinstance(v, list)}
+        for provider, keys in providers.items():
             for entry in keys:
                 key = entry.get("key", "")
                 if key:
-                    self._pool.add(provider, key, {"label": entry.get("label", ""), "priority": entry.get("priority", 1)})
+                    self._pool.add(provider, key, {
+                        "label": entry.get("label", ""),
+                        "priority": entry.get("priority", 1),
+                    })
 
     # ------------------------------------------------------------------
     # Message + tool conversion
@@ -207,6 +214,8 @@ class OpenAICompatibleProvider:
             result.append({"role": "system", "content": system})
         for msg in messages:
             content = msg.content if isinstance(msg.content, str) else ""
+            if isinstance(msg.content, list):
+                content = " ".join(b.text for b in msg.content if b.text)
             entry: dict[str, Any] = {"role": msg.role, "content": content}
             if msg.tool_call_id:
                 entry["tool_call_id"] = msg.tool_call_id
