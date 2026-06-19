@@ -33,7 +33,7 @@ JalaAgent is a persistent personal AI agent that lives on your machine, remember
 
 ```bash
 git clone https://github.com/algojogacor/JalaAgent
-cd JalaAgent/jalaagent && uv sync
+cd JalaAgent && uv sync
 uv run jala setup   # Interactive wizard
 uv run jala         # Start chatting
 uv run jala gateway # CLI + Telegram

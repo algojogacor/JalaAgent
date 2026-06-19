@@ -3,7 +3,7 @@
 ## Getting Started
 ```bash
 git clone https://github.com/algojogacor/JalaAgent
-cd JalaAgent/jalaagent && uv sync
+cd JalaAgent && uv sync
 ```
 
 ## Development

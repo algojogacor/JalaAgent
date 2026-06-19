@@ -6,7 +6,7 @@ Thanks for contributing! Here's how to get started.
 
 ```bash
 git clone https://github.com/algojogacor/JalaAgent
-cd JalaAgent/jalaagent
+cd JalaAgent
 uv sync
 uv run pytest  # 336 tests should pass
 ```

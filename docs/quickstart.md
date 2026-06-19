@@ -8,7 +8,7 @@
 
 ```bash
 git clone https://github.com/algojogacor/JalaAgent
-cd JalaAgent/jalaagent
+cd JalaAgent
 uv sync
 ```
 
