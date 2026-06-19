@@ -19,15 +19,12 @@ JalaAgent is a persistent personal AI agent that lives on your machine, remember
 
 ## Why JalaAgent?
 
-| | Hermes | OpenClaw | **JalaAgent** |
-|---|--------|----------|:---:|
-| Language | Python | TypeScript | **Python 3.12+** |
-| Architecture | Monolithic 650K-line core | 16K+ files | **82 files, clean** |
-| Memory | File-only | Multi-backend | **4-layer hybrid** |
-| Dreaming | None | Cron-based | **Built-in asyncio** |
-| Skills | 19 bundled | Via ClawHub | **67 bundled** |
-| Credentials | .env + proxy | Per-plugin | **auth.json + pool** |
-| Providers | 5 modes | 40+ plugins | **Universal 16+ APIs** |
+- **Clean architecture**: 82 Python files vs typical agent monoliths
+- **Python-native**: No TypeScript, no Node.js required
+- **Built-in dreaming**: Automatic memory consolidation via cron
+- **4-layer hybrid memory**: File + vector + knowledge graph + dreaming pipeline
+- **Skill system**: 67 bundled skills, extensible via SKILL.md
+- **Credential pool**: Multi-key rotation with fallback chain
 
 ## Quick Start
 
