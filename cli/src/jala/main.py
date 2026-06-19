@@ -14,6 +14,7 @@ setup_import_paths()
 import asyncio
 import logging
 import os
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -463,3 +464,111 @@ def config_get(key: str = typer.Argument(...)) -> None:
             console.print(f"[red]Cannot traverse '{part}'[/]")
             return
     console.print(cfg if cfg is not None else "[dim](not set)[/]")
+
+# ---------------------------------------------------------------------------
+# Session search
+# ---------------------------------------------------------------------------
+
+@app.command(name="sessions")
+def sessions_cmd(query: str = typer.Argument(None, help="Search query")) -> None:
+    """Search past session transcripts via FTS5."""
+    if not query:
+        # List recent sessions.
+        p = Path.home() / ".jalaagent" / "memories" / "sessions"
+        files = sorted(p.glob("*.jsonl"), key=lambda f: f.stat().st_mtime, reverse=True)[:15] if p.is_dir() else []
+        if not files:
+            console.print("[dim]No sessions yet.[/]")
+            return
+        console.print(f"[bold]Recent Sessions ({len(files)})[/]")
+        for i, f in enumerate(files, 1):
+            stat = f.stat()
+            dt = datetime.fromtimestamp(stat.st_mtime)
+            kb = stat.st_size / 1024
+            console.print(f"  {i}. {f.stem} — {dt.strftime('%Y-%m-%d %H:%M')} ({kb:.0f} KB)")
+        console.print("\n[dim]Use `jala sessions \"query\"` to search.[/]")
+        return
+
+    try:
+        from memory_core.session_search import search_sessions
+        results = search_sessions(query)
+    except Exception as exc:
+        console.print(f"[red]Session search failed: {exc}[/]")
+        return
+
+    if not results:
+        console.print(f"[dim]No sessions matching \"{query}\".[/]")
+        return
+
+    console.print(f"[bold]{len(results)} result(s) for \"{query}\":[/]\n")
+    for r in results:
+        console.print(Panel(
+            r["snippet"],
+            title=f"{r['date'][:16] or r['id']}",
+            border_style="cyan",
+        ))
+
+# ---------------------------------------------------------------------------
+# Credential health dashboard
+# ---------------------------------------------------------------------------
+
+@app.command(name="credentials")
+def credentials_cmd() -> None:
+    """Show credential pool health dashboard."""
+    try:
+        from agent_core.credentials import CredentialPool
+        pool = CredentialPool()
+        # Load keys from auth.json + env vars.
+        pool.add_from_auth_json()
+        for prov, env_var in [
+            ("anthropic", "ANTHROPIC_API_KEY"), ("openai", "OPENAI_API_KEY"),
+            ("openrouter", "OPENROUTER_API_KEY"), ("deepseek", "DEEPSEEK_API_KEY"),
+            ("groq", "GROQ_API_KEY"), ("mistral", "MISTRAL_API_KEY"),
+            ("qwen", "DASHSCOPE_API_KEY"),
+        ]:
+            pool.add_from_env(prov, env_var)
+
+        async def _status():
+            return await pool.status()
+        health = asyncio.run(_status())
+    except Exception as exc:
+        console.print(f"[red]Credential pool unavailable: {exc}[/]")
+        return
+
+    if not health:
+        console.print("[dim]No credentials configured. Run 'jala setup' or set API key env vars.[/]")
+        return
+
+    table = Table(title="Credential Health", border_style="cyan")
+    table.add_column("Provider")
+    table.add_column("Keys")
+    table.add_column("Healthy")
+    table.add_column("Failures")
+    table.add_column("Status")
+
+    for prov, info in sorted(health.items()):
+        total = info.get("total", 0)
+        healthy_count = info.get("healthy", 0)
+        creds = info.get("credentials", [])
+
+        total_failures = sum(c.get("failures", 0) for c in creds)
+        has_unhealthy = any(not c.get("healthy", True) for c in creds)
+
+        if total > 0 and healthy_count == total:
+            status_icon = "[green]▶ all healthy[/]"
+        elif total > 0 and healthy_count > 0:
+            status_icon = "[yellow]⚠ partial[/]"
+        elif total > 0:
+            status_icon = "[red]✗ all cooled[/]"
+        else:
+            status_icon = "[dim]—[/]"
+
+        table.add_row(
+            prov,
+            str(total),
+            f"[green]{healthy_count}[/]" if healthy_count > 0 else str(healthy_count),
+            f"[red]{total_failures}[/]" if total_failures > 0 else str(total_failures),
+            status_icon,
+        )
+
+    console.print(table)
+    console.print("[dim]Manage keys: ~/.jalaagent/auth.json[/]")

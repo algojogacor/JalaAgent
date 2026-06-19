@@ -304,6 +304,7 @@ def _build_registry() -> CommandRegistry:
         current_provider = getattr(loop, "_provider", None)
         prov_name = getattr(current_provider, "__class__.__name__", "unknown")
 
+        # ── No input, no --picker flag → auto-show picker on interactive channels ──
         if not model_input and not show_picker:
             providers = catalog.list_providers()
             provider_info: dict[str, int] = {}
@@ -313,24 +314,16 @@ def _build_registry() -> CommandRegistry:
                 except Exception:
                     provider_info[prov] = 0
 
-            # If Telegram channel, show interactive picker automatically.
-            if ctx.channel == "telegram" and not model_input:
+            # Telegram and CLI both auto-show the interactive picker.
+            if ctx.channel in ("telegram", "cli"):
                 return CommandResult(
                     "",
                     keyboard={"type": "model_picker", "providers": provider_info},
                     action="show_model_picker",
                 )
 
-            return CommandResult(
-                f"⚙ **Model Configuration**\n\n"
-                f"Current model: `{current_model}`\n"
-                f"Provider: {prov_name}\n\n"
-                f"Use `/model <name>` to switch, or `/model --picker` for interactive selection.\n"
-                f"Flags: `--save` (persist), `--refresh` (fetch latest models)"
-            )
-
-        # ── Interactive picker requested ──
-        if show_picker or (ctx.channel == "telegram" and not model_input):
+        # ── Interactive picker explicitly requested (legacy --picker flag) ──
+        if show_picker:
             providers = catalog.list_providers()
             provider_info = {}
             for prov in providers:
