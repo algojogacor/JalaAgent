@@ -11,6 +11,7 @@ members = [
     "packages/skill-core",
     "extensions/channels/cli",
     "extensions/channels/telegram",
+    "extensions/channels/whatsapp",
     "extensions/providers/anthropic",
     "extensions/providers/ollama",
     "extensions/providers/openai",
@@ -25,6 +26,7 @@ members = [
 "jalaagent-skill-core" = { workspace = true }
 "jalaagent-channel-cli" = { workspace = true }
 "jalaagent-channel-telegram" = { workspace = true }
+"jalaagent-channel-whatsapp" = { workspace = true }
 "jalaagent-provider-anthropic" = { workspace = true }
 "jalaagent-provider-ollama" = { workspace = true }
 "jalaagent-provider-openai" = { workspace = true }

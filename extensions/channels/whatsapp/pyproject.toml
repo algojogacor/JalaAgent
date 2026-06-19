@@ -1,0 +1,24 @@
+[project]
+name = "jalaagent-channel-whatsapp"
+version = "2026.6.18"
+description = "WhatsApp channel for JalaAgent — async messaging via Baileys bridge"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.0",
+    "jalaagent-agent-core",
+    "jalaagent-memory-core",
+    "aiohttp>=3.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/channel_whatsapp"]
