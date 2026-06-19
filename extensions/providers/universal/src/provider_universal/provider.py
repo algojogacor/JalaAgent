@@ -191,7 +191,7 @@ class OpenAICompatibleProvider:
                 for key in val.split(","):
                     key = key.strip()
                     if key:
-                        result.setdefault(prov, []).append(
+                        result.setdefault("providers", {}).setdefault(prov, []).append(
                             {"key": key, "label": f"env:{env_var}", "priority": 1})
         return result
 
