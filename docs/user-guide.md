@@ -143,6 +143,9 @@ Full Hermes-parity `~/.jalaagent/config.yaml` with 8 blocks:
 
 See [Configuration](configuration.md) for complete reference.
 
+View your config: `jala config-show`
+Get a specific value: `jala config-get model.provider`
+
 ---
 
 ## Troubleshooting
