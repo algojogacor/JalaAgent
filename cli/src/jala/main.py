@@ -436,8 +436,43 @@ def skills(action: str = typer.Argument("list"), name: str | None = typer.Argume
             console.print(audit_path.read_text(encoding="utf-8")[:3000])
         else:
             console.print("[dim]AUDIT.md not found.[/]")
+    elif action == "validate" and name:
+        from skill_core.scanner import SkillScanner
+        from skill_core.loader import _parse_frontmatter
+        from skill_core.models import SkillFrontmatter, Verdict
+
+        skill_path = Path(name)
+        if not skill_path.exists():
+            console.print(f"[red]File not found: {skill_path}[/]")
+            raise typer.Exit(1)
+
+        raw = skill_path.read_text(encoding="utf-8")
+        fm_dict, body = _parse_frontmatter(raw)
+
+        # Frontmatter validation
+        try:
+            fm = SkillFrontmatter(**fm_dict)
+            console.print(f"[green]✓ Frontmatter valid[/]")
+        except Exception as e:
+            console.print(f"[red]✗ Frontmatter error: {e}[/]")
+            raise typer.Exit(1)
+
+        # Security scan
+        scanner = SkillScanner()
+        result = asyncio.run(scanner.scan(raw))
+        if result.verdict == Verdict.BLOCK:
+            console.print(f"[red]✗ Security: BLOCKED[/]")
+        elif result.verdict == Verdict.WARN:
+            console.print(f"[yellow]⚠ Security: WARN[/]")
+        else:
+            console.print(f"[green]✓ Security: ALLOW[/]")
+
+        for f in result.findings:
+            console.print(f"  [{f.severity.value}] L{f.line}: {f.excerpt[:100]}")
+
+        console.print(f"\n[green]✓ {fm.name} v{fm.version} valid[/]")
     else:
-        console.print(f"[yellow]Unknown action: {action}. Try: list, info <name>, manifest, audit[/]")
+        console.print(f"[yellow]Unknown action: {action}. Try: list, info <name>, manifest, audit, validate <path>[/]")
 
 @app.command()
 def mcp(action: str = typer.Argument("list"), server: str | None = typer.Argument(None)) -> None:
