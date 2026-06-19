@@ -41,16 +41,16 @@ uv run jala serve   # API server (use with Claude Code)
 
 | Doc | Description |
 |-----|-------------|
-| [Quickstart](docs/quickstart.md) | 5-minute setup |
-| [User Guide](docs/user-guide.md) | Manual book |
-| [Architecture](docs/architecture.md) | Full architecture |
-| [Memory System](docs/memory.md) | 4-layer hybrid memory |
-| [Skills Catalog](docs/skills.md) | All 65 skills |
-| [Commands Reference](docs/commands.md) | 46 slash commands |
-| [Providers](docs/providers.md) | 16+ provider setup |
-| [Configuration](docs/configuration.md) | config.yaml reference |
-| [API Reference](docs/api-reference.md) | Python API |
-| [Contributing](docs/contributing-guide.md) | How to contribute |
+| [Quickstart](docs/guide/quickstart.md) | 5-minute setup |
+| [User Guide](docs/guide/user-guide.md) | Manual book |
+| [Architecture](docs/reference/architecture.md) | Full architecture |
+| [Memory System](docs/reference/memory.md) | 4-layer hybrid memory |
+| [Skills Catalog](docs/guide/skills.md) | All 65 skills |
+| [Commands Reference](docs/guide/commands.md) | 46 slash commands |
+| [Providers](docs/guide/providers.md) | 16+ provider setup |
+| [Configuration](docs/guide/configuration.md) | config.yaml reference |
+| [API Reference](docs/reference/api-reference.md) | Python API |
+| [Contributing](docs/contributing.md) | How to contribute |
 | [Roadmap](docs/roadmap.md) | What's next |
 
 ## License
