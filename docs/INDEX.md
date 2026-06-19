@@ -11,7 +11,7 @@
 - [Configuration](configuration.md) — Full config.yaml reference
 
 ## Features
-- [Skills Catalog](skills.md) — All 77 bundled skills
+- [Skills Catalog](skills.md) — All 67 bundled skills
 - [Commands Reference](commands.md) — 46 slash commands
 - [Providers](providers.md) — 16+ provider setup
 

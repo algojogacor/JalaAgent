@@ -61,7 +61,7 @@ Type `/` during a chat session to access 46 commands. See [Commands Reference](c
 
 ## Skills
 
-JalaAgent ships with 77 bundled skills across 13 categories:
+JalaAgent ships with 67 bundled skills across 13 categories:
 
 | Category | Count | Examples |
 |----------|:---:|----------|

@@ -1,6 +1,6 @@
 # JalaAgent Skills Manifest
 
-> Phase 3 Absorption complete. Total: 64 skills across 12 categories.
+> Phase 3 Absorption complete. Total: 67 skills across 12 categories.
 
 ## Categories
 
@@ -124,7 +124,7 @@
 | JalaAgent Exclusive | 8 |
 | Ported from Hermes | 6 |
 | Adapted from Hermes | 5 |
-| **Total** | **64** |
+| **Total** | **67** |
 
 ## Hermes Skills NOT Ported
 See `D:\JalaAgent\AUDIT.md` for full skip log (182 skills skipped: 42 Hermes-only, 140 niche/out-of-scope).

@@ -1,4 +1,4 @@
-# Skills Catalog — 77 Bundled
+# Skills Catalog — 67 Bundled
 
 ## Software Development (17)
 brainstorming, systematic-debugging, test-driven-development, subagent-driven-development, executing-plans, dispatching-parallel-agents, writing-plans, finishing-a-development-branch, requesting-code-review, receiving-code-review, pre-commit-verification, kanban-orchestrator, git-workflow, git-advanced, docker-management, oss-contributing, graphify

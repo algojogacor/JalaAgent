@@ -7,7 +7,7 @@ All notable changes to JalaAgent.
 ### Added
 - Initial release: 82 source files, ~14,000 lines Python
 - 4-layer hybrid memory: file + sqlite-vec + dreaming + knowledge graph
-- 77 bundled skills across 13 categories
+- 67 bundled skills across 13 categories
 - 46 unified slash commands (CLI + Telegram)
 - Universal provider covering 16+ OpenAI-compatible APIs
 - Gateway mode: `jala gateway` runs CLI + Telegram simultaneously

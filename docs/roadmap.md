@@ -2,7 +2,7 @@
 
 ## Done ✅
 - [x] 4-layer hybrid memory (file + vector + dreaming + KG)
-- [x] 77 bundled skills
+- [x] 67 bundled skills
 - [x] 46 unified slash commands
 - [x] Universal provider (16+ APIs)
 - [x] Gateway mode (CLI + Telegram)

@@ -8,7 +8,7 @@ JalaAgent is structured as a monorepo with 3 core packages, 5 extension categori
 jalaagent/
 ├── packages/           — Core logic, no external deps on channels/providers
 │   ├── memory-core/    — 4-layer hybrid memory (9 modules)
-│   ├── skill-core/     — Skill system + 77 bundled skills (5 modules)
+│   ├── skill-core/     — Skill system + 67 bundled skills (5 modules)
 │   └── agent-core/     — Loop, registry, harness, policy (14 modules)
 ├── extensions/         — Swappable, provider/channel-specific
 │   ├── providers/      — Universal (16 APIs) + Anthropic + Ollama + Gemini
