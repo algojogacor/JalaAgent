@@ -4,8 +4,8 @@
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-336%20passing-brightgreen.svg)](tests/)
-[![Pyright](https://img.shields.io/badge/type%20check-pyright%20clean-success.svg)](pyrightconfig.json)
+[![Tests](https://github.com/algojogacor/JalaAgent/actions/workflows/test.yml/badge.svg)](https://github.com/algojogacor/JalaAgent/actions/workflows/test.yml)
+[![Lint](https://github.com/algojogacor/JalaAgent/actions/workflows/lint.yml/badge.svg)](https://github.com/algojogacor/JalaAgent/actions/workflows/lint.yml)
 [![Skills](https://img.shields.io/badge/skills-65-blueviolet.svg)](packages/skill-core/src/skill_core/bundled/)
 [![Providers](https://img.shields.io/badge/providers-16+-orange.svg)](extensions/providers/universal/)
 
