@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version_segment:
+        description: "Version segment to bump"
+        required: true
+        default: "patch"
+        type: choice
+        options: [patch, minor, major]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run release script
+        if: github.event_name == 'workflow_dispatch'
+        run: bash scripts/release.sh ${{ github.event.inputs.version_segment }}
+
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(grep '^version =' pyproject.toml | head -1 | sed 's/version = "\(.*\)"/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Commit version bump
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "JalaAgent Bot"
+          git config user.email "bot@jalaagent.dev"
+          git add -A
+          git commit -m "chore: bump version to v${{ steps.version.outputs.version }}" || true
+          git push
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: JalaAgent v${{ steps.version.outputs.version }}
+          generate_release_notes: true

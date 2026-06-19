@@ -34,6 +34,13 @@ members = [
 "jalaagent-provider-universal" = { workspace = true }
 "jalaagent-cli" = { workspace = true }
 
+[tool.jala]
+name = "jalaagent"
+version_source = "cli/src/jala/__init__.py"
+description = "Open-source self-improving AI agent with hybrid memory"
+docs_url = "https://jalaagent.vercel.app"
+repository = "https://github.com/algojogacor/JalaAgent"
+
 [tool.pytest.ini_options]
 addopts = "--import-mode=importlib"
 testpaths = [

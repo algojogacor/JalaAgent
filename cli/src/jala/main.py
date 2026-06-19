@@ -11,6 +11,8 @@ if sys.platform == "win32":
 from agent_core.paths import setup_import_paths
 setup_import_paths()
 
+from jala import __version__
+
 import asyncio
 import logging
 import os
@@ -179,7 +181,7 @@ def _gateway_banner(loop: Any, skills_count: int, tokens: dict[str, bool]) -> No
     tg = "✓" if tokens.get("telegram") else "✗"
     wa = "✓" if tokens.get("whatsapp") else "✗"
     console.print(Panel(
-        f"[bold cyan]🪼 JalaAgent v2026.6.18[/] · {model}\n\n"
+        f"[bold cyan]🪼 JalaAgent v{__version__}[/] · {model}\n\n"
         f"Channels:  CLI ✓  Telegram {tg}  WhatsApp {wa}\n"
         f"Skills:    {skills_count} bundled\n"
         f"MCP:       filesystem ✓  shell ✓  fetch ✓\n"
@@ -254,12 +256,18 @@ def main_cli() -> None:
 @app.callback(invoke_without_command=True)
 def main(
     ctx: typer.Context,
+    version: bool = typer.Option(False, "--version", "-V", help="Show version and exit"),
     model: str = typer.Option(None, "--model", "-m", help="Model"),
     plan: bool = typer.Option(False, "--plan", help="Plan mode"),
     telegram: bool = typer.Option(False, "--telegram", help="Telegram only"),
     prompt: str | None = typer.Option(None, "--prompt", "-p", help="Single prompt"),
     base_url: str | None = typer.Option(None, "--base-url", help="Override API base URL"),
 ) -> None:
+    if version:
+        from jala import __version__
+        console.print(f"JalaAgent v{__version__}")
+        raise typer.Exit()
+
     if ctx.invoked_subcommand is not None:
         return
 

@@ -424,7 +424,8 @@ def _build_registry() -> CommandRegistry:
         return CommandResult(f"**Commands ({total})**\n" + "\n".join(page_items) + pagination)
 
     async def _version(ctx: CommandContext) -> CommandResult:
-        return CommandResult(f"🪼 JalaAgent v2026.6.18 · {_get_git_hash()}")
+        from jala import __version__
+        return CommandResult(f"🪼 JalaAgent v{__version__} · {_get_git_hash()}")
 
     async def _changelog(ctx: CommandContext) -> CommandResult:
         n = int(ctx.args[0]) if ctx.args and ctx.args[0].isdigit() else 20
@@ -579,7 +580,8 @@ def _build_registry() -> CommandRegistry:
         return CommandResult("📋 Sub-goal added.")
 
     async def _credits(ctx: CommandContext) -> CommandResult:
-        return CommandResult("💰 Credits: check provider dashboard. JalaAgent v2026.6.18 — self-hosted, no billing integration yet.")
+        from jala import __version__
+        return CommandResult(f"💰 Credits: check provider dashboard. JalaAgent v{__version__} — self-hosted, no billing integration yet.")
 
     async def _insights(ctx: CommandContext) -> CommandResult:
         days = int(ctx.args[0]) if ctx.args and ctx.args[0].isdigit() else 7

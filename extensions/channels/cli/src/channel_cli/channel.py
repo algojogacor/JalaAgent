@@ -65,7 +65,8 @@ class CLIChannel:
         model = getattr(agent_loop, "_model", "default")
         skills = "66" if self._registry else "—"
         self._console.print(Panel(
-            f"[bold cyan]🪼 JalaAgent v2026.6.18[/] · {model}\n"
+            from jala import __version__
+            f"[bold cyan]🪼 JalaAgent v{__version__}[/] · {model}\n"
             f"Skills: {skills} bundled  |  MCP: filesystem ✓ shell ✓ fetch ✓\n"
             f"Type /help for commands, Ctrl+D to submit, Ctrl+C to quit",
             title="Welcome", border_style="cyan",

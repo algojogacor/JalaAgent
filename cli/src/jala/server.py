@@ -111,7 +111,8 @@ async def _build_proxy_provider(model: str = "") -> Any:
 
 
 def create_app(token: str | None = None) -> FastAPI:
-    app = FastAPI(title="JalaAgent API", version="2026.6.18")
+    from jala import __version__
+    app = FastAPI(title="JalaAgent API", version=__version__)
     app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
     @app.middleware("http")
@@ -215,7 +216,8 @@ def create_app(token: str | None = None) -> FastAPI:
 def run_server(host: str = "127.0.0.1", port: int = 8787, token: str | None = None) -> None:
     import uvicorn
     a = " (auth: enabled)" if token else " (no auth)"
-    logger.info("🪼 JalaAgent API v2026.6.18 — http://%s:%s%s", host, port, a)
+    from jala import __version__
+    logger.info("🪼 JalaAgent API v%s — http://%s:%s%s", __version__, host, port, a)
     logger.info("   Models: http://%s:%s/v1/models", host, port)
     logger.info("   Chat:   POST http://%s:%s/v1/messages", host, port)
     logger.info("   Use:    ANTHROPIC_BASE_URL=http://%s:%s claude", host, port)

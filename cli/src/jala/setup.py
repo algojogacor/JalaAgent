@@ -157,7 +157,8 @@ def _build_config(provider: str, default_model: str, embedding_model: str, embed
         "display": {"footer": True, "spinner": True, "theme": "auto", "timestamps": False},
         "streaming": {"chunk_size": None, "max_delay": 0.1, "refresh_rate": 10},
         "personalities": {"directory": "~/.jalaagent/personalities", "bundled": ["default", "concise", "researcher"]},
-        "onboarding": {"completed": True, "version": "2026.6.18"},
+        "onboarding": {"completed": True},
+        "onboarding_version": __import__("jala").__version__,
 
         # ═══ BLOCK 8: Production ═══
         "network": {"proxy": "", "timeout": 120, "max_retries": 3, "verify_ssl": True},
