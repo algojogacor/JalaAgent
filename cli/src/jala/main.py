@@ -14,7 +14,6 @@ setup_import_paths()
 import asyncio
 import logging
 import os
-import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -432,12 +431,11 @@ def dream() -> None:
 @app.command(name="config-show")
 def config_show() -> None:
     """Print current configuration."""
-    import yaml
-    config_path = Path.home() / ".jalaagent" / "config.yaml"
-    if config_path.exists():
-        console.print(yaml.dump(
-            yaml.safe_load(config_path.read_text(encoding="utf-8")),
-            default_flow_style=False, sort_keys=False
+    if _CONFIG_PATH.exists():
+        console.print(Panel(
+            _CONFIG_PATH.read_text(encoding="utf-8") or "(empty)",
+            title=str(_CONFIG_PATH),
+            border_style="cyan",
         ))
     else:
         console.print("[yellow]No config found. Run 'jala setup' first.[/]")
@@ -447,11 +445,10 @@ def config_show() -> None:
 def config_get(key: str = typer.Argument(...)) -> None:
     """Get a specific config value by dot-notation key."""
     import yaml
-    config_path = Path.home() / ".jalaagent" / "config.yaml"
-    if not config_path.exists():
+    if not _CONFIG_PATH.exists():
         console.print("[yellow]No config found.[/]")
         return
-    cfg = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    cfg = yaml.safe_load(_CONFIG_PATH.read_text(encoding="utf-8")) or {}
     for part in key.split("."):
         if isinstance(cfg, dict):
             cfg = cfg.get(part)

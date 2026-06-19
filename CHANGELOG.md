@@ -2,6 +2,17 @@
 
 All notable changes to JalaAgent.
 
+## v2026.6.19 (2026-06-19)
+
+### Added
+- `jala config-show` — display current configuration
+- `jala config-get <key>` — get config value by dot-notation key (e.g., `model.provider`)
+
+### Fixed
+- Provider imports now work from main.py (extracted path setup to `agent_core.paths`)
+- `uv sync --all-packages` in README and quickstart documentation
+- Skills count badge corrected to 65
+
 ## v2026.6.18 (2026-06-18)
 
 ### Added

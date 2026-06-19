@@ -70,6 +70,11 @@ Or use environment variables: `DEEPSEEK_API_KEY`, `OPENROUTER_API_KEY`, etc.
 /help              # Show all commands
 ```
 
+## Configuration
+
+View your config: `jala config-show`
+Get a specific value: `jala config-get model.provider`
+
 ## Next Steps
 - Read the [User Guide](user-guide.md) for full usage
 - Browse [Skills Catalog](skills.md) to see 65 bundled skills
