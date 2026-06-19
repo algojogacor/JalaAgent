@@ -63,10 +63,9 @@ class OpenAIProvider:
                 chunk = self._parse_event(event)
                 if chunk:
                     yield chunk
+            yield ProviderChunk(type=ProviderChunkType.DONE)
         except Exception as exc:
             self._classify_and_raise(exc)
-
-        yield ProviderChunk(type=ProviderChunkType.DONE)
 
     async def count_tokens(
         self, messages: list[AgentMessage], system: str = ""

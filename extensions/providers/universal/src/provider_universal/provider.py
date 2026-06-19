@@ -121,6 +121,7 @@ class OpenAICompatibleProvider:
                         yield chunk
                 if api_key:
                     await self._pool.report_success(provider_name, api_key)
+                yield ProviderChunk(type=ProviderChunkType.DONE)
         except httpx.TimeoutException:
             from agent_core.errors import TimeoutError as JalaTimeout
             raise JalaTimeout(f"Provider {provider_name} timed out") from None
@@ -128,8 +129,6 @@ class OpenAICompatibleProvider:
             if api_key:
                 await self._pool.report_failure(provider_name, api_key, str(exc))
             self._classify_and_raise(exc)
-
-        yield ProviderChunk(type=ProviderChunkType.DONE)
 
     async def count_tokens(self, messages: list[AgentMessage], system: str = "") -> int:
         total = len(system)

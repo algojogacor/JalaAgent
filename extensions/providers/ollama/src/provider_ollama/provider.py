@@ -75,13 +75,12 @@ class OllamaProvider:
                     chunk = self._parse_chunk(data)
                     if chunk:
                         yield chunk
+            yield ProviderChunk(type=ProviderChunkType.DONE)
         except httpx.ConnectError as exc:
             from agent_core.errors import TransientError
             raise TransientError(
                 f"Cannot connect to Ollama at {self._base_url}. Is it running?"
             ) from exc
-
-        yield ProviderChunk(type=ProviderChunkType.DONE)
 
     async def count_tokens(
         self, messages: list[AgentMessage], system: str = ""
