@@ -6,13 +6,18 @@ requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2.0",
     "pydantic-settings",
-    "mcp",
-    "playwright>=1.60.0",
-    "google-genai>=2.8.0",
     "httpx>=0.28.1",
 ]
 
 [project.optional-dependencies]
+mcp = ["mcp"]
+browser = ["playwright>=1.60.0"]
+gemini = ["google-genai>=2.8.0"]
+all = [
+    "mcp",
+    "playwright>=1.60.0",
+    "google-genai>=2.8.0",
+]
 dev = [
     "pytest",
     "pytest-asyncio",

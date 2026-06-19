@@ -29,6 +29,7 @@ members = [
 "jalaagent-provider-ollama" = { workspace = true }
 "jalaagent-provider-openai" = { workspace = true }
 "jalaagent-provider-openrouter" = { workspace = true }
+"jalaagent-provider-universal" = { workspace = true }
 "jalaagent-cli" = { workspace = true }
 
 [tool.pytest.ini_options]
@@ -42,6 +43,7 @@ testpaths = [
 
 [dependency-groups]
 dev = [
+    "hatchling",
     "pyright>=1.1.410",
     "ruff>=0.15.17",
 ]
