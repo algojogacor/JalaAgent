@@ -27,6 +27,10 @@ class CommandContext:
     credential_pool: Any = None
     policy: Any = None
     telegram_channel: Any = None
+    memory_guardian: Any = None
+    memory_family_registry: Any = None
+    memory_observability: Any = None
+    memory_governance: Any = None
 
 
 @dataclass
@@ -694,6 +698,135 @@ def _build_registry() -> CommandRegistry:
             return CommandResult(f"👤 {data.get('username','unknown')} ({data.get('role','owner')})")
         return CommandResult("👤 Guest — set up identity in ~/.jalaagent/identity.yaml")
 
+    # ── Memory Management ──────────────────────────────────
+    async def _memory(ctx: CommandContext) -> CommandResult:
+        """Memory system management: guardian, family, report, governance.
+
+        /memory guardian [--repair]  → run integrity check across all layers
+        /memory guardian status      → show last guardian report summary
+        /memory family <id>          → show memory family tree for entry
+        /memory family stats         → show relation statistics
+        /memory report               → generate full memory health report
+        /memory governance           → rebuild indexes + cleanup orphans
+        """
+        sub = ctx.args[0].lower() if ctx.args else "help"
+
+        if sub == "guardian":
+            if len(ctx.args) > 1 and ctx.args[1] == "status":
+                import json as _json
+                report_path = Path.home() / ".jalaagent" / "db" / "last_guardian.json"
+                if report_path.exists():
+                    data = _json.loads(report_path.read_text(encoding="utf-8"))
+                    status = data.get("health_status", "unknown")
+                    findings = len(data.get("findings", []))
+                    return CommandResult(
+                        f"🛡️ **Last Guardian Report**\n  Status: {status}\n  Findings: {findings}\n  Repairs: {data.get('repair_count', 0)}"
+                    )
+                return CommandResult("🛡️ No guardian report yet. Run `/memory guardian` first.")
+
+            auto_repair = "--repair" in ctx.args[1:] if len(ctx.args) > 1 else False
+            if not ctx.memory_guardian:
+                return CommandResult("❌ Memory Guardian not wired. Add `memory_guardian` to agent startup.")
+
+            report = await ctx.memory_guardian.run(auto_repair=auto_repair)
+            import json as _json
+            report_path = Path.home() / ".jalaagent" / "db"
+            report_path.mkdir(parents=True, exist_ok=True)
+            (report_path / "last_guardian.json").write_text(
+                _json.dumps(report.model_dump(), indent=2, default=str),
+                encoding="utf-8",
+            )
+
+            icon = {"healthy": "✅", "degraded": "⚠️", "unhealthy": "❌"}.get(report.health_status, "❓")
+            lines = [
+                f"{icon} **Memory Guardian** — {report.health_status.upper()}",
+                f"  Checks: {report.total_checks} | Repairs: {report.repair_count} | Errors: {report.error_count}",
+            ]
+            for f in report.findings[:10]:
+                sev = {"info": "ℹ️", "warning": "⚠️", "error": "🔴", "critical": "🚨"}.get(f.severity, "")
+                fixed = " [FIXED]" if f.repaired else ""
+                lines.append(f"  {sev} [{f.layer}] {f.message}{fixed}")
+            if len(report.findings) > 10:
+                lines.append(f"  ... and {len(report.findings) - 10} more findings")
+            return CommandResult("\n".join(lines))
+
+        if sub == "family":
+            if len(ctx.args) < 2:
+                return CommandResult("Usage: /memory family <entry-id> | /memory family stats")
+            if ctx.args[1] == "stats":
+                if not ctx.memory_family_registry:
+                    return CommandResult("❌ Family Registry not wired.")
+                stats = await ctx.memory_family_registry.get_stats()
+                by_type = stats.get("by_type", {})
+                lines = [f"🔗 **Memory Family Stats**\n  Total relations: {stats.get('total_relations', 0)}"]
+                for rtype, count in sorted(by_type.items()):
+                    lines.append(f"  {rtype}: {count}")
+                return CommandResult("\n".join(lines))
+
+            try:
+                from uuid import UUID
+                entry_id = UUID(ctx.args[1])
+            except ValueError:
+                return CommandResult(f"❌ Invalid UUID: {ctx.args[1]}")
+
+            if not ctx.memory_family_registry:
+                return CommandResult("❌ Family Registry not wired.")
+            tree = await ctx.memory_family_registry.get_family_tree(entry_id)
+            lines = [
+                f"🌳 **Memory Family Tree** — `{entry_id}`",
+                f"  Nodes: {tree.total_nodes} | Max depth: {tree.max_depth}",
+            ]
+            if tree.root:
+                lines.append(f"  Root depth: {tree.root.depth}")
+                lines.append(f"  Children: {len(tree.root.children)}")
+                for rel in tree.root.relations[:5]:
+                    lines.append(f"    → {rel.relation_type.value} ({rel.strength:.0%})")
+            return CommandResult("\n".join(lines))
+
+        if sub == "report":
+            if not ctx.memory_observability:
+                return CommandResult("❌ Memory Observability not wired.")
+            report = await ctx.memory_observability.generate_report()
+            lines = [
+                f"📊 **Memory Health Report**",
+                f"  Overall: {report.overall_health:.0%}",
+            ]
+            for name, layer in report.layers.items():
+                icon = "✅" if layer.health_score > 0.7 else ("⚠️" if layer.health_score > 0.3 else "❌")
+                lines.append(f"  {icon} {layer.layer_name}: {layer.entry_count} entries | {layer.health_score:.0%}")
+            if report.weekly_growth:
+                growth_str = ", ".join(f"{k}: {'+' if v > 0 else ''}{v}" for k, v in report.weekly_growth.items())
+                lines.append(f"  📈 Growth: {growth_str}")
+            if report.recommendations:
+                lines.append("  **Recommendations:**")
+                for r in report.recommendations[:5]:
+                    lines.append(f"    • {r}")
+            return CommandResult("\n".join(lines))
+
+        if sub == "governance":
+            if not ctx.memory_governance:
+                return CommandResult("❌ Governance Rebuild not wired.")
+
+            import asyncio as _asyncio
+            report = await ctx.memory_governance.rebuild_all()
+            lines = [
+                "🔧 **Governance Rebuild**",
+                f"  Duration: {report.duration_seconds:.1f}s",
+            ]
+            for action in report.rebuild_actions:
+                lines.append(f"  • {action}")
+            return CommandResult("\n".join(lines))
+
+        return CommandResult(
+            "🧠 **Memory Management**\n\n"
+            "`/memory guardian [--repair]` — integrity check\n"
+            "`/memory guardian status`    — last report\n"
+            "`/memory family <id>`        — family tree\n"
+            "`/memory family stats`       — relation stats\n"
+            "`/memory report`             — health report\n"
+            "`/memory governance`         — rebuild + cleanup"
+        )
+
     async def _topic(ctx: CommandContext) -> CommandResult:
         if ctx.channel != "telegram":
             return CommandResult("📌 Topic mode is Telegram-only.")
@@ -975,6 +1108,7 @@ def _build_registry() -> CommandRegistry:
         ("whoami", _whoami, [], "User identity", "/whoami", "info"),
         ("topic", _topic, [], "Telegram multi-session topics", "/topic [off|help|session-id]", "session"),
         ("graphify", _graphify, ["graph", "kg"], "Knowledge graph for codebase", "/graphify [build|query|explain|path|report|status|mcp]", "info"),
+        ("memory", _memory, ["mem"], "Memory guardian, family, report, governance", "/memory [guardian|family|report|governance]", "memory"),
     ]
     for name, handler, aliases, desc, usage, cat in cmds:
         r.register(name, handler, aliases=aliases, description=desc, usage=usage, category=cat)
