@@ -14,7 +14,8 @@ class TestMessageConversion:
     def test_simple_user_message(self, provider: AnthropicProvider) -> None:
         msgs = [AgentMessage(role="user", content="Hello")]
         result = provider._convert_messages(msgs)
-        assert result == [{"role": "user", "content": "Hello"}]
+        assert result[0]["role"] == "user"
+        assert result[0]["content"][0]["text"] == "Hello"
 
     def test_tool_message(self, provider: AnthropicProvider) -> None:
         msgs = [AgentMessage(role="tool", content="result", tool_call_id="tc1")]
