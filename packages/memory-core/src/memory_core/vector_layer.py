@@ -519,6 +519,65 @@ class VectorLayer:
 
         return await asyncio.to_thread(_sync)
 
+    async def get_storage_stats(self) -> dict:
+        """Return storage stats including DB file size."""
+        import os as _os
+        stats = await self.get_stats()
+        db_size = _os.path.getsize(str(self._db_path)) if self._db_path.exists() else 0
+        stats["db_size_bytes"] = db_size
+        return stats
+
+    async def rebuild_fts_index(self) -> int:
+        """Drop and recreate the FTS5 index from episode/fact/skill content.
+
+        Returns the number of rows reindexed.
+        """
+        db = await self._get_db()
+
+        def _sync() -> int:
+            db.execute("DELETE FROM fts_index")
+            count = 0
+            for table in ("episodes", "facts", "skills"):
+                id_col = "skill_id" if table == "skills" else "id"
+                rows = db.execute(
+                    f"SELECT {id_col}, content FROM {table}"
+                ).fetchall()
+                db.executemany(
+                    "INSERT INTO fts_index (id, table_name, content) VALUES (?, ?, ?)",
+                    [(r[0], table, r[1]) for r in rows],
+                )
+                count += len(rows)
+            db.commit()
+            return count
+
+        return await asyncio.to_thread(_sync)
+
+    async def cleanup_orphans(self) -> int:
+        """Remove orphan embeddings (no matching row in source tables).
+
+        Returns the number of orphan embeddings removed.
+        """
+        db = await self._get_db()
+
+        def _sync() -> int:
+            # Find embeddings whose row_id doesn't exist in any source table
+            cursor = db.execute(
+                """SELECT e.id FROM embeddings e
+                   WHERE (e.table_name = 'episodes'
+                         AND e.row_id NOT IN (SELECT id FROM episodes))
+                      OR (e.table_name = 'facts'
+                         AND e.row_id NOT IN (SELECT id FROM facts))
+                      OR (e.table_name = 'skills'
+                         AND e.row_id NOT IN (SELECT skill_id FROM skills))"""
+            )
+            orphan_ids = [r[0] for r in cursor.fetchall()]
+            for oid in orphan_ids:
+                db.execute("DELETE FROM embeddings WHERE id = ?", (oid,))
+            db.commit()
+            return len(orphan_ids)
+
+        return await asyncio.to_thread(_sync)
+
     # ------------------------------------------------------------------
     # Cleanup
     # ------------------------------------------------------------------

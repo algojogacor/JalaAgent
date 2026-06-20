@@ -264,6 +264,155 @@ class MemoryConfig(BaseSettings):
         le=1.0,
         description="Minimum cosine similarity score for retrieval results",
     )
+    guardian_enabled: bool = Field(
+        default=True,
+        description="Whether the memory guardian runs on schedule",
+    )
+    guardian_schedule: str = Field(
+        default="0 6 * * 0",
+        min_length=1,
+        description="Cron expression for memory guardian (default: Sunday 6 AM)",
+    )
+    guardian_auto_repair: bool = Field(
+        default=True,
+        description="Auto-repair minor integrity issues",
+    )
+    governance_enabled: bool = Field(
+        default=True,
+        description="Whether periodic governance rebuild runs",
+    )
+    governance_schedule: str = Field(
+        default="0 7 * * 0",
+        min_length=1,
+        description="Cron expression for governance rebuild (default: Sunday 7 AM)",
+    )
+
+
+# ---------------------------------------------------------------------------
+# Guardian + Governance models
+# ---------------------------------------------------------------------------
+
+
+class GuardianFinding(BaseModel):
+    """A single integrity finding from a memory guardian check."""
+
+    layer: str = Field(..., description="Memory layer: file, vector, knowledge_graph")
+    severity: Literal["info", "warning", "error", "critical"] = Field(
+        ..., description="Finding severity level"
+    )
+    category: str = Field(..., description="Finding category, e.g. orphan_embedding")
+    message: str = Field(..., description="Human-readable description")
+    detail: dict = Field(
+        default_factory=dict, description="Machine-readable context (row IDs, counts)"
+    )
+    auto_repairable: bool = Field(
+        default=False, description="Can this issue be auto-repaired?"
+    )
+    repaired: bool = Field(default=False, description="Was this issue repaired?")
+
+
+class GuardianReport(BaseModel):
+    """Result of a memory guardian integrity check run."""
+
+    timestamp: dt.datetime = Field(
+        default_factory=lambda: dt.datetime.now(dt.UTC),
+    )
+    findings: list[GuardianFinding] = Field(default_factory=list)
+    total_checks: int = Field(default=0, description="Total checks performed")
+    repair_count: int = Field(default=0, description="Number of auto-repairs applied")
+    error_count: int = Field(default=0, description="Number of error/critical findings")
+    health_status: Literal["healthy", "degraded", "unhealthy"] = Field(
+        default="healthy",
+        description="Overall health: healthy (no errors), degraded (warnings only), unhealthy (errors)",
+    )
+    duration_seconds: float = Field(default=0.0, ge=0.0)
+
+
+class GovernanceReport(BaseModel):
+    """Result of a governance rebuild run."""
+
+    timestamp: dt.datetime = Field(
+        default_factory=lambda: dt.datetime.now(dt.UTC),
+    )
+    before_stats: dict = Field(default_factory=dict)
+    after_stats: dict = Field(default_factory=dict)
+    rebuild_actions: list[str] = Field(default_factory=list)
+    duration_seconds: float = Field(default=0.0, ge=0.0)
+
+
+# ---------------------------------------------------------------------------
+# Family Registry models
+# ---------------------------------------------------------------------------
+
+
+class RelationType(StrEnum):
+    """Types of relationships between memory entries."""
+
+    SAME_SESSION = "same_session"
+    SAME_TAG = "same_tag"
+    PARENT_CHILD = "parent_child"
+    SEMANTIC_SIMILAR = "semantic_similar"
+    KG_GROUPED = "kg_grouped"
+
+
+class MemoryRelation(BaseModel):
+    """A relationship between two memory entries."""
+
+    id: UUID = Field(default_factory=uuid4)
+    source_id: UUID = Field(..., description="Source entry ID")
+    target_id: UUID = Field(..., description="Target entry ID")
+    relation_type: RelationType = Field(..., description="Type of relationship")
+    strength: float = Field(default=0.5, ge=0.0, le=1.0)
+    created_at: dt.datetime = Field(
+        default_factory=lambda: dt.datetime.now(dt.UTC),
+    )
+    metadata: dict = Field(default_factory=dict)
+
+
+class FamilyTreeNode(BaseModel):
+    """A node in a memory family tree."""
+
+    entry_id: UUID = Field(..., description="Memory entry ID")
+    content: str = Field(default="", description="Entry content preview")
+    depth: int = Field(default=0, ge=0)
+    children: list["FamilyTreeNode"] = Field(default_factory=list)
+    relations: list[MemoryRelation] = Field(default_factory=list)
+
+
+class FamilyTree(BaseModel):
+    """A memory family tree rooted at a given entry."""
+
+    root: FamilyTreeNode | None = None
+    total_nodes: int = Field(default=0, ge=0)
+    max_depth: int = Field(default=0, ge=0)
+
+
+# ---------------------------------------------------------------------------
+# Observability models
+# ---------------------------------------------------------------------------
+
+
+class LayerHealth(BaseModel):
+    """Health metrics for a single memory layer."""
+
+    layer_name: str = Field(..., description="Layer name")
+    entry_count: int = Field(default=0, ge=0)
+    storage_bytes: int = Field(default=0, ge=0)
+    health_score: float = Field(default=0.0, ge=0.0, le=1.0)
+    issues: list[str] = Field(default_factory=list)
+
+
+class MemoryHealthReport(BaseModel):
+    """A comprehensive memory system health report."""
+
+    timestamp: dt.datetime = Field(
+        default_factory=lambda: dt.datetime.now(dt.UTC),
+    )
+    layers: dict[str, LayerHealth] = Field(default_factory=dict)
+    overall_health: float = Field(default=0.0, ge=0.0, le=1.0)
+    weekly_growth: dict[str, int] = Field(default_factory=dict)
+    recommendations: list[str] = Field(default_factory=list)
+    duration_seconds: float = Field(default=0.0, ge=0.0)
 
 
 # ---------------------------------------------------------------------------
@@ -288,6 +437,9 @@ class MemorySearchResult(BaseModel):
     source: str = Field(default="unknown", description="Source table or layer")
 
 
+# Resolve forward references for FamilyTreeNode (children: list[FamilyTreeNode])
+FamilyTreeNode.model_rebuild()
+
 __all__ = [
     "ApprovalMode",
     "MemoryEntry",
@@ -298,4 +450,13 @@ __all__ = [
     "MemoryConfig",
     "MemoryQuery",
     "MemorySearchResult",
+    "GuardianFinding",
+    "GuardianReport",
+    "GovernanceReport",
+    "RelationType",
+    "MemoryRelation",
+    "FamilyTreeNode",
+    "FamilyTree",
+    "LayerHealth",
+    "MemoryHealthReport",
 ]

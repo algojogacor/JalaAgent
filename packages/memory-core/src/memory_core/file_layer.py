@@ -245,6 +245,39 @@ class FileLayer:
         """
         return await self._get_mtime_sync(self._memory_path)
 
+    async def get_session_count(self) -> int:
+        """Return the number of session JSONL files in the sessions directory."""
+        sessions_dir = self._memory_dir / "sessions"
+        if not sessions_dir.is_dir():
+            return 0
+        return len([f for f in sessions_dir.iterdir()
+                    if f.suffix == ".jsonl" and f.is_file()])
+
+    async def get_storage_stats(self) -> dict:
+        """Return storage statistics for the file layer."""
+        import os as _os
+
+        memory_bytes = _os.path.getsize(self._memory_path) if self._memory_path.exists() else 0
+        user_path = self._memory_dir / "USER.md"
+        user_bytes = _os.path.getsize(user_path) if user_path.exists() else 0
+        session_count = await self.get_session_count()
+        sessions_dir = self._memory_dir / "sessions"
+        session_bytes = 0
+        if sessions_dir.is_dir():
+            session_bytes = sum(
+                _os.path.getsize(str(f)) for f in sessions_dir.glob("*.jsonl") if f.is_file()
+            )
+        pending_dir = self._memory_dir / "pending"
+        pending_count = len(list(pending_dir.glob("*"))) if pending_dir.is_dir() else 0
+
+        return {
+            "memory_md_bytes": memory_bytes,
+            "user_md_bytes": user_bytes,
+            "session_count": session_count,
+            "session_files_bytes": session_bytes,
+            "pending_writes": pending_count,
+        }
+
     async def snapshot_memory(self) -> str:
         """Read ``MEMORY.md`` content and record its ``mtime`` atomically.
 

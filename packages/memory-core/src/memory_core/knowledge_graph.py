@@ -268,6 +268,50 @@ class KnowledgeGraph:
 
         return await asyncio.to_thread(_sync)
 
+    async def get_storage_stats(self) -> dict:
+        """Return storage stats including DB file size."""
+        import asyncio
+        import os as _os
+        stats = await self.get_stats()
+        db_size = _os.path.getsize(str(self._db_path)) if self._db_path.exists() else 0
+        stats["db_size_bytes"] = db_size
+        return stats
+
+    async def get_orphan_edge_count(self) -> int:
+        """Count edges with broken foreign keys."""
+        import asyncio
+        await self._get_conn()
+
+        def _sync() -> int:
+            # Edges pointing to non-existent entities
+            cursor = self._conn.execute(  # type: ignore[union-attr]
+                """SELECT COUNT(*) FROM edges
+                   WHERE source_id NOT IN (SELECT id FROM entities)
+                      OR target_id NOT IN (SELECT id FROM entities)"""
+            )
+            return cursor.fetchone()[0]
+
+        return await asyncio.to_thread(_sync)
+
+    async def cleanup_orphan_edges(self) -> int:
+        """Delete edges with broken foreign keys. Returns count removed."""
+        import asyncio
+        await self._get_conn()
+
+        def _sync() -> int:
+            cursor = self._conn.execute(  # type: ignore[union-attr]
+                """SELECT id FROM edges
+                   WHERE source_id NOT IN (SELECT id FROM entities)
+                      OR target_id NOT IN (SELECT id FROM entities)"""
+            )
+            orphan_ids = [r[0] for r in cursor.fetchall()]
+            for oid in orphan_ids:
+                self._conn.execute("DELETE FROM edges WHERE id = ?", (oid,))  # type: ignore[union-attr]
+            self._conn.commit()  # type: ignore[union-attr]
+            return len(orphan_ids)
+
+        return await asyncio.to_thread(_sync)
+
     async def close(self) -> None:
         import asyncio
 
