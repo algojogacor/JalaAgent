@@ -170,7 +170,7 @@
       "label": "_build_agent()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L36",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "jala_main_build_agent",
       "community": 22,
@@ -180,7 +180,7 @@
       "label": "Any",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L36",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "cli_src_jala_main_py_any",
       "community": 22,
@@ -190,7 +190,7 @@
       "label": "_load_jala_config()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L125",
+      "source_location": "L129",
       "_origin": "ast",
       "id": "jala_main_load_jala_config",
       "community": 22,
@@ -200,7 +200,7 @@
       "label": "_pick_provider()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L137",
+      "source_location": "L141",
       "_origin": "ast",
       "id": "jala_main_pick_provider",
       "community": 22,
@@ -210,7 +210,7 @@
       "label": "_build_auxiliary()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L154",
+      "source_location": "L158",
       "_origin": "ast",
       "id": "jala_main_build_auxiliary",
       "community": 22,
@@ -220,7 +220,7 @@
       "label": "_get_registry_safe()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L167",
+      "source_location": "L171",
       "_origin": "ast",
       "id": "jala_main_get_registry_safe",
       "community": 22,
@@ -230,7 +230,7 @@
       "label": "_load_skills_into_registry()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L171",
+      "source_location": "L175",
       "_origin": "ast",
       "id": "jala_main_load_skills_into_registry",
       "community": 22,
@@ -240,7 +240,7 @@
       "label": "_gateway_banner()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L179",
+      "source_location": "L183",
       "_origin": "ast",
       "id": "jala_main_gateway_banner",
       "community": 22,
@@ -250,7 +250,7 @@
       "label": "_run_gateway()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L194",
+      "source_location": "L198",
       "_origin": "ast",
       "id": "jala_main_run_gateway",
       "community": 22,
@@ -260,7 +260,7 @@
       "label": "main_cli()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L247",
+      "source_location": "L251",
       "_origin": "ast",
       "id": "jala_main_main_cli",
       "community": 22,
@@ -270,7 +270,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L257",
+      "source_location": "L261",
       "_origin": "ast",
       "id": "jala_main_main",
       "community": 22,
@@ -280,7 +280,7 @@
       "label": "Context",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L257",
+      "source_location": "L261",
       "_origin": "ast",
       "id": "context",
       "community": 22,
@@ -290,7 +290,7 @@
       "label": "_start_telegram()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L357",
+      "source_location": "L361",
       "_origin": "ast",
       "id": "jala_main_start_telegram",
       "community": 22,
@@ -300,7 +300,7 @@
       "label": "gateway()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L375",
+      "source_location": "L379",
       "_origin": "ast",
       "id": "jala_main_gateway",
       "community": 22,
@@ -310,7 +310,7 @@
       "label": "setup()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L388",
+      "source_location": "L392",
       "_origin": "ast",
       "id": "jala_main_setup",
       "community": 70,
@@ -320,7 +320,7 @@
       "label": "serve()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L392",
+      "source_location": "L396",
       "_origin": "ast",
       "id": "jala_main_serve",
       "community": 60,
@@ -330,7 +330,7 @@
       "label": "memory()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L402",
+      "source_location": "L406",
       "_origin": "ast",
       "id": "jala_main_memory",
       "community": 22,
@@ -340,7 +340,7 @@
       "label": "skills()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L413",
+      "source_location": "L417",
       "_origin": "ast",
       "id": "jala_main_skills",
       "community": 71,
@@ -350,7 +350,7 @@
       "label": "mcp()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L488",
+      "source_location": "L492",
       "_origin": "ast",
       "id": "jala_main_mcp",
       "community": 22,
@@ -360,7 +360,7 @@
       "label": "dream()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L492",
+      "source_location": "L496",
       "_origin": "ast",
       "id": "jala_main_dream",
       "community": 22,
@@ -370,7 +370,7 @@
       "label": "config_show()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L523",
+      "source_location": "L527",
       "_origin": "ast",
       "id": "jala_main_config_show",
       "community": 22,
@@ -380,7 +380,7 @@
       "label": "config_get()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L536",
+      "source_location": "L540",
       "_origin": "ast",
       "id": "jala_main_config_get",
       "community": 22,
@@ -390,7 +390,7 @@
       "label": "sessions_cmd()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L556",
+      "source_location": "L560",
       "_origin": "ast",
       "id": "jala_main_sessions_cmd",
       "community": 64,
@@ -400,7 +400,7 @@
       "label": "credentials_cmd()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L598",
+      "source_location": "L602",
       "_origin": "ast",
       "id": "jala_main_credentials_cmd",
       "community": 22,
@@ -420,9 +420,9 @@
       "label": "Pick the best provider based on available API keys (env + auth.json).      Del",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L138",
+      "source_location": "L142",
       "_origin": "ast",
-      "id": "jala_main_rationale_138",
+      "id": "jala_main_rationale_142",
       "community": 22,
       "norm_label": "pick the best provider based on available api keys (env + auth.json).      del"
     },
@@ -430,9 +430,9 @@
       "label": "Build a cheaper auxiliary provider for dreaming + background tasks.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L155",
+      "source_location": "L159",
       "_origin": "ast",
-      "id": "jala_main_rationale_155",
+      "id": "jala_main_rationale_159",
       "community": 22,
       "norm_label": "build a cheaper auxiliary provider for dreaming + background tasks."
     },
@@ -440,9 +440,9 @@
       "label": "Entry point \u2014 delegates to typer app for full CLI routing.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L248",
+      "source_location": "L252",
       "_origin": "ast",
-      "id": "jala_main_rationale_248",
+      "id": "jala_main_rationale_252",
       "community": 22,
       "norm_label": "entry point \u2014 delegates to typer app for full cli routing."
     },
@@ -450,9 +450,9 @@
       "label": "Run all enabled channels simultaneously.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L378",
+      "source_location": "L382",
       "_origin": "ast",
-      "id": "jala_main_rationale_378",
+      "id": "jala_main_rationale_382",
       "community": 22,
       "norm_label": "run all enabled channels simultaneously."
     },
@@ -460,9 +460,9 @@
       "label": "Start JalaAgent as an Anthropic-compatible API server.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L397",
+      "source_location": "L401",
       "_origin": "ast",
-      "id": "jala_main_rationale_397",
+      "id": "jala_main_rationale_401",
       "community": 60,
       "norm_label": "start jalaagent as an anthropic-compatible api server."
     },
@@ -470,9 +470,9 @@
       "label": "Trigger the dreaming pipeline manually.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L493",
+      "source_location": "L497",
       "_origin": "ast",
-      "id": "jala_main_rationale_493",
+      "id": "jala_main_rationale_497",
       "community": 22,
       "norm_label": "trigger the dreaming pipeline manually."
     },
@@ -480,9 +480,9 @@
       "label": "Print current configuration.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L524",
+      "source_location": "L528",
       "_origin": "ast",
-      "id": "jala_main_rationale_524",
+      "id": "jala_main_rationale_528",
       "community": 22,
       "norm_label": "print current configuration."
     },
@@ -490,9 +490,9 @@
       "label": "Get a specific config value by dot-notation key.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L537",
+      "source_location": "L541",
       "_origin": "ast",
-      "id": "jala_main_rationale_537",
+      "id": "jala_main_rationale_541",
       "community": 22,
       "norm_label": "get a specific config value by dot-notation key."
     },
@@ -500,9 +500,9 @@
       "label": "Search past session transcripts via FTS5.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L557",
+      "source_location": "L561",
       "_origin": "ast",
-      "id": "jala_main_rationale_557",
+      "id": "jala_main_rationale_561",
       "community": 64,
       "norm_label": "search past session transcripts via fts5."
     },
@@ -510,9 +510,9 @@
       "label": "Show credential pool health dashboard.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L599",
+      "source_location": "L603",
       "_origin": "ast",
-      "id": "jala_main_rationale_599",
+      "id": "jala_main_rationale_603",
       "community": 22,
       "norm_label": "show credential pool health dashboard."
     },
@@ -11303,7 +11303,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingpipeline",
-      "community": 17,
+      "community": 59,
       "norm_label": "dreamingpipeline"
     },
     {
@@ -11463,7 +11463,7 @@
       "source_location": "L516",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingpipeline_last_run",
-      "community": 17,
+      "community": 59,
       "norm_label": ".last_run()"
     },
     {
@@ -11553,7 +11553,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_134",
-      "community": 17,
+      "community": 59,
       "norm_label": "cron-based multi-phase memory consolidation from session transcripts.      par"
     },
     {
@@ -11653,7 +11653,7 @@
       "source_location": "L517",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_517",
-      "community": 17,
+      "community": 59,
       "norm_label": "the timestamp of the last completed :meth:`run` call."
     },
     {
@@ -11663,7 +11663,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_runner_py",
-      "community": 17,
+      "community": 59,
       "norm_label": "dreaming_runner.py"
     },
     {
@@ -11673,7 +11673,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_autoapprovecallback",
-      "community": 17,
+      "community": 59,
       "norm_label": "autoapprovecallback"
     },
     {
@@ -11683,7 +11683,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_autoapprovecallback_request_approval",
-      "community": 17,
+      "community": 59,
       "norm_label": ".request_approval()"
     },
     {
@@ -11693,7 +11693,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_any",
-      "community": 17,
+      "community": 59,
       "norm_label": "any"
     },
     {
@@ -11703,7 +11703,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_providerllmadapter",
-      "community": 17,
+      "community": 59,
       "norm_label": "providerllmadapter"
     },
     {
@@ -11713,7 +11713,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_providerllmadapter_init",
-      "community": 17,
+      "community": 59,
       "norm_label": ".__init__()"
     },
     {
@@ -11723,7 +11723,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_providerllmadapter_generate",
-      "community": 17,
+      "community": 59,
       "norm_label": ".generate()"
     },
     {
@@ -11733,7 +11733,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner",
-      "community": 17,
+      "community": 59,
       "norm_label": "dreamingrunner"
     },
     {
@@ -11743,7 +11743,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_init",
-      "community": 17,
+      "community": 59,
       "norm_label": ".__init__()"
     },
     {
@@ -11753,7 +11753,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_memoryconfig",
-      "community": 17,
+      "community": 59,
       "norm_label": "memoryconfig"
     },
     {
@@ -11763,7 +11763,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_filelayer",
-      "community": 17,
+      "community": 59,
       "norm_label": "filelayer"
     },
     {
@@ -11773,7 +11773,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_vectorlayer",
-      "community": 17,
+      "community": 59,
       "norm_label": "vectorlayer"
     },
     {
@@ -11783,7 +11783,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_run_once",
-      "community": 17,
+      "community": 59,
       "norm_label": ".run_once()"
     },
     {
@@ -11793,7 +11793,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_dreamreport",
-      "community": 17,
+      "community": 59,
       "norm_label": "dreamreport"
     },
     {
@@ -11803,7 +11803,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_start_scheduler",
-      "community": 17,
+      "community": 59,
       "norm_label": ".start_scheduler()"
     },
     {
@@ -11813,7 +11813,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_stop",
-      "community": 17,
+      "community": 59,
       "norm_label": ".stop()"
     },
     {
@@ -11823,7 +11823,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_schedule_loop",
-      "community": 17,
+      "community": 59,
       "norm_label": "._schedule_loop()"
     },
     {
@@ -11833,7 +11833,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_last_run",
-      "community": 17,
+      "community": 59,
       "norm_label": ".last_run()"
     },
     {
@@ -11843,7 +11843,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_datetime",
-      "community": 17,
+      "community": 59,
       "norm_label": "datetime"
     },
     {
@@ -11853,7 +11853,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_1",
-      "community": 17,
+      "community": 59,
       "norm_label": "dreaming pipeline runner \u2014 cron-based scheduling with manual trigger."
     },
     {
@@ -11863,7 +11863,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_17",
-      "community": 17,
+      "community": 59,
       "norm_label": "auto-approves all facts (yolo/automated mode)."
     },
     {
@@ -11873,7 +11873,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_24",
-      "community": 17,
+      "community": 59,
       "norm_label": "wraps the agent's provider as a dreamingllmadapter."
     },
     {
@@ -11883,7 +11883,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_42",
-      "community": 17,
+      "community": 59,
       "norm_label": "manages the dreaming pipeline lifecycle.      - schedules dreaming runs via cr"
     },
     {
@@ -11893,7 +11893,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_69",
-      "community": 17,
+      "community": 59,
       "norm_label": "run the dreaming pipeline once and return the report."
     },
     {
@@ -11903,7 +11903,7 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_92",
-      "community": 17,
+      "community": 59,
       "norm_label": "start the cron-like scheduler loop."
     },
     {
@@ -14593,7 +14593,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_retrieval_py",
-      "community": 93,
+      "community": 28,
       "norm_label": "retrieval.py"
     },
     {
@@ -14783,7 +14783,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_retrieval_rationale_1",
-      "community": 93,
+      "community": 28,
       "norm_label": "memory retrieval: sqlite-vec knn \u2192 fts5 \u2192 knowledge graph \u2192 memory.md scan.  i"
     },
     {
@@ -14923,7 +14923,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_vector_layer",
-      "community": 93,
+      "community": 62,
       "norm_label": "vector_layer.py"
     },
     {
@@ -14933,7 +14933,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "memory_core_vector_layer_hash_text",
-      "community": 93,
+      "community": 62,
       "norm_label": "_hash_text()"
     },
     {
@@ -14943,7 +14943,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "memory_core_vector_layer_blob_to_floats",
-      "community": 93,
+      "community": 62,
       "norm_label": "_blob_to_floats()"
     },
     {
@@ -14953,7 +14953,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "memory_core_vector_layer_floats_to_blob",
-      "community": 93,
+      "community": 62,
       "norm_label": "_floats_to_blob()"
     },
     {
@@ -14963,7 +14963,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "memory_core_vector_layer_cosine",
-      "community": 93,
+      "community": 62,
       "norm_label": "_cosine()"
     },
     {
@@ -15323,7 +15323,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_1",
-      "community": 93,
+      "community": 62,
       "norm_label": "layer 2 \u2014 sqlite + sqlite-vec vector database for semantic memory search."
     },
     {
@@ -15333,7 +15333,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_20",
-      "community": 93,
+      "community": 62,
       "norm_label": "sha-256 hex digest of *text* (used for embedding cache key)."
     },
     {
@@ -15343,7 +15343,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_25",
-      "community": 93,
+      "community": 62,
       "norm_label": "unpack a little-endian float32 blob into a list of floats."
     },
     {
@@ -15353,7 +15353,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_32",
-      "community": 93,
+      "community": 62,
       "norm_label": "pack a list of floats into a little-endian float32 blob."
     },
     {
@@ -15363,7 +15363,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_38",
-      "community": 93,
+      "community": 62,
       "norm_label": "cosine similarity between two vectors of equal dimension."
     },
     {
@@ -18723,7 +18723,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers",
-      "community": 93,
+      "community": 62,
       "norm_label": "testmathhelpers"
     },
     {
@@ -18733,7 +18733,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_identical",
-      "community": 93,
+      "community": 62,
       "norm_label": ".test_cosine_identical()"
     },
     {
@@ -18743,7 +18743,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_orthogonal",
-      "community": 93,
+      "community": 62,
       "norm_label": ".test_cosine_orthogonal()"
     },
     {
@@ -18753,7 +18753,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_opposite",
-      "community": 93,
+      "community": 62,
       "norm_label": ".test_cosine_opposite()"
     },
     {
@@ -18763,7 +18763,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_zero_vector",
-      "community": 93,
+      "community": 62,
       "norm_label": ".test_cosine_zero_vector()"
     },
     {
@@ -18773,7 +18773,7 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_blob_roundtrip",
-      "community": 93,
+      "community": 62,
       "norm_label": ".test_blob_roundtrip()"
     },
     {
@@ -18783,7 +18783,7 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_hash_text_deterministic",
-      "community": 93,
+      "community": 62,
       "norm_label": ".test_hash_text_deterministic()"
     },
     {
@@ -31394,11 +31394,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L138",
+      "source_location": "L142",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_138",
-      "target": "jala_main_pick_provider"
+      "source": "jala_main_rationale_142",
+      "target": "jala_main_pick_provider",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31415,11 +31415,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L155",
+      "source_location": "L159",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_155",
-      "target": "jala_main_build_auxiliary"
+      "source": "jala_main_rationale_159",
+      "target": "jala_main_build_auxiliary",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31568,11 +31568,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L248",
+      "source_location": "L252",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_248",
-      "target": "jala_main_main_cli"
+      "source": "jala_main_rationale_252",
+      "target": "jala_main_main_cli",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31834,11 +31834,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L378",
+      "source_location": "L382",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_378",
-      "target": "jala_main_gateway"
+      "source": "jala_main_rationale_382",
+      "target": "jala_main_gateway",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31855,11 +31855,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L397",
+      "source_location": "L401",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_397",
-      "target": "jala_main_serve"
+      "source": "jala_main_rationale_401",
+      "target": "jala_main_serve",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31898,41 +31898,41 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L493",
+      "source_location": "L497",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_493",
-      "target": "jala_main_dream"
+      "source": "jala_main_rationale_497",
+      "target": "jala_main_dream",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L524",
+      "source_location": "L528",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_524",
-      "target": "jala_main_config_show"
+      "source": "jala_main_rationale_528",
+      "target": "jala_main_config_show",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L537",
+      "source_location": "L541",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_537",
-      "target": "jala_main_config_get"
+      "source": "jala_main_rationale_541",
+      "target": "jala_main_config_get",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L557",
+      "source_location": "L561",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_557",
-      "target": "jala_main_sessions_cmd"
+      "source": "jala_main_rationale_561",
+      "target": "jala_main_sessions_cmd",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31949,11 +31949,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L599",
+      "source_location": "L603",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_599",
-      "target": "jala_main_credentials_cmd"
+      "source": "jala_main_rationale_603",
+      "target": "jala_main_credentials_cmd",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -32711,9 +32711,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/__init__.py",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_init_py",
-      "target": "channel_cli_channel",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel"
     },
     {
       "relation": "contains",
@@ -32721,9 +32721,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_cli_channel",
-      "target": "channel_cli_channel_basechannel",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel_basechannel"
     },
     {
       "relation": "contains",
@@ -32731,9 +32731,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_cli_channel",
-      "target": "channel_cli_channel_clichannel",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel_clichannel"
     },
     {
       "relation": "rationale_for",
@@ -32741,9 +32741,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_cli_channel_rationale_1",
-      "target": "channel_cli_channel",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel"
     },
     {
       "relation": "uses",
@@ -33251,9 +33251,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_cli_channel_rationale_27",
-      "target": "channel_cli_channel_clichannel",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel_clichannel"
     },
     {
       "relation": "rationale_for",
@@ -33261,9 +33261,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_cli_channel_rationale_39",
-      "target": "channel_cli_channel_clichannel_send_approval_request",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel_clichannel_send_approval_request"
     },
     {
       "relation": "calls",
@@ -33381,9 +33381,9 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L173",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_cli_channel_rationale_173",
-      "target": "channel_cli_channel_clichannel_show_model_picker",
-      "confidence_score": 1.0
+      "target": "channel_cli_channel_clichannel_show_model_picker"
     },
     {
       "relation": "rationale_for",
@@ -33454,9 +33454,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/__init__.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_init_py",
-      "target": "channel_telegram_channel",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel"
     },
     {
       "relation": "contains",
@@ -33464,9 +33464,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel",
-      "target": "channel_telegram_channel_telegramchannel",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel"
     },
     {
       "relation": "rationale_for",
@@ -33474,9 +33474,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_1",
-      "target": "channel_telegram_channel",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel"
     },
     {
       "relation": "rationale_for",
@@ -33771,9 +33771,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_107",
-      "target": "channel_telegram_channel_telegramchannel_stop",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_stop"
     },
     {
       "relation": "rationale_for",
@@ -33781,9 +33781,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_116",
-      "target": "channel_telegram_channel_telegramchannel_send_message",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_send_message"
     },
     {
       "relation": "calls",
@@ -33813,9 +33813,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_124",
-      "target": "channel_telegram_channel_telegramchannel_send_approval_request",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_send_approval_request"
     },
     {
       "relation": "calls",
@@ -33834,9 +33834,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_154",
-      "target": "channel_telegram_channel_telegramchannel_process_message",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_process_message"
     },
     {
       "relation": "references",
@@ -33885,9 +33885,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_199",
-      "target": "channel_telegram_channel_telegramchannel_show_model_picker",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_show_model_picker"
     },
     {
       "relation": "calls",
@@ -33917,9 +33917,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L229",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_229",
-      "target": "channel_telegram_channel_telegramchannel_build_provider_keyboard",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_build_provider_keyboard"
     },
     {
       "relation": "calls",
@@ -33938,9 +33938,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L249",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_249",
-      "target": "channel_telegram_channel_telegramchannel_build_model_keyboard",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_build_model_keyboard"
     },
     {
       "relation": "calls",
@@ -33959,9 +33959,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L278",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_278",
-      "target": "channel_telegram_channel_telegramchannel_handle_model_selected",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_handle_model_selected"
     },
     {
       "relation": "calls",
@@ -33980,9 +33980,9 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L304",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "channel_telegram_channel_rationale_304",
-      "target": "channel_telegram_channel_telegramchannel_run_polling",
-      "confidence_score": 1.0
+      "target": "channel_telegram_channel_telegramchannel_run_polling"
     },
     {
       "relation": "rationale_for",
@@ -86543,5 +86543,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3509503ad3c961cee68e59e724cb68202e47a971"
+  "built_at_commit": "83944359fb7c17291058f1ab4a0c9937eed1e077"
 }

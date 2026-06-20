@@ -1,6 +1,7 @@
 """JalaAgent CLI — gateway mode, unified commands, channels."""
 
 import sys
+import os
 
 # Force UTF-8 everywhere on Windows so emoji (🪼, 🤔, ⚙) render correctly.
 # PYTHONUTF8=1 tells Python to use UTF-8 as the default text encoding.
@@ -120,7 +121,7 @@ def _build_agent(model: str | None = None, plan: bool = False, base_url: str | N
     loop = AgentLoop(
         provider=provider, registry=registry, memory_retriever=memory,
         skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
-        plan_mode=plan_mode, credential_pool=creds, model=model or None,
+        plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
         fallback_providers=fallback, compactor=compactor, repairer=repairer,
     )
     return loop
