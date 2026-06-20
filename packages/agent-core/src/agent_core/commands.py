@@ -252,17 +252,33 @@ def _build_registry() -> CommandRegistry:
 
     # Model aliases — short names → full model identifiers.
     MODEL_ALIASES: dict[str, str] = {
+        # Anthropic
         "sonnet":    "claude-sonnet-4-6",
         "opus":      "claude-opus-4-8",
         "haiku":     "claude-haiku-4-5",
+        # OpenAI
         "4o":        "gpt-4o",
         "4o-mini":   "gpt-4o-mini",
+        # DeepSeek
         "ds":        "deepseek/deepseek-v4-flash-260425",
         "ds4p":      "deepseek/deepseek-v4-pro-260425",
         "dsv3":      "deepseek/deepseek-v3-2-251201",
         "dsr":       "deepseek/deepseek-reasoner",
+        # Qwen
+        "qw":        "qwen/qwen3.7-max",
         "qwen-plus": "qwen/qwen-plus",
         "qwen-max":  "qwen/qwen-max",
+        # Google
+        "gm":        "google/gemini-2.5-flash",
+        "gm-pro":    "google/gemini-2.5-pro",
+        # Others
+        "gr":        "xai/grok-3",
+        "ml":        "mistral/mistral-large-latest",
+        "db":        "doubao/doubao-pro",
+        "kimi":      "kimi/kimi-k2.6",
+        "glm":       "zai/glm-4-plus",
+        "co":        "cohere/command-a",
+        "pp":        "perplexity/sonar-pro",
     }
 
     async def _model(ctx: CommandContext) -> CommandResult:

@@ -29,14 +29,17 @@ _DEFAULT_TTL_SECONDS = 3600  # 1 hour
 
 
 PROVIDER_BASE_URLS: dict[str, str] = {
-    "qwen":       "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+    # Tier 1: Major native
     "openai":     "https://api.openai.com/v1",
     "deepseek":   "https://api.deepseek.com/v1",
     "anthropic":  "https://api.anthropic.com",
-    "ollama":     "http://localhost:11434/v1",
-    "openrouter": "https://openrouter.ai/api/v1",
+    "google":     "https://generativelanguage.googleapis.com/v1beta",
+    "gemini":     "https://generativelanguage.googleapis.com/v1beta",
+    # Tier 2: OpenAI-compatible
+    "qwen":       "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
     "groq":       "https://api.groq.com/openai/v1",
     "mistral":    "https://api.mistral.ai/v1",
+    "openrouter": "https://openrouter.ai/api/v1",
     "together":   "https://api.together.xyz/v1",
     "perplexity": "https://api.perplexity.ai",
     "xai":        "https://api.x.ai/v1",
@@ -45,7 +48,17 @@ PROVIDER_BASE_URLS: dict[str, str] = {
     "cerebras":   "https://api.cerebras.ai/v1",
     "sambanova":  "https://api.sambanova.ai/v1",
     "nvidia":     "https://integrate.api.nvidia.com/v1",
-    "gemini":     "https://generativelanguage.googleapis.com/v1beta",
+    # Tier 3: Regional & specialized
+    "alibaba":    "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "doubao":     "https://ark.cn-beijing.volces.com/api/v3",
+    "kimi":       "https://api.moonshot.cn/v1",
+    "minimax":    "https://api.minimax.chat/v1",
+    "zai":        "https://api.z.ai/api/paas/v4",
+    "jina":       "https://api.jina.ai/v1",
+    "alibaba-coding": "https://coding-intl.dashscope.aliyuncs.com/v1",
+    # Tier 4: Local
+    "ollama":     "http://localhost:11434/v1",
+    "ollama-cloud": "http://localhost:11434/v1",
 }
 
 PROVIDER_MODELS: dict[str, list[str]] = {
@@ -90,17 +103,28 @@ PROVIDER_MODELS: dict[str, list[str]] = {
     "sambanova": ["Meta-Llama-3.1-405B-Instruct"],
     "nvidia": ["meta/llama-3.1-405b-instruct"],
     "gemini": ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash"],
+    "google": ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash"],
+    "alibaba": ["qwen3.7-max", "qwen3.6-plus", "qwen3.6-flash"],
+    "doubao": ["doubao-pro", "doubao-lite"],
+    "kimi": ["kimi-k2.6", "moonshot-v1-128k"],
+    "minimax": ["MiniMax-M3", "MiniMax-M2.7", "MiniMax-M2.5"],
+    "zai": ["glm-4-plus", "glm-4-flash"],
+    "jina": ["jina-embeddings-v3", "jina-reranker-v2"],
+    "alibaba-coding": ["qwen3-coder-plus", "qwen3-coder-turbo"],
+    "ollama-cloud": ["qwen3-coder:480b-cloud", "minimax-m3:cloud", "glm-4.7:cloud"],
 }
 
 BASE_URL_ENV_VARS: dict[str, str] = {
-    "qwen":       "DASHSCOPE_BASE_URL",
     "openai":     "OPENAI_BASE_URL",
     "deepseek":   "DEEPSEEK_BASE_URL",
     "anthropic":  "ANTHROPIC_BASE_URL",
-    "ollama":     "OLLAMA_BASE_URL",
-    "openrouter": "OPENROUTER_BASE_URL",
+    "google":     "GOOGLE_BASE_URL",
+    "gemini":     "GEMINI_BASE_URL",
+    "qwen":       "DASHSCOPE_BASE_URL",
     "groq":       "GROQ_BASE_URL",
     "mistral":    "MISTRAL_BASE_URL",
+    "ollama":     "OLLAMA_BASE_URL",
+    "openrouter": "OPENROUTER_BASE_URL",
     "together":   "TOGETHER_BASE_URL",
     "perplexity": "PERPLEXITY_BASE_URL",
     "xai":        "XAI_BASE_URL",
@@ -109,6 +133,14 @@ BASE_URL_ENV_VARS: dict[str, str] = {
     "cerebras":   "CEREBRAS_BASE_URL",
     "sambanova":  "SAMBANOVA_BASE_URL",
     "nvidia":     "NVIDIA_BASE_URL",
+    "alibaba":    "ALIBABA_BASE_URL",
+    "doubao":     "DOUBAO_BASE_URL",
+    "kimi":       "KIMI_BASE_URL",
+    "minimax":    "MINIMAX_BASE_URL",
+    "zai":        "ZAI_BASE_URL",
+    "jina":       "JINA_BASE_URL",
+    "alibaba-coding": "ALIBABA_CODING_BASE_URL",
+    "ollama-cloud":   "OLLAMA_CLOUD_BASE_URL",
     "gemini":     "GEMINI_BASE_URL",
 }
 

@@ -110,27 +110,44 @@ class CredentialPool:
         except Exception:
             return 0
 
-        providers = data.get("providers", {})
-        if not providers:
-            # Backward-compat: flat {provider: [entries]} format.
-            providers = {k: v for k, v in data.items() if isinstance(v, list)}
+        # Support Hermes-style credential_pool (highest priority).
+        cred_pool = data.get("credential_pool", {})
+        if cred_pool:
+            providers = dict(cred_pool)
+        else:
+            providers = data.get("providers", {})
+            if not providers:
+                # Backward-compat: flat {provider: [entries]} format.
+                providers = {k: v for k, v in data.items() if isinstance(v, list)}
 
         count = 0
         for provider, entries in providers.items():
             for entry in entries:
-                # Normalize key field: accept both "key" and "access_token".
-                key = entry.get("key", "") or entry.get("access_token", "")
+                # Normalize key field: accept "key", "access_token", and "api_key".
+                key = (
+                    entry.get("key", "") or
+                    entry.get("access_token", "") or
+                    entry.get("api_key", "")
+                )
                 if not key:
+                    # Skip entries without keys (e.g., token-based auth).
                     continue
+
+                # Hermes-style rich metadata.
                 metadata = {
                     "label": entry.get("label", ""),
                     "priority": entry.get("priority", 1),
                     "source": entry.get("source", "auth_json"),
+                    "auth_type": entry.get("auth_type", "api_key"),
+                    "base_url": entry.get("base_url", ""),
+                    "last_status": entry.get("last_status", ""),
+                    "last_error_code": entry.get("last_error_code"),
+                    "last_error_message": entry.get("last_error_message", ""),
                 }
                 self.add(provider, key, metadata)
                 count += 1
 
-        # Apply per-provider strategies from credential_pool config if present.
+        # Apply per-provider strategies from credential_pool config.
         strategies = data.get("credential_pool_strategies", {})
         for provider, strategy in strategies.items():
             self.set_strategy(provider, strategy)

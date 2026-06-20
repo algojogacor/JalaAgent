@@ -54,11 +54,20 @@ def _build_agent(model: str | None = None, plan: bool = False, base_url: str | N
     # Bulk-load from auth.json (handles both "key" and "access_token" fields).
     loaded = creds.add_from_auth_json()
     logger.debug("Credential pool: %d keys loaded from auth.json", loaded)
-    # Also load from env vars.
+    # Also load from env vars (all supported providers).
     for prov, env_var in [
         ("anthropic", "ANTHROPIC_API_KEY"), ("openai", "OPENAI_API_KEY"),
-        ("openrouter", "OPENROUTER_API_KEY"), ("deepseek", "DEEPSEEK_API_KEY"),
+        ("deepseek", "DEEPSEEK_API_KEY"), ("google", "GOOGLE_API_KEY"),
+        ("gemini", "GEMINI_API_KEY"), ("qwen", "DASHSCOPE_API_KEY"),
         ("groq", "GROQ_API_KEY"), ("mistral", "MISTRAL_API_KEY"),
+        ("openrouter", "OPENROUTER_API_KEY"), ("together", "TOGETHER_API_KEY"),
+        ("perplexity", "PERPLEXITY_API_KEY"), ("xai", "XAI_API_KEY"),
+        ("cohere", "COHERE_API_KEY"), ("fireworks", "FIREWORKS_API_KEY"),
+        ("cerebras", "CEREBRAS_API_KEY"), ("sambanova", "SAMBANOVA_API_KEY"),
+        ("nvidia", "NVIDIA_API_KEY"), ("alibaba", "ALIBABA_API_KEY"),
+        ("doubao", "DOUBAO_API_KEY"), ("kimi", "KIMI_API_KEY"),
+        ("minimax", "MINIMAX_API_KEY"), ("zai", "ZAI_API_KEY"),
+        ("jina", "JINA_API_KEY"),
     ]:
         creds.add_from_env(prov, env_var)
 

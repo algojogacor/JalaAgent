@@ -161,12 +161,23 @@ def create_app(token: str | None = None) -> FastAPI:
                 if prov not in {m["owned_by"] for m in models}:
                     models.append({"id": f"{prov}/default", "object": "model", "owned_by": prov})
 
-        # Hard-coded models for Anthropic-compatible clients.
+        # Discoverable models for API clients.
         models += [
             {"id": "claude-sonnet-4-6", "object": "model", "owned_by": "anthropic"},
             {"id": "claude-opus-4-8", "object": "model", "owned_by": "anthropic"},
             {"id": "gpt-4o", "object": "model", "owned_by": "openai"},
             {"id": "deepseek-v4-flash-260425", "object": "model", "owned_by": "deepseek"},
+            {"id": "gemini-2.5-flash", "object": "model", "owned_by": "google"},
+            {"id": "qwen3.7-max", "object": "model", "owned_by": "qwen"},
+            {"id": "mistral-large-latest", "object": "model", "owned_by": "mistral"},
+            {"id": "llama-4-scout-17b-16e-instruct", "object": "model", "owned_by": "groq"},
+            {"id": "sonar-pro", "object": "model", "owned_by": "perplexity"},
+            {"id": "grok-3", "object": "model", "owned_by": "xai"},
+            {"id": "command-a", "object": "model", "owned_by": "cohere"},
+            {"id": "kimi-k2.6", "object": "model", "owned_by": "kimi"},
+            {"id": "doubao-pro", "object": "model", "owned_by": "doubao"},
+            {"id": "MiniMax-M3", "object": "model", "owned_by": "minimax"},
+            {"id": "glm-4-plus", "object": "model", "owned_by": "zai"},
         ]
         return {"object": "list", "data": models[:50]}
 
