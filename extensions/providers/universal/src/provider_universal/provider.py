@@ -36,7 +36,7 @@ class OpenAICompatibleProvider:
         config_path: Path | None = None,
         auth_path: Path | None = None,
         default_provider: str = "deepseek",
-        default_model: str = "deepseek-chat",
+        default_model: str = "deepseek-v4-flash-260425",
         api_key: str = "",
         base_url: str = "",
         model: str = "",

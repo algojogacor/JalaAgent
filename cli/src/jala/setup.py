@@ -25,7 +25,7 @@ def run_setup() -> None:
     # ── Step 2: LLM Provider ──
     console.print("\n[bold]Step 2: Default Provider[/]")
     provider = Prompt.ask("Default provider", choices=["deepseek", "anthropic", "openai", "openrouter", "ollama", "groq", "mistral"], default=config.get("agent", {}).get("default_provider", "deepseek"))
-    default_model = Prompt.ask("Default model", default=config.get("agent", {}).get("default_model", "deepseek-chat"))
+    default_model = Prompt.ask("Default model", default=config.get("agent", {}).get("default_model", "deepseek-v4-flash-260425"))
 
     # Collect API key and create auth.json.
     api_key = Prompt.ask(f"API key for [bold]{provider}[/] (press Enter to skip)", password=True, default="")
@@ -96,7 +96,7 @@ def _build_config(provider: str, default_model: str, embedding_model: str, embed
         # ═══ BLOCK 1: Provider System ═══
         "model": {"default": default_model, "provider": provider, "context_length": 200000},
         "providers": {
-            "deepseek": {"base_url": "https://api.deepseek.com/v1", "models": [{"name": "deepseek-chat", "default": True}, {"name": "deepseek-reasoner"}]},
+            "deepseek": {"base_url": "https://api.deepseek.com/v1", "models": [{"name": "deepseek-v4-flash-260425", "default": True}, {"name": "deepseek-v4-pro-260425"}, {"name": "deepseek-v3-2-251201"}]},
             "openrouter": {"base_url": "https://openrouter.ai/api/v1", "models": [{"name": "anthropic/claude-sonnet-4", "default": True}, {"name": "openai/gpt-4o"}, {"name": "google/gemini-2.5-flash"}], "extra_headers": {"HTTP-Referer": "https://jalaagent.dev", "X-Title": "JalaAgent"}},
             "groq": {"base_url": "https://api.groq.com/openai/v1", "models": [{"name": "llama-4-scout-17b-16e-instruct", "default": True}]},
             "mistral": {"base_url": "https://api.mistral.ai/v1", "models": [{"name": "mistral-large-latest", "default": True}, {"name": "codestral-latest"}]},
@@ -115,7 +115,7 @@ def _build_config(provider: str, default_model: str, embedding_model: str, embed
         },
         "fallback_providers": ["deepseek", "openrouter", "groq", "mistral", "ollama"],
         "credential_pool": {"strategy": "random", "health_check_interval": 3600, "max_retries": 3, "jitter": True},
-        "auxiliary": {"provider": "deepseek", "model": "deepseek-chat", "description": "Cheaper model for dreaming, self-improvement, background tasks"},
+        "auxiliary": {"provider": "deepseek", "model": "deepseek-v4-flash-260425", "description": "Default model for dreaming, self-improvement, background tasks"},
 
         # ═══ BLOCK 2: Agent Runtime ═══
         "agent": {"name": "JalaAgent", "max_iterations": 100, "model": default_model, "provider": provider, "api_max_retries": 3, "tool_use_enforcement": "auto", "task_completion_guidance": True, "image_input_mode": "auto"},

@@ -48,9 +48,9 @@ def get_config_path() -> Path:
 def _defaults() -> dict[str, Any]:
     return {
         # ── Block 1: Provider System ──
-        "model": {"default": "deepseek-chat", "provider": "deepseek", "context_length": 200000},
+        "model": {"default": "deepseek-v4-flash-260425", "provider": "deepseek", "context_length": 200000},
         "providers": {
-            "deepseek": {"base_url": "https://api.deepseek.com/v1", "models": [{"name": "deepseek-chat", "default": True}]},
+            "deepseek": {"base_url": "https://api.deepseek.com/v1", "models": [{"name": "deepseek-v4-flash-260425", "default": True}, {"name": "deepseek-v4-pro-260425"}]},
             "openrouter": {"base_url": "https://openrouter.ai/api/v1", "models": [{"name": "anthropic/claude-sonnet-4", "default": True}]},
             "groq": {"base_url": "https://api.groq.com/openai/v1", "models": [{"name": "llama-4-scout-17b-16e-instruct", "default": True}]},
             "mistral": {"base_url": "https://api.mistral.ai/v1", "models": [{"name": "mistral-large-latest", "default": True}]},

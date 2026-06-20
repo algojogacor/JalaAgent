@@ -161,7 +161,7 @@ def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used
     cfg = _load_jala_config()
     aux = cfg.get("auxiliary", {})
     prov = aux.get("provider", "deepseek")
-    model = aux.get("model", "deepseek-chat")
+    model = aux.get("model", "deepseek-v4-flash-260425")
     try:
         from provider_universal.provider import OpenAICompatibleProvider  # pyright: ignore
         return OpenAICompatibleProvider(default_provider=prov, default_model=model)

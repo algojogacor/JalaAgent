@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class DeepSeekProvider:
     """DeepSeek models (v3, r1) via OpenAI-compatible API."""
 
-    def __init__(self, api_key: str | None = None, model: str = "deepseek-chat", max_tokens: int = 8192) -> None:
+    def __init__(self, api_key: str | None = None, model: str = "deepseek-v4-flash-260425", max_tokens: int = 8192) -> None:
         self._api_key = api_key or os.environ.get("DEEPSEEK_API_KEY", "")
         self._model = model
         self._max_tokens = max_tokens

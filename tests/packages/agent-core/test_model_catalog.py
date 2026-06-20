@@ -92,7 +92,7 @@ def test_model_catalog_get_models_static_fallback():
     """Catalog returns static list when no cache exists."""
     catalog = ModelCatalog()
     models = catalog.get_models("deepseek")
-    assert "deepseek-chat" in models
+    assert "deepseek-v4-flash-260425" in models
     assert "deepseek-reasoner" in models
 
 

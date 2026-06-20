@@ -58,14 +58,14 @@ PROVIDER_MODELS: dict[str, list[str]] = {
         "gpt-4o", "gpt-4o-mini", "gpt-4.1", "gpt-4.1-mini",
         "o4-mini", "o3-mini",
     ],
-    "deepseek": ["deepseek-chat", "deepseek-reasoner"],
+    "deepseek": ["deepseek-v4-flash-260425", "deepseek-v4-pro-260425", "deepseek-v3-2-251201", "deepseek-chat", "deepseek-reasoner"],
     "anthropic": [
         "claude-sonnet-4-6", "claude-opus-4-8", "claude-haiku-4-5",
     ],
     "ollama": ["qwen3:0.6b", "llama3.2", "mistral"],
     "openrouter": [
         "openai/gpt-4o", "anthropic/claude-sonnet-4-6",
-        "google/gemini-2.5-pro", "deepseek/deepseek-chat",
+        "google/gemini-2.5-pro", "deepseek/deepseek-v4-flash-260425",
         "meta-llama/llama-4-maverick", "qwen/qwen-plus",
     ],
     "groq": [

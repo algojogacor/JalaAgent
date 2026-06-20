@@ -87,7 +87,7 @@ DEFAULT_PROVIDERS: list[ProviderEntry] = [
         "DeepSeekProvider",
         model_patterns=["deepseek-"],
         priority=30,
-        default_model="deepseek-chat",
+        default_model="deepseek-v4-flash-260425",
     ),
     ProviderEntry(
         "groq",
