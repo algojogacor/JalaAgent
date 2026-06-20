@@ -707,6 +707,223 @@ def _build_registry() -> CommandRegistry:
         except ImportError:
             return CommandResult("📌 Topic manager not available.")
 
+    # ── Graphify — knowledge graph integration ───────────────
+    async def _graphify(ctx: CommandContext) -> CommandResult:
+        """Knowledge graph for codebase — build, query, explain, path-find.
+
+        /graphify build [path]       → build knowledge graph
+        /graphify build --deep       → deep mode (richer semantic extraction)
+        /graphify query "<question>" → ask anything about the codebase
+        /graphify explain "X"        → plain-language explanation of a node
+        /graphify path "A" "B"       → shortest connection path between two concepts
+        /graphify report             → show latest GRAPH_REPORT.md highlights
+        /graphify status             → show graph status + stats
+        /graphify mcp                → start MCP stdio server for agent access
+        """
+        import asyncio
+        import shutil
+        from pathlib import Path
+
+        sub = ctx.args[0].lower() if ctx.args else "status"
+
+        # ── Help ──
+        if sub in ("help", "--help", "-h"):
+            return CommandResult(
+                "🕸️ **Graphify — Knowledge Graph**\n\n"
+                "Turn any folder into a queryable knowledge graph.\n\n"
+                "**Commands:**\n"
+                "  `/graphify build [path]` — build graph (use `--deep` for richer extraction)\n"
+                "  `/graphify build --update` — incremental rebuild (only changed files)\n"
+                "  `/graphify query \"<question>\"` — ask about codebase\n"
+                "  `/graphify query \"<q>\" --dfs` — depth-first traversal\n"
+                "  `/graphify explain \"<node>\"` — explain a concept\n"
+                "  `/graphify path \"<A>\" \"<B>\"` — shortest path between nodes\n"
+                "  `/graphify report` — show latest report highlights\n"
+                "  `/graphify status` — graph stats + freshness\n"
+                "  `/graphify mcp` — start MCP server\n"
+                "\n**Outputs:** graph.html · GRAPH_REPORT.md · graph.json\n"
+                "**Docs:** https://github.com/safishamsi/graphify"
+            )
+
+        target = Path.cwd()
+        if len(ctx.args) > 1 and sub in ("build",) and not ctx.args[1].startswith("--"):
+            target = Path(ctx.args[1]).resolve()
+
+        graphify_dir = target / "graphify-out"
+
+        # ── Status ──
+        if sub == "status":
+            if not graphify_dir.exists():
+                return CommandResult("🕸️ **Graphify:** No graph built yet. Run `/graphify build` first.")
+            graph_json = graphify_dir / "graph.json"
+            graph_html = graphify_dir / "graph.html"
+            report = graphify_dir / "GRAPH_REPORT.md"
+            stats = []
+            if graph_json.exists():
+                try:
+                    import json as _json
+                    data = _json.loads(graph_json.read_text(encoding="utf-8"))
+                    nodes = len(data.get("nodes", []))
+                    edges = len(data.get("edges", []))
+                    stats.append(f"  Nodes: {nodes}")
+                    stats.append(f"  Edges: {edges}")
+                except Exception:
+                    stats.append("  graph.json: ✓ (parse error)")
+            else:
+                stats.append("  graph.json: ✗")
+            stats.append(f"  graph.html: {'✓' if graph_html.exists() else '✗'}")
+            stats.append(f"  GRAPH_REPORT.md: {'✓' if report.exists() else '✗'}")
+            # Age
+            if graph_json.exists():
+                import time as _time
+                age = _time.time() - graph_json.stat().st_mtime
+                if age < 3600:
+                    stats.append(f"  Freshness: {int(age/60)}m ago")
+                elif age < 86400:
+                    stats.append(f"  Freshness: {int(age/3600)}h ago")
+                else:
+                    stats.append(f"  Freshness: {int(age/86400)}d ago")
+            return CommandResult("🕸️ **Graphify Status**\n" + "\n".join(stats))
+
+        # ── Build ──
+        if sub == "build":
+            graphify_bin = shutil.which("graphify")
+            if not graphify_bin:
+                return CommandResult("❌ `graphify` CLI not found. Install: `uv tool install graphifyy`")
+
+            # Build safe argument list (no shell — prevents injection).
+            build_args: list[str] = [graphify_bin, str(target)]
+            for a in ctx.args[1:]:
+                if a.startswith("--"):
+                    if a == "--deep":
+                        build_args.extend(["--mode", "deep"])
+                    else:
+                        build_args.append(a)
+
+            logger.info("Graphify build: %s", " ".join(build_args))
+
+            try:
+                proc = await asyncio.create_subprocess_exec(
+                    *build_args,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                    cwd=str(target),
+                )
+                stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=300)
+                out = stdout.decode("utf-8", errors="replace")[-3000:]
+                err = stderr.decode("utf-8", errors="replace")[-1000:]
+                if proc.returncode == 0:
+                    # Check outputs
+                    if graphify_dir.exists():
+                        return CommandResult(f"🕸️ **Graph built!**\n\nOutputs in `{graphify_dir}`:\n  • graph.html\n  • GRAPH_REPORT.md\n  • graph.json\n\n{out[-500:]}")
+                    return CommandResult(f"🕸️ Graph build completed.\n{out[-500:]}")
+                return CommandResult(f"❌ Graph build failed (exit {proc.returncode}):\n{err[-500:] or out[-500:]}")
+            except asyncio.TimeoutError:
+                return CommandResult("⏱️ Graph build timed out (5 min). Try without --deep or on a smaller directory.")
+
+        # ── Query ──
+        if sub == "query":
+            question = " ".join(ctx.args[1:]) if len(ctx.args) > 1 else ""
+            if not question:
+                return CommandResult("Usage: /graphify query \"<question>\"")
+            graphify_bin = shutil.which("graphify")
+            if not graphify_bin:
+                return CommandResult("❌ `graphify` CLI not found.")
+            if not graphify_dir.exists():
+                return CommandResult("❌ No graph built. Run `/graphify build` first.")
+
+            use_dfs = "--dfs" in question
+            question_clean = question.replace("--dfs", "").strip().strip('"').strip("'")
+            query_args: list[str] = [graphify_bin, "query", question_clean]
+            if use_dfs:
+                query_args.append("--dfs")
+            try:
+                proc = await asyncio.create_subprocess_exec(
+                    *query_args,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                    cwd=str(target),
+                )
+                stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=120)
+                out = stdout.decode("utf-8", errors="replace")
+                return CommandResult(f"🕸️ **Graph Query:** {question_clean}\n\n{out[:3000]}" if out else f"🕸️ No results for: {question_clean}")
+            except asyncio.TimeoutError:
+                return CommandResult("⏱️ Query timed out.")
+
+        # ── Explain ──
+        if sub == "explain":
+            node = " ".join(ctx.args[1:]) if len(ctx.args) > 1 else ""
+            if not node:
+                return CommandResult("Usage: /graphify explain \"<node>\"")
+            graphify_bin = shutil.which("graphify")
+            if not graphify_bin:
+                return CommandResult("❌ `graphify` CLI not found.")
+            if not graphify_dir.exists():
+                return CommandResult("❌ No graph built. Run `/graphify build` first.")
+
+            try:
+                proc = await asyncio.create_subprocess_exec(
+                    graphify_bin, "explain", node,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                    cwd=str(target),
+                )
+                stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=60)
+                out = stdout.decode("utf-8", errors="replace")
+                return CommandResult(f"🕸️ **Explain: {node}**\n\n{out[:3000]}" if out else f"🕸️ Node '{node}' not found in graph.")
+            except asyncio.TimeoutError:
+                return CommandResult("⏱️ Explain timed out.")
+
+        # ── Path ──
+        if sub == "path":
+            if len(ctx.args) < 3:
+                return CommandResult("Usage: /graphify path \"<nodeA>\" \"<nodeB>\"")
+            node_a = ctx.args[1]
+            node_b = ctx.args[2]
+            graphify_bin = shutil.which("graphify")
+            if not graphify_bin:
+                return CommandResult("❌ `graphify` CLI not found.")
+            if not graphify_dir.exists():
+                return CommandResult("❌ No graph built. Run `/graphify build` first.")
+
+            try:
+                proc = await asyncio.create_subprocess_exec(
+                    graphify_bin, "path", node_a, node_b,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                    cwd=str(target),
+                )
+                stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=60)
+                out = stdout.decode("utf-8", errors="replace")
+                return CommandResult(f"🕸️ **Path: {node_a} → {node_b}**\n\n{out[:3000]}" if out else f"🕸️ No path found between '{node_a}' and '{node_b}'.")
+            except asyncio.TimeoutError:
+                return CommandResult("⏱️ Path-find timed out.")
+
+        # ── Report ──
+        if sub == "report":
+            report_file = graphify_dir / "GRAPH_REPORT.md"
+            if not report_file.exists():
+                return CommandResult("❌ No GRAPH_REPORT.md found. Run `/graphify build` first.")
+            content = report_file.read_text(encoding="utf-8", errors="replace")
+            return CommandResult(f"🕸️ **Graph Report**\n\n{content[:3000]}" + ("\n\n...(truncated)" if len(content) > 3000 else ""))
+
+        # ── MCP ──
+        if sub == "mcp":
+            graphify_bin = shutil.which("graphify")
+            if not graphify_bin:
+                return CommandResult("❌ `graphify` CLI not found.")
+            if ctx.mcp_manager:
+                server = await ctx.mcp_manager.get_server("graphify")
+                if server and server.is_running:
+                    return CommandResult("🕸️ Graphify MCP server is running.\nUse MCP tools to query the graph.")
+                return CommandResult("🕸️ Graphify MCP server starting... Run `/graphify status` to check.")
+            return CommandResult("🕸️ MCP manager not available. Install graphify: `uv tool install graphifyy`")
+
+        return CommandResult(
+            "🕸️ **Graphify** — unknown sub-command.\n"
+            "Try: build, query, explain, path, report, status, mcp, help"
+        )
+
     # ── Register all ────────────────────────────────────────
     cmds = [
         ("new", _new, ["reset"], "Start a new session", "/new", "session"),
@@ -757,6 +974,7 @@ def _build_registry() -> CommandRegistry:
         ("restart", _restart, [], "Graceful gateway restart", "/restart", "control"),
         ("whoami", _whoami, [], "User identity", "/whoami", "info"),
         ("topic", _topic, [], "Telegram multi-session topics", "/topic [off|help|session-id]", "session"),
+        ("graphify", _graphify, ["graph", "kg"], "Knowledge graph for codebase", "/graphify [build|query|explain|path|report|status|mcp]", "info"),
     ]
     for name, handler, aliases, desc, usage, cat in cmds:
         r.register(name, handler, aliases=aliases, description=desc, usage=usage, category=cat)

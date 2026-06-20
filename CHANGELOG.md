@@ -5,6 +5,11 @@ All notable changes to JalaAgent.
 ## v2026.6.20 (2026-06-20)
 
 ### Added
+- **Graphify integration** — Knowledge graph add-on backed by safishamsi/graphify
+  - `/graphify` slash command (build, query, explain, path, report, status, mcp)
+  - MCP server registration in lazy-loading manager
+  - Updated bundled skill with real CLI backend
+  - Privacy-first: code AST parsed locally via tree-sitter (36 languages)
 - **Provider/model system overhaul** — Hermes-level `/model` command with interactive picker (Telegram + CLI)
 - **Static model catalog** — 17 providers with curated model lists in `agent_core.model_catalog`
 - **Live API model discovery** — `GET /v1/models` with 1-hour disk cache, auto-discovers new models

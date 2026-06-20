@@ -1,7 +1,10 @@
-# Skills Catalog — 67 Bundled
+# Skills Catalog — 65 Bundled
 
 ## Software Development (17)
 brainstorming, systematic-debugging, test-driven-development, subagent-driven-development, executing-plans, dispatching-parallel-agents, writing-plans, finishing-a-development-branch, requesting-code-review, receiving-code-review, pre-commit-verification, kanban-orchestrator, git-workflow, git-advanced, docker-management, oss-contributing, graphify
+
+> `graphify` v2.0.0 — now backed by [safishamsi/graphify](https://github.com/safishamsi/graphify) CLI (v0.8.44).
+> Real tree-sitter AST parsing (36 languages), Leiden clustering, MCP server support, `/graphify` slash command.
 
 ## Creative (13)
 frontend-design, visual-design, ascii-art, creative-writing, presentation-design, ideation, design-impeccable, pixel-art, animated-gradient-mesh, architecture-diagram, design-taste, micro-interactions, sketch

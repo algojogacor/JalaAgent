@@ -1,4 +1,4 @@
-# Slash Commands — 46 Total
+# Slash Commands — 52 Total
 
 ## Session (9)
 | Command | Description |
@@ -51,7 +51,7 @@
 | `/reload_mcp` | Reload MCP |
 | `/curator` | Skill maintenance |
 
-## Info (11)
+## Info (13)
 | Command | Description |
 |---------|-------------|
 | `/help` | Categorized help |
@@ -65,3 +65,17 @@
 | `/profile` | Config profile |
 | `/whoami` | User identity |
 | `/topic` | Telegram topics |
+| `/graphify build/query` | Knowledge graph for codebase |
+| `/graphify explain/path` | Graph node explain + path-find |
+
+### Graphify Sub-commands
+| Sub-command | Description |
+|-------------|-------------|
+| `/graphify build [path] [--deep]` | Build knowledge graph |
+| `/graphify query "<q>"` | Ask about codebase |
+| `/graphify explain "<node>"` | Explain a concept |
+| `/graphify path "A" "B"` | Shortest path between nodes |
+| `/graphify report` | GRAPH_REPORT.md highlights |
+| `/graphify status` | Graph stats + freshness |
+| `/graphify mcp` | Start graphify as MCP server |
+| `/graphify help` | Show usage |

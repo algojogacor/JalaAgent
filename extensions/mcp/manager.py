@@ -25,6 +25,13 @@ _BASE_SERVERS = {
         "command": "npx",
         "args": ["-y", "@modelcontextprotocol/server-fetch"],
     },
+    "graphify": {
+        "command": "graphify",
+        "args": ["--mcp"],
+        "env": {},
+        "description": "Knowledge graph for codebase — query, explain, path-find",
+        "docs": "https://github.com/safishamsi/graphify",
+    },
 }
 
 
