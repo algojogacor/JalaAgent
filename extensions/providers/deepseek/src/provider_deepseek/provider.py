@@ -14,10 +14,11 @@ logger = logging.getLogger(__name__)
 class DeepSeekProvider:
     """DeepSeek models (v3, r1) via OpenAI-compatible API."""
 
-    def __init__(self, api_key: str | None = None, model: str = "deepseek-v4-flash-260425", max_tokens: int = 8192) -> None:
+    def __init__(self, api_key: str | None = None, model: str = "deepseek-v4-flash-260425", max_tokens: int = 8192, base_url: str = "https://api.deepseek.com/v1") -> None:
         self._api_key = api_key or os.environ.get("DEEPSEEK_API_KEY", "")
         self._model = model
         self._max_tokens = max_tokens
+        self._base_url = base_url or "https://api.deepseek.com/v1"
         self._client: Any = None
 
     @property
@@ -27,7 +28,7 @@ class DeepSeekProvider:
     async def stream_completion(self, messages: list[AgentMessage], tools: list[dict[str, Any]], system: str, model: str) -> AsyncGenerator[ProviderChunk, None]:
         from openai import AsyncOpenAI
         if self._client is None:
-            self._client = AsyncOpenAI(api_key=self._api_key, base_url="https://api.deepseek.com/v1")
+            self._client = AsyncOpenAI(api_key=self._api_key, base_url=self._base_url)
         model = model or self._model
         built = self._convert_messages(messages, system)
         try:
