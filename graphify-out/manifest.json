@@ -10,24 +10,24 @@
     "semantic_hash": "0a5006a361bec63fc9be8c8a16108d4c"
   },
   "cli/src/jala/config.py": {
-    "mtime": 1781891801.041042,
-    "ast_hash": "3d48a68f358755e70c835998d68ae1ad",
-    "semantic_hash": "3d48a68f358755e70c835998d68ae1ad"
+    "mtime": 1781942434.6437852,
+    "ast_hash": "40f173b920fb265c335caf370eb99976",
+    "semantic_hash": ""
   },
   "cli/src/jala/main.py": {
-    "mtime": 1781942089.6980052,
-    "ast_hash": "f33e7181418a151574039b1cb4084b4b",
+    "mtime": 1781942417.360759,
+    "ast_hash": "3383194b4ae5e2ec1dc29919de77426b",
     "semantic_hash": ""
   },
   "cli/src/jala/server.py": {
-    "mtime": 1781892847.6158855,
-    "ast_hash": "5093ae35e88b4718de15a93c8fec109d",
-    "semantic_hash": "5093ae35e88b4718de15a93c8fec109d"
+    "mtime": 1781942462.0726302,
+    "ast_hash": "2cd60b99c56c9fd17db25dfb1a1c668c",
+    "semantic_hash": ""
   },
   "cli/src/jala/setup.py": {
-    "mtime": 1781892872.3269057,
-    "ast_hash": "7ada2bf754fbf2fed49c5c657597ba43",
-    "semantic_hash": "7ada2bf754fbf2fed49c5c657597ba43"
+    "mtime": 1781942450.6836584,
+    "ast_hash": "5145d194ed693a177fd51320fdf77077",
+    "semantic_hash": ""
   },
   "conftest.py": {
     "mtime": 1781891801.041042,
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "extensions/providers/deepseek/src/provider_deepseek/provider.py": {
-    "mtime": 1781925271.456167,
-    "ast_hash": "243a37abbcb5e1c1c1d189aa6a7c4f61",
+    "mtime": 1781942560.5607812,
+    "ast_hash": "b30762c33a04b64064a7d99e5e9b3021",
     "semantic_hash": ""
   },
   "extensions/providers/gemini/src/provider_gemini/provider.py": {
@@ -235,9 +235,9 @@
     "semantic_hash": "2fbe61eef55977ae761f210cd7ed5e17"
   },
   "extensions/providers/universal/src/provider_universal/provider.py": {
-    "mtime": 1781891801.054999,
-    "ast_hash": "be295e768251d1a7ddb24a463ab25a12",
-    "semantic_hash": "be295e768251d1a7ddb24a463ab25a12"
+    "mtime": 1781942436.2704098,
+    "ast_hash": "7f97d6e534efd97943b434ec22b1936d",
+    "semantic_hash": ""
   },
   "packages/agent-core/pyproject.toml": {
     "mtime": 1781891801.054999,
@@ -260,8 +260,8 @@
     "semantic_hash": "a5c95be056943ae15569e7feb1b08357"
   },
   "packages/agent-core/src/agent_core/commands.py": {
-    "mtime": 1781923142.5872908,
-    "ast_hash": "27738fa328c91e5ca8cd289b75a66cf9",
+    "mtime": 1781942416.388782,
+    "ast_hash": "3ecc64269e21486a865fff423c7e0f8f",
     "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/compaction.py": {
@@ -270,9 +270,9 @@
     "semantic_hash": "0b8b2d21d2520340c2cef43b6c3d31fe"
   },
   "packages/agent-core/src/agent_core/config_schema.py": {
-    "mtime": 1781892203.4726758,
-    "ast_hash": "39ff636d90f91f537170b28a23421487",
-    "semantic_hash": "39ff636d90f91f537170b28a23421487"
+    "mtime": 1781942433.1503334,
+    "ast_hash": "9547484624e5fc0a8c5b0881497442be",
+    "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/core_tools.py": {
     "mtime": 1781891801.054999,
@@ -305,9 +305,9 @@
     "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/model_catalog.py": {
-    "mtime": 1781891801.0580647,
-    "ast_hash": "36b1035bd55b2857c0dd101bca4cb21b",
-    "semantic_hash": "36b1035bd55b2857c0dd101bca4cb21b"
+    "mtime": 1781942431.866216,
+    "ast_hash": "2e23644ca246df133226a1e394d8514a",
+    "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/models.py": {
     "mtime": 1781891801.0580647,
@@ -325,9 +325,9 @@
     "semantic_hash": "1e162f76707cae848410c23c1ee32a22"
   },
   "packages/agent-core/src/agent_core/providers.py": {
-    "mtime": 1781891801.0580647,
-    "ast_hash": "9ad001112f47146b75c7aa17de81f4f1",
-    "semantic_hash": "9ad001112f47146b75c7aa17de81f4f1"
+    "mtime": 1781942432.4779222,
+    "ast_hash": "adfc3d0c8bef1b71e55bed334a903f45",
+    "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/registry.py": {
     "mtime": 1781891801.0580647,
@@ -570,9 +570,9 @@
     "semantic_hash": "1be602d09106e653fcc28c5e76aa2318"
   },
   "tests/packages/agent-core/test_model_catalog.py": {
-    "mtime": 1781891801.0758388,
-    "ast_hash": "c762618a0e171d6064c62bc056776591",
-    "semantic_hash": "c762618a0e171d6064c62bc056776591"
+    "mtime": 1781942452.2560582,
+    "ast_hash": "0018dfeaea1d9d9ebc245ecb12d0db0c",
+    "semantic_hash": ""
   },
   "vercel.json": {
     "mtime": 1781892001.4619894,

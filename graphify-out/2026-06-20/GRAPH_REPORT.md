@@ -1,16 +1,16 @@
 # Graph Report - jalaagent  (2026-06-20)
 
 ## Corpus Check
-- 213 files · ~94,170 words
+- 213 files · ~94,172 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3033 nodes · 5467 edges · 223 communities (188 shown, 35 thin omitted)
+- 3033 nodes · 5467 edges · 221 communities (186 shown, 35 thin omitted)
 - Extraction: 75% EXTRACTED · 25% INFERRED · 0% AMBIGUOUS · INFERRED: 1366 edges (avg confidence: 0.53)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `83944359`
+- Built from commit: `cfcc4b42`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,10 +74,8 @@
 - [[_COMMUNITY_Community 56|Community 56]]
 - [[_COMMUNITY_Community 57|Community 57]]
 - [[_COMMUNITY_Community 58|Community 58]]
-- [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 60|Community 60]]
 - [[_COMMUNITY_Community 61|Community 61]]
-- [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 63|Community 63]]
 - [[_COMMUNITY_Community 64|Community 64]]
 - [[_COMMUNITY_Community 65|Community 65]]
@@ -267,7 +265,7 @@
 - 1-file cycle: `packages/memory-core/tests/test_dreaming.py -> packages/memory-core/tests/test_dreaming.py`
 - 1-file cycle: `packages/skill-core/src/skill_core/workshop.py -> packages/skill-core/src/skill_core/workshop.py`
 
-## Communities (223 total, 35 thin omitted)
+## Communities (221 total, 35 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.06
@@ -338,8 +336,8 @@ Cohesion: 0.07
 Nodes (23): KnowledgeGraph, GBrain-inspired knowledge graph — entity extraction, typed edges, graph traversa, Return a shared asyncio.Lock for write operations.          Created lazily so, Lazy-initialize and return the SQLite connection.          Uses double-checked, Ingest a markdown page, extracting entities and relations.          Write oper, Traverse the graph from an entity, returning connected nodes., Search entities by name (keyword match)., Return storage stats including DB file size. (+15 more)
 
 ### Community 17 - "Community 17"
-Cohesion: 0.08
-Nodes (21): _format_fact_markdown(), _make_extraction_prompt(), Build the LLM prompt for extracting facts from a batch of episodes., SHA-1 hex digest (used for dedup as specified in PRD)., Render a fact as a Markdown list item for MEMORY.md., Execute the full dreaming pipeline and return a report.          Phases are ru, Scan session JSONL files for episodes created since *since*.          Paramete, Extract facts from episodes via LLM, deduplicate via SHA1.          Parameters (+13 more)
+Cohesion: 0.05
+Nodes (39): DreamingPipeline, _format_fact_markdown(), _make_extraction_prompt(), Build the LLM prompt for extracting facts from a batch of episodes., SHA-1 hex digest (used for dedup as specified in PRD)., Render a fact as a Markdown list item for MEMORY.md., Cron-based multi-phase memory consolidation from session transcripts.      Par, Execute the full dreaming pipeline and return a report.          Phases are ru (+31 more)
 
 ### Community 18 - "Community 18"
 Cohesion: 0.08
@@ -382,8 +380,8 @@ Cohesion: 0.10
 Nodes (15): Any, MCPManager, MCPServer, Lazy-loading MCP server manager — start on first call, kill after idle timeout., Register an MCP server configuration (does NOT start it)., Get a running server, starting it lazily if needed., Return the tool list for a running MCP server., Stop all running MCP servers. (+7 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.09
-Nodes (21): config(), Integration test: end-to-end memory flow (file → vector → retrieval → drift)., With a high threshold, low-similarity results are excluded., End-to-end: write episodes → vector index → retrieve → drift detect., TestMemoryE2E, TestMemoryRetrievalThreshold, tmp_db_path(), tmp_memory_dir() (+13 more)
+Cohesion: 0.10
+Nodes (20): config(), Integration test: end-to-end memory flow (file → vector → retrieval → drift)., With a high threshold, low-similarity results are excluded., End-to-end: write episodes → vector index → retrieve → drift detect., TestMemoryE2E, TestMemoryRetrievalThreshold, tmp_db_path(), tmp_memory_dir() (+12 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.13
@@ -505,10 +503,6 @@ Nodes (4): Safe shell execution with path scoping and dangerous command detectio
 Cohesion: 0.28
 Nodes (12): on_post_tool(), on_pre_tool(), on_session_end(), on_session_start(), on_tool_failure(), Hook registry — pre/post tool execution, session lifecycle hooks., Register a hook callback for an event., Run all hooks for an event. Returns list of results (exceptions logged, not rais (+4 more)
 
-### Community 59 - "Community 59"
-Cohesion: 0.11
-Nodes (18): DreamingPipeline, Cron-based multi-phase memory consolidation from session transcripts.      Par, The timestamp of the last completed :meth:`run` call., AutoApproveCallback, DreamingRunner, ProviderLLMAdapter, Dreaming pipeline runner — cron-based scheduling with manual trigger., Auto-approves all facts (YOLO/automated mode). (+10 more)
-
 ### Community 60 - "Community 60"
 Cohesion: 0.28
 Nodes (8): FastAPI, Start JalaAgent as an Anthropic-compatible API server., serve(), _check_rate_limit(), create_app(), jala serve — JalaAgent as Anthropic-Compatible API proxy., Return True if the request is allowed, False if rate-limited., run_server()
@@ -516,10 +510,6 @@ Nodes (8): FastAPI, Start JalaAgent as an Anthropic-compatible API server., serv
 ### Community 61 - "Community 61"
 Cohesion: 0.33
 Nodes (5): ScanResult, ScanFinding, Scan *skill_content* against all security rules.          Parameters, Compute the overall verdict from a list of findings.          * Any critical f, Verdict
-
-### Community 62 - "Community 62"
-Cohesion: 0.16
-Nodes (10): _blob_to_floats(), _cosine(), _floats_to_blob(), _hash_text(), Layer 2 — SQLite + sqlite-vec vector database for semantic memory search., SHA-256 hex digest of *text* (used for embedding cache key)., Unpack a little-endian float32 blob into a list of floats., Pack a list of floats into a little-endian float32 blob. (+2 more)
 
 ### Community 63 - "Community 63"
 Cohesion: 0.15
@@ -618,8 +608,8 @@ Cohesion: 0.15
 Nodes (10): LayerHealth, Health metrics for a single memory layer., MemoryObservability, Compare current stats with the most recent snapshot to compute growth., Append current stats to the snapshot file., Load the most recent snapshot., Load all snapshots from disk., Centralized memory system health monitor.      Collects metrics from FileLayer (+2 more)
 
 ### Community 93 - "Community 93"
-Cohesion: 0.11
-Nodes (16): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links, Compute cosine similarity between two float vectors., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Pr, Memory Guardian — integrity checks across all memory layers.  Runs periodic in, JalaAgent Memory Core — hybrid memory: file + sqlite-vec + dreaming pipeline., ApprovalMode (+8 more)
+Cohesion: 0.06
+Nodes (27): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links, Compute cosine similarity between two float vectors., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Pr, Memory Guardian — integrity checks across all memory layers.  Runs periodic in, JalaAgent Memory Core — hybrid memory: file + sqlite-vec + dreaming pipeline., ApprovalMode (+19 more)
 
 ### Community 94 - "Community 94"
 Cohesion: 0.09
@@ -1013,11 +1003,11 @@ Nodes (3): Design Skills Pack, Removal, Skills included
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AgentMessage` connect `Community 67` to `Community 134`, `Community 135`, `Community 9`, `Community 13`, `Community 18`, `Community 23`, `Community 25`, `Community 30`, `Community 34`, `Community 36`, `Community 38`, `Community 42`, `Community 43`, `Community 46`, `Community 47`, `Community 49`, `Community 52`, `Community 59`, `Community 60`, `Community 75`?**
+- **Why does `AgentMessage` connect `Community 67` to `Community 134`, `Community 135`, `Community 9`, `Community 13`, `Community 17`, `Community 18`, `Community 23`, `Community 25`, `Community 30`, `Community 34`, `Community 36`, `Community 38`, `Community 42`, `Community 43`, `Community 46`, `Community 47`, `Community 49`, `Community 52`, `Community 60`, `Community 75`?**
   _High betweenness centrality (0.104) - this node is a cross-community bridge._
-- **Why does `Any` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 16`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 59`, `Community 28`, `Community 29`?**
+- **Why does `Any` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 16`, `Community 17`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
   _High betweenness centrality (0.092) - this node is a cross-community bridge._
-- **Why does `Context` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 16`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 59`, `Community 28`, `Community 29`?**
+- **Why does `Context` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 16`, `Community 17`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
   _High betweenness centrality (0.081) - this node is a cross-community bridge._
 - **Are the 114 inferred relationships involving `AgentMessage` (e.g. with `CommandContext` and `CommandDef`) actually correct?**
   _`AgentMessage` has 114 INFERRED edges - model-reasoned connections that need verification._

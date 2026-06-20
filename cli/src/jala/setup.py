@@ -25,7 +25,7 @@ def run_setup() -> None:
     # ── Step 2: LLM Provider ──
     console.print("\n[bold]Step 2: Default Provider[/]")
     provider = Prompt.ask("Default provider", choices=["deepseek", "anthropic", "openai", "openrouter", "ollama", "groq", "mistral"], default=config.get("agent", {}).get("default_provider", "deepseek"))
-    default_model = Prompt.ask("Default model", default=config.get("agent", {}).get("default_model", "deepseek-v4-flash-260425"))
+    default_model = Prompt.ask("Default model", default=config.get("agent", {}).get("default_model", "auto"))
 
     # Collect API key and create auth.json.
     api_key = Prompt.ask(f"API key for [bold]{provider}[/] (press Enter to skip)", password=True, default="")
@@ -115,7 +115,7 @@ def _build_config(provider: str, default_model: str, embedding_model: str, embed
         },
         "fallback_providers": ["deepseek", "openrouter", "groq", "mistral", "ollama"],
         "credential_pool": {"strategy": "random", "health_check_interval": 3600, "max_retries": 3, "jitter": True},
-        "auxiliary": {"provider": "deepseek", "model": "deepseek-v4-flash-260425", "description": "Default model for dreaming, self-improvement, background tasks"},
+        "auxiliary": {"provider": "auto", "model": "auto", "description": "Auto-detect cheapest available provider for dreaming, self-improvement, background tasks"},
 
         # ═══ BLOCK 2: Agent Runtime ═══
         "agent": {"name": "JalaAgent", "max_iterations": 100, "model": default_model, "provider": provider, "api_max_retries": 3, "tool_use_enforcement": "auto", "task_completion_guidance": True, "image_input_mode": "auto"},

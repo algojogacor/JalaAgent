@@ -14,8 +14,8 @@ from pydantic import BaseModel, Field
 
 class ModelConfig(BaseModel):
     """Top-level model selection."""
-    default: str = "deepseek-v4-flash-260425"
-    provider: str = "deepseek"
+    default: str = "auto"
+    provider: str = "auto"
     context_length: int = 200000
 
 

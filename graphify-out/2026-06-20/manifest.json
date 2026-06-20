@@ -15,8 +15,8 @@
     "semantic_hash": "3d48a68f358755e70c835998d68ae1ad"
   },
   "cli/src/jala/main.py": {
-    "mtime": 1781936353.1447701,
-    "ast_hash": "1f60a14a63cd42a41819b1b4707f0e1f",
+    "mtime": 1781942089.6980052,
+    "ast_hash": "f33e7181418a151574039b1cb4084b4b",
     "semantic_hash": ""
   },
   "cli/src/jala/server.py": {
@@ -300,8 +300,8 @@
     "semantic_hash": "1c1d863d6a791a3f3b6ee2a0cf47384c"
   },
   "packages/agent-core/src/agent_core/loop.py": {
-    "mtime": 1781925271.4859765,
-    "ast_hash": "7baca4596255986c36b1522605c2317a",
+    "mtime": 1781942088.6880927,
+    "ast_hash": "72c1c361e5fbca966ddb66b657234762",
     "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/model_catalog.py": {

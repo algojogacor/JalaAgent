@@ -147,7 +147,7 @@ def create_app(token: str | None = None) -> FastAPI:
         if config_path.exists():
             cfg = _yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
             prov_name = cfg.get("model", {}).get("provider", "deepseek")
-            default_model = cfg.get("model", {}).get("default", "deepseek-v4-flash-260425")
+            default_model = cfg.get("model", {}).get("default", "auto")
             models.append({"id": default_model, "object": "model", "owned_by": prov_name})
             # Add fallback provider models.
             for fb in cfg.get("fallback_providers", []):
@@ -179,7 +179,7 @@ def create_app(token: str | None = None) -> FastAPI:
 
     @app.post("/v1/messages")
     async def _messages(body: dict[str, Any]) -> StreamingResponse:  # pyright: ignore[reportUnusedFunction]
-        model = body.get("model", "deepseek-v4-flash-260425")
+        model = body.get("model", "auto")
         p = await _build_proxy_provider(model)
         user_text = ""
         for m in body.get("messages", []):

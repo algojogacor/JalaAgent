@@ -121,7 +121,7 @@ def _build_agent(model: str | None = None, plan: bool = False, base_url: str | N
     loop = AgentLoop(
         provider=provider, registry=registry, memory_retriever=memory,
         skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
-        plan_mode=plan_mode, credential_pool=creds, model=model or getattr(provider, "_model", None) or "claude-sonnet-4-6",
+        plan_mode=plan_mode, credential_pool=creds, model=model or getattr(provider, "_model", None),
         fallback_providers=fallback, compactor=compactor, repairer=repairer,
     )
     return loop
@@ -160,13 +160,13 @@ def _build_auxiliary() -> Any:  # pyright: ignore[reportUnusedFunction] — used
     """Build a cheaper auxiliary provider for dreaming + background tasks."""
     cfg = _load_jala_config()
     aux = cfg.get("auxiliary", {})
-    prov = aux.get("provider", "deepseek")
-    model = aux.get("model", "deepseek-v4-flash-260425")
+    prov = aux.get("provider", "auto")
+    model = aux.get("model", "auto")
     try:
         from provider_universal.provider import OpenAICompatibleProvider  # pyright: ignore
         return OpenAICompatibleProvider(default_provider=prov, default_model=model)
     except Exception:
-        return _pick_provider(model, None)
+        return _pick_provider(None, None)
 
 
 def _get_registry_safe() -> Any:
