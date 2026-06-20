@@ -52,7 +52,7 @@ class AgentLoop:
         memory_retriever: Any | None = None,
         config: LoopConfig | None = None,
         system_prompt: str = "",
-        model: str = "claude-sonnet-4-6",
+        model: str | None = None,
         skill_loader: Any = None,
         sandbox: Any = None,
         worktree: Any = None,
@@ -176,7 +176,7 @@ class AgentLoop:
             try:
                 async with asyncio.timeout(TTFB_TIMEOUT):
                     async for chunk in self._provider.stream_completion(
-                        messages=messages, tools=tools, system=system, model=self._model,
+                        messages=messages, tools=tools, system=system, model=self._model if self._model else None,
                     ):
                         if self._interrupted:
                             break

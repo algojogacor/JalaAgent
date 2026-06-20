@@ -116,7 +116,7 @@ def _build_agent(model: str | None = None, plan: bool = False, base_url: str | N
     loop = AgentLoop(
         provider=provider, registry=registry, memory_retriever=memory,
         skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
-        plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
+        plan_mode=plan_mode, credential_pool=creds, model=model or None,
         fallback_providers=fallback, compactor=compactor, repairer=repairer,
     )
     return loop
@@ -292,6 +292,8 @@ def main(
         return
     agent_loop = _build_agent(model, plan, base_url=base_url)
     if prompt:
+        # Load skills into registry so skill-based slash commands work.
+        await _load_skills_into_registry(agent_loop)
         # Intercept slash commands — dispatch through command registry.
         if prompt.strip().startswith("/"):
             from agent_core.commands import CommandContext, get_registry

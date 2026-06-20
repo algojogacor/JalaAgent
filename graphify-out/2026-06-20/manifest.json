@@ -260,9 +260,9 @@
     "semantic_hash": "a5c95be056943ae15569e7feb1b08357"
   },
   "packages/agent-core/src/agent_core/commands.py": {
-    "mtime": 1781909566.645351,
-    "ast_hash": "b9d62ab8b6e00dc267af92eac7032d30",
-    "semantic_hash": "b9d62ab8b6e00dc267af92eac7032d30"
+    "mtime": 1781915411.0728168,
+    "ast_hash": "27738fa328c91e5ca8cd289b75a66cf9",
+    "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/compaction.py": {
     "mtime": 1781891801.054999,
@@ -385,9 +385,9 @@
     "semantic_hash": "5f6a8e47104d2e42ff015a188f80a9e8"
   },
   "packages/memory-core/src/memory_core/__init__.py": {
-    "mtime": 1781891801.0599387,
-    "ast_hash": "f6db2d25b18d19bb6b993cdaf5633311",
-    "semantic_hash": "f6db2d25b18d19bb6b993cdaf5633311"
+    "mtime": 1781914967.8080754,
+    "ast_hash": "8f80db05afe8518bf130c5baa4e65f6e",
+    "semantic_hash": ""
   },
   "packages/memory-core/src/memory_core/dreaming.py": {
     "mtime": 1781891801.0599387,
@@ -405,19 +405,19 @@
     "semantic_hash": "e70a7efae02ed146e2f2bf62c86a0007"
   },
   "packages/memory-core/src/memory_core/file_layer.py": {
-    "mtime": 1781891801.0599387,
-    "ast_hash": "000c937d8c722978e621afc7ba79704b",
-    "semantic_hash": "000c937d8c722978e621afc7ba79704b"
+    "mtime": 1781914843.2311635,
+    "ast_hash": "8cf4117fe3920e80e3059b166be33b96",
+    "semantic_hash": ""
   },
   "packages/memory-core/src/memory_core/knowledge_graph.py": {
-    "mtime": 1781891801.0599387,
-    "ast_hash": "dbe0ad033a31512f548164359df77546",
-    "semantic_hash": "dbe0ad033a31512f548164359df77546"
+    "mtime": 1781914847.7205796,
+    "ast_hash": "4f825b76584e8730cf58d71c9c9d78c5",
+    "semantic_hash": ""
   },
   "packages/memory-core/src/memory_core/models.py": {
-    "mtime": 1781891801.0619297,
-    "ast_hash": "3ac0b0c88c9714d8b9f8c57c3c88750c",
-    "semantic_hash": "3ac0b0c88c9714d8b9f8c57c3c88750c"
+    "mtime": 1781914823.5469198,
+    "ast_hash": "1671bb5227e086f4479da86b5c99de72",
+    "semantic_hash": ""
   },
   "packages/memory-core/src/memory_core/retrieval.py": {
     "mtime": 1781891801.0619297,
@@ -430,9 +430,9 @@
     "semantic_hash": "0cf5e63c593c5ab7bd3bfcc2470e1b15"
   },
   "packages/memory-core/src/memory_core/vector_layer.py": {
-    "mtime": 1781891801.0619297,
-    "ast_hash": "8afebfe2948fe63e35622ed22be379c7",
-    "semantic_hash": "8afebfe2948fe63e35622ed22be379c7"
+    "mtime": 1781914845.23842,
+    "ast_hash": "12f200018cdc3d6dd6b3a26b02f77dc5",
+    "semantic_hash": ""
   },
   "packages/memory-core/tests/test_dreaming.py": {
     "mtime": 1781891801.0619297,
@@ -1057,6 +1057,26 @@
   "packages/skill-core/src/skill_core/bundled/yolo-mode/SKILL.md": {
     "mtime": 1781891801.0727525,
     "ast_hash": "5e91422f1aaa5f2a98b13e057f383856",
+    "semantic_hash": ""
+  },
+  "packages/memory-core/src/memory_core/family.py": {
+    "mtime": 1781914936.9711838,
+    "ast_hash": "2db10d36be915b4aa17af72a0905821f",
+    "semantic_hash": ""
+  },
+  "packages/memory-core/src/memory_core/governance.py": {
+    "mtime": 1781914914.122595,
+    "ast_hash": "7cce9d45a51a3f5381c7d4228c49dae3",
+    "semantic_hash": ""
+  },
+  "packages/memory-core/src/memory_core/guardian.py": {
+    "mtime": 1781914907.0872855,
+    "ast_hash": "29036b1d18a02928046b5bfd019f3211",
+    "semantic_hash": ""
+  },
+  "packages/memory-core/src/memory_core/observability.py": {
+    "mtime": 1781914953.2561789,
+    "ast_hash": "11a0ec7efeccf47f7176423f6134bd58",
     "semantic_hash": ""
   }
 }

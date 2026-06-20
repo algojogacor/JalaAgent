@@ -1,16 +1,16 @@
 # Graph Report - jalaagent  (2026-06-20)
 
 ## Corpus Check
-- 209 files · ~88,860 words
+- 213 files · ~93,921 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2875 nodes · 5172 edges · 213 communities (185 shown, 28 thin omitted)
-- Extraction: 74% EXTRACTED · 26% INFERRED · 0% AMBIGUOUS · INFERRED: 1361 edges (avg confidence: 0.53)
+- 3033 nodes · 5453 edges · 235 communities (197 shown, 38 thin omitted)
+- Extraction: 75% EXTRACTED · 25% INFERRED · 0% AMBIGUOUS · INFERRED: 1361 edges (avg confidence: 0.53)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1236b6f9`
+- Built from commit: `a98adabe`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -224,11 +224,33 @@
 - [[_COMMUNITY_Community 208|Community 208]]
 - [[_COMMUNITY_Community 209|Community 209]]
 - [[_COMMUNITY_Community 210|Community 210]]
+- [[_COMMUNITY_Community 213|Community 213]]
+- [[_COMMUNITY_Community 214|Community 214]]
+- [[_COMMUNITY_Community 215|Community 215]]
+- [[_COMMUNITY_Community 216|Community 216]]
+- [[_COMMUNITY_Community 217|Community 217]]
+- [[_COMMUNITY_Community 218|Community 218]]
+- [[_COMMUNITY_Community 219|Community 219]]
+- [[_COMMUNITY_Community 220|Community 220]]
+- [[_COMMUNITY_Community 221|Community 221]]
+- [[_COMMUNITY_Community 222|Community 222]]
+- [[_COMMUNITY_Community 223|Community 223]]
+- [[_COMMUNITY_Community 224|Community 224]]
+- [[_COMMUNITY_Community 225|Community 225]]
+- [[_COMMUNITY_Community 226|Community 226]]
+- [[_COMMUNITY_Community 227|Community 227]]
+- [[_COMMUNITY_Community 228|Community 228]]
+- [[_COMMUNITY_Community 229|Community 229]]
+- [[_COMMUNITY_Community 230|Community 230]]
+- [[_COMMUNITY_Community 231|Community 231]]
+- [[_COMMUNITY_Community 232|Community 232]]
+- [[_COMMUNITY_Community 233|Community 233]]
+- [[_COMMUNITY_Community 234|Community 234]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `AgentMessage` - 117 edges
-2. `FileLayer` - 111 edges
-3. `VectorLayer` - 108 edges
+2. `FileLayer` - 113 edges
+3. `VectorLayer` - 111 edges
 4. `ProviderChunkType` - 70 edges
 5. `ToolCall` - 69 edges
 6. `ProviderChunk` - 67 edges
@@ -251,44 +273,45 @@
 
 ## Import Cycles
 - 1-file cycle: `cli/src/jala/server.py -> cli/src/jala/server.py`
-- 1-file cycle: `packages/skill-core/src/skill_core/workshop.py -> packages/skill-core/src/skill_core/workshop.py`
+- 1-file cycle: `packages/memory-core/src/memory_core/family.py -> packages/memory-core/src/memory_core/family.py`
 - 1-file cycle: `packages/memory-core/src/memory_core/dreaming.py -> packages/memory-core/src/memory_core/dreaming.py`
 - 1-file cycle: `packages/memory-core/src/memory_core/dreaming_runner.py -> packages/memory-core/src/memory_core/dreaming_runner.py`
 - 1-file cycle: `packages/memory-core/tests/test_dreaming.py -> packages/memory-core/tests/test_dreaming.py`
+- 1-file cycle: `packages/skill-core/src/skill_core/workshop.py -> packages/skill-core/src/skill_core/workshop.py`
 
-## Communities (213 total, 28 thin omitted)
+## Communities (235 total, 38 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
-Nodes (23): Fact, MemoryConfig, Path, VectorLayer, approval(), AutoApproveCallback, config(), file_layer() (+15 more)
+Nodes (25): Fact, MemoryConfig, Path, VectorLayer, approval(), AutoApproveCallback, config(), FailingLLMAdapter (+17 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.20
-Nodes (5): FileLayer, Behaviour when no files exist yet (clean install)., MEMORY.md read-write round-trip and atomicity., TestFirstRun, TestMemoryFile
+Cohesion: 0.05
+Nodes (33): _lock_file(), Acquire an exclusive advisory lock on the open file descriptor., Release the advisory lock on the open file descriptor., _unlock_file(), Episode, FileLayer, MemoryConfig, Path (+25 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.05
-Nodes (22): BlueprintStore, BlueprintStore — parameterized automation templates built on cron infra., _safe_name(), _build_registry(), CommandDef, CommandRegistry, CommandResult, Unified slash command registry — all 27 commands fully wired to JalaAgent object (+14 more)
+Cohesion: 0.17
+Nodes (6): _cron_match(), CronScheduler, CronScheduler — general scheduled task manager with yaml storage., Simple cron-like scheduler using asyncio. Stores tasks in yaml., Any, Path
 
 ### Community 3 - "Community 3"
-Cohesion: 0.12
-Nodes (12): Central tool registry for JalaAgent with fuzzy name repair, loop detection, over, Return all tools whose optional ``check_fn`` returns ``True``., Execute a tool by *name* with *arguments*.          Pipeline:          1. Re, Convert between snake_case and camelCase for comparison., Repair *name* and return the canonical tool name.          Raises ``ValueError, Registry for tool definitions and dispatch.      Features (per CLAUDE.md):, Simple hash of arguments for loop detection., Check for repeated identical calls.  Raises :class:`ToolLoopError` on hard stop. (+4 more)
+Cohesion: 0.10
+Nodes (20): Hard stop — tool was called too many times in a loop., ToolLoopError, ActionCategory, Categories for tool action classification., Return all tools whose optional ``check_fn`` returns ``True``., Execute a tool by *name* with *arguments*.          Pipeline:          1. Re, Convert between snake_case and camelCase for comparison., Repair *name* and return the canonical tool name.          Raises ``ValueError (+12 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.09
-Nodes (23): DriftDetector, FileLayer, Path, config(), detector(), file_layer(), Tests for memory-core drift detection (frozen snapshot pattern)., get_snapshot_content returns the content captured at snapshot time. (+15 more)
+Cohesion: 0.18
+Nodes (9): DriftDetector, FileLayer, get_snapshot_content returns the content captured at snapshot time., Calling check_drift before take_snapshot returns False (no-op)., Simulate two "sessions" — one writes, the other detects drift., When MEMORY.md is modified externally, check_drift returns True., TestDriftDetected, TestEdgeCases (+1 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.11
-Nodes (28): Hard stop — tool was called too many times in a loop., ToolLoopError, ActionCategory, LoopConfig, Describes a tool to the provider and the registry., Configuration for the agent conversation loop., Categories for tool action classification., ToolDescriptor (+20 more)
+Cohesion: 0.13
+Nodes (9): ToolRegistry, Tests for agent-core tool registry., registry(), TestExecute, TestFuzzyRepair, TestFuzzyRepairAsync, TestGetAvailable, TestLoopDetection (+1 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.05
-Nodes (30): _blob_to_floats(), _cosine(), _floats_to_blob(), _hash_text(), Layer 2 — SQLite + sqlite-vec vector database for semantic memory search., Create all tables and the FTS index if they don't exist., Return the embedding vector for *text* via the Ollama API.          Results ar, Generate an embedding for *content* and upsert into embeddings table. (+22 more)
+Cohesion: 0.07
+Nodes (27): _floats_to_blob(), Vector-based memory with sqlite-vec KNN search and FTS5 keyword fallback., Create all tables and the FTS index if they don't exist., Return the embedding vector for *text* via the Ollama API.          Results ar, Generate an embedding for *content* and upsert into embeddings table., Insert or replace a row in the FTS virtual table., Pack a list of floats into a little-endian float32 blob., Try sqlite-vec native KNN.  Returns empty list on failure. (+19 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.17
-Nodes (18): AuthError, RateLimitError, Rate limit exceeded — use jittered exponential backoff., Authentication failure — rotate credential pool., Transient server/network error — exponential backoff up to 3 attempts., TransientError, Exception, Exception (+10 more)
+Cohesion: 0.21
+Nodes (9): RateLimitError, Rate limit exceeded — use jittered exponential backoff., AgentMessage, Any, Exception, ProviderChunk, DeepSeekProvider, DeepSeek provider — OpenAI-compatible SDK. (+1 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.08
@@ -304,31 +327,31 @@ Nodes (41): _fmt_size(), _get_max_result(), Core built-in tools — always avail
 
 ### Community 11 - "Community 11"
 Cohesion: 0.05
-Nodes (33): ApprovalCallback, DreamingLLMAdapter, Layer 3 — Dreaming pipeline: Light Sleep → REM → Deep Sleep consolidation.  Ru, Protocol for an LLM that the dreaming pipeline can call.      Kept minimal so, The timestamp of the last completed :meth:`run` call., Protocol for requesting user approval of fact promotions.      In YOLO mode th, FileLayer, Write *content* to *path* atomically via a temp file + rename.          Uses a (+25 more)
+Nodes (37): TestMemoryRetrievalThreshold, KnowledgeGraph, ApprovalCallback, DreamingLLMAdapter, Protocol for an LLM that the dreaming pipeline can call.      Kept minimal so, Send *prompt* to the LLM and return the generated text., Protocol for requesting user approval of fact promotions.      In YOLO mode th, FileLayer (+29 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.08
-Nodes (28): KnowledgeGraph, DreamingPipeline, Cron-based multi-phase memory consolidation from session transcripts.      Par, AutoApproveCallback, DreamingRunner, ProviderLLMAdapter, Dreaming pipeline runner — cron-based scheduling with manual trigger., Auto-approves all facts (YOLO/automated mode). (+20 more)
+Cohesion: 0.13
+Nodes (11): AutoApproveCallback, DreamingRunner, ProviderLLMAdapter, Dreaming pipeline runner — cron-based scheduling with manual trigger., Auto-approves all facts (YOLO/automated mode)., Wraps the agent's provider as a DreamingLLMAdapter., Manages the dreaming pipeline lifecycle.      - Schedules dreaming runs via cr, Run the dreaming pipeline once and return the report. (+3 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.20
-Nodes (20): APIErrorClassifier, Return the delay (in seconds) before the next retry, or ``None``.          Par, Classify provider API errors into :class:`FailoverReason` categories., Classify *exception* into a failover reason.          Handles:         * Our, MemoryRetrieverProtocol, ProviderProtocol, Agent loop — production-hardened: compaction, error recovery, harness, TTFB, cac, AgentChunk (+12 more)
+Cohesion: 0.16
+Nodes (24): APIErrorClassifier, Return the delay (in seconds) before the next retry, or ``None``.          Par, Classify provider API errors into :class:`FailoverReason` categories., MemoryRetrieverProtocol, ProviderProtocol, Agent loop — production-hardened: compaction, error recovery, harness, TTFB, cac, AgentChunk, LoopConfig (+16 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.07
-Nodes (22): _make_send_cmd(), WhatsApp channel for JalaAgent.  Communicates with Baileys (Node.js WhatsApp Web, Poll for incoming messages (blocking loop)., Read JSON-line events from the Baileys subprocess stdout., Poll an HTTP-based WhatsApp bridge (alternative to subprocess)., Dispatch an incoming message through handlers., Send a text message to a WhatsApp number or JID., Send via HTTP bridge. (+14 more)
+Cohesion: 0.10
+Nodes (16): _make_send_cmd(), WhatsApp channel for JalaAgent.  Communicates with Baileys (Node.js WhatsApp Web, Poll for incoming messages (blocking loop)., Read JSON-line events from the Baileys subprocess stdout., Poll an HTTP-based WhatsApp bridge (alternative to subprocess)., Dispatch an incoming message through handlers., Send a text message to a WhatsApp number or JID., Send via HTTP bridge. (+8 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.10
-Nodes (22): MemoryRetriever, FileLayer, MemoryConfig, Path, VectorLayer, config(), file_layer(), Tests for memory-core retrieval (multi-strategy memory search). (+14 more)
+Cohesion: 0.14
+Nodes (14): MemoryRetriever, FileLayer, MemoryConfig, VectorLayer, file_layer(), With a high threshold and dissimilar embeddings, no results pass., When vector results are sparse, MEMORY.md scan supplements., Knowledge graph results appear in retrieval when KG is provided. (+6 more)
 
 ### Community 16 - "Community 16"
-Cohesion: 0.09
-Nodes (20): KnowledgeGraph, GBrain-inspired knowledge graph — entity extraction, typed edges, graph traversa, Return a shared asyncio.Lock for write operations.          Created lazily so, Lazy-initialize and return the SQLite connection.          Uses double-checked, Ingest a markdown page, extracting entities and relations.          Write oper, Traverse the graph from an entity, returning connected nodes., Search entities by name (keyword match)., Sync a directory of markdown files into the knowledge graph. (+12 more)
+Cohesion: 0.12
+Nodes (15): KnowledgeGraph, GBrain-inspired knowledge graph — entity extraction, typed edges, graph traversa, Return a shared asyncio.Lock for write operations.          Created lazily so, Ingest a markdown page, extracting entities and relations.          Write oper, Sync a directory of markdown files into the knowledge graph., Self-wiring knowledge graph with entity extraction and typed edges.      Param, _row_to_dict(), sync_brain_repo() (+7 more)
 
 ### Community 17 - "Community 17"
-Cohesion: 0.08
-Nodes (21): _format_fact_markdown(), _make_extraction_prompt(), Build the LLM prompt for extracting facts from a batch of episodes., SHA-1 hex digest (used for dedup as specified in PRD)., Render a fact as a Markdown list item for MEMORY.md., Execute the full dreaming pipeline and return a report.          Phases are ru, Scan session JSONL files for episodes created since *since*.          Paramete, Extract facts from episodes via LLM, deduplicate via SHA1.          Parameters (+13 more)
+Cohesion: 0.07
+Nodes (29): DreamingPipeline, _format_fact_markdown(), _make_extraction_prompt(), Layer 3 — Dreaming pipeline: Light Sleep → REM → Deep Sleep consolidation.  Ru, Build the LLM prompt for extracting facts from a batch of episodes., SHA-1 hex digest (used for dedup as specified in PRD)., Render a fact as a Markdown list item for MEMORY.md., Cron-based multi-phase memory consolidation from session transcripts.      Par (+21 more)
 
 ### Community 18 - "Community 18"
 Cohesion: 0.08
@@ -336,7 +359,7 @@ Nodes (20): ContextCompactor, Context compaction (5-phase compression) for JalaA
 
 ### Community 19 - "Community 19"
 Cohesion: 0.10
-Nodes (11): SkillScanner, Tests for skill-core security scanner., scanner(), TestCombined, TestCryptoMining, TestDangerousExec, TestEnvExfiltration, TestObfuscation (+3 more)
+Nodes (13): SkillScanner, Scans SKILL.md content for security issues before install and at propose time., SkillScanner, Tests for skill-core security scanner., scanner(), TestCombined, TestCryptoMining, TestDangerousExec (+5 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.08
@@ -347,12 +370,12 @@ Cohesion: 0.14
 Nodes (15): Path, Raised when a scan blocks a skill proposal (critical findings)., SkillBlockedError, SkillWorkshop, Tests for skill-core workshop (propose → scan → review → apply pipeline)., If the atomic write fails, existing skill is preserved., safe_skill_md(), TestApply (+7 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.12
-Nodes (27): get_registry(), Any, _build_agent(), _build_auxiliary(), config_get(), config_show(), credentials_cmd(), dream() (+19 more)
+Cohesion: 0.11
+Nodes (31): get_registry(), JalaConfig, Top-level JalaAgent configuration schema.      Every field has a default that ma, Any, _build_agent(), _build_auxiliary(), config_get(), config_show() (+23 more)
 
 ### Community 23 - "Community 23"
-Cohesion: 0.08
-Nodes (21): config(), Integration test: end-to-end memory flow (file → vector → retrieval → drift)., With a high threshold, low-similarity results are excluded., End-to-end: write episodes → vector index → retrieve → drift detect., TestMemoryE2E, TestMemoryRetrievalThreshold, tmp_db_path(), tmp_memory_dir() (+13 more)
+Cohesion: 0.12
+Nodes (11): End-to-end: write episodes → vector index → retrieve → drift detect., TestMemoryE2E, DriftDetector, Drift detection for external modifications to MEMORY.md mid-session.  Implemen, Return the ``MEMORY.md`` content captured at session start.          Returns, The ``mtime`` recorded by the last call to :meth:`take_snapshot`., Whether :meth:`take_snapshot` has been called at least once., Detects and handles external modifications to ``MEMORY.md`` mid-session. (+3 more)
 
 ### Community 24 - "Community 24"
 Cohesion: 0.13
@@ -363,24 +386,24 @@ Cohesion: 0.13
 Nodes (13): AnthropicProvider, AgentMessage, Any, ProviderChunk, AnthropicProvider, Build Anthropic cache-control breakpoints for the system prompt.          Plac, Claude models via the official Anthropic Python SDK (AsyncAnthropic)., provider() (+5 more)
 
 ### Community 26 - "Community 26"
-Cohesion: 0.09
-Nodes (19): Telegram channel implementation — python-telegram-bot async bot., Stop the bot gracefully., Send a message to a Telegram chat., Send an approval request with inline keyboard and wait for response., Render the provider selection keyboard., Build provider selection inline keyboard., Build model selection inline keyboard with pagination., Self-hosted Telegram bot channel for JalaAgent.      Parameters     --------- (+11 more)
+Cohesion: 0.10
+Nodes (15): Telegram channel implementation — python-telegram-bot async bot., Stop the bot gracefully., Send a message to a Telegram chat., Send an approval request with inline keyboard and wait for response., Process a user message through the agent loop., Render the provider selection keyboard., Build provider selection inline keyboard., Build model selection inline keyboard with pagination. (+7 more)
 
 ### Community 27 - "Community 27"
 Cohesion: 0.10
 Nodes (15): Any, MCPManager, MCPServer, Lazy-loading MCP server manager — start on first call, kill after idle timeout., Register an MCP server configuration (does NOT start it)., Get a running server, starting it lazily if needed., Return the tool list for a running MCP server., Stop all running MCP servers. (+7 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.13
-Nodes (11): _format_entry(), MemoryRetriever, Memory retrieval: sqlite-vec KNN → FTS5 → Knowledge Graph → MEMORY.md scan.  I, Search the knowledge graph for entities and relations matching *query*., Multi-strategy memory retrieval with four-tier fallback.      Parameters, Index an episode in the vector layer for semantic search.          Delegates t, MemorySearchResult, Episode (+3 more)
+Cohesion: 0.24
+Nodes (5): MemoryRetriever, Search the knowledge graph for entities and relations matching *query*., Multi-strategy memory retrieval with four-tier fallback.      Parameters, Index an episode in the vector layer for semantic search.          Delegates t, MemorySearchResult
 
 ### Community 29 - "Community 29"
 Cohesion: 0.11
 Nodes (12): Plan, PlanMode, A structured implementation plan., Format the plan for user review (rich/CLI friendly)., Structured design-before-implementation workflow.      Follows Claude Code's p, Create a new plan and save it for review., Mark the current plan as approved., Discard the current plan. (+4 more)
 
 ### Community 30 - "Community 30"
-Cohesion: 0.20
-Nodes (9): ContentPolicyError, Content policy violation — try fallback provider once, never retry same prompt., AgentMessage, Any, Exception, ProviderChunk, OpenRouterProvider, OpenRouter (unified API gateway) provider — OpenAI-compatible SDK. (+1 more)
+Cohesion: 0.12
+Nodes (19): TTFB watchdog timeout — kill and retry., TimeoutError, A tool-use request from the model., ToolCall, AgentMessage, Any, Exception, ProviderChunk (+11 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.15
@@ -395,32 +418,32 @@ Cohesion: 0.18
 Nodes (11): Path, SkillLoader, loader(), make_skill_md(), Tests for skill-core loader (SKILL.md loading and formatting)., Create a minimal SKILL.md file and return its path., TestFormatForPrompt, TestLoadAll (+3 more)
 
 ### Community 34 - "Community 34"
-Cohesion: 0.12
-Nodes (27): AgentConfig, ApprovalConfig, ApprovalRules, AuxiliaryConfig, AuxiliaryRole, ChannelCLIConfig, ChannelsConfig, ChannelTelegramConfig (+19 more)
+Cohesion: 0.16
+Nodes (21): AgentConfig, ApprovalConfig, ApprovalRules, AuxiliaryConfig, ChannelCLIConfig, ChannelsConfig, ChannelTelegramConfig, CompressionConfig (+13 more)
 
 ### Community 35 - "Community 35"
 Cohesion: 0.20
 Nodes (5): BackgroundTaskManager, Manages long-running background tasks without blocking the agent loop.      Ta, Wait for all background tasks to complete., Cancel a running background task., TestBackgroundTaskManager
 
 ### Community 36 - "Community 36"
-Cohesion: 0.07
-Nodes (29): ApprovalMode, ContentBlock, FailoverReason, Core pydantic models for JalaAgent agent-core., Tool approval modes for actions., Why a provider request failed and how to recover., A single content block in a multi-modal message., PolicyDecision (+21 more)
+Cohesion: 0.12
+Nodes (12): ContentBlock, FailoverReason, Why a provider request failed and how to recover., A single content block in a multi-modal message., Tests for agent-core models., TestApprovalMode, TestActionCategory, TestAgentMessage (+4 more)
 
 ### Community 37 - "Community 37"
 Cohesion: 0.12
 Nodes (11): BrowserTool, Browser automation tool using Playwright — navigate, click, type, screenshot, ex, Headless browser automation via Playwright.      Provides tools for web naviga, Navigate to a URL and return the page title., Click an element by CSS selector., Type text into an input element., Take a screenshot and save to disk., Extract visible text from the page or a specific element. (+3 more)
 
 ### Community 38 - "Community 38"
-Cohesion: 0.14
-Nodes (9): AgentMessage, Any, AsyncClient, Path, ProviderChunk, OpenAICompatibleProvider, Universal OpenAI-compatible provider — 16+ APIs via a single adapter.  Receive, Resolve model string to (provider, model_name). (+1 more)
+Cohesion: 0.15
+Nodes (7): AgentMessage, Any, ProviderChunk, OpenAICompatibleProvider, Universal OpenAI-compatible provider — 16+ APIs via a single adapter.  Receive, Resolve model string to (provider, model_name)., Single provider for all OpenAI-compatible APIs.      base_url is resolved by P
 
 ### Community 39 - "Community 39"
 Cohesion: 0.13
-Nodes (17): Path, Proposal, Skill workshop: AI-assisted skill generation pipeline (propose → scan → review →, Retrieve a pending proposal by ID.          Returns ``None`` if the proposal d, Write an approved proposal to the skills directory.          The skill is writ, Discard a pending proposal (delete its workshop directory).          This is a, Return all pending (not-yet-applied) proposals., Return the directory path for a proposal. (+9 more)
+Nodes (17): Path, UUID, Proposal, Skill workshop: AI-assisted skill generation pipeline (propose → scan → review →, Retrieve a pending proposal by ID.          Returns ``None`` if the proposal d, Write an approved proposal to the skills directory.          The skill is writ, Discard a pending proposal (delete its workshop directory).          This is a, Return all pending (not-yet-applied) proposals. (+9 more)
 
 ### Community 40 - "Community 40"
-Cohesion: 0.18
-Nodes (7): List all git worktrees and their status., An isolated git worktree for safe agent execution., Create and manage isolated git worktrees.      The agent works inside a dispos, Create a new isolated worktree.          Parameters         ----------, Remove a worktree.  Refuses if there are uncommitted changes., Worktree, WorktreeIsolation
+Cohesion: 0.21
+Nodes (6): An isolated git worktree for safe agent execution., Create and manage isolated git worktrees.      The agent works inside a dispos, Create a new isolated worktree.          Parameters         ----------, Remove a worktree.  Refuses if there are uncommitted changes., Worktree, WorktreeIsolation
 
 ### Community 41 - "Community 41"
 Cohesion: 0.10
@@ -431,8 +454,8 @@ Cohesion: 0.18
 Nodes (11): CommandContext, Telegram command handlers — unified slash command registry dispatch., User tapped a model button (mm:<provider>:<index>). Execute switch., User tapped pagination (mg:<provider>:<page>)., Handlers for Telegram messages, commands, and callbacks — routed through unified, User tapped Cancel or Back., User tapped a provider button (mp:<slug>). Show model list., TelegramHandlers (+3 more)
 
 ### Community 43 - "Community 43"
-Cohesion: 0.19
-Nodes (7): AgentMessage, Any, AsyncClient, ProviderChunk, OllamaProvider, Ollama (local models) provider — httpx-based with NDJSON streaming., Provider for local models via the Ollama HTTP API.      Supports streaming cha
+Cohesion: 0.17
+Nodes (10): Transient server/network error — exponential backoff up to 3 attempts., TransientError, Exception, AgentMessage, Any, AsyncClient, ProviderChunk, OllamaProvider (+2 more)
 
 ### Community 44 - "Community 44"
 Cohesion: 0.07
@@ -443,8 +466,8 @@ Cohesion: 0.11
 Nodes (5): Tests for skill-core pydantic v2 models., TestEnums, TestProposal, TestScanFinding, TestScanResult
 
 ### Community 46 - "Community 46"
-Cohesion: 0.20
-Nodes (9): TTFB watchdog timeout — kill and retry., TimeoutError, AgentMessage, Any, Exception, ProviderChunk, OpenAIProvider, OpenAI / OpenAI-compatible provider — streaming via official SDK. (+1 more)
+Cohesion: 0.21
+Nodes (7): AgentMessage, Any, Exception, ProviderChunk, OpenAIProvider, OpenAI / OpenAI-compatible provider — streaming via official SDK., Provider for OpenAI and OpenAI-compatible API endpoints (GPT-4o, etc.).
 
 ### Community 47 - "Community 47"
 Cohesion: 0.22
@@ -467,16 +490,16 @@ Cohesion: 0.06
 Nodes (35): 1. Provider Catalog — Three-Layer Model Sourcing, 2. base_url Resolution — Four-Tier Priority Chain, 3. `/model` Command — Full Flow, 4. Channel Adaptation, 5. Persistence, Alias Support, CLI — Rich Select, Core Pipeline (`switch_model()`) (+27 more)
 
 ### Community 52 - "Community 52"
-Cohesion: 0.24
-Nodes (10): ProviderChunk, ToolRegistry, make_text_chunk(), make_tool_chunk(), MockProvider, Tests for agent-core conversation loop., Agent stops after max_iterations even with tool calls., Simulates a streaming LLM provider. (+2 more)
+Cohesion: 0.17
+Nodes (17): ChunkType, Core pydantic models for JalaAgent agent-core., Describes a tool to the provider and the registry., Types of streaming chunks emitted by the agent loop., ToolDescriptor, AgentMessage, Any, ProviderChunk (+9 more)
 
 ### Community 53 - "Community 53"
 Cohesion: 0.21
 Nodes (4): Parsed YAML frontmatter from a SKILL.md file.      Compatible with the agentsk, SkillFrontmatter, TestSkill, TestSkillFrontmatter
 
 ### Community 54 - "Community 54"
-Cohesion: 0.21
-Nodes (8): Tool argument repair — fix LLM mistakes before execution., Multi-strategy tool argument repair before execution., Fix common LLM argument mistakes., RepairFailedError, ToolArgRepairer, Exception, Any, ToolCall
+Cohesion: 0.17
+Nodes (9): Classify *exception* into a failover reason.          Handles:         * Our, Tool argument repair — fix LLM mistakes before execution., Multi-strategy tool argument repair before execution., Fix common LLM argument mistakes., RepairFailedError, ToolArgRepairer, Exception, Any (+1 more)
 
 ### Community 55 - "Community 55"
 Cohesion: 0.18
@@ -499,16 +522,16 @@ Cohesion: 0.16
 Nodes (10): DreamingPipeline, datetime, Episode, FileLayer, make_episode(), Second run only picks up episodes since the first run., TestFullPipeline, TestLightSleep (+2 more)
 
 ### Community 60 - "Community 60"
-Cohesion: 0.28
-Nodes (8): FastAPI, Start JalaAgent as an Anthropic-compatible API server., serve(), _check_rate_limit(), create_app(), jala serve — JalaAgent as Anthropic-Compatible API proxy., Return True if the request is allowed, False if rate-limited., run_server()
+Cohesion: 0.38
+Nodes (6): FastAPI, _check_rate_limit(), create_app(), jala serve — JalaAgent as Anthropic-Compatible API proxy., Return True if the request is allowed, False if rate-limited., run_server()
 
 ### Community 61 - "Community 61"
-Cohesion: 0.15
-Nodes (10): ScanResult, ScanResult, SkillScanner, ScanFinding, Security scanner for skills: prompt injection, dangerous exec, env exfiltration, Scan *skill_content* against all security rules.          Parameters, Compute the overall verdict from a list of findings.          * Any critical f, Scans SKILL.md content for security issues before install and at propose time. (+2 more)
+Cohesion: 0.33
+Nodes (5): ScanResult, ScanFinding, Scan *skill_content* against all security rules.          Parameters, Compute the overall verdict from a list of findings.          * Any critical f, Verdict
 
 ### Community 62 - "Community 62"
-Cohesion: 0.16
-Nodes (10): Apply a unified diff patch via DiffEditor if wired, else direct., tool_patch_file(), _apply_hunk(), _parse_unified_diff(), JalaAgent Harness — git worktrees, plan mode, sandbox, background tasks.  The, Parse unified diff text into a list of hunks.      Each hunk is a dict with ``, Apply a single hunk to result_lines, adjusting for line count changes., Submit a coroutine to run in the background.          Returns the task ID imme (+2 more)
+Cohesion: 0.14
+Nodes (11): Apply a unified diff patch via DiffEditor if wired, else direct., tool_patch_file(), _apply_hunk(), _parse_unified_diff(), JalaAgent Harness — git worktrees, plan mode, sandbox, background tasks.  The, List all git worktrees and their status., Parse unified diff text into a list of hunks.      Each hunk is a dict with ``, Apply a single hunk to result_lines, adjusting for line count changes. (+3 more)
 
 ### Community 63 - "Community 63"
 Cohesion: 0.15
@@ -523,16 +546,16 @@ Cohesion: 0.21
 Nodes (12): jalaagent-agent-core, jalaagent-channel-cli, jalaagent-channel-telegram, jalaagent-channel-whatsapp, jalaagent-cli, jalaagent-memory-core, jalaagent-provider-anthropic, jalaagent-provider-ollama (+4 more)
 
 ### Community 66 - "Community 66"
-Cohesion: 0.18
-Nodes (8): JalaConfig, Top-level JalaAgent configuration schema.      Every field has a default that ma, DiffEditor, Safe file editing using unified diffs.      The agent generates a diff, the us, Generate a unified diff for user review., Apply a unified diff to a file, with optional drift check.          Parses uni, Read file content and record mtime for later drift detection., Context
+Cohesion: 0.22
+Nodes (6): DiffEditor, Safe file editing using unified diffs.      The agent generates a diff, the us, Generate a unified diff for user review., Apply a unified diff to a file, with optional drift check.          Parses uni, Read file content and record mtime for later drift detection., Context
 
 ### Community 67 - "Community 67"
 Cohesion: 0.11
-Nodes (19): ProviderChunk, ProviderChunkType, A single chunk from a provider's streaming response., Types of chunks from a provider's streaming response., Any, AgentMessage, Any, ProviderChunk (+11 more)
+Nodes (20): AgentMessage, ProviderChunk, A single chunk from a provider's streaming response., An LLM conversation message., Any, AgentMessage, Any, ProviderChunk (+12 more)
 
 ### Community 68 - "Community 68"
-Cohesion: 0.22
-Nodes (8): AgentMessage, An LLM conversation message., AgentMessage, Any, ProviderChunk, GeminiProvider, Google Gemini provider — streaming via google-genai SDK., Google Gemini models via the google-genai SDK.
+Cohesion: 0.09
+Nodes (17): GuardianFinding, GuardianReport, FileLayerProtocol, KnowledgeGraphProtocol, MemoryGuardian, Check that MEMORY.md is readable., Check session JSONL files for malformed content., Check that every embedding row has a valid source row. (+9 more)
 
 ### Community 69 - "Community 69"
 Cohesion: 0.20
@@ -547,16 +570,16 @@ Cohesion: 0.33
 Nodes (4): skills(), _parse_frontmatter(), Split *raw* into (frontmatter_dict, body).      Returns (empty_dict, raw) if n, TestParseFrontmatter
 
 ### Community 73 - "Community 73"
-Cohesion: 0.18
-Nodes (6): PolicyPipeline, 4-layer policy pipeline.      global → agent → category → sender     deny alw, Check whether an action in *category* requires approval.          Deny always, ApprovalMode, TestPolicyPipeline, ActionCategory
+Cohesion: 0.09
+Nodes (22): ApprovalMode, Tool approval modes for actions., PolicyDecision, PolicyPipeline, 4-layer tool policy pipeline from CLAUDE.md: global → agent → category → sender., 4-layer policy pipeline.      global → agent → category → sender     deny alw, Check whether an action in *category* requires approval.          Deny always, ApprovalMode (+14 more)
 
 ### Community 74 - "Community 74"
 Cohesion: 0.32
 Nodes (4): MessageSanitizer, Message sanitization — provider-aware pre-flight cleanup., Provider-aware message sanitization pipeline., Any
 
 ### Community 75 - "Community 75"
-Cohesion: 0.26
-Nodes (8): A tool-use request from the model., ToolCall, OpenAIProvider, provider(), Tests for OpenAI provider (message/tool conversion, token estimation)., TestMessageConversion, TestTokenEstimation, TestToolConversion
+Cohesion: 0.18
+Nodes (15): AuthError, ContentPolicyError, Authentication failure — rotate credential pool., Content policy violation — try fallback provider once, never retry same prompt., ProviderChunkType, Types of chunks from a provider's streaming response., Exception, AgentMessage (+7 more)
 
 ### Community 76 - "Community 76"
 Cohesion: 0.15
@@ -571,12 +594,12 @@ Cohesion: 0.12
 Nodes (16): career (1 skill), Categories, communication (4 skills), creative (8 skills), data-science (3 skills), devops (8 skills), Hermes Skills NOT Ported, infrastructure (4 skills) (+8 more)
 
 ### Community 81 - "Community 81"
-Cohesion: 0.38
-Nodes (4): MemoryQuery, A query against the memory system., Tests for MemoryQuery — search query model., TestMemoryQuery
+Cohesion: 0.11
+Nodes (15): KnowledgeGraphProtocol, Interface for the vector layer needed by the family registry., Interface for the knowledge graph needed by the family registry., VectorLayerProtocol, FamilyRegistryProtocol, FileLayerProtocol, KnowledgeGraphProtocol, Memory Observability — centralized metrics and health reporting.  Collects sta (+7 more)
 
 ### Community 82 - "Community 82"
-Cohesion: 0.29
-Nodes (3): Unit tests for memory-core pydantic v2 models., Tests for MemorySearchResult — retrieval result model., TestMemorySearchResult
+Cohesion: 0.16
+Nodes (7): MemoryQuery, A query against the memory system., Unit tests for memory-core pydantic v2 models., Tests for MemoryQuery — search query model., Tests for MemorySearchResult — retrieval result model., TestMemoryQuery, TestMemorySearchResult
 
 ### Community 83 - "Community 83"
 Cohesion: 0.33
@@ -595,32 +618,36 @@ Cohesion: 0.33
 Nodes (4): The result of scanning a skill for security issues., True if any finding is critical severity., True if any finding is high severity., ScanResult
 
 ### Community 90 - "Community 90"
-Cohesion: 0.20
-Nodes (9): FileMemoryLayer, _lock_file(), Layer 1 — Raw file storage: MEMORY.md, USER.md, session JSONL transcripts., Acquire an exclusive advisory lock on the open file descriptor., Legacy alias for :class:`FileLayer`., Release the advisory lock on the open file descriptor., _unlock_file(), Low-level lock / unlock functions. (+1 more)
+Cohesion: 0.12
+Nodes (15): FamilyTree, MemoryFamilyRegistry, Create the database and tables if they don't exist., Close the database connection., Register a single relation between two entries., Auto-build relations for a memory entry.          Creates relations based on:, Build a family tree rooted at the given entry.          BFS traversal through, Fetch all relations where the entry is the source. (+7 more)
 
 ### Community 91 - "Community 91"
 Cohesion: 0.12
 Nodes (17): API Server, Approval Modes, Chatting with JalaAgent, Configuration, First Chat, Gateway Mode, Getting Started, Installation (+9 more)
 
+### Community 92 - "Community 92"
+Cohesion: 0.15
+Nodes (10): LayerHealth, Health metrics for a single memory layer., MemoryObservability, Compare current stats with the most recent snapshot to compute growth., Append current stats to the snapshot file., Load the most recent snapshot., Load all snapshots from disk., Centralized memory system health monitor.      Collects metrics from FileLayer (+2 more)
+
 ### Community 93 - "Community 93"
-Cohesion: 0.11
-Nodes (17): BaseSettings, ApprovalMode, DreamReport, Episode, Fact, MemoryConfig, MemorySearchResult, Pydantic v2 models for the JalaAgent memory system. (+9 more)
+Cohesion: 0.10
+Nodes (19): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links, Compute cosine similarity between two float vectors., FileMemoryLayer, Layer 1 — Raw file storage: MEMORY.md, USER.md, session JSONL transcripts., Legacy alias for :class:`FileLayer`., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Pr (+11 more)
 
 ### Community 94 - "Community 94"
 Cohesion: 0.09
 Nodes (20): Requesting Code Review, Common Rationalizations, Four Phases, Integration, Iron Law, Multi-Component Diagnostic Pattern, Phase 1: Root Cause Investigation, Phase 2: Pattern Analysis (+12 more)
 
 ### Community 95 - "Community 95"
-Cohesion: 0.25
-Nodes (8): MemoryConfig, Path, config(), layer(), Tests for memory-core file_layer (Layer 1 — raw file storage)., FileLayer property access., TestProperties, tmp_memory_dir()
+Cohesion: 0.15
+Nodes (9): GovernanceReport, GovernanceRebuild, KnowledgeGraphProtocol, Collect stats from all available layers., Interface for the vector layer needed by governance., Interface for the knowledge graph needed by governance., Periodic index rebuild and orphan cleanup for the memory system.      Runs mai, Run all maintenance operations and return a report. (+1 more)
 
 ### Community 96 - "Community 96"
 Cohesion: 0.20
 Nodes (9): Added, Added, Added, Changed, Changelog, Fixed, v2026.6.18 (2026-06-18), v2026.6.19 (2026-06-19) (+1 more)
 
 ### Community 97 - "Community 97"
-Cohesion: 0.31
-Nodes (4): Episode, make_episode(), Session JSONL append, read, and listing., TestSessions
+Cohesion: 0.14
+Nodes (11): _blob_to_floats(), _cosine(), _hash_text(), Layer 2 — SQLite + sqlite-vec vector database for semantic memory search., SHA-256 hex digest of *text* (used for embedding cache key)., Unpack a little-endian float32 blob into a list of floats., Cosine similarity between two vectors of equal dimension., Remove orphan embeddings (no matching row in source tables).          Returns (+3 more)
 
 ### Community 98 - "Community 98"
 Cohesion: 0.25
@@ -631,12 +658,16 @@ Cohesion: 0.25
 Nodes (7): Adding skills, Code conventions, Contributing to JalaAgent, Development workflow, License, Project structure, Setup
 
 ### Community 104 - "Community 104"
-Cohesion: 0.25
-Nodes (5): Race-condition safety for concurrent writes., Run many concurrent writes and verify the final content is intact., Appending to different sessions in parallel is safe., Snapshot should see a consistent state even when racing a write., TestConcurrent
+Cohesion: 0.12
+Nodes (8): Lazy-initialize and return the SQLite connection.          Uses double-checked, Traverse the graph from an entity, returning connected nodes., Search entities by name (keyword match)., Return storage stats including DB file size., Count edges with broken foreign keys., Delete edges with broken foreign keys. Returns count removed., Create tables if they don't exist., Connection
 
 ### Community 106 - "Community 106"
 Cohesion: 0.33
 Nodes (5): Known Safe Practices, Reporting Vulnerabilities, Security Architecture, Security Policy, Supported Versions
+
+### Community 107 - "Community 107"
+Cohesion: 0.14
+Nodes (8): ApprovalRequest, A request for user approval of a tool execution., MemoryHealthReport, MemoryRelation, A relationship between two memory entries., A comprehensive memory system health report., A single issue found by the security scanner., ScanFinding
 
 ### Community 109 - "Community 109"
 Cohesion: 0.40
@@ -677,6 +708,10 @@ Nodes (12): Correct Response Pattern, Forbidden Phrases, Iron Law, Pushback Guid
 ### Community 119 - "Community 119"
 Cohesion: 0.40
 Nodes (4): Code of Conduct, Enforcement, Our Pledge, Standards
+
+### Community 120 - "Community 120"
+Cohesion: 0.18
+Nodes (5): Any, Path, SkillCurator — background skill maintenance daemon., Evaluates skills: usage frequency, staleness, errors. Runs as background task., SkillCurator
 
 ### Community 121 - "Community 121"
 Cohesion: 0.50
@@ -729,6 +764,14 @@ Nodes (3): Skill hub: registry for discovering and installing skills from remote
 ### Community 133 - "Community 133"
 Cohesion: 0.20
 Nodes (9): 1. Ingest Knowledge, 2. Search with Context, 3. Curate MEMORY.md, 4. Health Check, Anti-Patterns, Brain Management, JalaAgent Advantage, Overview (+1 more)
+
+### Community 134 - "Community 134"
+Cohesion: 0.18
+Nodes (8): CommandResult, Unified slash command registry — all 27 commands fully wired to JalaAgent object, WhatsApp message parsing and dispatch.  Mirrors the Telegram handlers pattern —, Parse WhatsApp messages and dispatch to agent loop or command handlers., Process an incoming WhatsApp message.          Returns the agent's response text, Look up and execute a slash command., WhatsAppHandlers, Any
+
+### Community 135 - "Community 135"
+Cohesion: 0.23
+Nodes (4): _build_registry(), CommandDef, CommandRegistry, Any
 
 ### Community 136 - "Community 136"
 Cohesion: 0.20
@@ -930,6 +973,10 @@ Nodes (5): Anti-Patterns, Overview, Process, Source Evaluation, Web Research
 Cohesion: 0.40
 Nodes (4): Architecture Diagram, Formats, Mermaid Pattern, Rules
 
+### Community 194 - "Community 194"
+Cohesion: 0.26
+Nodes (5): BlueprintStore, BlueprintStore — parameterized automation templates built on cron infra., _safe_name(), Any, Path
+
 ### Community 195 - "Community 195"
 Cohesion: 0.40
 Nodes (4): Anti-Patterns, Critique Framework, Design Taste, Quick 10-Second Fixes
@@ -982,20 +1029,44 @@ Nodes (3): Design.md — Markdown Design Documentation, Rules, Template Structur
 Cohesion: 0.50
 Nodes (3): Design Skills Pack, Removal, Skills included
 
+### Community 210 - "Community 210"
+Cohesion: 0.22
+Nodes (8): Path, config(), Tests for memory-core retrieval (multi-strategy memory search)., Retrieval works fine without a knowledge graph., TestKnowledgeGraphIntegration, TestProperties, tmp_db_path(), tmp_memory_dir()
+
+### Community 213 - "Community 213"
+Cohesion: 0.31
+Nodes (5): _format_entry(), Episode, Fact, When session_id has no date, use the timestamp., TestFormatEntry
+
+### Community 214 - "Community 214"
+Cohesion: 0.32
+Nodes (7): MemoryConfig, Path, config(), detector(), file_layer(), Tests for memory-core drift detection (frozen snapshot pattern)., tmp_memory_dir()
+
+### Community 215 - "Community 215"
+Cohesion: 0.32
+Nodes (6): config(), Integration test: end-to-end memory flow (file → vector → retrieval → drift)., With a high threshold, low-similarity results are excluded., tmp_db_path(), tmp_memory_dir(), Path
+
+### Community 216 - "Community 216"
+Cohesion: 0.33
+Nodes (6): approval_keyboard(), mode_keyboard(), Telegram inline keyboard builders for approval requests., Build a mode-selection keyboard., Build an inline keyboard with Approve / Reject / Approve All buttons.      Par, InlineKeyboardMarkup
+
+### Community 217 - "Community 217"
+Cohesion: 0.29
+Nodes (4): When MEMORY.md is unchanged, check_drift returns False., Writing via FileLayer updates the file but we snapshot AFTER,         so no dri, On first run with no MEMORY.md, snapshot returns '' and mtime 0., TestNoDrift
+
 ## Knowledge Gaps
-- **576 isolated node(s):** `name`, `version`, `private`, `docs:dev`, `docs:build` (+571 more)
+- **582 isolated node(s):** `name`, `version`, `private`, `docs:dev`, `docs:build` (+577 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **28 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AgentMessage` connect `Community 68` to `Community 2`, `Community 5`, `Community 7`, `Community 9`, `Community 12`, `Community 13`, `Community 18`, `Community 25`, `Community 30`, `Community 34`, `Community 36`, `Community 38`, `Community 42`, `Community 43`, `Community 46`, `Community 47`, `Community 49`, `Community 52`, `Community 60`, `Community 67`, `Community 75`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
-- **Why does `FileLayer` connect `Community 11` to `Community 0`, `Community 97`, `Community 66`, `Community 1`, `Community 4`, `Community 134`, `Community 135`, `Community 104`, `Community 12`, `Community 15`, `Community 17`, `Community 22`, `Community 23`, `Community 120`, `Community 90`, `Community 59`, `Community 28`, `Community 95`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
-- **Why does `Any` connect `Community 22` to `Community 32`, `Community 66`, `Community 35`, `Community 3`, `Community 9`, `Community 42`, `Community 11`, `Community 12`, `Community 16`, `Community 18`, `Community 50`, `Community 61`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
-  _High betweenness centrality (0.104) - this node is a cross-community bridge._
+- **Why does `AgentMessage` connect `Community 67` to `Community 134`, `Community 135`, `Community 7`, `Community 9`, `Community 12`, `Community 13`, `Community 17`, `Community 18`, `Community 25`, `Community 30`, `Community 34`, `Community 36`, `Community 38`, `Community 42`, `Community 43`, `Community 46`, `Community 47`, `Community 49`, `Community 52`, `Community 60`, `Community 75`?**
+  _High betweenness centrality (0.105) - this node is a cross-community bridge._
+- **Why does `Any` connect `Community 22` to `Community 32`, `Community 66`, `Community 35`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 12`, `Community 13`, `Community 16`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
+- **Why does `Context` connect `Community 66` to `Community 32`, `Community 35`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 12`, `Community 13`, `Community 16`, `Community 18`, `Community 50`, `Community 19`, `Community 22`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
+  _High betweenness centrality (0.081) - this node is a cross-community bridge._
 - **Are the 114 inferred relationships involving `AgentMessage` (e.g. with `CommandContext` and `CommandDef`) actually correct?**
   _`AgentMessage` has 114 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 90 inferred relationships involving `FileLayer` (e.g. with `Any` and `Context`) actually correct?**

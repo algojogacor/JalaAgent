@@ -112,21 +112,27 @@ class AnthropicProvider:
     @staticmethod
     def _convert_messages(messages: list[AgentMessage]) -> list[dict[str, Any]]:
         result: list[dict[str, Any]] = []
-        for msg in messages:
+        i = 0
+        while i < len(messages):
+            msg = messages[i]
             if msg.role == "system":
+                i += 1
                 continue
             if msg.role == "tool":
-                # Anthropic API requires tool_result blocks inside a user message.
-                converted = {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "tool_result",
-                            "tool_use_id": msg.tool_call_id or "",
-                            "content": msg.content if isinstance(msg.content, str) else "",
-                        }
-                    ],
-                }
+                # Merge consecutive tool messages into a single user message
+                # with multiple tool_result content blocks. Anthropic requires
+                # alternating user/assistant roles — consecutive user messages
+                # are invalid.
+                tool_blocks: list[dict[str, Any]] = []
+                while i < len(messages) and messages[i].role == "tool":
+                    tm = messages[i]
+                    tool_blocks.append({
+                        "type": "tool_result",
+                        "tool_use_id": tm.tool_call_id or "",
+                        "content": tm.content if isinstance(tm.content, str) else "",
+                    })
+                    i += 1
+                result.append({"role": "user", "content": tool_blocks})
             else:
                 converted = {"role": msg.role}
                 # Build content blocks — include tool_use blocks when present.
@@ -147,7 +153,8 @@ class AnthropicProvider:
                             "input": tc.arguments,
                         })
                 converted["content"] = blocks if blocks else ""
-            result.append(converted)
+                result.append(converted)
+                i += 1
         return result
 
     @staticmethod

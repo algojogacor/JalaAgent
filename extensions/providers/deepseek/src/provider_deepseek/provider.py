@@ -1,11 +1,12 @@
 """DeepSeek provider — OpenAI-compatible SDK."""
 
+import json
 import logging
 import os
 from collections.abc import AsyncGenerator
 from typing import Any
 
-from agent_core.models import AgentMessage, ProviderChunk, ProviderChunkType
+from agent_core.models import AgentMessage, ProviderChunk, ProviderChunkType, ToolCall
 
 logger = logging.getLogger(__name__)
 
@@ -54,14 +55,44 @@ class DeepSeekProvider:
             entry: dict[str, Any] = {"role": msg.role, "content": content}
             if msg.tool_call_id:
                 entry["tool_call_id"] = msg.tool_call_id
+            # Serialize tool_calls for assistant messages (OpenAI-compatible format).
+            if msg.tool_calls:
+                entry["tool_calls"] = [
+                    {
+                        "id": tc.id,
+                        "type": "function",
+                        "function": {"name": tc.name, "arguments": json.dumps(tc.arguments)},
+                    }
+                    for tc in msg.tool_calls
+                ]
             result.append(entry)
         return result
 
     @staticmethod
     def _parse_event(event: Any) -> ProviderChunk | None:
         choices = getattr(event, "choices", None)
-        if choices and choices[0].delta and hasattr(choices[0].delta, "content") and choices[0].delta.content:
-            return ProviderChunk(type=ProviderChunkType.TEXT, content=choices[0].delta.content)
+        if choices and choices[0].delta:
+            delta = choices[0].delta
+            # Text content
+            if getattr(delta, "content", None):
+                return ProviderChunk(type=ProviderChunkType.TEXT, content=delta.content)
+            # Tool call deltas
+            tool_calls = getattr(delta, "tool_calls", None)
+            if tool_calls:
+                tc = tool_calls[0]
+                fn = getattr(tc, "function", None)
+                if fn:
+                    args = {}
+                    raw = getattr(fn, "arguments", "{}")
+                    if isinstance(raw, str):
+                        try:
+                            args = json.loads(raw)
+                        except json.JSONDecodeError:
+                            args = {}
+                    return ProviderChunk(
+                        type=ProviderChunkType.TOOL_CALL,
+                        tool_call=ToolCall(id=tc.id or "", name=fn.name or "", arguments=args),
+                    )
         return None
 
     @staticmethod
