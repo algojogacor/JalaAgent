@@ -334,7 +334,7 @@ class AgentLoop:
     # ------------------------------------------------------------------
 
     def _apply_cache_control(self, system: str) -> str:
-        if "claude" in self._model.lower() or "anthropic" in self._model.lower():
+        if self._model and ("claude" in self._model.lower() or "anthropic" in self._model.lower()):
             if not system.endswith("\n"):
                 system += "\n"
         return system

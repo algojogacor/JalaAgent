@@ -121,7 +121,7 @@ def _build_agent(model: str | None = None, plan: bool = False, base_url: str | N
     loop = AgentLoop(
         provider=provider, registry=registry, memory_retriever=memory,
         skill_loader=skill_loader, sandbox=sandbox, bg_tasks=bg_tasks,
-        plan_mode=plan_mode, credential_pool=creds, model=model or "claude-sonnet-4-6",
+        plan_mode=plan_mode, credential_pool=creds, model=model or getattr(provider, "_model", None) or "claude-sonnet-4-6",
         fallback_providers=fallback, compactor=compactor, repairer=repairer,
     )
     return loop

@@ -15,8 +15,8 @@
     "semantic_hash": "3d48a68f358755e70c835998d68ae1ad"
   },
   "cli/src/jala/main.py": {
-    "mtime": 1781936353.1447701,
-    "ast_hash": "1f60a14a63cd42a41819b1b4707f0e1f",
+    "mtime": 1781936950.6120358,
+    "ast_hash": "a7dff8981ecc3de2258d593e282e24e7",
     "semantic_hash": ""
   },
   "cli/src/jala/server.py": {
