@@ -1106,7 +1106,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_init_py",
-      "community": 139,
+      "community": 32,
       "norm_label": "__init__.py"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "channel_cli_init_rationale_1",
-      "community": 139,
+      "community": 32,
       "norm_label": "jalaagent cli channel \u2014 typer + rich terminal interface."
     },
     {
@@ -1125,7 +1125,7 @@
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_channel_py",
+      "id": "channel_cli_channel",
       "community": 32,
       "norm_label": "channel.py"
     },
@@ -1133,7 +1133,7 @@
       "label": "BaseChannel",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L18",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "channel_cli_channel_basechannel",
       "community": 32,
@@ -1153,7 +1153,7 @@
       "label": ".send_message()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "channel_cli_channel_basechannel_send_message",
       "community": 32,
@@ -1163,7 +1163,7 @@
       "label": ".send_approval_request()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "channel_cli_channel_basechannel_send_approval_request",
       "community": 32,
@@ -1173,7 +1173,7 @@
       "label": "Any",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "extensions_channels_cli_src_channel_cli_channel_py_any",
       "community": 32,
@@ -1183,7 +1183,7 @@
       "label": ".on_message()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "channel_cli_channel_basechannel_on_message",
       "community": 32,
@@ -1193,7 +1193,7 @@
       "label": "CLIChannel",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L24",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel",
       "community": 32,
@@ -1203,7 +1203,7 @@
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_init",
       "community": 32,
@@ -1213,7 +1213,7 @@
       "label": ".send_message()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L33",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_send_message",
       "community": 32,
@@ -1223,7 +1223,7 @@
       "label": ".send_approval_request()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L36",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_send_approval_request",
       "community": 32,
@@ -1233,7 +1233,7 @@
       "label": ".on_message()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L44",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_on_message",
       "community": 32,
@@ -1243,7 +1243,7 @@
       "label": ".run()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L47",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_run",
       "community": 32,
@@ -1253,7 +1253,7 @@
       "label": "._print_banner()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L64",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_print_banner",
       "community": 32,
@@ -1263,7 +1263,7 @@
       "label": "._setup_signal_handlers()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_setup_signal_handlers",
       "community": 32,
@@ -1273,7 +1273,7 @@
       "label": "._handle_interrupt()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L90",
+      "source_location": "L91",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_handle_interrupt",
       "community": 32,
@@ -1283,7 +1283,7 @@
       "label": "._get_input()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L93",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_get_input",
       "community": 32,
@@ -1293,7 +1293,7 @@
       "label": "._stream_response()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L101",
+      "source_location": "L102",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_stream_response",
       "community": 32,
@@ -1303,7 +1303,7 @@
       "label": "._dispatch_command()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L139",
+      "source_location": "L140",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_dispatch_command",
       "community": 32,
@@ -1313,7 +1313,7 @@
       "label": "._show_model_picker()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L171",
+      "source_location": "L172",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_show_model_picker",
       "community": 32,
@@ -1323,7 +1323,7 @@
       "label": "._interrupted()",
       "file_type": "code",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L215",
+      "source_location": "L216",
       "_origin": "ast",
       "id": "channel_cli_channel_clichannel_interrupted",
       "community": 32,
@@ -1343,9 +1343,9 @@
       "label": "CLI channel with unified command registry dispatch.",
       "file_type": "rationale",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L25",
+      "source_location": "L27",
       "_origin": "ast",
-      "id": "channel_cli_channel_rationale_25",
+      "id": "channel_cli_channel_rationale_27",
       "community": 32,
       "norm_label": "cli channel with unified command registry dispatch."
     },
@@ -1353,9 +1353,9 @@
       "label": "Request approval \u2014 fail-closed: defaults to No (deny).",
       "file_type": "rationale",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L37",
+      "source_location": "L39",
       "_origin": "ast",
-      "id": "channel_cli_channel_rationale_37",
+      "id": "channel_cli_channel_rationale_39",
       "community": 32,
       "norm_label": "request approval \u2014 fail-closed: defaults to no (deny)."
     },
@@ -1363,9 +1363,9 @@
       "label": "Interactive model picker for CLI channel via rich prompts.",
       "file_type": "rationale",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L172",
+      "source_location": "L173",
       "_origin": "ast",
-      "id": "channel_cli_channel_rationale_172",
+      "id": "channel_cli_channel_rationale_173",
       "community": 32,
       "norm_label": "interactive model picker for cli channel via rich prompts."
     },
@@ -1429,7 +1429,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_init_py",
-      "community": 85,
+      "community": 26,
       "norm_label": "__init__.py"
     },
     {
@@ -1439,7 +1439,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "channel_telegram_init_rationale_1",
-      "community": 85,
+      "community": 26,
       "norm_label": "jalaagent telegram channel \u2014 async bot with inline approval keyboards."
     },
     {
@@ -1448,7 +1448,7 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_channel_py",
+      "id": "channel_telegram_channel",
       "community": 26,
       "norm_label": "channel.py"
     },
@@ -1469,7 +1469,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_init",
-      "community": 42,
+      "community": 26,
       "norm_label": ".__init__()"
     },
     {
@@ -1479,7 +1479,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "extensions_channels_telegram_src_channel_telegram_channel_py_any",
-      "community": 42,
+      "community": 26,
       "norm_label": "any"
     },
     {
@@ -1506,7 +1506,7 @@
       "label": ".stop()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L102",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_stop",
       "community": 26,
@@ -1516,7 +1516,7 @@
       "label": ".send_message()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L109",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_send_message",
       "community": 26,
@@ -1526,7 +1526,7 @@
       "label": ".send_approval_request()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L117",
+      "source_location": "L123",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_send_approval_request",
       "community": 26,
@@ -1536,7 +1536,7 @@
       "label": ".process_message()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L147",
+      "source_location": "L153",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_process_message",
       "community": 26,
@@ -1546,7 +1546,7 @@
       "label": "Update",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L147",
+      "source_location": "L153",
       "_origin": "ast",
       "id": "extensions_channels_telegram_src_channel_telegram_channel_py_update",
       "community": 26,
@@ -1556,7 +1556,7 @@
       "label": ".show_model_picker()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L192",
+      "source_location": "L198",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_show_model_picker",
       "community": 26,
@@ -1566,7 +1566,7 @@
       "label": "._build_provider_keyboard()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L222",
+      "source_location": "L228",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_build_provider_keyboard",
       "community": 26,
@@ -1576,27 +1576,27 @@
       "label": "._build_model_keyboard()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L240",
+      "source_location": "L246",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_build_model_keyboard",
-      "community": 216,
+      "community": 26,
       "norm_label": "._build_model_keyboard()"
     },
     {
       "label": "._handle_model_selected()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L269",
+      "source_location": "L275",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_handle_model_selected",
-      "community": 44,
+      "community": 26,
       "norm_label": "._handle_model_selected()"
     },
     {
       "label": ".run_polling()",
       "file_type": "code",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L297",
+      "source_location": "L303",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_run_polling",
       "community": 26,
@@ -1643,22 +1643,22 @@
       "norm_label": "build and start the telegram bot application."
     },
     {
-      "label": "Stop the bot gracefully.",
+      "label": "Stop the bot gracefully (updater \u2192 app \u2192 shutdown).",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L103",
+      "source_location": "L107",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_103",
+      "id": "channel_telegram_channel_rationale_107",
       "community": 26,
-      "norm_label": "stop the bot gracefully."
+      "norm_label": "stop the bot gracefully (updater \u2192 app \u2192 shutdown)."
     },
     {
       "label": "Send a message to a Telegram chat.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L110",
+      "source_location": "L116",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_110",
+      "id": "channel_telegram_channel_rationale_116",
       "community": 26,
       "norm_label": "send a message to a telegram chat."
     },
@@ -1666,9 +1666,9 @@
       "label": "Send an approval request with inline keyboard and wait for response.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L118",
+      "source_location": "L124",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_118",
+      "id": "channel_telegram_channel_rationale_124",
       "community": 26,
       "norm_label": "send an approval request with inline keyboard and wait for response."
     },
@@ -1676,9 +1676,9 @@
       "label": "Process a user message through the agent loop.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L148",
+      "source_location": "L154",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_148",
+      "id": "channel_telegram_channel_rationale_154",
       "community": 26,
       "norm_label": "process a user message through the agent loop."
     },
@@ -1686,9 +1686,9 @@
       "label": "Render the provider selection keyboard.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L193",
+      "source_location": "L199",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_193",
+      "id": "channel_telegram_channel_rationale_199",
       "community": 26,
       "norm_label": "render the provider selection keyboard."
     },
@@ -1696,9 +1696,9 @@
       "label": "Build provider selection inline keyboard.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L223",
+      "source_location": "L229",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_223",
+      "id": "channel_telegram_channel_rationale_229",
       "community": 26,
       "norm_label": "build provider selection inline keyboard."
     },
@@ -1706,31 +1706,31 @@
       "label": "Build model selection inline keyboard with pagination.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L243",
+      "source_location": "L249",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_243",
-      "community": 216,
+      "id": "channel_telegram_channel_rationale_249",
+      "community": 26,
       "norm_label": "build model selection inline keyboard with pagination."
     },
     {
       "label": "Execute model switch and show confirmation.",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L272",
+      "source_location": "L278",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_272",
-      "community": 44,
+      "id": "channel_telegram_channel_rationale_278",
+      "community": 26,
       "norm_label": "execute model switch and show confirmation."
     },
     {
-      "label": "Start polling for updates (blocking).",
+      "label": "Start polling \u2014 never touches the event loop (PTB v20+ safe).          Uses ``",
       "file_type": "rationale",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L298",
+      "source_location": "L304",
       "_origin": "ast",
-      "id": "channel_telegram_channel_rationale_298",
+      "id": "channel_telegram_channel_rationale_304",
       "community": 26,
-      "norm_label": "start polling for updates (blocking)."
+      "norm_label": "start polling \u2014 never touches the event loop (ptb v20+ safe).          uses ``"
     },
     {
       "label": "handlers.py",
@@ -1929,7 +1929,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_keyboards_py",
-      "community": 216,
+      "community": 26,
       "norm_label": "keyboards.py"
     },
     {
@@ -1939,7 +1939,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "channel_telegram_keyboards_approval_keyboard",
-      "community": 216,
+      "community": 26,
       "norm_label": "approval_keyboard()"
     },
     {
@@ -1949,7 +1949,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "inlinekeyboardmarkup",
-      "community": 216,
+      "community": 26,
       "norm_label": "inlinekeyboardmarkup"
     },
     {
@@ -1959,7 +1959,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "channel_telegram_keyboards_mode_keyboard",
-      "community": 216,
+      "community": 26,
       "norm_label": "mode_keyboard()"
     },
     {
@@ -1969,7 +1969,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "channel_telegram_keyboards_rationale_1",
-      "community": 216,
+      "community": 26,
       "norm_label": "telegram inline keyboard builders for approval requests."
     },
     {
@@ -1979,7 +1979,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "channel_telegram_keyboards_rationale_7",
-      "community": 216,
+      "community": 26,
       "norm_label": "build an inline keyboard with approve / reject / approve all buttons.      par"
     },
     {
@@ -1989,7 +1989,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "channel_telegram_keyboards_rationale_28",
-      "community": 216,
+      "community": 26,
       "norm_label": "build a mode-selection keyboard."
     },
     {
@@ -2462,7 +2462,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_channels_whatsapp_src_channel_whatsapp_handlers_py",
-      "community": 138,
+      "community": 134,
       "norm_label": "handlers.py"
     },
     {
@@ -2522,7 +2522,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "channel_whatsapp_handlers_rationale_1",
-      "community": 138,
+      "community": 134,
       "norm_label": "whatsapp message parsing and dispatch.  mirrors the telegram handlers pattern \u2014"
     },
     {
@@ -5340,7 +5340,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_commands",
-      "community": 138,
+      "community": 134,
       "norm_label": "commands.py"
     },
     {
@@ -5350,7 +5350,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "agent_core_commands_commandcontext",
-      "community": 134,
+      "community": 42,
       "norm_label": "commandcontext"
     },
     {
@@ -5360,7 +5360,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "agent_core_commands_commandresult",
-      "community": 138,
+      "community": 134,
       "norm_label": "commandresult"
     },
     {
@@ -5490,7 +5490,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "agent_core_commands_get_git_hash",
-      "community": 138,
+      "community": 134,
       "norm_label": "_get_git_hash()"
     },
     {
@@ -5520,7 +5520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_commands_rationale_1",
-      "community": 138,
+      "community": 134,
       "norm_label": "unified slash command registry \u2014 all 27 commands fully wired to jalaagent object"
     },
     {
@@ -6130,7 +6130,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "agent_core_core_tools_tool_patch_file",
-      "community": 40,
+      "community": 12,
       "norm_label": "tool_patch_file()"
     },
     {
@@ -6280,7 +6280,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "agent_core_core_tools_rationale_74",
-      "community": 40,
+      "community": 12,
       "norm_label": "apply a unified diff patch via diffeditor if wired, else direct."
     },
     {
@@ -6580,7 +6580,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "exception",
-      "community": 54,
+      "community": 13,
       "norm_label": "exception"
     },
     {
@@ -6670,7 +6670,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "agent_core_errors_apierrorclassifier_classify",
-      "community": 54,
+      "community": 13,
       "norm_label": ".classify()"
     },
     {
@@ -6810,7 +6810,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "agent_core_errors_rationale_65",
-      "community": 54,
+      "community": 13,
       "norm_label": "classify *exception* into a failover reason.          handles:         * our"
     },
     {
@@ -6840,7 +6840,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_harness_py",
-      "community": 40,
+      "community": 12,
       "norm_label": "harness.py"
     },
     {
@@ -6920,7 +6920,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "agent_core_harness_worktreeisolation_list_worktrees",
-      "community": 35,
+      "community": 12,
       "norm_label": ".list_worktrees()"
     },
     {
@@ -6930,7 +6930,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "packages_agent_core_src_agent_core_harness_py_any",
-      "community": 35,
+      "community": 12,
       "norm_label": "any"
     },
     {
@@ -7070,7 +7070,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "agent_core_harness_sandboxedshell_init",
-      "community": 57,
+      "community": 29,
       "norm_label": ".__init__()"
     },
     {
@@ -7100,7 +7100,7 @@
       "source_location": "L382",
       "_origin": "ast",
       "id": "agent_core_harness_sandboxedshell_history",
-      "community": 35,
+      "community": 12,
       "norm_label": ".history()"
     },
     {
@@ -7110,7 +7110,7 @@
       "source_location": "L394",
       "_origin": "ast",
       "id": "agent_core_harness_parse_unified_diff",
-      "community": 40,
+      "community": 12,
       "norm_label": "_parse_unified_diff()"
     },
     {
@@ -7120,7 +7120,7 @@
       "source_location": "L424",
       "_origin": "ast",
       "id": "agent_core_harness_apply_hunk",
-      "community": 40,
+      "community": 12,
       "norm_label": "_apply_hunk()"
     },
     {
@@ -7150,7 +7150,7 @@
       "source_location": "L470",
       "_origin": "ast",
       "id": "agent_core_harness_backgroundtaskmanager_submit",
-      "community": 35,
+      "community": 12,
       "norm_label": ".submit()"
     },
     {
@@ -7160,7 +7160,7 @@
       "source_location": "L489",
       "_origin": "ast",
       "id": "agent_core_harness_backgroundtaskmanager_get_result",
-      "community": 35,
+      "community": 12,
       "norm_label": ".get_result()"
     },
     {
@@ -7210,7 +7210,7 @@
       "source_location": "L535",
       "_origin": "ast",
       "id": "agent_core_harness_diffeditor",
-      "community": 29,
+      "community": 22,
       "norm_label": "diffeditor"
     },
     {
@@ -7220,7 +7220,7 @@
       "source_location": "L544",
       "_origin": "ast",
       "id": "agent_core_harness_diffeditor_preview_diff",
-      "community": 29,
+      "community": 22,
       "norm_label": ".preview_diff()"
     },
     {
@@ -7250,7 +7250,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_1",
-      "community": 40,
+      "community": 12,
       "norm_label": "jalaagent harness \u2014 git worktrees, plan mode, sandbox, background tasks.  the"
     },
     {
@@ -7300,7 +7300,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_116",
-      "community": 35,
+      "community": 12,
       "norm_label": "list all git worktrees and their status."
     },
     {
@@ -7390,7 +7390,7 @@
       "source_location": "L395",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_395",
-      "community": 40,
+      "community": 12,
       "norm_label": "parse unified diff text into a list of hunks.      each hunk is a dict with ``"
     },
     {
@@ -7400,7 +7400,7 @@
       "source_location": "L429",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_429",
-      "community": 40,
+      "community": 12,
       "norm_label": "apply a single hunk to result_lines, adjusting for line count changes."
     },
     {
@@ -7420,7 +7420,7 @@
       "source_location": "L471",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_471",
-      "community": 35,
+      "community": 12,
       "norm_label": "submit a coroutine to run in the background.          returns the task id imme"
     },
     {
@@ -7430,7 +7430,7 @@
       "source_location": "L490",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_490",
-      "community": 35,
+      "community": 12,
       "norm_label": "get the result of a background task, waiting if still running."
     },
     {
@@ -7460,7 +7460,7 @@
       "source_location": "L536",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_536",
-      "community": 29,
+      "community": 22,
       "norm_label": "safe file editing using unified diffs.      the agent generates a diff, the us"
     },
     {
@@ -7470,7 +7470,7 @@
       "source_location": "L545",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_545",
-      "community": 29,
+      "community": 22,
       "norm_label": "generate a unified diff for user review."
     },
     {
@@ -8640,7 +8640,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "agent_core_models_tooldescriptor",
-      "community": 3,
+      "community": 52,
       "norm_label": "tooldescriptor"
     },
     {
@@ -8650,7 +8650,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "agent_core_models_toolresult",
-      "community": 3,
+      "community": 13,
       "norm_label": "toolresult"
     },
     {
@@ -8800,7 +8800,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "agent_core_models_rationale_117",
-      "community": 3,
+      "community": 52,
       "norm_label": "describes a tool to the provider and the registry."
     },
     {
@@ -8810,7 +8810,7 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "agent_core_models_rationale_128",
-      "community": 3,
+      "community": 13,
       "norm_label": "the result of a tool execution."
     },
     {
@@ -11030,7 +11030,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "tests_test_registry_testfuzzyrepairasync",
-      "community": 3,
+      "community": 5,
       "norm_label": "testfuzzyrepairasync"
     },
     {
@@ -11303,7 +11303,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingpipeline",
-      "community": 12,
+      "community": 17,
       "norm_label": "dreamingpipeline"
     },
     {
@@ -11463,7 +11463,7 @@
       "source_location": "L516",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingpipeline_last_run",
-      "community": 11,
+      "community": 17,
       "norm_label": ".last_run()"
     },
     {
@@ -11553,7 +11553,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_134",
-      "community": 12,
+      "community": 17,
       "norm_label": "cron-based multi-phase memory consolidation from session transcripts.      par"
     },
     {
@@ -11653,7 +11653,7 @@
       "source_location": "L517",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_517",
-      "community": 11,
+      "community": 17,
       "norm_label": "the timestamp of the last completed :meth:`run` call."
     },
     {
@@ -11663,7 +11663,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_runner_py",
-      "community": 12,
+      "community": 17,
       "norm_label": "dreaming_runner.py"
     },
     {
@@ -11673,7 +11673,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_autoapprovecallback",
-      "community": 12,
+      "community": 17,
       "norm_label": "autoapprovecallback"
     },
     {
@@ -11683,7 +11683,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_autoapprovecallback_request_approval",
-      "community": 12,
+      "community": 17,
       "norm_label": ".request_approval()"
     },
     {
@@ -11693,7 +11693,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_any",
-      "community": 12,
+      "community": 17,
       "norm_label": "any"
     },
     {
@@ -11703,7 +11703,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_providerllmadapter",
-      "community": 12,
+      "community": 17,
       "norm_label": "providerllmadapter"
     },
     {
@@ -11713,7 +11713,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_providerllmadapter_init",
-      "community": 12,
+      "community": 17,
       "norm_label": ".__init__()"
     },
     {
@@ -11723,7 +11723,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_providerllmadapter_generate",
-      "community": 12,
+      "community": 17,
       "norm_label": ".generate()"
     },
     {
@@ -11733,7 +11733,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner",
-      "community": 12,
+      "community": 17,
       "norm_label": "dreamingrunner"
     },
     {
@@ -11743,7 +11743,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_init",
-      "community": 12,
+      "community": 17,
       "norm_label": ".__init__()"
     },
     {
@@ -11753,7 +11753,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_memoryconfig",
-      "community": 12,
+      "community": 17,
       "norm_label": "memoryconfig"
     },
     {
@@ -11763,7 +11763,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_filelayer",
-      "community": 12,
+      "community": 17,
       "norm_label": "filelayer"
     },
     {
@@ -11773,7 +11773,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_vectorlayer",
-      "community": 12,
+      "community": 17,
       "norm_label": "vectorlayer"
     },
     {
@@ -11783,7 +11783,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_run_once",
-      "community": 12,
+      "community": 17,
       "norm_label": ".run_once()"
     },
     {
@@ -11793,7 +11793,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_dreamreport",
-      "community": 12,
+      "community": 17,
       "norm_label": "dreamreport"
     },
     {
@@ -11803,7 +11803,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_start_scheduler",
-      "community": 12,
+      "community": 17,
       "norm_label": ".start_scheduler()"
     },
     {
@@ -11813,7 +11813,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_stop",
-      "community": 12,
+      "community": 17,
       "norm_label": ".stop()"
     },
     {
@@ -11823,7 +11823,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_schedule_loop",
-      "community": 12,
+      "community": 17,
       "norm_label": "._schedule_loop()"
     },
     {
@@ -11833,7 +11833,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_last_run",
-      "community": 12,
+      "community": 17,
       "norm_label": ".last_run()"
     },
     {
@@ -11843,7 +11843,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_datetime",
-      "community": 12,
+      "community": 17,
       "norm_label": "datetime"
     },
     {
@@ -11853,7 +11853,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_1",
-      "community": 12,
+      "community": 17,
       "norm_label": "dreaming pipeline runner \u2014 cron-based scheduling with manual trigger."
     },
     {
@@ -11863,7 +11863,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_17",
-      "community": 12,
+      "community": 17,
       "norm_label": "auto-approves all facts (yolo/automated mode)."
     },
     {
@@ -11873,7 +11873,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_24",
-      "community": 12,
+      "community": 17,
       "norm_label": "wraps the agent's provider as a dreamingllmadapter."
     },
     {
@@ -11883,7 +11883,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_42",
-      "community": 12,
+      "community": 17,
       "norm_label": "manages the dreaming pipeline lifecycle.      - schedules dreaming runs via cr"
     },
     {
@@ -11893,7 +11893,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_69",
-      "community": 12,
+      "community": 17,
       "norm_label": "run the dreaming pipeline once and return the report."
     },
     {
@@ -11903,7 +11903,7 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_rationale_92",
-      "community": 12,
+      "community": 17,
       "norm_label": "start the cron-like scheduler loop."
     },
     {
@@ -12403,7 +12403,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_file_layer",
-      "community": 93,
+      "community": 11,
       "norm_label": "file_layer.py"
     },
     {
@@ -12673,7 +12673,7 @@
       "source_location": "L331",
       "_origin": "ast",
       "id": "memory_core_file_layer_filememorylayer",
-      "community": 93,
+      "community": 11,
       "norm_label": "filememorylayer"
     },
     {
@@ -12683,7 +12683,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_file_layer_rationale_1",
-      "community": 93,
+      "community": 11,
       "norm_label": "layer 1 \u2014 raw file storage: memory.md, user.md, session jsonl transcripts."
     },
     {
@@ -12913,7 +12913,7 @@
       "source_location": "L332",
       "_origin": "ast",
       "id": "memory_core_file_layer_rationale_332",
-      "community": 93,
+      "community": 11,
       "norm_label": "legacy alias for :class:`filelayer`."
     },
     {
@@ -13503,7 +13503,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph",
-      "community": 59,
+      "community": 16,
       "norm_label": "knowledge_graph.py"
     },
     {
@@ -13513,7 +13513,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_row_to_dict",
-      "community": 59,
+      "community": 16,
       "norm_label": "_row_to_dict()"
     },
     {
@@ -13523,7 +13523,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_knowledge_graph_py_row",
-      "community": 59,
+      "community": 16,
       "norm_label": "row"
     },
     {
@@ -13543,7 +13543,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_init",
-      "community": 59,
+      "community": 16,
       "norm_label": ".__init__()"
     },
     {
@@ -13553,7 +13553,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_knowledge_graph_py_path",
-      "community": 59,
+      "community": 16,
       "norm_label": "path"
     },
     {
@@ -13563,7 +13563,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_initialize",
-      "community": 104,
+      "community": 16,
       "norm_label": ".initialize()"
     },
     {
@@ -13573,7 +13573,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_get_write_lock",
-      "community": 59,
+      "community": 16,
       "norm_label": "._get_write_lock()"
     },
     {
@@ -13583,7 +13583,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_get_conn",
-      "community": 104,
+      "community": 16,
       "norm_label": "._get_conn()"
     },
     {
@@ -13593,7 +13593,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_knowledge_graph_py_connection",
-      "community": 104,
+      "community": 16,
       "norm_label": "connection"
     },
     {
@@ -13603,7 +13603,7 @@
       "source_location": "L148",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_ingest_page",
-      "community": 59,
+      "community": 16,
       "norm_label": ".ingest_page()"
     },
     {
@@ -13613,7 +13613,7 @@
       "source_location": "L201",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_graph_query",
-      "community": 104,
+      "community": 16,
       "norm_label": ".graph_query()"
     },
     {
@@ -13623,7 +13623,7 @@
       "source_location": "L242",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_search_entities",
-      "community": 104,
+      "community": 16,
       "norm_label": ".search_entities()"
     },
     {
@@ -13653,7 +13653,7 @@
       "source_location": "L280",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_get_orphan_edge_count",
-      "community": 104,
+      "community": 16,
       "norm_label": ".get_orphan_edge_count()"
     },
     {
@@ -13663,7 +13663,7 @@
       "source_location": "L296",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_cleanup_orphan_edges",
-      "community": 104,
+      "community": 16,
       "norm_label": ".cleanup_orphan_edges()"
     },
     {
@@ -13683,7 +13683,7 @@
       "source_location": "L328",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_extract_entities",
-      "community": 59,
+      "community": 16,
       "norm_label": "._extract_entities()"
     },
     {
@@ -13693,7 +13693,7 @@
       "source_location": "L347",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_extract_relations",
-      "community": 59,
+      "community": 16,
       "norm_label": "._extract_relations()"
     },
     {
@@ -13703,7 +13703,7 @@
       "source_location": "L377",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_sync_brain_repo",
-      "community": 59,
+      "community": 16,
       "norm_label": "sync_brain_repo()"
     },
     {
@@ -13713,7 +13713,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_1",
-      "community": 59,
+      "community": 16,
       "norm_label": "gbrain-inspired knowledge graph \u2014 entity extraction, typed edges, graph traversa"
     },
     {
@@ -13733,7 +13733,7 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_85",
-      "community": 104,
+      "community": 16,
       "norm_label": "create tables if they don't exist."
     },
     {
@@ -13743,7 +13743,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_116",
-      "community": 59,
+      "community": 16,
       "norm_label": "return a shared asyncio.lock for write operations.          created lazily so"
     },
     {
@@ -13753,7 +13753,7 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_128",
-      "community": 104,
+      "community": 16,
       "norm_label": "lazy-initialize and return the sqlite connection.          uses double-checked"
     },
     {
@@ -13763,7 +13763,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_149",
-      "community": 59,
+      "community": 16,
       "norm_label": "ingest a markdown page, extracting entities and relations.          write oper"
     },
     {
@@ -13773,7 +13773,7 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_202",
-      "community": 104,
+      "community": 16,
       "norm_label": "traverse the graph from an entity, returning connected nodes."
     },
     {
@@ -13783,7 +13783,7 @@
       "source_location": "L243",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_243",
-      "community": 104,
+      "community": 16,
       "norm_label": "search entities by name (keyword match)."
     },
     {
@@ -13803,7 +13803,7 @@
       "source_location": "L281",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_281",
-      "community": 104,
+      "community": 16,
       "norm_label": "count edges with broken foreign keys."
     },
     {
@@ -13813,7 +13813,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_297",
-      "community": 104,
+      "community": 16,
       "norm_label": "delete edges with broken foreign keys. returns count removed."
     },
     {
@@ -13823,7 +13823,7 @@
       "source_location": "L378",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_378",
-      "community": 59,
+      "community": 16,
       "norm_label": "sync a directory of markdown files into the knowledge graph."
     },
     {
@@ -14773,7 +14773,7 @@
       "source_location": "L291",
       "_origin": "ast",
       "id": "memory_core_retrieval_memoryretriever_config",
-      "community": 28,
+      "community": 11,
       "norm_label": ".config()"
     },
     {
@@ -14923,7 +14923,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_vector_layer",
-      "community": 97,
+      "community": 93,
       "norm_label": "vector_layer.py"
     },
     {
@@ -14933,7 +14933,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "memory_core_vector_layer_hash_text",
-      "community": 97,
+      "community": 93,
       "norm_label": "_hash_text()"
     },
     {
@@ -14943,7 +14943,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "memory_core_vector_layer_blob_to_floats",
-      "community": 97,
+      "community": 93,
       "norm_label": "_blob_to_floats()"
     },
     {
@@ -14953,7 +14953,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "memory_core_vector_layer_floats_to_blob",
-      "community": 6,
+      "community": 93,
       "norm_label": "_floats_to_blob()"
     },
     {
@@ -14963,7 +14963,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "memory_core_vector_layer_cosine",
-      "community": 97,
+      "community": 93,
       "norm_label": "_cosine()"
     },
     {
@@ -15323,7 +15323,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_1",
-      "community": 97,
+      "community": 93,
       "norm_label": "layer 2 \u2014 sqlite + sqlite-vec vector database for semantic memory search."
     },
     {
@@ -15333,7 +15333,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_20",
-      "community": 97,
+      "community": 93,
       "norm_label": "sha-256 hex digest of *text* (used for embedding cache key)."
     },
     {
@@ -15343,7 +15343,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_25",
-      "community": 97,
+      "community": 93,
       "norm_label": "unpack a little-endian float32 blob into a list of floats."
     },
     {
@@ -15353,7 +15353,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_32",
-      "community": 6,
+      "community": 93,
       "norm_label": "pack a list of floats into a little-endian float32 blob."
     },
     {
@@ -15363,7 +15363,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_38",
-      "community": 97,
+      "community": 93,
       "norm_label": "cosine similarity between two vectors of equal dimension."
     },
     {
@@ -15623,7 +15623,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_dreaming_py_fact",
-      "community": 62,
+      "community": 0,
       "norm_label": "fact"
     },
     {
@@ -15993,7 +15993,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate",
-      "community": 62,
+      "community": 0,
       "norm_label": "testdeduplicate"
     },
     {
@@ -16003,7 +16003,7 @@
       "source_location": "L298",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate_test_removes_duplicates",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_removes_duplicates()"
     },
     {
@@ -16013,7 +16013,7 @@
       "source_location": "L305",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate_test_merges_source_ids",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_merges_source_ids()"
     },
     {
@@ -16023,7 +16023,7 @@
       "source_location": "L320",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate_test_keeps_unique",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_keeps_unique()"
     },
     {
@@ -16033,7 +16033,7 @@
       "source_location": "L333",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeepsleep",
-      "community": 62,
+      "community": 0,
       "norm_label": "testdeepsleep"
     },
     {
@@ -16043,7 +16043,7 @@
       "source_location": "L334",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeepsleep_test_filters_by_confidence",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_filters_by_confidence()"
     },
     {
@@ -16053,7 +16053,7 @@
       "source_location": "L345",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeepsleep_test_sorted_descending",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_sorted_descending()"
     },
     {
@@ -16163,7 +16163,7 @@
       "source_location": "L470",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdiary",
-      "community": 62,
+      "community": 0,
       "norm_label": "testdiary"
     },
     {
@@ -16173,7 +16173,7 @@
       "source_location": "L471",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdiary_test_build_diary_entry",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_build_diary_entry()"
     },
     {
@@ -16183,7 +16183,7 @@
       "source_location": "L481",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdiary_test_write_diary_prepends",
-      "community": 62,
+      "community": 0,
       "norm_label": ".test_write_diary_prepends()"
     },
     {
@@ -18153,7 +18153,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_retrieval_py",
-      "community": 210,
+      "community": 15,
       "norm_label": "test_retrieval.py"
     },
     {
@@ -18163,7 +18163,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "tests_test_retrieval_tmp_memory_dir",
-      "community": 210,
+      "community": 15,
       "norm_label": "tmp_memory_dir()"
     },
     {
@@ -18173,7 +18173,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_retrieval_py_path",
-      "community": 210,
+      "community": 15,
       "norm_label": "path"
     },
     {
@@ -18183,7 +18183,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "tests_test_retrieval_tmp_db_path",
-      "community": 210,
+      "community": 15,
       "norm_label": "tmp_db_path()"
     },
     {
@@ -18193,7 +18193,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "tests_test_retrieval_config",
-      "community": 210,
+      "community": 15,
       "norm_label": "config()"
     },
     {
@@ -18203,7 +18203,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_retrieval_py_memoryconfig",
-      "community": 210,
+      "community": 15,
       "norm_label": "memoryconfig"
     },
     {
@@ -18213,7 +18213,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "tests_test_retrieval_file_layer",
-      "community": 210,
+      "community": 15,
       "norm_label": "file_layer()"
     },
     {
@@ -18233,7 +18233,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "tests_test_retrieval_vector_layer",
-      "community": 210,
+      "community": 15,
       "norm_label": "vector_layer()"
     },
     {
@@ -18493,7 +18493,7 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "tests_test_retrieval_testknowledgegraphintegration",
-      "community": 144,
+      "community": 15,
       "norm_label": "testknowledgegraphintegration"
     },
     {
@@ -18503,7 +18503,7 @@
       "source_location": "L315",
       "_origin": "ast",
       "id": "tests_test_retrieval_testknowledgegraphintegration_test_kg_wired_into_retrieval",
-      "community": 144,
+      "community": 15,
       "norm_label": ".test_kg_wired_into_retrieval()"
     },
     {
@@ -18513,7 +18513,7 @@
       "source_location": "L344",
       "_origin": "ast",
       "id": "tests_test_retrieval_testknowledgegraphintegration_test_kg_none_does_not_break",
-      "community": 144,
+      "community": 15,
       "norm_label": ".test_kg_none_does_not_break()"
     },
     {
@@ -18523,7 +18523,7 @@
       "source_location": "L353",
       "_origin": "ast",
       "id": "tests_test_retrieval_testproperties",
-      "community": 210,
+      "community": 15,
       "norm_label": "testproperties"
     },
     {
@@ -18533,7 +18533,7 @@
       "source_location": "L354",
       "_origin": "ast",
       "id": "tests_test_retrieval_testproperties_test_config_access",
-      "community": 210,
+      "community": 15,
       "norm_label": ".test_config_access()"
     },
     {
@@ -18543,7 +18543,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_1",
-      "community": 210,
+      "community": 15,
       "norm_label": "tests for memory-core retrieval (multi-strategy memory search)."
     },
     {
@@ -18553,7 +18553,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_54",
-      "community": 210,
+      "community": 15,
       "norm_label": "vectorlayer with a real db but mocked embedding."
     },
     {
@@ -18593,7 +18593,7 @@
       "source_location": "L318",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_318",
-      "community": 144,
+      "community": 15,
       "norm_label": "knowledge graph results appear in retrieval when kg is provided."
     },
     {
@@ -18603,7 +18603,7 @@
       "source_location": "L347",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_347",
-      "community": 144,
+      "community": 15,
       "norm_label": "retrieval works fine without a knowledge graph."
     },
     {
@@ -18723,7 +18723,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers",
-      "community": 97,
+      "community": 93,
       "norm_label": "testmathhelpers"
     },
     {
@@ -18733,7 +18733,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_identical",
-      "community": 97,
+      "community": 93,
       "norm_label": ".test_cosine_identical()"
     },
     {
@@ -18743,7 +18743,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_orthogonal",
-      "community": 97,
+      "community": 93,
       "norm_label": ".test_cosine_orthogonal()"
     },
     {
@@ -18753,7 +18753,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_opposite",
-      "community": 97,
+      "community": 93,
       "norm_label": ".test_cosine_opposite()"
     },
     {
@@ -18763,7 +18763,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_cosine_zero_vector",
-      "community": 97,
+      "community": 93,
       "norm_label": ".test_cosine_zero_vector()"
     },
     {
@@ -18773,7 +18773,7 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_blob_roundtrip",
-      "community": 97,
+      "community": 93,
       "norm_label": ".test_blob_roundtrip()"
     },
     {
@@ -18783,7 +18783,7 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "tests_test_vector_layer_testmathhelpers_test_hash_text_deterministic",
-      "community": 97,
+      "community": 93,
       "norm_label": ".test_hash_text_deterministic()"
     },
     {
@@ -30437,9 +30437,9 @@
       "source_file": "cli/src/jala/__init__.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_cli_src_jala_init_py",
-      "target": "jala_main",
-      "confidence_score": 1.0
+      "target": "jala_main"
     },
     {
       "relation": "rationale_for",
@@ -30679,9 +30679,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_build_agent",
-      "confidence_score": 1.0
+      "target": "jala_main_build_agent"
     },
     {
       "relation": "contains",
@@ -30689,9 +30689,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_build_auxiliary",
-      "confidence_score": 1.0
+      "target": "jala_main_build_auxiliary"
     },
     {
       "relation": "contains",
@@ -30699,9 +30699,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L536",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_config_get",
-      "confidence_score": 1.0
+      "target": "jala_main_config_get"
     },
     {
       "relation": "contains",
@@ -30709,9 +30709,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L523",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_config_show",
-      "confidence_score": 1.0
+      "target": "jala_main_config_show"
     },
     {
       "relation": "contains",
@@ -30719,9 +30719,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L598",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_credentials_cmd",
-      "confidence_score": 1.0
+      "target": "jala_main_credentials_cmd"
     },
     {
       "relation": "contains",
@@ -30729,9 +30729,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L492",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_dream",
-      "confidence_score": 1.0
+      "target": "jala_main_dream"
     },
     {
       "relation": "contains",
@@ -30739,9 +30739,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L375",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_gateway",
-      "confidence_score": 1.0
+      "target": "jala_main_gateway"
     },
     {
       "relation": "contains",
@@ -30749,9 +30749,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L179",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_gateway_banner",
-      "confidence_score": 1.0
+      "target": "jala_main_gateway_banner"
     },
     {
       "relation": "contains",
@@ -30759,9 +30759,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L167",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_get_registry_safe",
-      "confidence_score": 1.0
+      "target": "jala_main_get_registry_safe"
     },
     {
       "relation": "contains",
@@ -30769,9 +30769,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_load_jala_config",
-      "confidence_score": 1.0
+      "target": "jala_main_load_jala_config"
     },
     {
       "relation": "contains",
@@ -30779,9 +30779,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_load_skills_into_registry",
-      "confidence_score": 1.0
+      "target": "jala_main_load_skills_into_registry"
     },
     {
       "relation": "contains",
@@ -30789,9 +30789,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L257",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_main",
-      "confidence_score": 1.0
+      "target": "jala_main_main"
     },
     {
       "relation": "contains",
@@ -30799,9 +30799,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L247",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_main_cli",
-      "confidence_score": 1.0
+      "target": "jala_main_main_cli"
     },
     {
       "relation": "contains",
@@ -30809,9 +30809,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L488",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_mcp",
-      "confidence_score": 1.0
+      "target": "jala_main_mcp"
     },
     {
       "relation": "contains",
@@ -30819,9 +30819,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L402",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_memory",
-      "confidence_score": 1.0
+      "target": "jala_main_memory"
     },
     {
       "relation": "contains",
@@ -30829,9 +30829,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_pick_provider",
-      "confidence_score": 1.0
+      "target": "jala_main_pick_provider"
     },
     {
       "relation": "contains",
@@ -30839,9 +30839,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L194",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_run_gateway",
-      "confidence_score": 1.0
+      "target": "jala_main_run_gateway"
     },
     {
       "relation": "contains",
@@ -30849,9 +30849,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L392",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_serve",
-      "confidence_score": 1.0
+      "target": "jala_main_serve"
     },
     {
       "relation": "contains",
@@ -30859,9 +30859,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L556",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_sessions_cmd",
-      "confidence_score": 1.0
+      "target": "jala_main_sessions_cmd"
     },
     {
       "relation": "contains",
@@ -30869,9 +30869,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L388",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_setup",
-      "confidence_score": 1.0
+      "target": "jala_main_setup"
     },
     {
       "relation": "contains",
@@ -30879,9 +30879,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L413",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_skills",
-      "confidence_score": 1.0
+      "target": "jala_main_skills"
     },
     {
       "relation": "contains",
@@ -30889,9 +30889,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L357",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main",
-      "target": "jala_main_start_telegram",
-      "confidence_score": 1.0
+      "target": "jala_main_start_telegram"
     },
     {
       "relation": "rationale_for",
@@ -30899,9 +30899,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_1",
-      "target": "jala_main",
-      "confidence_score": 1.0
+      "target": "jala_main"
     },
     {
       "relation": "calls",
@@ -31483,9 +31483,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L296",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_main",
-      "target": "jala_main_load_skills_into_registry",
-      "confidence_score": 1.0
+      "target": "jala_main_load_skills_into_registry"
     },
     {
       "relation": "calls",
@@ -31836,9 +31836,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L378",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_378",
-      "target": "jala_main_gateway",
-      "confidence_score": 1.0
+      "target": "jala_main_gateway"
     },
     {
       "relation": "calls",
@@ -31857,9 +31857,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L397",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_397",
-      "target": "jala_main_serve",
-      "confidence_score": 1.0
+      "target": "jala_main_serve"
     },
     {
       "relation": "calls",
@@ -31900,9 +31900,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L493",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_493",
-      "target": "jala_main_dream",
-      "confidence_score": 1.0
+      "target": "jala_main_dream"
     },
     {
       "relation": "rationale_for",
@@ -31910,9 +31910,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L524",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_524",
-      "target": "jala_main_config_show",
-      "confidence_score": 1.0
+      "target": "jala_main_config_show"
     },
     {
       "relation": "rationale_for",
@@ -31920,9 +31920,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L537",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_537",
-      "target": "jala_main_config_get",
-      "confidence_score": 1.0
+      "target": "jala_main_config_get"
     },
     {
       "relation": "rationale_for",
@@ -31930,9 +31930,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L557",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_557",
-      "target": "jala_main_sessions_cmd",
-      "confidence_score": 1.0
+      "target": "jala_main_sessions_cmd"
     },
     {
       "relation": "calls",
@@ -31951,9 +31951,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L599",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "jala_main_rationale_599",
-      "target": "jala_main_credentials_cmd",
-      "confidence_score": 1.0
+      "target": "jala_main_credentials_cmd"
     },
     {
       "relation": "imports_from",
@@ -32705,34 +32705,45 @@
       "target": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_init_py"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "extensions/channels/cli/src/channel_cli/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_init_py",
+      "target": "channel_cli_channel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "channel_cli_channel",
+      "target": "channel_cli_channel_basechannel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "channel_cli_channel",
+      "target": "channel_cli_channel_clichannel",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "channel_cli_channel_rationale_1",
-      "target": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_channel_py"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_channel_py",
-      "target": "channel_cli_channel_basechannel"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_channels_cli_src_channel_cli_channel_py",
-      "target": "channel_cli_channel_clichannel"
+      "target": "channel_cli_channel",
+      "confidence_score": 1.0
     },
     {
       "relation": "uses",
@@ -33238,21 +33249,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_cli_channel_rationale_25",
-      "target": "channel_cli_channel_clichannel"
+      "source": "channel_cli_channel_rationale_27",
+      "target": "channel_cli_channel_clichannel",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_cli_channel_rationale_37",
-      "target": "channel_cli_channel_clichannel_send_approval_request"
+      "source": "channel_cli_channel_rationale_39",
+      "target": "channel_cli_channel_clichannel_send_approval_request",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33368,11 +33379,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/cli/src/channel_cli/channel.py",
-      "source_location": "L172",
+      "source_location": "L173",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_cli_channel_rationale_172",
-      "target": "channel_cli_channel_clichannel_show_model_picker"
+      "source": "channel_cli_channel_rationale_173",
+      "target": "channel_cli_channel_clichannel_show_model_picker",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -33437,14 +33448,15 @@
       "target": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_init_py"
     },
     {
-      "relation": "rationale_for",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L1",
+      "source_file": "extensions/channels/telegram/src/channel_telegram/__init__.py",
+      "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_1",
-      "target": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_channel_py"
+      "source": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_init_py",
+      "target": "channel_telegram_channel",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -33452,9 +33464,19 @@
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_channels_telegram_src_channel_telegram_channel_py",
-      "target": "channel_telegram_channel_telegramchannel"
+      "source": "channel_telegram_channel",
+      "target": "channel_telegram_channel_telegramchannel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "channel_telegram_channel_rationale_1",
+      "target": "channel_telegram_channel",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -33747,21 +33769,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L103",
+      "source_location": "L107",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_103",
-      "target": "channel_telegram_channel_telegramchannel_stop"
+      "source": "channel_telegram_channel_rationale_107",
+      "target": "channel_telegram_channel_telegramchannel_stop",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L110",
+      "source_location": "L116",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_110",
-      "target": "channel_telegram_channel_telegramchannel_send_message"
+      "source": "channel_telegram_channel_rationale_116",
+      "target": "channel_telegram_channel_telegramchannel_send_message",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33789,11 +33811,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L118",
+      "source_location": "L124",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_118",
-      "target": "channel_telegram_channel_telegramchannel_send_approval_request"
+      "source": "channel_telegram_channel_rationale_124",
+      "target": "channel_telegram_channel_telegramchannel_send_approval_request",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33810,11 +33832,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L148",
+      "source_location": "L154",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_148",
-      "target": "channel_telegram_channel_telegramchannel_process_message"
+      "source": "channel_telegram_channel_rationale_154",
+      "target": "channel_telegram_channel_telegramchannel_process_message",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -33861,11 +33883,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L193",
+      "source_location": "L199",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_193",
-      "target": "channel_telegram_channel_telegramchannel_show_model_picker"
+      "source": "channel_telegram_channel_rationale_199",
+      "target": "channel_telegram_channel_telegramchannel_show_model_picker",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33893,11 +33915,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L223",
+      "source_location": "L229",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_223",
-      "target": "channel_telegram_channel_telegramchannel_build_provider_keyboard"
+      "source": "channel_telegram_channel_rationale_229",
+      "target": "channel_telegram_channel_telegramchannel_build_provider_keyboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33914,11 +33936,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L243",
+      "source_location": "L249",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_243",
-      "target": "channel_telegram_channel_telegramchannel_build_model_keyboard"
+      "source": "channel_telegram_channel_rationale_249",
+      "target": "channel_telegram_channel_telegramchannel_build_model_keyboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33935,11 +33957,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L272",
+      "source_location": "L278",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_272",
-      "target": "channel_telegram_channel_telegramchannel_handle_model_selected"
+      "source": "channel_telegram_channel_rationale_278",
+      "target": "channel_telegram_channel_telegramchannel_handle_model_selected",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -33956,11 +33978,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/channels/telegram/src/channel_telegram/channel.py",
-      "source_location": "L298",
+      "source_location": "L304",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "channel_telegram_channel_rationale_298",
-      "target": "channel_telegram_channel_telegramchannel_run_polling"
+      "source": "channel_telegram_channel_rationale_304",
+      "target": "channel_telegram_channel_telegramchannel_run_polling",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -35677,9 +35699,9 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/__init__.py",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_init_py",
-      "target": "provider_anthropic_provider",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider"
     },
     {
       "relation": "rationale_for",
@@ -35697,9 +35719,9 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_anthropic_provider",
-      "target": "provider_anthropic_provider_anthropicprovider",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider_anthropicprovider"
     },
     {
       "relation": "contains",
@@ -35707,9 +35729,9 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L237",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_anthropic_provider",
-      "target": "provider_anthropic_provider_get_cache_ttl",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider_get_cache_ttl"
     },
     {
       "relation": "rationale_for",
@@ -35717,9 +35739,9 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_anthropic_provider_rationale_1",
-      "target": "provider_anthropic_provider",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider"
     },
     {
       "relation": "imports_from",
@@ -35728,9 +35750,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider",
-      "target": "provider_anthropic_provider",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider"
     },
     {
       "relation": "uses",
@@ -36697,9 +36719,9 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L221",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_anthropic_provider_rationale_221",
-      "target": "provider_anthropic_provider_anthropicprovider_apply_cache_control",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider_anthropicprovider_apply_cache_control"
     },
     {
       "relation": "rationale_for",
@@ -36707,9 +36729,9 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L238",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_anthropic_provider_rationale_238",
-      "target": "provider_anthropic_provider_get_cache_ttl",
-      "confidence_score": 1.0
+      "target": "provider_anthropic_provider_get_cache_ttl"
     },
     {
       "relation": "contains",
@@ -36717,9 +36739,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider",
-      "target": "tests_test_anthropic_provider_provider",
-      "confidence_score": 1.0
+      "target": "tests_test_anthropic_provider_provider"
     },
     {
       "relation": "contains",
@@ -36727,9 +36749,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider",
-      "target": "tests_test_anthropic_provider_testcontextlimit",
-      "confidence_score": 1.0
+      "target": "tests_test_anthropic_provider_testcontextlimit"
     },
     {
       "relation": "contains",
@@ -36737,9 +36759,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider",
-      "target": "tests_test_anthropic_provider_testmessageconversion",
-      "confidence_score": 1.0
+      "target": "tests_test_anthropic_provider_testmessageconversion"
     },
     {
       "relation": "contains",
@@ -36747,9 +36769,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider",
-      "target": "tests_test_anthropic_provider_testtokenestimation",
-      "confidence_score": 1.0
+      "target": "tests_test_anthropic_provider_testtokenestimation"
     },
     {
       "relation": "contains",
@@ -36757,9 +36779,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider",
-      "target": "tests_test_anthropic_provider_testtoolconversion",
-      "confidence_score": 1.0
+      "target": "tests_test_anthropic_provider_testtoolconversion"
     },
     {
       "relation": "rationale_for",
@@ -36767,9 +36789,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider_rationale_1",
-      "target": "tests_test_anthropic_provider",
-      "confidence_score": 1.0
+      "target": "tests_test_anthropic_provider"
     },
     {
       "relation": "references",
@@ -36943,9 +36965,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_deepseek_provider",
-      "target": "provider_deepseek_provider_deepseekprovider",
-      "confidence_score": 1.0
+      "target": "provider_deepseek_provider_deepseekprovider"
     },
     {
       "relation": "rationale_for",
@@ -36953,9 +36975,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_deepseek_provider_rationale_1",
-      "target": "provider_deepseek_provider",
-      "confidence_score": 1.0
+      "target": "provider_deepseek_provider"
     },
     {
       "relation": "calls",
@@ -37034,9 +37056,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L9",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "provider_deepseek_provider_deepseekprovider",
-      "target": "agent_core_models_toolcall",
-      "confidence_score": 0.5
+      "target": "agent_core_models_toolcall"
     },
     {
       "relation": "method",
@@ -37114,9 +37136,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "provider_deepseek_provider_rationale_15",
-      "target": "provider_deepseek_provider_deepseekprovider",
-      "confidence_score": 1.0
+      "target": "provider_deepseek_provider_deepseekprovider"
     },
     {
       "relation": "references",
@@ -37250,9 +37272,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L9",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_agentmessage",
-      "target": "agent_core_models_toolcall",
-      "confidence_score": 0.5
+      "target": "agent_core_models_toolcall"
     },
     {
       "relation": "references",
@@ -37342,9 +37364,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L9",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_any",
-      "target": "agent_core_models_toolcall",
-      "confidence_score": 0.5
+      "target": "agent_core_models_toolcall"
     },
     {
       "relation": "references",
@@ -37423,9 +37445,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L9",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_providerchunk",
-      "target": "agent_core_models_toolcall",
-      "confidence_score": 0.5
+      "target": "agent_core_models_toolcall"
     },
     {
       "relation": "references",
@@ -37559,9 +37581,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L9",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_exception",
-      "target": "agent_core_models_toolcall",
-      "confidence_score": 0.5
+      "target": "agent_core_models_toolcall"
     },
     {
       "relation": "contains",
@@ -43519,9 +43541,9 @@
       "source_file": "packages/agent-core/src/agent_core/__init__.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_init_py",
-      "target": "agent_core_loop",
-      "confidence_score": 1.0
+      "target": "agent_core_loop"
     },
     {
       "relation": "rationale_for",
@@ -49297,9 +49319,9 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_loop",
-      "target": "agent_core_loop_agentloop",
-      "confidence_score": 1.0
+      "target": "agent_core_loop_agentloop"
     },
     {
       "relation": "contains",
@@ -49307,9 +49329,9 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_loop",
-      "target": "agent_core_loop_memoryretrieverprotocol",
-      "confidence_score": 1.0
+      "target": "agent_core_loop_memoryretrieverprotocol"
     },
     {
       "relation": "contains",
@@ -49317,9 +49339,9 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_loop",
-      "target": "agent_core_loop_providerprotocol",
-      "confidence_score": 1.0
+      "target": "agent_core_loop_providerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -49327,9 +49349,9 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_loop_rationale_1",
-      "target": "agent_core_loop",
-      "confidence_score": 1.0
+      "target": "agent_core_loop"
     },
     {
       "relation": "imports_from",
@@ -49338,9 +49360,9 @@
       "source_file": "packages/agent-core/tests/test_loop.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_agent_core_tests_test_loop_py",
-      "target": "agent_core_loop",
-      "confidence_score": 1.0
+      "target": "agent_core_loop"
     },
     {
       "relation": "method",
@@ -86521,5 +86543,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0094ee530791f834b14ef795085066f808edbb27"
+  "built_at_commit": "3509503ad3c961cee68e59e724cb68202e47a971"
 }

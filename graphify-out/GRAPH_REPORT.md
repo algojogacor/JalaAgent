@@ -1,16 +1,16 @@
 # Graph Report - jalaagent  (2026-06-20)
 
 ## Corpus Check
-- 213 files · ~94,074 words
+- 213 files · ~94,144 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3033 nodes · 5465 edges · 231 communities (194 shown, 37 thin omitted)
+- 3033 nodes · 5467 edges · 221 communities (186 shown, 35 thin omitted)
 - Extraction: 75% EXTRACTED · 25% INFERRED · 0% AMBIGUOUS · INFERRED: 1366 edges (avg confidence: 0.53)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0094ee53`
+- Built from commit: `3509503a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,10 +74,8 @@
 - [[_COMMUNITY_Community 56|Community 56]]
 - [[_COMMUNITY_Community 57|Community 57]]
 - [[_COMMUNITY_Community 58|Community 58]]
-- [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 60|Community 60]]
 - [[_COMMUNITY_Community 61|Community 61]]
-- [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 63|Community 63]]
 - [[_COMMUNITY_Community 64|Community 64]]
 - [[_COMMUNITY_Community 65|Community 65]]
@@ -100,7 +98,6 @@
 - [[_COMMUNITY_Community 82|Community 82]]
 - [[_COMMUNITY_Community 83|Community 83]]
 - [[_COMMUNITY_Community 84|Community 84]]
-- [[_COMMUNITY_Community 85|Community 85]]
 - [[_COMMUNITY_Community 86|Community 86]]
 - [[_COMMUNITY_Community 87|Community 87]]
 - [[_COMMUNITY_Community 88|Community 88]]
@@ -112,14 +109,12 @@
 - [[_COMMUNITY_Community 94|Community 94]]
 - [[_COMMUNITY_Community 95|Community 95]]
 - [[_COMMUNITY_Community 96|Community 96]]
-- [[_COMMUNITY_Community 97|Community 97]]
 - [[_COMMUNITY_Community 98|Community 98]]
 - [[_COMMUNITY_Community 99|Community 99]]
 - [[_COMMUNITY_Community 100|Community 100]]
 - [[_COMMUNITY_Community 101|Community 101]]
 - [[_COMMUNITY_Community 102|Community 102]]
 - [[_COMMUNITY_Community 103|Community 103]]
-- [[_COMMUNITY_Community 104|Community 104]]
 - [[_COMMUNITY_Community 106|Community 106]]
 - [[_COMMUNITY_Community 107|Community 107]]
 - [[_COMMUNITY_Community 108|Community 108]]
@@ -151,13 +146,10 @@
 - [[_COMMUNITY_Community 135|Community 135]]
 - [[_COMMUNITY_Community 136|Community 136]]
 - [[_COMMUNITY_Community 137|Community 137]]
-- [[_COMMUNITY_Community 138|Community 138]]
-- [[_COMMUNITY_Community 139|Community 139]]
 - [[_COMMUNITY_Community 140|Community 140]]
 - [[_COMMUNITY_Community 141|Community 141]]
 - [[_COMMUNITY_Community 142|Community 142]]
 - [[_COMMUNITY_Community 143|Community 143]]
-- [[_COMMUNITY_Community 144|Community 144]]
 - [[_COMMUNITY_Community 145|Community 145]]
 - [[_COMMUNITY_Community 146|Community 146]]
 - [[_COMMUNITY_Community 147|Community 147]]
@@ -223,11 +215,9 @@
 - [[_COMMUNITY_Community 207|Community 207]]
 - [[_COMMUNITY_Community 208|Community 208]]
 - [[_COMMUNITY_Community 209|Community 209]]
-- [[_COMMUNITY_Community 210|Community 210]]
 - [[_COMMUNITY_Community 213|Community 213]]
 - [[_COMMUNITY_Community 214|Community 214]]
 - [[_COMMUNITY_Community 215|Community 215]]
-- [[_COMMUNITY_Community 216|Community 216]]
 - [[_COMMUNITY_Community 218|Community 218]]
 - [[_COMMUNITY_Community 221|Community 221]]
 - [[_COMMUNITY_Community 223|Community 223]]
@@ -275,11 +265,11 @@
 - 1-file cycle: `packages/memory-core/tests/test_dreaming.py -> packages/memory-core/tests/test_dreaming.py`
 - 1-file cycle: `packages/skill-core/src/skill_core/workshop.py -> packages/skill-core/src/skill_core/workshop.py`
 
-## Communities (231 total, 37 thin omitted)
+## Communities (221 total, 35 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (31): DreamingPipeline, datetime, Episode, FileLayer, MemoryConfig, Path, VectorLayer, approval() (+23 more)
+Cohesion: 0.06
+Nodes (35): DreamingPipeline, datetime, Episode, Fact, FileLayer, MemoryConfig, Path, VectorLayer (+27 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.05
@@ -290,8 +280,8 @@ Cohesion: 0.17
 Nodes (6): _cron_match(), CronScheduler, CronScheduler — general scheduled task manager with yaml storage., Simple cron-like scheduler using asyncio. Stores tasks in yaml., Any, Path
 
 ### Community 3 - "Community 3"
-Cohesion: 0.10
-Nodes (28): Hard stop — tool was called too many times in a loop., ToolLoopError, Describes a tool to the provider and the registry., The result of a tool execution., ToolDescriptor, ToolResult, Central tool registry for JalaAgent with fuzzy name repair, loop detection, over, Return all tools whose optional ``check_fn`` returns ``True``. (+20 more)
+Cohesion: 0.09
+Nodes (23): Hard stop — tool was called too many times in a loop., ToolLoopError, Central tool registry for JalaAgent with fuzzy name repair, loop detection, over, Return all tools whose optional ``check_fn`` returns ``True``., Execute a tool by *name* with *arguments*.          Pipeline:          1. Re, Convert between snake_case and camelCase for comparison., Repair *name* and return the canonical tool name.          Raises ``ValueError, Registry for tool definitions and dispatch.      Features (per CLAUDE.md): (+15 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.06
@@ -299,11 +289,11 @@ Nodes (34): DriftDetector, DriftDetector, Drift detection for external modificat
 
 ### Community 5 - "Community 5"
 Cohesion: 0.13
-Nodes (8): ToolRegistry, Tests for agent-core tool registry., registry(), TestExecute, TestFuzzyRepair, TestGetAvailable, TestLoopDetection, TestRegistration
+Nodes (9): ToolRegistry, Tests for agent-core tool registry., registry(), TestExecute, TestFuzzyRepair, TestFuzzyRepairAsync, TestGetAvailable, TestLoopDetection (+1 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.06
-Nodes (30): _floats_to_blob(), Vector-based memory with sqlite-vec KNN search and FTS5 keyword fallback., Create all tables and the FTS index if they don't exist., Return the embedding vector for *text* via the Ollama API.          Results ar, Generate an embedding for *content* and upsert into embeddings table., Insert or replace a row in the FTS virtual table., Pack a list of floats into a little-endian float32 blob., Try sqlite-vec native KNN.  Returns empty list on failure. (+22 more)
+Cohesion: 0.07
+Nodes (28): Vector-based memory with sqlite-vec KNN search and FTS5 keyword fallback., Create all tables and the FTS index if they don't exist., Return the embedding vector for *text* via the Ollama API.          Results ar, Generate an embedding for *content* and upsert into embeddings table., Insert or replace a row in the FTS virtual table., Try sqlite-vec native KNN.  Returns empty list on failure., Full cosine-similarity scan when sqlite-vec is unavailable., KNN vector search with graceful fallback to full cosine scan. (+20 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.14
@@ -322,32 +312,32 @@ Cohesion: 0.08
 Nodes (38): _fmt_size(), _get_max_result(), Core built-in tools — always available (PRD F-02.1).  Tools: read_file, write_, List directory contents., Execute a shell command via SandboxedShell if wired, else direct., HTTP request (GET or POST)., Read/write/search agent memory., Read tool_output.max_bytes from config, or return default. (+30 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.05
-Nodes (38): KnowledgeGraph, ApprovalCallback, DreamingLLMAdapter, Layer 3 — Dreaming pipeline: Light Sleep → REM → Deep Sleep consolidation.  Ru, Protocol for an LLM that the dreaming pipeline can call.      Kept minimal so, The timestamp of the last completed :meth:`run` call., Protocol for requesting user approval of fact promotions.      In YOLO mode th, FileLayer (+30 more)
+Cohesion: 0.04
+Nodes (40): KnowledgeGraph, ApprovalCallback, DreamingLLMAdapter, Layer 3 — Dreaming pipeline: Light Sleep → REM → Deep Sleep consolidation.  Ru, Protocol for an LLM that the dreaming pipeline can call.      Kept minimal so, Protocol for requesting user approval of fact promotions.      In YOLO mode th, FileLayer, FileMemoryLayer (+32 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.12
-Nodes (17): DreamingPipeline, Cron-based multi-phase memory consolidation from session transcripts.      Par, AutoApproveCallback, DreamingRunner, ProviderLLMAdapter, Dreaming pipeline runner — cron-based scheduling with manual trigger., Auto-approves all facts (YOLO/automated mode)., Wraps the agent's provider as a DreamingLLMAdapter. (+9 more)
+Cohesion: 0.14
+Nodes (11): Apply a unified diff patch via DiffEditor if wired, else direct., tool_patch_file(), _apply_hunk(), _parse_unified_diff(), JalaAgent Harness — git worktrees, plan mode, sandbox, background tasks.  The, List all git worktrees and their status., Parse unified diff text into a list of hunks.      Each hunk is a dict with ``, Apply a single hunk to result_lines, adjusting for line count changes. (+3 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.19
-Nodes (20): APIErrorClassifier, Return the delay (in seconds) before the next retry, or ``None``.          Par, Classify provider API errors into :class:`FailoverReason` categories., JalaAgent Agent Core — agent loop, provider abstraction, tool registry, credenti, MemoryRetrieverProtocol, ProviderProtocol, Agent loop — production-hardened: compaction, error recovery, harness, TTFB, cac, AgentChunk (+12 more)
+Cohesion: 0.16
+Nodes (24): APIErrorClassifier, Return the delay (in seconds) before the next retry, or ``None``.          Par, Classify provider API errors into :class:`FailoverReason` categories., Classify *exception* into a failover reason.          Handles:         * Our, JalaAgent Agent Core — agent loop, provider abstraction, tool registry, credenti, MemoryRetrieverProtocol, ProviderProtocol, Agent loop — production-hardened: compaction, error recovery, harness, TTFB, cac (+16 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.10
 Nodes (16): _make_send_cmd(), WhatsApp channel for JalaAgent.  Communicates with Baileys (Node.js WhatsApp Web, Poll for incoming messages (blocking loop)., Read JSON-line events from the Baileys subprocess stdout., Poll an HTTP-based WhatsApp bridge (alternative to subprocess)., Dispatch an incoming message through handlers., Send a text message to a WhatsApp number or JID., Send via HTTP bridge. (+8 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.18
-Nodes (9): MemoryRetriever, FileLayer, VectorLayer, With a high threshold and dissimilar embeddings, no results pass., When vector results are sparse, MEMORY.md scan supplements., retriever(), TestBuildSystemContext, TestMemoryMdScan (+1 more)
+Cohesion: 0.10
+Nodes (22): MemoryRetriever, FileLayer, MemoryConfig, Path, VectorLayer, config(), file_layer(), Tests for memory-core retrieval (multi-strategy memory search). (+14 more)
 
 ### Community 16 - "Community 16"
-Cohesion: 0.20
-Nodes (8): KnowledgeGraph, Return storage stats including DB file size., Self-wiring knowledge graph with entity extraction and typed edges.      Param, Path, kg_path(), Tests for GBrain-inspired knowledge graph., TestKnowledgeGraph, TestSyncBrainRepo
+Cohesion: 0.07
+Nodes (23): KnowledgeGraph, GBrain-inspired knowledge graph — entity extraction, typed edges, graph traversa, Return a shared asyncio.Lock for write operations.          Created lazily so, Lazy-initialize and return the SQLite connection.          Uses double-checked, Ingest a markdown page, extracting entities and relations.          Write oper, Traverse the graph from an entity, returning connected nodes., Search entities by name (keyword match)., Return storage stats including DB file size. (+15 more)
 
 ### Community 17 - "Community 17"
-Cohesion: 0.08
-Nodes (21): _format_fact_markdown(), _make_extraction_prompt(), Build the LLM prompt for extracting facts from a batch of episodes., SHA-1 hex digest (used for dedup as specified in PRD)., Render a fact as a Markdown list item for MEMORY.md., Execute the full dreaming pipeline and return a report.          Phases are ru, Scan session JSONL files for episodes created since *since*.          Paramete, Extract facts from episodes via LLM, deduplicate via SHA1.          Parameters (+13 more)
+Cohesion: 0.05
+Nodes (39): DreamingPipeline, _format_fact_markdown(), _make_extraction_prompt(), Build the LLM prompt for extracting facts from a batch of episodes., SHA-1 hex digest (used for dedup as specified in PRD)., Render a fact as a Markdown list item for MEMORY.md., Cron-based multi-phase memory consolidation from session transcripts.      Par, Execute the full dreaming pipeline and return a report.          Phases are ru (+31 more)
 
 ### Community 18 - "Community 18"
 Cohesion: 0.08
@@ -366,8 +356,8 @@ Cohesion: 0.14
 Nodes (15): Path, Raised when a scan blocks a skill proposal (critical findings)., SkillBlockedError, SkillWorkshop, Tests for skill-core workshop (propose → scan → review → apply pipeline)., If the atomic write fails, existing skill is preserved., safe_skill_md(), TestApply (+7 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.11
-Nodes (29): get_registry(), Any, Context, JalaAgent CLI — entry point for the `jala` command., _build_agent(), _build_auxiliary(), config_get(), config_show() (+21 more)
+Cohesion: 0.10
+Nodes (32): get_registry(), DiffEditor, Safe file editing using unified diffs.      The agent generates a diff, the us, Generate a unified diff for user review., Any, Context, JalaAgent CLI — entry point for the `jala` command., _build_agent() (+24 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.21
@@ -382,8 +372,8 @@ Cohesion: 0.10
 Nodes (17): AnthropicProvider, AgentMessage, Any, ProviderChunk, JalaAgent Anthropic provider — Claude models via Anthropic Messages API., AnthropicProvider, _get_cache_ttl(), Anthropic (Claude) provider — streaming via official SDK. (+9 more)
 
 ### Community 26 - "Community 26"
-Cohesion: 0.10
-Nodes (13): Telegram channel implementation — python-telegram-bot async bot., Stop the bot gracefully., Send a message to a Telegram chat., Send an approval request with inline keyboard and wait for response., Process a user message through the agent loop., Render the provider selection keyboard., Build provider selection inline keyboard., Self-hosted Telegram bot channel for JalaAgent.      Parameters     --------- (+5 more)
+Cohesion: 0.07
+Nodes (23): Telegram channel implementation — python-telegram-bot async bot., Stop the bot gracefully (updater → app → shutdown)., Send a message to a Telegram chat., Send an approval request with inline keyboard and wait for response., Process a user message through the agent loop., Render the provider selection keyboard., Build provider selection inline keyboard., Build model selection inline keyboard with pagination. (+15 more)
 
 ### Community 27 - "Community 27"
 Cohesion: 0.10
@@ -394,8 +384,8 @@ Cohesion: 0.10
 Nodes (20): config(), Integration test: end-to-end memory flow (file → vector → retrieval → drift)., With a high threshold, low-similarity results are excluded., End-to-end: write episodes → vector index → retrieve → drift detect., TestMemoryE2E, TestMemoryRetrievalThreshold, tmp_db_path(), tmp_memory_dir() (+12 more)
 
 ### Community 29 - "Community 29"
-Cohesion: 0.12
-Nodes (12): DiffEditor, PlanMode, Structured design-before-implementation workflow.      Follows Claude Code's p, Discard the current plan., Safe file editing using unified diffs.      The agent generates a diff, the us, Generate a unified diff for user review., Apply a unified diff to a file, with optional drift check.          Parses uni, Read file content and record mtime for later drift detection. (+4 more)
+Cohesion: 0.13
+Nodes (9): PlanMode, Structured design-before-implementation workflow.      Follows Claude Code's p, Discard the current plan., Apply a unified diff to a file, with optional drift check.          Parses uni, Read file content and record mtime for later drift detection., Path, Tests for JalaAgent harness — worktrees, plan mode, sandbox, tasks, diff editing, TestDiffEditor (+1 more)
 
 ### Community 30 - "Community 30"
 Cohesion: 0.24
@@ -406,8 +396,8 @@ Cohesion: 0.15
 Nodes (10): ModelCatalog, Provider model catalog with disk-cached live API fetch.      Parameters     -, Return model list for *provider*, preferring live fetch with disk cache fallback, Async version: tries live API fetch, falls back to static., Return all known provider slugs., Deterministic cache key based on provider + endpoint + credential fingerprint., Probe GET /v1/models (OpenAI-compatible endpoint)., Sync fallback for get_models(force_refresh=True) — returns cached or static. (+2 more)
 
 ### Community 32 - "Community 32"
-Cohesion: 0.14
-Nodes (7): BaseChannel, CLIChannel, CLI channel — rich terminal interface with unified slash command registry., Interactive model picker for CLI channel via rich prompts., CLI channel with unified command registry dispatch., Request approval — fail-closed: defaults to No (deny)., Any
+Cohesion: 0.13
+Nodes (8): BaseChannel, CLIChannel, CLI channel — rich terminal interface with unified slash command registry., Interactive model picker for CLI channel via rich prompts., CLI channel with unified command registry dispatch., Request approval — fail-closed: defaults to No (deny)., JalaAgent CLI channel — typer + rich terminal interface., Any
 
 ### Community 33 - "Community 33"
 Cohesion: 0.18
@@ -418,8 +408,8 @@ Cohesion: 0.16
 Nodes (21): AgentConfig, ApprovalConfig, ApprovalRules, AuxiliaryConfig, ChannelCLIConfig, ChannelsConfig, ChannelTelegramConfig, CompressionConfig (+13 more)
 
 ### Community 35 - "Community 35"
-Cohesion: 0.12
-Nodes (9): BackgroundTaskManager, List all git worktrees and their status., Manages long-running background tasks without blocking the agent loop.      Ta, Submit a coroutine to run in the background.          Returns the task ID imme, Get the result of a background task, waiting if still running., Wait for all background tasks to complete., Cancel a running background task., Any (+1 more)
+Cohesion: 0.20
+Nodes (5): BackgroundTaskManager, Manages long-running background tasks without blocking the agent loop.      Ta, Wait for all background tasks to complete., Cancel a running background task., TestBackgroundTaskManager
 
 ### Community 36 - "Community 36"
 Cohesion: 0.08
@@ -438,16 +428,16 @@ Cohesion: 0.13
 Nodes (17): Path, UUID, Proposal, Skill workshop: AI-assisted skill generation pipeline (propose → scan → review →, Retrieve a pending proposal by ID.          Returns ``None`` if the proposal d, Write an approved proposal to the skills directory.          The skill is writ, Discard a pending proposal (delete its workshop directory).          This is a, Return all pending (not-yet-applied) proposals. (+9 more)
 
 ### Community 40 - "Community 40"
-Cohesion: 0.13
-Nodes (13): Apply a unified diff patch via DiffEditor if wired, else direct., tool_patch_file(), _apply_hunk(), _parse_unified_diff(), JalaAgent Harness — git worktrees, plan mode, sandbox, background tasks.  The, An isolated git worktree for safe agent execution., Parse unified diff text into a list of hunks.      Each hunk is a dict with ``, Apply a single hunk to result_lines, adjusting for line count changes. (+5 more)
+Cohesion: 0.21
+Nodes (6): An isolated git worktree for safe agent execution., Create and manage isolated git worktrees.      The agent works inside a dispos, Create a new isolated worktree.          Parameters         ----------, Remove a worktree.  Refuses if there are uncommitted changes., Worktree, WorktreeIsolation
 
 ### Community 41 - "Community 41"
 Cohesion: 0.10
 Nodes (17): _needs_approval(), Integration test: approval modes against destructive tool calls., CUSTOM mode with shell_exec: auto → not asked., Simulate approval callback being called and returning True., Verify the default destructive categories match the PRD., Simulate the approval policy pipeline.      Parameters     ----------     ca, PARANOID mode — every category requires approval., YOLO mode — no category requires approval. (+9 more)
 
 ### Community 42 - "Community 42"
-Cohesion: 0.16
-Nodes (11): Telegram command handlers — unified slash command registry dispatch., User tapped a model button (mm:<provider>:<index>). Execute switch., User tapped pagination (mg:<provider>:<page>)., Handlers for Telegram messages, commands, and callbacks — routed through unified, User tapped Cancel or Back., User tapped a provider button (mp:<slug>). Show model list., TelegramHandlers, DEFAULT_TYPE (+3 more)
+Cohesion: 0.18
+Nodes (11): CommandContext, Telegram command handlers — unified slash command registry dispatch., User tapped a model button (mm:<provider>:<index>). Execute switch., User tapped pagination (mg:<provider>:<page>)., Handlers for Telegram messages, commands, and callbacks — routed through unified, User tapped Cancel or Back., User tapped a provider button (mp:<slug>). Show model list., TelegramHandlers (+3 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.19
@@ -455,7 +445,7 @@ Nodes (9): Transient server/network error — exponential backoff up to 3 attemp
 
 ### Community 44 - "Community 44"
 Cohesion: 0.07
-Nodes (29): Provider model catalog — static curated lists, base_url defaults.  Three-layer, Resolve base_url for a provider through the 4-tier priority chain.      Tier 1, resolve_base_url(), Different base_urls produce different cache keys., Different API keys produce different cache keys., Every major provider must have a full-URL default., list_providers returns all known provider slugs., All base_urls must include scheme + host — most also include a path like /v1. (+21 more)
+Nodes (28): Provider model catalog — static curated lists, base_url defaults.  Three-layer, Resolve base_url for a provider through the 4-tier priority chain.      Tier 1, resolve_base_url(), Different base_urls produce different cache keys., Different API keys produce different cache keys., Every major provider must have a full-URL default., list_providers returns all known provider slugs., All base_urls must include scheme + host — most also include a path like /v1. (+20 more)
 
 ### Community 45 - "Community 45"
 Cohesion: 0.11
@@ -486,16 +476,16 @@ Cohesion: 0.06
 Nodes (35): 1. Provider Catalog — Three-Layer Model Sourcing, 2. base_url Resolution — Four-Tier Priority Chain, 3. `/model` Command — Full Flow, 4. Channel Adaptation, 5. Persistence, Alias Support, CLI — Rich Select, Core Pipeline (`switch_model()`) (+27 more)
 
 ### Community 52 - "Community 52"
-Cohesion: 0.21
-Nodes (12): AgentMessage, Any, ProviderChunk, ToolRegistry, make_text_chunk(), make_tool_chunk(), MockProvider, Tests for agent-core conversation loop. (+4 more)
+Cohesion: 0.20
+Nodes (14): Describes a tool to the provider and the registry., ToolDescriptor, AgentMessage, Any, ProviderChunk, ToolRegistry, make_text_chunk(), make_tool_chunk() (+6 more)
 
 ### Community 53 - "Community 53"
 Cohesion: 0.21
 Nodes (4): Parsed YAML frontmatter from a SKILL.md file.      Compatible with the agentsk, SkillFrontmatter, TestSkill, TestSkillFrontmatter
 
 ### Community 54 - "Community 54"
-Cohesion: 0.17
-Nodes (9): Classify *exception* into a failover reason.          Handles:         * Our, Tool argument repair — fix LLM mistakes before execution., Multi-strategy tool argument repair before execution., Fix common LLM argument mistakes., RepairFailedError, ToolArgRepairer, Exception, Any (+1 more)
+Cohesion: 0.23
+Nodes (7): Tool argument repair — fix LLM mistakes before execution., Multi-strategy tool argument repair before execution., Fix common LLM argument mistakes., RepairFailedError, ToolArgRepairer, Any, ToolCall
 
 ### Community 55 - "Community 55"
 Cohesion: 0.18
@@ -506,16 +496,12 @@ Cohesion: 0.19
 Nodes (7): JalaAgentSkillMeta, Extract the JalaAgent-specific metadata, or return defaults., External dependencies declared by a skill., JalaAgent-specific metadata embedded in the SKILL.md frontmatter., SkillRequires, TestJalaAgentSkillMeta, TestSkillRequires
 
 ### Community 57 - "Community 57"
-Cohesion: 0.24
+Cohesion: 0.27
 Nodes (4): Safe shell execution with path scoping and dangerous command detection.      F, Execute a shell command safely.          Returns a dict with keys: stdout, std, SandboxedShell, TestSandboxedShell
 
 ### Community 58 - "Community 58"
 Cohesion: 0.28
 Nodes (12): on_post_tool(), on_pre_tool(), on_session_end(), on_session_start(), on_tool_failure(), Hook registry — pre/post tool execution, session lifecycle hooks., Register a hook callback for an event., Run all hooks for an event. Returns list of results (exceptions logged, not rais (+4 more)
-
-### Community 59 - "Community 59"
-Cohesion: 0.15
-Nodes (8): GBrain-inspired knowledge graph — entity extraction, typed edges, graph traversa, Return a shared asyncio.Lock for write operations.          Created lazily so, Ingest a markdown page, extracting entities and relations.          Write oper, Sync a directory of markdown files into the knowledge graph., _row_to_dict(), sync_brain_repo(), Path, Row
 
 ### Community 60 - "Community 60"
 Cohesion: 0.28
@@ -524,10 +510,6 @@ Nodes (8): FastAPI, Start JalaAgent as an Anthropic-compatible API server., serv
 ### Community 61 - "Community 61"
 Cohesion: 0.33
 Nodes (5): ScanResult, ScanFinding, Scan *skill_content* against all security rules.          Parameters, Compute the overall verdict from a list of findings.          * Any critical f, Verdict
-
-### Community 62 - "Community 62"
-Cohesion: 0.24
-Nodes (4): Fact, TestDeduplicate, TestDeepSleep, TestDiary
 
 ### Community 63 - "Community 63"
 Cohesion: 0.15
@@ -626,8 +608,8 @@ Cohesion: 0.15
 Nodes (10): LayerHealth, Health metrics for a single memory layer., MemoryObservability, Compare current stats with the most recent snapshot to compute growth., Append current stats to the snapshot file., Load the most recent snapshot., Load all snapshots from disk., Centralized memory system health monitor.      Collects metrics from FileLayer (+2 more)
 
 ### Community 93 - "Community 93"
-Cohesion: 0.09
-Nodes (20): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links, Compute cosine similarity between two float vectors., FileMemoryLayer, Layer 1 — Raw file storage: MEMORY.md, USER.md, session JSONL transcripts., Legacy alias for :class:`FileLayer`., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Pr (+12 more)
+Cohesion: 0.06
+Nodes (27): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links, Compute cosine similarity between two float vectors., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Pr, Memory Guardian — integrity checks across all memory layers.  Runs periodic in, JalaAgent Memory Core — hybrid memory: file + sqlite-vec + dreaming pipeline., ApprovalMode (+19 more)
 
 ### Community 94 - "Community 94"
 Cohesion: 0.09
@@ -641,10 +623,6 @@ Nodes (9): GovernanceReport, GovernanceRebuild, KnowledgeGraphProtocol, Collect 
 Cohesion: 0.20
 Nodes (9): Added, Added, Added, Changed, Changelog, Fixed, v2026.6.18 (2026-06-18), v2026.6.19 (2026-06-19) (+1 more)
 
-### Community 97 - "Community 97"
-Cohesion: 0.18
-Nodes (8): _blob_to_floats(), _cosine(), _hash_text(), Layer 2 — SQLite + sqlite-vec vector database for semantic memory search., SHA-256 hex digest of *text* (used for embedding cache key)., Unpack a little-endian float32 blob into a list of floats., Cosine similarity between two vectors of equal dimension., TestMathHelpers
-
 ### Community 98 - "Community 98"
 Cohesion: 0.25
 Nodes (7): mock_llm(), Root conftest for pytest — adds workspace src/ directories to sys.path.  This, Create a temporary directory that auto-cleans after the test., MemoryConfig pointed at a temporary directory., DreamingLLMAdapter that returns predictable, high-confidence facts., temp_dir(), test_config()
@@ -652,10 +630,6 @@ Nodes (7): mock_llm(), Root conftest for pytest — adds workspace src/ director
 ### Community 103 - "Community 103"
 Cohesion: 0.25
 Nodes (7): Adding skills, Code conventions, Contributing to JalaAgent, Development workflow, License, Project structure, Setup
-
-### Community 104 - "Community 104"
-Cohesion: 0.15
-Nodes (7): Lazy-initialize and return the SQLite connection.          Uses double-checked, Traverse the graph from an entity, returning connected nodes., Search entities by name (keyword match)., Count edges with broken foreign keys., Delete edges with broken foreign keys. Returns count removed., Create tables if they don't exist., Connection
 
 ### Community 106 - "Community 106"
 Cohesion: 0.33
@@ -758,8 +732,8 @@ Cohesion: 0.20
 Nodes (9): 1. Ingest Knowledge, 2. Search with Context, 3. Curate MEMORY.md, 4. Health Check, Anti-Patterns, Brain Management, JalaAgent Advantage, Overview (+1 more)
 
 ### Community 134 - "Community 134"
-Cohesion: 0.31
-Nodes (6): CommandContext, Parse WhatsApp messages and dispatch to agent loop or command handlers., Process an incoming WhatsApp message.          Returns the agent's response text, Look up and execute a slash command., WhatsAppHandlers, Any
+Cohesion: 0.18
+Nodes (8): CommandResult, Unified slash command registry — all 27 commands fully wired to JalaAgent object, WhatsApp message parsing and dispatch.  Mirrors the Telegram handlers pattern —, Parse WhatsApp messages and dispatch to agent loop or command handlers., Process an incoming WhatsApp message.          Returns the agent's response text, Look up and execute a slash command., WhatsAppHandlers, Any
 
 ### Community 135 - "Community 135"
 Cohesion: 0.23
@@ -772,10 +746,6 @@ Nodes (9): Anti-Patterns, Graphify — Knowledge Graph for JalaAgent, Honest Aud
 ### Community 137 - "Community 137"
 Cohesion: 0.20
 Nodes (9): Commands, Configuration, Iron Law, MCP Management, Security Rules, Tool Naming Convention, Transport: HTTP, Transport: stdio (+1 more)
-
-### Community 138 - "Community 138"
-Cohesion: 0.33
-Nodes (3): CommandResult, Unified slash command registry — all 27 commands fully wired to JalaAgent object, WhatsApp message parsing and dispatch.  Mirrors the Telegram handlers pattern —
 
 ### Community 140 - "Community 140"
 Cohesion: 0.20
@@ -792,10 +762,6 @@ Nodes (9): Base URL Override (4-tier priority), Block 1: Provider System, Block 
 ### Community 143 - "Community 143"
 Cohesion: 0.25
 Nodes (7): BrowserOS, Common Use Cases, Connect, License, Overview, Setup, Why BrowserOS > Playwright
-
-### Community 144 - "Community 144"
-Cohesion: 0.40
-Nodes (3): Knowledge graph results appear in retrieval when KG is provided., Retrieval works fine without a knowledge graph., TestKnowledgeGraphIntegration
 
 ### Community 146 - "Community 146"
 Cohesion: 0.25
@@ -1029,27 +995,19 @@ Nodes (3): Design.md — Markdown Design Documentation, Rules, Template Structur
 Cohesion: 0.50
 Nodes (3): Design Skills Pack, Removal, Skills included
 
-### Community 210 - "Community 210"
-Cohesion: 0.24
-Nodes (10): MemoryConfig, Path, config(), file_layer(), Tests for memory-core retrieval (multi-strategy memory search)., VectorLayer with a real db but mocked embedding., TestProperties, tmp_db_path() (+2 more)
-
-### Community 216 - "Community 216"
-Cohesion: 0.25
-Nodes (7): Build model selection inline keyboard with pagination., approval_keyboard(), mode_keyboard(), Telegram inline keyboard builders for approval requests., Build a mode-selection keyboard., Build an inline keyboard with Approve / Reject / Approve All buttons.      Par, InlineKeyboardMarkup
-
 ## Knowledge Gaps
 - **582 isolated node(s):** `name`, `version`, `private`, `docs:dev`, `docs:build` (+577 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **37 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AgentMessage` connect `Community 67` to `Community 134`, `Community 135`, `Community 9`, `Community 138`, `Community 12`, `Community 13`, `Community 18`, `Community 23`, `Community 25`, `Community 30`, `Community 34`, `Community 36`, `Community 38`, `Community 43`, `Community 46`, `Community 47`, `Community 49`, `Community 52`, `Community 60`, `Community 75`?**
+- **Why does `AgentMessage` connect `Community 67` to `Community 134`, `Community 135`, `Community 9`, `Community 13`, `Community 17`, `Community 18`, `Community 23`, `Community 25`, `Community 30`, `Community 34`, `Community 36`, `Community 38`, `Community 42`, `Community 43`, `Community 46`, `Community 47`, `Community 49`, `Community 52`, `Community 60`, `Community 75`?**
   _High betweenness centrality (0.104) - this node is a cross-community bridge._
-- **Why does `Any` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 134`, `Community 6`, `Community 9`, `Community 11`, `Community 12`, `Community 16`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
+- **Why does `Any` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 16`, `Community 17`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
   _High betweenness centrality (0.092) - this node is a cross-community bridge._
-- **Why does `Context` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 134`, `Community 6`, `Community 9`, `Community 11`, `Community 12`, `Community 16`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
+- **Why does `Context` connect `Community 22` to `Community 32`, `Community 34`, `Community 35`, `Community 3`, `Community 6`, `Community 9`, `Community 42`, `Community 11`, `Community 16`, `Community 17`, `Community 18`, `Community 50`, `Community 19`, `Community 54`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
   _High betweenness centrality (0.081) - this node is a cross-community bridge._
 - **Are the 114 inferred relationships involving `AgentMessage` (e.g. with `CommandContext` and `CommandDef`) actually correct?**
   _`AgentMessage` has 114 INFERRED edges - model-reasoned connections that need verification._

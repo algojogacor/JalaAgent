@@ -2,9 +2,13 @@
 
 import sys
 
-# Force UTF-8 on Windows terminals so emoji and Unicode render correctly.
-# Without this, Rich crashes with UnicodeEncodeError on cmd.exe / PowerShell.
+# Force UTF-8 everywhere on Windows so emoji (🪼, 🤔, ⚙) render correctly.
+# PYTHONUTF8=1 tells Python to use UTF-8 as the default text encoding.
+# Set it here for child processes; the user should also set it globally:
+#   setx PYTHONUTF8 1
 if sys.platform == "win32":
+    if not os.environ.get("PYTHONUTF8"):
+        os.environ["PYTHONUTF8"] = "1"
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
