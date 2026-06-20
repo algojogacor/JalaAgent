@@ -97,11 +97,17 @@ class TelegramChannel:
 
         await self._app.initialize()
         await self._app.start()
+        # PTB v20+: ensure updater exists (may not be created by start() alone).
+        if not self._app.updater:
+            from telegram.ext import Updater
+            self._app.updater = Updater(self._app.bot, update_queue=self._app.update_queue)
         logger.info("Telegram bot started")
 
     async def stop(self) -> None:
-        """Stop the bot gracefully."""
+        """Stop the bot gracefully (updater → app → shutdown)."""
         if self._app:
+            if self._app.updater:
+                await self._app.updater.stop()
             await self._app.stop()
             await self._app.shutdown()
             logger.info("Telegram bot stopped")
@@ -295,7 +301,14 @@ class TelegramChannel:
         self._model_picker_state.pop(chat_id, None)
 
     async def run_polling(self) -> None:
-        """Start polling for updates (blocking)."""
-        if self._app:
-            await self._app.run_polling(drop_pending_updates=True)
+        """Start polling — never touches the event loop (PTB v20+ safe).
+
+        Uses ``updater.start_polling()`` instead of ``app.run_polling()``
+        because ``run_polling()`` manages its own event loop internally
+        and conflicts with the gateway's ``asyncio.run()``.
+        """
+        if self._app and self._app.updater:
+            await self._app.updater.start_polling(drop_pending_updates=True)
             logger.info("Telegram polling started")
+            # Block forever — gateway lifecycle manages shutdown.
+            await asyncio.Event().wait()

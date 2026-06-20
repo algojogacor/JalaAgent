@@ -23,7 +23,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_cli_src_jala_init_py",
-      "community": 144,
+      "community": 22,
       "norm_label": "__init__.py"
     },
     {
@@ -33,7 +33,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "jala_init_rationale_1",
-      "community": 144,
+      "community": 22,
       "norm_label": "jalaagent cli \u2014 entry point for the `jala` command."
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
+      "id": "jala_main",
       "community": 22,
       "norm_label": "main.py"
     },
@@ -283,14 +283,14 @@
       "source_location": "L257",
       "_origin": "ast",
       "id": "context",
-      "community": 66,
+      "community": 22,
       "norm_label": "context"
     },
     {
       "label": "_start_telegram()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L355",
+      "source_location": "L357",
       "_origin": "ast",
       "id": "jala_main_start_telegram",
       "community": 22,
@@ -300,7 +300,7 @@
       "label": "gateway()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L373",
+      "source_location": "L375",
       "_origin": "ast",
       "id": "jala_main_gateway",
       "community": 22,
@@ -310,7 +310,7 @@
       "label": "setup()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L386",
+      "source_location": "L388",
       "_origin": "ast",
       "id": "jala_main_setup",
       "community": 70,
@@ -320,17 +320,17 @@
       "label": "serve()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L390",
+      "source_location": "L392",
       "_origin": "ast",
       "id": "jala_main_serve",
-      "community": 22,
+      "community": 60,
       "norm_label": "serve()"
     },
     {
       "label": "memory()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L400",
+      "source_location": "L402",
       "_origin": "ast",
       "id": "jala_main_memory",
       "community": 22,
@@ -340,7 +340,7 @@
       "label": "skills()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L411",
+      "source_location": "L413",
       "_origin": "ast",
       "id": "jala_main_skills",
       "community": 71,
@@ -350,7 +350,7 @@
       "label": "mcp()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L486",
+      "source_location": "L488",
       "_origin": "ast",
       "id": "jala_main_mcp",
       "community": 22,
@@ -360,7 +360,7 @@
       "label": "dream()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L490",
+      "source_location": "L492",
       "_origin": "ast",
       "id": "jala_main_dream",
       "community": 22,
@@ -370,7 +370,7 @@
       "label": "config_show()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L521",
+      "source_location": "L523",
       "_origin": "ast",
       "id": "jala_main_config_show",
       "community": 22,
@@ -380,7 +380,7 @@
       "label": "config_get()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L534",
+      "source_location": "L536",
       "_origin": "ast",
       "id": "jala_main_config_get",
       "community": 22,
@@ -390,7 +390,7 @@
       "label": "sessions_cmd()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L554",
+      "source_location": "L556",
       "_origin": "ast",
       "id": "jala_main_sessions_cmd",
       "community": 64,
@@ -400,7 +400,7 @@
       "label": "credentials_cmd()",
       "file_type": "code",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L596",
+      "source_location": "L598",
       "_origin": "ast",
       "id": "jala_main_credentials_cmd",
       "community": 22,
@@ -450,9 +450,9 @@
       "label": "Run all enabled channels simultaneously.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L376",
+      "source_location": "L378",
       "_origin": "ast",
-      "id": "jala_main_rationale_376",
+      "id": "jala_main_rationale_378",
       "community": 22,
       "norm_label": "run all enabled channels simultaneously."
     },
@@ -460,19 +460,19 @@
       "label": "Start JalaAgent as an Anthropic-compatible API server.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L395",
+      "source_location": "L397",
       "_origin": "ast",
-      "id": "jala_main_rationale_395",
-      "community": 22,
+      "id": "jala_main_rationale_397",
+      "community": 60,
       "norm_label": "start jalaagent as an anthropic-compatible api server."
     },
     {
       "label": "Trigger the dreaming pipeline manually.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L491",
+      "source_location": "L493",
       "_origin": "ast",
-      "id": "jala_main_rationale_491",
+      "id": "jala_main_rationale_493",
       "community": 22,
       "norm_label": "trigger the dreaming pipeline manually."
     },
@@ -480,9 +480,9 @@
       "label": "Print current configuration.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L522",
+      "source_location": "L524",
       "_origin": "ast",
-      "id": "jala_main_rationale_522",
+      "id": "jala_main_rationale_524",
       "community": 22,
       "norm_label": "print current configuration."
     },
@@ -490,9 +490,9 @@
       "label": "Get a specific config value by dot-notation key.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L535",
+      "source_location": "L537",
       "_origin": "ast",
-      "id": "jala_main_rationale_535",
+      "id": "jala_main_rationale_537",
       "community": 22,
       "norm_label": "get a specific config value by dot-notation key."
     },
@@ -500,9 +500,9 @@
       "label": "Search past session transcripts via FTS5.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L555",
+      "source_location": "L557",
       "_origin": "ast",
-      "id": "jala_main_rationale_555",
+      "id": "jala_main_rationale_557",
       "community": 64,
       "norm_label": "search past session transcripts via fts5."
     },
@@ -510,9 +510,9 @@
       "label": "Show credential pool health dashboard.",
       "file_type": "rationale",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L597",
+      "source_location": "L599",
       "_origin": "ast",
-      "id": "jala_main_rationale_597",
+      "id": "jala_main_rationale_599",
       "community": 22,
       "norm_label": "show credential pool health dashboard."
     },
@@ -1469,7 +1469,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_init",
-      "community": 26,
+      "community": 42,
       "norm_label": ".__init__()"
     },
     {
@@ -1479,7 +1479,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "extensions_channels_telegram_src_channel_telegram_channel_py_any",
-      "community": 26,
+      "community": 42,
       "norm_label": "any"
     },
     {
@@ -1579,7 +1579,7 @@
       "source_location": "L240",
       "_origin": "ast",
       "id": "channel_telegram_channel_telegramchannel_build_model_keyboard",
-      "community": 26,
+      "community": 216,
       "norm_label": "._build_model_keyboard()"
     },
     {
@@ -1709,7 +1709,7 @@
       "source_location": "L243",
       "_origin": "ast",
       "id": "channel_telegram_channel_rationale_243",
-      "community": 26,
+      "community": 216,
       "norm_label": "build model selection inline keyboard with pagination."
     },
     {
@@ -2462,7 +2462,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_channels_whatsapp_src_channel_whatsapp_handlers_py",
-      "community": 134,
+      "community": 138,
       "norm_label": "handlers.py"
     },
     {
@@ -2522,7 +2522,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "channel_whatsapp_handlers_rationale_1",
-      "community": 134,
+      "community": 138,
       "norm_label": "whatsapp message parsing and dispatch.  mirrors the telegram handlers pattern \u2014"
     },
     {
@@ -2875,7 +2875,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_init_py",
-      "community": 145,
+      "community": 25,
       "norm_label": "__init__.py"
     },
     {
@@ -2885,7 +2885,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "provider_anthropic_init_rationale_1",
-      "community": 145,
+      "community": 25,
       "norm_label": "jalaagent anthropic provider \u2014 claude models via anthropic messages api."
     },
     {
@@ -2894,8 +2894,8 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_provider_py",
-      "community": 10,
+      "id": "provider_anthropic_provider",
+      "community": 25,
       "norm_label": "provider.py"
     },
     {
@@ -3002,7 +3002,7 @@
       "label": "._parse_event()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L154",
+      "source_location": "L161",
       "_origin": "ast",
       "id": "provider_anthropic_provider_anthropicprovider_parse_event",
       "community": 25,
@@ -3012,27 +3012,27 @@
       "label": "._classify_and_raise()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L172",
+      "source_location": "L179",
       "_origin": "ast",
       "id": "provider_anthropic_provider_anthropicprovider_classify_and_raise",
-      "community": 75,
+      "community": 25,
       "norm_label": "._classify_and_raise()"
     },
     {
       "label": "Exception",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L172",
+      "source_location": "L179",
       "_origin": "ast",
       "id": "extensions_providers_anthropic_src_provider_anthropic_provider_py_exception",
-      "community": 75,
+      "community": 23,
       "norm_label": "exception"
     },
     {
       "label": "._estimate_tokens()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L194",
+      "source_location": "L201",
       "_origin": "ast",
       "id": "provider_anthropic_provider_anthropicprovider_estimate_tokens",
       "community": 25,
@@ -3042,7 +3042,7 @@
       "label": "._get_client()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L201",
+      "source_location": "L208",
       "_origin": "ast",
       "id": "provider_anthropic_provider_anthropicprovider_get_client",
       "community": 25,
@@ -3052,7 +3052,7 @@
       "label": ".apply_cache_control()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L213",
+      "source_location": "L220",
       "_origin": "ast",
       "id": "provider_anthropic_provider_anthropicprovider_apply_cache_control",
       "community": 25,
@@ -3062,10 +3062,10 @@
       "label": "_get_cache_ttl()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L230",
+      "source_location": "L237",
       "_origin": "ast",
       "id": "provider_anthropic_provider_get_cache_ttl",
-      "community": 10,
+      "community": 25,
       "norm_label": "_get_cache_ttl()"
     },
     {
@@ -3075,7 +3075,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "provider_anthropic_provider_rationale_1",
-      "community": 10,
+      "community": 25,
       "norm_label": "anthropic (claude) provider \u2014 streaming via official sdk."
     },
     {
@@ -3092,9 +3092,9 @@
       "label": "Build Anthropic cache-control breakpoints for the system prompt.          Plac",
       "file_type": "rationale",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L214",
+      "source_location": "L221",
       "_origin": "ast",
-      "id": "provider_anthropic_provider_rationale_214",
+      "id": "provider_anthropic_provider_rationale_221",
       "community": 25,
       "norm_label": "build anthropic cache-control breakpoints for the system prompt.          plac"
     },
@@ -3102,10 +3102,10 @@
       "label": "Read prompt_caching.cache_ttl from config, default 3600s (1h).",
       "file_type": "rationale",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L231",
+      "source_location": "L238",
       "_origin": "ast",
-      "id": "provider_anthropic_provider_rationale_231",
-      "community": 10,
+      "id": "provider_anthropic_provider_rationale_238",
+      "community": 25,
       "norm_label": "read prompt_caching.cache_ttl from config, default 3600s (1h)."
     },
     {
@@ -3114,7 +3114,7 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py",
+      "id": "tests_test_anthropic_provider",
       "community": 25,
       "norm_label": "test_anthropic_provider.py"
     },
@@ -3162,7 +3162,7 @@
       "label": ".test_tool_message()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L19",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testmessageconversion_test_tool_message",
       "community": 25,
@@ -3172,7 +3172,7 @@
       "label": "TestToolConversion",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testtoolconversion",
       "community": 25,
@@ -3182,7 +3182,7 @@
       "label": ".test_converts_tools()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L27",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testtoolconversion_test_converts_tools",
       "community": 25,
@@ -3192,7 +3192,7 @@
       "label": "TestTokenEstimation",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testtokenestimation",
       "community": 25,
@@ -3202,7 +3202,7 @@
       "label": ".test_estimate_tokens()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L34",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testtokenestimation_test_estimate_tokens",
       "community": 25,
@@ -3212,7 +3212,7 @@
       "label": "TestContextLimit",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L40",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testcontextlimit",
       "community": 25,
@@ -3222,7 +3222,7 @@
       "label": ".test_known_model()",
       "file_type": "code",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L41",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "tests_test_anthropic_provider_testcontextlimit_test_known_model",
       "community": 25,
@@ -3244,128 +3244,128 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_extensions_providers_deepseek_src_provider_deepseek_provider_py",
-      "community": 7,
+      "id": "provider_deepseek_provider",
+      "community": 67,
       "norm_label": "provider.py"
     },
     {
       "label": "DeepSeekProvider",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider",
-      "community": 7,
+      "community": 67,
       "norm_label": "deepseekprovider"
     },
     {
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_init",
-      "community": 7,
+      "community": 67,
       "norm_label": ".__init__()"
     },
     {
       "label": ".context_limit()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_context_limit",
-      "community": 7,
+      "community": 67,
       "norm_label": ".context_limit()"
     },
     {
       "label": ".stream_completion()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_stream_completion",
-      "community": 7,
+      "community": 67,
       "norm_label": ".stream_completion()"
     },
     {
       "label": "AgentMessage",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "extensions_providers_deepseek_src_provider_deepseek_provider_py_agentmessage",
-      "community": 7,
+      "community": 67,
       "norm_label": "agentmessage"
     },
     {
       "label": "Any",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "extensions_providers_deepseek_src_provider_deepseek_provider_py_any",
-      "community": 7,
+      "community": 67,
       "norm_label": "any"
     },
     {
       "label": "ProviderChunk",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "extensions_providers_deepseek_src_provider_deepseek_provider_py_providerchunk",
-      "community": 7,
+      "community": 67,
       "norm_label": "providerchunk"
     },
     {
       "label": ".count_tokens()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L42",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_count_tokens",
-      "community": 7,
+      "community": 67,
       "norm_label": ".count_tokens()"
     },
     {
       "label": "._convert_messages()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L46",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_convert_messages",
-      "community": 7,
+      "community": 67,
       "norm_label": "._convert_messages()"
     },
     {
       "label": "._parse_event()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L61",
+      "source_location": "L72",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_parse_event",
-      "community": 7,
+      "community": 67,
       "norm_label": "._parse_event()"
     },
     {
       "label": "._classify_and_raise()",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L68",
+      "source_location": "L99",
       "_origin": "ast",
       "id": "provider_deepseek_provider_deepseekprovider_classify_and_raise",
-      "community": 7,
+      "community": 67,
       "norm_label": "._classify_and_raise()"
     },
     {
       "label": "Exception",
       "file_type": "code",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L68",
+      "source_location": "L99",
       "_origin": "ast",
       "id": "extensions_providers_deepseek_src_provider_deepseek_provider_py_exception",
-      "community": 7,
+      "community": 67,
       "norm_label": "exception"
     },
     {
@@ -3375,17 +3375,17 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "provider_deepseek_provider_rationale_1",
-      "community": 7,
+      "community": 67,
       "norm_label": "deepseek provider \u2014 openai-compatible sdk."
     },
     {
       "label": "DeepSeek models (v3, r1) via OpenAI-compatible API.",
       "file_type": "rationale",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L14",
+      "source_location": "L15",
       "_origin": "ast",
-      "id": "provider_deepseek_provider_rationale_14",
-      "community": 7,
+      "id": "provider_deepseek_provider_rationale_15",
+      "community": 67,
       "norm_label": "deepseek models (v3, r1) via openai-compatible api."
     },
     {
@@ -3535,7 +3535,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_providers_groq_src_provider_groq_provider_py",
-      "community": 67,
+      "community": 75,
       "norm_label": "provider.py"
     },
     {
@@ -3545,7 +3545,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider",
-      "community": 67,
+      "community": 75,
       "norm_label": "groqprovider"
     },
     {
@@ -3555,7 +3555,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider_init",
-      "community": 67,
+      "community": 75,
       "norm_label": ".__init__()"
     },
     {
@@ -3565,7 +3565,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider_context_limit",
-      "community": 67,
+      "community": 75,
       "norm_label": ".context_limit()"
     },
     {
@@ -3575,7 +3575,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider_stream_completion",
-      "community": 67,
+      "community": 75,
       "norm_label": ".stream_completion()"
     },
     {
@@ -3585,7 +3585,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "extensions_providers_groq_src_provider_groq_provider_py_agentmessage",
-      "community": 67,
+      "community": 75,
       "norm_label": "agentmessage"
     },
     {
@@ -3595,7 +3595,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "extensions_providers_groq_src_provider_groq_provider_py_any",
-      "community": 67,
+      "community": 75,
       "norm_label": "any"
     },
     {
@@ -3605,7 +3605,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "extensions_providers_groq_src_provider_groq_provider_py_providerchunk",
-      "community": 67,
+      "community": 75,
       "norm_label": "providerchunk"
     },
     {
@@ -3615,7 +3615,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider_count_tokens",
-      "community": 67,
+      "community": 75,
       "norm_label": ".count_tokens()"
     },
     {
@@ -3625,7 +3625,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider_build_messages",
-      "community": 67,
+      "community": 75,
       "norm_label": "._build_messages()"
     },
     {
@@ -3635,7 +3635,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "provider_groq_provider_groqprovider_raise",
-      "community": 43,
+      "community": 75,
       "norm_label": "._raise()"
     },
     {
@@ -3645,7 +3645,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "extensions_providers_groq_src_provider_groq_provider_py_exception",
-      "community": 43,
+      "community": 75,
       "norm_label": "exception"
     },
     {
@@ -3655,7 +3655,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "provider_groq_provider_rationale_1",
-      "community": 67,
+      "community": 75,
       "norm_label": "groq provider \u2014 openai-compatible with ultra-fast inference."
     },
     {
@@ -3665,7 +3665,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "provider_groq_provider_rationale_13",
-      "community": 67,
+      "community": 75,
       "norm_label": "groq lpu-accelerated models (llama-4, mixtral) via openai-compatible api."
     },
     {
@@ -3775,7 +3775,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "provider_mistral_provider_mistralprovider_raise",
-      "community": 67,
+      "community": 75,
       "norm_label": "._raise()"
     },
     {
@@ -3785,7 +3785,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "extensions_providers_mistral_src_provider_mistral_provider_py_exception",
-      "community": 67,
+      "community": 75,
       "norm_label": "exception"
     },
     {
@@ -4361,7 +4361,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_providers_openai_tests_test_openai_provider_py",
-      "community": 30,
+      "community": 23,
       "norm_label": "test_openai_provider.py"
     },
     {
@@ -4371,7 +4371,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "tests_test_openai_provider_provider",
-      "community": 30,
+      "community": 23,
       "norm_label": "provider()"
     },
     {
@@ -4381,7 +4381,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "openaiprovider",
-      "community": 30,
+      "community": 23,
       "norm_label": "openaiprovider"
     },
     {
@@ -4391,7 +4391,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testmessageconversion",
-      "community": 30,
+      "community": 23,
       "norm_label": "testmessageconversion"
     },
     {
@@ -4401,7 +4401,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testmessageconversion_test_system_included",
-      "community": 30,
+      "community": 23,
       "norm_label": ".test_system_included()"
     },
     {
@@ -4411,7 +4411,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testmessageconversion_test_tool_call_included",
-      "community": 30,
+      "community": 23,
       "norm_label": ".test_tool_call_included()"
     },
     {
@@ -4421,7 +4421,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtoolconversion",
-      "community": 30,
+      "community": 23,
       "norm_label": "testtoolconversion"
     },
     {
@@ -4431,7 +4431,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtoolconversion_test_openai_format",
-      "community": 30,
+      "community": 23,
       "norm_label": ".test_openai_format()"
     },
     {
@@ -4441,7 +4441,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtokenestimation",
-      "community": 30,
+      "community": 23,
       "norm_label": "testtokenestimation"
     },
     {
@@ -4451,7 +4451,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtokenestimation_test_count_tokens_fallback",
-      "community": 30,
+      "community": 23,
       "norm_label": ".test_count_tokens_fallback()"
     },
     {
@@ -4461,7 +4461,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_openai_provider_rationale_1",
-      "community": 30,
+      "community": 23,
       "norm_label": "tests for openai provider (message/tool conversion, token estimation)."
     },
     {
@@ -4624,7 +4624,7 @@
       "source_location": "L167",
       "_origin": "ast",
       "id": "provider_openrouter_provider_openrouterprovider_classify_and_raise",
-      "community": 30,
+      "community": 46,
       "norm_label": "._classify_and_raise()"
     },
     {
@@ -4634,7 +4634,7 @@
       "source_location": "L167",
       "_origin": "ast",
       "id": "extensions_providers_openrouter_src_provider_openrouter_provider_py_exception",
-      "community": 30,
+      "community": 46,
       "norm_label": "exception"
     },
     {
@@ -4837,7 +4837,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "extensions_providers_universal_src_provider_universal_provider_py_path",
-      "community": 30,
+      "community": 46,
       "norm_label": "path"
     },
     {
@@ -5007,7 +5007,7 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "provider_universal_provider_openaicompatibleprovider_classify_and_raise",
-      "community": 75,
+      "community": 38,
       "norm_label": "._classify_and_raise()"
     },
     {
@@ -5017,7 +5017,7 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "extensions_providers_universal_src_provider_universal_provider_py_exception",
-      "community": 75,
+      "community": 23,
       "norm_label": "exception"
     },
     {
@@ -5037,7 +5037,7 @@
       "source_location": "L284",
       "_origin": "ast",
       "id": "extensions_providers_universal_src_provider_universal_provider_py_asyncclient",
-      "community": 30,
+      "community": 46,
       "norm_label": "asyncclient"
     },
     {
@@ -5100,7 +5100,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_init_py",
-      "community": 138,
+      "community": 13,
       "norm_label": "__init__.py"
     },
     {
@@ -5110,7 +5110,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_init_rationale_1",
-      "community": 138,
+      "community": 13,
       "norm_label": "jalaagent agent core \u2014 agent loop, provider abstraction, tool registry, credenti"
     },
     {
@@ -5340,7 +5340,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_commands",
-      "community": 134,
+      "community": 138,
       "norm_label": "commands.py"
     },
     {
@@ -5350,7 +5350,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "agent_core_commands_commandcontext",
-      "community": 42,
+      "community": 134,
       "norm_label": "commandcontext"
     },
     {
@@ -5360,7 +5360,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "agent_core_commands_commandresult",
-      "community": 134,
+      "community": 138,
       "norm_label": "commandresult"
     },
     {
@@ -5490,7 +5490,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "agent_core_commands_get_git_hash",
-      "community": 134,
+      "community": 138,
       "norm_label": "_get_git_hash()"
     },
     {
@@ -5520,7 +5520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_commands_rationale_1",
-      "community": 134,
+      "community": 138,
       "norm_label": "unified slash command registry \u2014 all 27 commands fully wired to jalaagent object"
     },
     {
@@ -5810,7 +5810,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "agent_core_config_schema_providerentry",
-      "community": 34,
+      "community": 145,
       "norm_label": "providerentry"
     },
     {
@@ -6000,7 +6000,7 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "agent_core_config_schema_jalaconfig",
-      "community": 22,
+      "community": 34,
       "norm_label": "jalaconfig"
     },
     {
@@ -6040,7 +6040,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "agent_core_config_schema_rationale_29",
-      "community": 34,
+      "community": 145,
       "norm_label": "configuration for one provider endpoint."
     },
     {
@@ -6060,7 +6060,7 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "agent_core_config_schema_rationale_166",
-      "community": 22,
+      "community": 34,
       "norm_label": "top-level jalaagent configuration schema.      every field has a default that ma"
     },
     {
@@ -6130,7 +6130,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "agent_core_core_tools_tool_patch_file",
-      "community": 62,
+      "community": 40,
       "norm_label": "tool_patch_file()"
     },
     {
@@ -6280,7 +6280,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "agent_core_core_tools_rationale_74",
-      "community": 62,
+      "community": 40,
       "norm_label": "apply a unified diff patch via diffeditor if wired, else direct."
     },
     {
@@ -6590,7 +6590,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "agent_core_errors_ratelimiterror",
-      "community": 7,
+      "community": 75,
       "norm_label": "ratelimiterror"
     },
     {
@@ -6610,7 +6610,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "agent_core_errors_contentpolicyerror",
-      "community": 75,
+      "community": 46,
       "norm_label": "contentpolicyerror"
     },
     {
@@ -6630,7 +6630,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "agent_core_errors_timeouterror",
-      "community": 30,
+      "community": 46,
       "norm_label": "timeouterror"
     },
     {
@@ -6730,7 +6730,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "agent_core_errors_rationale_17",
-      "community": 7,
+      "community": 75,
       "norm_label": "rate limit exceeded \u2014 use jittered exponential backoff."
     },
     {
@@ -6750,7 +6750,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "agent_core_errors_rationale_25",
-      "community": 75,
+      "community": 46,
       "norm_label": "content policy violation \u2014 try fallback provider once, never retry same prompt."
     },
     {
@@ -6770,7 +6770,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "agent_core_errors_rationale_33",
-      "community": 30,
+      "community": 46,
       "norm_label": "ttfb watchdog timeout \u2014 kill and retry."
     },
     {
@@ -6840,7 +6840,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_harness_py",
-      "community": 62,
+      "community": 40,
       "norm_label": "harness.py"
     },
     {
@@ -6920,7 +6920,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "agent_core_harness_worktreeisolation_list_worktrees",
-      "community": 62,
+      "community": 35,
       "norm_label": ".list_worktrees()"
     },
     {
@@ -6930,7 +6930,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "packages_agent_core_src_agent_core_harness_py_any",
-      "community": 62,
+      "community": 35,
       "norm_label": "any"
     },
     {
@@ -6960,7 +6960,7 @@
       "source_location": "L170",
       "_origin": "ast",
       "id": "agent_core_harness_plan",
-      "community": 29,
+      "community": 66,
       "norm_label": "plan"
     },
     {
@@ -6970,7 +6970,7 @@
       "source_location": "L181",
       "_origin": "ast",
       "id": "agent_core_harness_plan_format_for_review",
-      "community": 29,
+      "community": 66,
       "norm_label": ".format_for_review()"
     },
     {
@@ -7000,7 +7000,7 @@
       "source_location": "L221",
       "_origin": "ast",
       "id": "agent_core_harness_planmode_create_plan",
-      "community": 29,
+      "community": 66,
       "norm_label": ".create_plan()"
     },
     {
@@ -7010,7 +7010,7 @@
       "source_location": "L240",
       "_origin": "ast",
       "id": "agent_core_harness_planmode_approve",
-      "community": 29,
+      "community": 66,
       "norm_label": ".approve()"
     },
     {
@@ -7030,7 +7030,7 @@
       "source_location": "L253",
       "_origin": "ast",
       "id": "agent_core_harness_planmode_current",
-      "community": 29,
+      "community": 66,
       "norm_label": ".current()"
     },
     {
@@ -7050,7 +7050,7 @@
       "source_location": "L260",
       "_origin": "ast",
       "id": "agent_core_harness_planmode_save_plan",
-      "community": 29,
+      "community": 66,
       "norm_label": "._save_plan()"
     },
     {
@@ -7100,7 +7100,7 @@
       "source_location": "L382",
       "_origin": "ast",
       "id": "agent_core_harness_sandboxedshell_history",
-      "community": 62,
+      "community": 35,
       "norm_label": ".history()"
     },
     {
@@ -7110,7 +7110,7 @@
       "source_location": "L394",
       "_origin": "ast",
       "id": "agent_core_harness_parse_unified_diff",
-      "community": 62,
+      "community": 40,
       "norm_label": "_parse_unified_diff()"
     },
     {
@@ -7120,7 +7120,7 @@
       "source_location": "L424",
       "_origin": "ast",
       "id": "agent_core_harness_apply_hunk",
-      "community": 62,
+      "community": 40,
       "norm_label": "_apply_hunk()"
     },
     {
@@ -7150,7 +7150,7 @@
       "source_location": "L470",
       "_origin": "ast",
       "id": "agent_core_harness_backgroundtaskmanager_submit",
-      "community": 62,
+      "community": 35,
       "norm_label": ".submit()"
     },
     {
@@ -7160,7 +7160,7 @@
       "source_location": "L489",
       "_origin": "ast",
       "id": "agent_core_harness_backgroundtaskmanager_get_result",
-      "community": 62,
+      "community": 35,
       "norm_label": ".get_result()"
     },
     {
@@ -7210,7 +7210,7 @@
       "source_location": "L535",
       "_origin": "ast",
       "id": "agent_core_harness_diffeditor",
-      "community": 66,
+      "community": 29,
       "norm_label": "diffeditor"
     },
     {
@@ -7220,7 +7220,7 @@
       "source_location": "L544",
       "_origin": "ast",
       "id": "agent_core_harness_diffeditor_preview_diff",
-      "community": 66,
+      "community": 29,
       "norm_label": ".preview_diff()"
     },
     {
@@ -7230,7 +7230,7 @@
       "source_location": "L554",
       "_origin": "ast",
       "id": "agent_core_harness_diffeditor_apply_diff",
-      "community": 66,
+      "community": 29,
       "norm_label": ".apply_diff()"
     },
     {
@@ -7240,7 +7240,7 @@
       "source_location": "L588",
       "_origin": "ast",
       "id": "agent_core_harness_diffeditor_read_with_mtime",
-      "community": 66,
+      "community": 29,
       "norm_label": ".read_with_mtime()"
     },
     {
@@ -7250,7 +7250,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_1",
-      "community": 62,
+      "community": 40,
       "norm_label": "jalaagent harness \u2014 git worktrees, plan mode, sandbox, background tasks.  the"
     },
     {
@@ -7300,7 +7300,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_116",
-      "community": 62,
+      "community": 35,
       "norm_label": "list all git worktrees and their status."
     },
     {
@@ -7310,7 +7310,7 @@
       "source_location": "L171",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_171",
-      "community": 29,
+      "community": 66,
       "norm_label": "a structured implementation plan."
     },
     {
@@ -7320,7 +7320,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_182",
-      "community": 29,
+      "community": 66,
       "norm_label": "format the plan for user review (rich/cli friendly)."
     },
     {
@@ -7340,7 +7340,7 @@
       "source_location": "L227",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_227",
-      "community": 29,
+      "community": 66,
       "norm_label": "create a new plan and save it for review."
     },
     {
@@ -7350,7 +7350,7 @@
       "source_location": "L241",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_241",
-      "community": 29,
+      "community": 66,
       "norm_label": "mark the current plan as approved."
     },
     {
@@ -7390,7 +7390,7 @@
       "source_location": "L395",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_395",
-      "community": 62,
+      "community": 40,
       "norm_label": "parse unified diff text into a list of hunks.      each hunk is a dict with ``"
     },
     {
@@ -7400,7 +7400,7 @@
       "source_location": "L429",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_429",
-      "community": 62,
+      "community": 40,
       "norm_label": "apply a single hunk to result_lines, adjusting for line count changes."
     },
     {
@@ -7420,7 +7420,7 @@
       "source_location": "L471",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_471",
-      "community": 62,
+      "community": 35,
       "norm_label": "submit a coroutine to run in the background.          returns the task id imme"
     },
     {
@@ -7430,7 +7430,7 @@
       "source_location": "L490",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_490",
-      "community": 62,
+      "community": 35,
       "norm_label": "get the result of a background task, waiting if still running."
     },
     {
@@ -7460,7 +7460,7 @@
       "source_location": "L536",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_536",
-      "community": 66,
+      "community": 29,
       "norm_label": "safe file editing using unified diffs.      the agent generates a diff, the us"
     },
     {
@@ -7470,7 +7470,7 @@
       "source_location": "L545",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_545",
-      "community": 66,
+      "community": 29,
       "norm_label": "generate a unified diff for user review."
     },
     {
@@ -7480,7 +7480,7 @@
       "source_location": "L557",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_557",
-      "community": 66,
+      "community": 29,
       "norm_label": "apply a unified diff to a file, with optional drift check.          parses uni"
     },
     {
@@ -7490,7 +7490,7 @@
       "source_location": "L589",
       "_origin": "ast",
       "id": "agent_core_harness_rationale_589",
-      "community": 66,
+      "community": 29,
       "norm_label": "read file content and record mtime for later drift detection."
     },
     {
@@ -7629,7 +7629,7 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_loop_py",
+      "id": "agent_core_loop",
       "community": 13,
       "norm_label": "loop.py"
     },
@@ -7650,7 +7650,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "agent_core_loop_providerprotocol_stream_completion",
-      "community": 9,
+      "community": 13,
       "norm_label": ".stream_completion()"
     },
     {
@@ -8520,7 +8520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_models_py",
-      "community": 52,
+      "community": 36,
       "norm_label": "models.py"
     },
     {
@@ -8530,7 +8530,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "agent_core_models_approvalmode",
-      "community": 73,
+      "community": 36,
       "norm_label": "approvalmode"
     },
     {
@@ -8540,7 +8540,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "str",
-      "community": 73,
+      "community": 36,
       "norm_label": "str"
     },
     {
@@ -8550,7 +8550,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "enum",
-      "community": 73,
+      "community": 36,
       "norm_label": "enum"
     },
     {
@@ -8560,7 +8560,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "agent_core_models_actioncategory",
-      "community": 3,
+      "community": 36,
       "norm_label": "actioncategory"
     },
     {
@@ -8580,7 +8580,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "agent_core_models_chunktype",
-      "community": 52,
+      "community": 13,
       "norm_label": "chunktype"
     },
     {
@@ -8590,7 +8590,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "agent_core_models_providerchunktype",
-      "community": 75,
+      "community": 67,
       "norm_label": "providerchunktype"
     },
     {
@@ -8610,7 +8610,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "agent_core_models_toolcall",
-      "community": 30,
+      "community": 23,
       "norm_label": "toolcall"
     },
     {
@@ -8630,7 +8630,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "agent_core_models_providerchunk",
-      "community": 67,
+      "community": 75,
       "norm_label": "providerchunk"
     },
     {
@@ -8640,7 +8640,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "agent_core_models_tooldescriptor",
-      "community": 52,
+      "community": 3,
       "norm_label": "tooldescriptor"
     },
     {
@@ -8650,7 +8650,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "agent_core_models_toolresult",
-      "community": 13,
+      "community": 3,
       "norm_label": "toolresult"
     },
     {
@@ -8700,7 +8700,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_models_rationale_1",
-      "community": 52,
+      "community": 36,
       "norm_label": "core pydantic models for jalaagent agent-core."
     },
     {
@@ -8710,7 +8710,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "agent_core_models_rationale_17",
-      "community": 73,
+      "community": 36,
       "norm_label": "tool approval modes for actions."
     },
     {
@@ -8720,7 +8720,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "agent_core_models_rationale_26",
-      "community": 3,
+      "community": 36,
       "norm_label": "categories for tool action classification."
     },
     {
@@ -8740,7 +8740,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "agent_core_models_rationale_51",
-      "community": 52,
+      "community": 13,
       "norm_label": "types of streaming chunks emitted by the agent loop."
     },
     {
@@ -8750,7 +8750,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "agent_core_models_rationale_66",
-      "community": 75,
+      "community": 67,
       "norm_label": "types of chunks from a provider's streaming response."
     },
     {
@@ -8770,7 +8770,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "agent_core_models_rationale_87",
-      "community": 30,
+      "community": 23,
       "norm_label": "a tool-use request from the model."
     },
     {
@@ -8790,7 +8790,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "agent_core_models_rationale_104",
-      "community": 67,
+      "community": 75,
       "norm_label": "a single chunk from a provider's streaming response."
     },
     {
@@ -8800,7 +8800,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "agent_core_models_rationale_117",
-      "community": 52,
+      "community": 3,
       "norm_label": "describes a tool to the provider and the registry."
     },
     {
@@ -8810,7 +8810,7 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "agent_core_models_rationale_128",
-      "community": 13,
+      "community": 3,
       "norm_label": "the result of a tool execution."
     },
     {
@@ -8900,7 +8900,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_policy_py",
-      "community": 73,
+      "community": 36,
       "norm_label": "policy.py"
     },
     {
@@ -8910,7 +8910,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "agent_core_policy_policydecision",
-      "community": 73,
+      "community": 36,
       "norm_label": "policydecision"
     },
     {
@@ -9000,7 +9000,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_policy_rationale_1",
-      "community": 73,
+      "community": 36,
       "norm_label": "4-layer tool policy pipeline from claude.md: global \u2192 agent \u2192 category \u2192 sender."
     },
     {
@@ -9250,7 +9250,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_registry_py",
-      "community": 13,
+      "community": 3,
       "norm_label": "registry.py"
     },
     {
@@ -9260,7 +9260,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "agent_core_registry_toolregistry",
-      "community": 13,
+      "community": 3,
       "norm_label": "toolregistry"
     },
     {
@@ -9270,7 +9270,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "agent_core_registry_toolregistry_init",
-      "community": 13,
+      "community": 3,
       "norm_label": ".__init__()"
     },
     {
@@ -9280,7 +9280,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "packages_agent_core_src_agent_core_registry_py_loopconfig",
-      "community": 13,
+      "community": 3,
       "norm_label": "loopconfig"
     },
     {
@@ -9350,7 +9350,7 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "agent_core_registry_toolregistry_set_policy",
-      "community": 13,
+      "community": 3,
       "norm_label": ".set_policy()"
     },
     {
@@ -9360,7 +9360,7 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "policypipeline",
-      "community": 13,
+      "community": 3,
       "norm_label": "policypipeline"
     },
     {
@@ -9370,7 +9370,7 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "agent_core_registry_toolregistry_policy",
-      "community": 13,
+      "community": 3,
       "norm_label": ".policy()"
     },
     {
@@ -9470,7 +9470,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agent_core_registry_rationale_1",
-      "community": 13,
+      "community": 3,
       "norm_label": "central tool registry for jalaagent with fuzzy name repair, loop detection, over"
     },
     {
@@ -9480,7 +9480,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "agent_core_registry_rationale_29",
-      "community": 13,
+      "community": 3,
       "norm_label": "registry for tool definitions and dispatch.      features (per claude.md):"
     },
     {
@@ -11030,7 +11030,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "tests_test_registry_testfuzzyrepairasync",
-      "community": 5,
+      "community": 3,
       "norm_label": "testfuzzyrepairasync"
     },
     {
@@ -11203,7 +11203,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_py",
-      "community": 17,
+      "community": 11,
       "norm_label": "dreaming.py"
     },
     {
@@ -11223,7 +11223,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingllmadapter_generate",
-      "community": 11,
+      "community": 17,
       "norm_label": ".generate()"
     },
     {
@@ -11303,7 +11303,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingpipeline",
-      "community": 17,
+      "community": 12,
       "norm_label": "dreamingpipeline"
     },
     {
@@ -11383,7 +11383,7 @@
       "source_location": "L237",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_py_datetime",
-      "community": 17,
+      "community": 11,
       "norm_label": "datetime"
     },
     {
@@ -11463,7 +11463,7 @@
       "source_location": "L516",
       "_origin": "ast",
       "id": "memory_core_dreaming_dreamingpipeline_last_run",
-      "community": 17,
+      "community": 11,
       "norm_label": ".last_run()"
     },
     {
@@ -11473,7 +11473,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_1",
-      "community": 17,
+      "community": 11,
       "norm_label": "layer 3 \u2014 dreaming pipeline: light sleep \u2192 rem \u2192 deep sleep consolidation.  ru"
     },
     {
@@ -11493,7 +11493,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_56",
-      "community": 11,
+      "community": 17,
       "norm_label": "send *prompt* to the llm and return the generated text."
     },
     {
@@ -11553,7 +11553,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_134",
-      "community": 17,
+      "community": 12,
       "norm_label": "cron-based multi-phase memory consolidation from session transcripts.      par"
     },
     {
@@ -11653,7 +11653,7 @@
       "source_location": "L517",
       "_origin": "ast",
       "id": "memory_core_dreaming_rationale_517",
-      "community": 17,
+      "community": 11,
       "norm_label": "the timestamp of the last completed :meth:`run` call."
     },
     {
@@ -11693,7 +11693,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_any",
-      "community": 17,
+      "community": 12,
       "norm_label": "any"
     },
     {
@@ -11743,7 +11743,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "memory_core_dreaming_runner_dreamingrunner_init",
-      "community": 17,
+      "community": 12,
       "norm_label": ".__init__()"
     },
     {
@@ -11753,7 +11753,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_memoryconfig",
-      "community": 17,
+      "community": 12,
       "norm_label": "memoryconfig"
     },
     {
@@ -11763,7 +11763,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_filelayer",
-      "community": 17,
+      "community": 12,
       "norm_label": "filelayer"
     },
     {
@@ -11773,7 +11773,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_dreaming_runner_py_vectorlayer",
-      "community": 17,
+      "community": 12,
       "norm_label": "vectorlayer"
     },
     {
@@ -11913,7 +11913,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_drift_py",
-      "community": 23,
+      "community": 4,
       "norm_label": "drift.py"
     },
     {
@@ -11923,7 +11923,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector",
-      "community": 23,
+      "community": 4,
       "norm_label": "driftdetector"
     },
     {
@@ -11933,7 +11933,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector_init",
-      "community": 220,
+      "community": 4,
       "norm_label": ".__init__()"
     },
     {
@@ -11943,7 +11943,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_drift_py_filelayer",
-      "community": 220,
+      "community": 4,
       "norm_label": "filelayer"
     },
     {
@@ -11953,7 +11953,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector_take_snapshot",
-      "community": 23,
+      "community": 4,
       "norm_label": ".take_snapshot()"
     },
     {
@@ -11963,7 +11963,7 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector_check_drift",
-      "community": 23,
+      "community": 4,
       "norm_label": ".check_drift()"
     },
     {
@@ -11973,7 +11973,7 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector_get_snapshot_content",
-      "community": 23,
+      "community": 4,
       "norm_label": ".get_snapshot_content()"
     },
     {
@@ -11983,7 +11983,7 @@
       "source_location": "L144",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector_snapshot_mtime",
-      "community": 23,
+      "community": 4,
       "norm_label": ".snapshot_mtime()"
     },
     {
@@ -11993,7 +11993,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "memory_core_drift_driftdetector_has_snapshot",
-      "community": 23,
+      "community": 4,
       "norm_label": ".has_snapshot()"
     },
     {
@@ -12003,7 +12003,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_1",
-      "community": 23,
+      "community": 4,
       "norm_label": "drift detection for external modifications to memory.md mid-session.  implemen"
     },
     {
@@ -12013,7 +12013,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_27",
-      "community": 23,
+      "community": 4,
       "norm_label": "detects and handles external modifications to ``memory.md`` mid-session."
     },
     {
@@ -12023,7 +12023,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_44",
-      "community": 220,
+      "community": 4,
       "norm_label": "create a drift detector backed by *file_layer*.          parameters         -"
     },
     {
@@ -12033,7 +12033,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_62",
-      "community": 23,
+      "community": 4,
       "norm_label": "capture the current ``memory.md`` content and ``mtime`` atomically.          t"
     },
     {
@@ -12043,7 +12043,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_91",
-      "community": 23,
+      "community": 4,
       "norm_label": "check whether ``memory.md`` has been modified since the snapshot.          com"
     },
     {
@@ -12053,7 +12053,7 @@
       "source_location": "L129",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_129",
-      "community": 23,
+      "community": 4,
       "norm_label": "return the ``memory.md`` content captured at session start.          returns"
     },
     {
@@ -12063,7 +12063,7 @@
       "source_location": "L145",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_145",
-      "community": 23,
+      "community": 4,
       "norm_label": "the ``mtime`` recorded by the last call to :meth:`take_snapshot`."
     },
     {
@@ -12073,7 +12073,7 @@
       "source_location": "L150",
       "_origin": "ast",
       "id": "memory_core_drift_rationale_150",
-      "community": 23,
+      "community": 4,
       "norm_label": "whether :meth:`take_snapshot` has been called at least once."
     },
     {
@@ -13143,7 +13143,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "memory_core_guardian_filelayerprotocol",
-      "community": 68,
+      "community": 7,
       "norm_label": "filelayerprotocol"
     },
     {
@@ -13163,7 +13163,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "memory_core_guardian_filelayerprotocol_get_session_count",
-      "community": 68,
+      "community": 7,
       "norm_label": ".get_session_count()"
     },
     {
@@ -13173,7 +13173,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "memory_core_guardian_filelayerprotocol_get_storage_stats",
-      "community": 68,
+      "community": 7,
       "norm_label": ".get_storage_stats()"
     },
     {
@@ -13183,7 +13183,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "memory_core_guardian_vectorlayerprotocol",
-      "community": 68,
+      "community": 7,
       "norm_label": "vectorlayerprotocol"
     },
     {
@@ -13193,7 +13193,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "memory_core_guardian_vectorlayerprotocol_get_stats",
-      "community": 68,
+      "community": 7,
       "norm_label": ".get_stats()"
     },
     {
@@ -13203,7 +13203,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "memory_core_guardian_vectorlayerprotocol_get_storage_stats",
-      "community": 68,
+      "community": 7,
       "norm_label": ".get_storage_stats()"
     },
     {
@@ -13213,7 +13213,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "memory_core_guardian_vectorlayerprotocol_cleanup_orphans",
-      "community": 68,
+      "community": 7,
       "norm_label": ".cleanup_orphans()"
     },
     {
@@ -13223,7 +13223,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "memory_core_guardian_vectorlayerprotocol_rebuild_fts_index",
-      "community": 68,
+      "community": 7,
       "norm_label": ".rebuild_fts_index()"
     },
     {
@@ -13233,7 +13233,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "memory_core_guardian_knowledgegraphprotocol",
-      "community": 68,
+      "community": 7,
       "norm_label": "knowledgegraphprotocol"
     },
     {
@@ -13263,7 +13263,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "memory_core_guardian_knowledgegraphprotocol_cleanup_orphan_edges",
-      "community": 68,
+      "community": 7,
       "norm_label": ".cleanup_orphan_edges()"
     },
     {
@@ -13283,7 +13283,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "memory_core_guardian_memoryguardian_init",
-      "community": 68,
+      "community": 7,
       "norm_label": ".__init__()"
     },
     {
@@ -13373,7 +13373,7 @@
       "source_location": "L329",
       "_origin": "ast",
       "id": "memory_core_guardian_memoryguardian_repair",
-      "community": 68,
+      "community": 7,
       "norm_label": "._repair()"
     },
     {
@@ -13393,7 +13393,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_26",
-      "community": 68,
+      "community": 7,
       "norm_label": "interface for the file layer needed by the guardian."
     },
     {
@@ -13403,7 +13403,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_35",
-      "community": 68,
+      "community": 7,
       "norm_label": "interface for the vector layer needed by the guardian."
     },
     {
@@ -13413,7 +13413,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_44",
-      "community": 68,
+      "community": 7,
       "norm_label": "interface for the knowledge graph needed by the guardian."
     },
     {
@@ -13493,7 +13493,7 @@
       "source_location": "L330",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_330",
-      "community": 68,
+      "community": 7,
       "norm_label": "attempt to auto-repair a specific category of problem. returns count fixed."
     },
     {
@@ -13503,7 +13503,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph",
-      "community": 16,
+      "community": 59,
       "norm_label": "knowledge_graph.py"
     },
     {
@@ -13513,7 +13513,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_row_to_dict",
-      "community": 16,
+      "community": 59,
       "norm_label": "_row_to_dict()"
     },
     {
@@ -13523,7 +13523,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_knowledge_graph_py_row",
-      "community": 16,
+      "community": 59,
       "norm_label": "row"
     },
     {
@@ -13543,7 +13543,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_init",
-      "community": 16,
+      "community": 59,
       "norm_label": ".__init__()"
     },
     {
@@ -13553,7 +13553,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_knowledge_graph_py_path",
-      "community": 16,
+      "community": 59,
       "norm_label": "path"
     },
     {
@@ -13573,7 +13573,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_get_write_lock",
-      "community": 16,
+      "community": 59,
       "norm_label": "._get_write_lock()"
     },
     {
@@ -13603,7 +13603,7 @@
       "source_location": "L148",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_ingest_page",
-      "community": 16,
+      "community": 59,
       "norm_label": ".ingest_page()"
     },
     {
@@ -13633,7 +13633,7 @@
       "source_location": "L257",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_get_stats",
-      "community": 104,
+      "community": 16,
       "norm_label": ".get_stats()"
     },
     {
@@ -13643,7 +13643,7 @@
       "source_location": "L271",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_get_storage_stats",
-      "community": 104,
+      "community": 16,
       "norm_label": ".get_storage_stats()"
     },
     {
@@ -13683,7 +13683,7 @@
       "source_location": "L328",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_extract_entities",
-      "community": 16,
+      "community": 59,
       "norm_label": "._extract_entities()"
     },
     {
@@ -13693,7 +13693,7 @@
       "source_location": "L347",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_knowledgegraph_extract_relations",
-      "community": 16,
+      "community": 59,
       "norm_label": "._extract_relations()"
     },
     {
@@ -13703,7 +13703,7 @@
       "source_location": "L377",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_sync_brain_repo",
-      "community": 16,
+      "community": 59,
       "norm_label": "sync_brain_repo()"
     },
     {
@@ -13713,7 +13713,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_1",
-      "community": 16,
+      "community": 59,
       "norm_label": "gbrain-inspired knowledge graph \u2014 entity extraction, typed edges, graph traversa"
     },
     {
@@ -13743,7 +13743,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_116",
-      "community": 16,
+      "community": 59,
       "norm_label": "return a shared asyncio.lock for write operations.          created lazily so"
     },
     {
@@ -13763,7 +13763,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_149",
-      "community": 16,
+      "community": 59,
       "norm_label": "ingest a markdown page, extracting entities and relations.          write oper"
     },
     {
@@ -13793,7 +13793,7 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_272",
-      "community": 104,
+      "community": 16,
       "norm_label": "return storage stats including db file size."
     },
     {
@@ -13823,7 +13823,7 @@
       "source_location": "L378",
       "_origin": "ast",
       "id": "memory_core_knowledge_graph_rationale_378",
-      "community": 16,
+      "community": 59,
       "norm_label": "sync a directory of markdown files into the knowledge graph."
     },
     {
@@ -13993,7 +13993,7 @@
       "source_location": "L358",
       "_origin": "ast",
       "id": "memory_core_models_memoryrelation",
-      "community": 107,
+      "community": 214,
       "norm_label": "memoryrelation"
     },
     {
@@ -14033,7 +14033,7 @@
       "source_location": "L405",
       "_origin": "ast",
       "id": "memory_core_models_memoryhealthreport",
-      "community": 107,
+      "community": 213,
       "norm_label": "memoryhealthreport"
     },
     {
@@ -14183,7 +14183,7 @@
       "source_location": "L359",
       "_origin": "ast",
       "id": "memory_core_models_rationale_359",
-      "community": 107,
+      "community": 214,
       "norm_label": "a relationship between two memory entries."
     },
     {
@@ -14223,7 +14223,7 @@
       "source_location": "L406",
       "_origin": "ast",
       "id": "memory_core_models_rationale_406",
-      "community": 107,
+      "community": 213,
       "norm_label": "a comprehensive memory system health report."
     },
     {
@@ -14253,7 +14253,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_observability",
-      "community": 81,
+      "community": 93,
       "norm_label": "observability.py"
     },
     {
@@ -14483,7 +14483,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_observability_rationale_1",
-      "community": 81,
+      "community": 93,
       "norm_label": "memory observability \u2014 centralized metrics and health reporting.  collects sta"
     },
     {
@@ -14603,7 +14603,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "memory_core_retrieval_format_entry",
-      "community": 213,
+      "community": 28,
       "norm_label": "_format_entry()"
     },
     {
@@ -14613,7 +14613,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_retrieval_py_episode",
-      "community": 213,
+      "community": 28,
       "norm_label": "episode"
     },
     {
@@ -14623,7 +14623,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "packages_memory_core_src_memory_core_retrieval_py_fact",
-      "community": 213,
+      "community": 28,
       "norm_label": "fact"
     },
     {
@@ -14753,7 +14753,7 @@
       "source_location": "L205",
       "_origin": "ast",
       "id": "memory_core_retrieval_memoryretriever_merge_results",
-      "community": 213,
+      "community": 28,
       "norm_label": "._merge_results()"
     },
     {
@@ -15313,7 +15313,7 @@
       "source_location": "L614",
       "_origin": "ast",
       "id": "memory_core_vector_layer_vectormemorylayer",
-      "community": 97,
+      "community": 6,
       "norm_label": "vectormemorylayer"
     },
     {
@@ -15513,7 +15513,7 @@
       "source_location": "L556",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_556",
-      "community": 97,
+      "community": 6,
       "norm_label": "remove orphan embeddings (no matching row in source tables).          returns"
     },
     {
@@ -15543,7 +15543,7 @@
       "source_location": "L615",
       "_origin": "ast",
       "id": "memory_core_vector_layer_rationale_615",
-      "community": 97,
+      "community": 6,
       "norm_label": "legacy alias for :class:`vectorlayer`."
     },
     {
@@ -15623,7 +15623,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_dreaming_py_fact",
-      "community": 0,
+      "community": 62,
       "norm_label": "fact"
     },
     {
@@ -15733,7 +15733,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_dreaming_py_filelayer",
-      "community": 59,
+      "community": 0,
       "norm_label": "filelayer"
     },
     {
@@ -15793,7 +15793,7 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "dreamingpipeline",
-      "community": 59,
+      "community": 0,
       "norm_label": "dreamingpipeline"
     },
     {
@@ -15803,7 +15803,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "tests_test_dreaming_make_episode",
-      "community": 59,
+      "community": 0,
       "norm_label": "make_episode()"
     },
     {
@@ -15813,7 +15813,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_dreaming_py_datetime",
-      "community": 59,
+      "community": 0,
       "norm_label": "datetime"
     },
     {
@@ -15823,7 +15823,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_dreaming_py_episode",
-      "community": 59,
+      "community": 0,
       "norm_label": "episode"
     },
     {
@@ -15873,7 +15873,7 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "tests_test_dreaming_testlightsleep",
-      "community": 59,
+      "community": 0,
       "norm_label": "testlightsleep"
     },
     {
@@ -15883,7 +15883,7 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "tests_test_dreaming_testlightsleep_test_no_sessions",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_no_sessions()"
     },
     {
@@ -15893,7 +15893,7 @@
       "source_location": "L192",
       "_origin": "ast",
       "id": "tests_test_dreaming_testlightsleep_test_finds_recent_episodes",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_finds_recent_episodes()"
     },
     {
@@ -15903,7 +15903,7 @@
       "source_location": "L207",
       "_origin": "ast",
       "id": "tests_test_dreaming_testlightsleep_test_chronological_order",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_chronological_order()"
     },
     {
@@ -15913,7 +15913,7 @@
       "source_location": "L227",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep",
-      "community": 59,
+      "community": 0,
       "norm_label": "testremsleep"
     },
     {
@@ -15923,7 +15923,7 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_extracts_facts",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_extracts_facts()"
     },
     {
@@ -15933,7 +15933,7 @@
       "source_location": "L243",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_empty_episodes",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_empty_episodes()"
     },
     {
@@ -15943,7 +15943,7 @@
       "source_location": "L247",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_llm_failure_graceful",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_llm_failure_graceful()"
     },
     {
@@ -15953,7 +15953,7 @@
       "source_location": "L260",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_parse_facts_markdown_fence",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_parse_facts_markdown_fence()"
     },
     {
@@ -15963,7 +15963,7 @@
       "source_location": "L266",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_parse_facts_no_marks",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_parse_facts_no_marks()"
     },
     {
@@ -15973,7 +15973,7 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_parse_facts_clamps_confidence",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_parse_facts_clamps_confidence()"
     },
     {
@@ -15983,7 +15983,7 @@
       "source_location": "L283",
       "_origin": "ast",
       "id": "tests_test_dreaming_testremsleep_test_parse_facts_skips_invalid",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_parse_facts_skips_invalid()"
     },
     {
@@ -15993,7 +15993,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate",
-      "community": 0,
+      "community": 62,
       "norm_label": "testdeduplicate"
     },
     {
@@ -16003,7 +16003,7 @@
       "source_location": "L298",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate_test_removes_duplicates",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_removes_duplicates()"
     },
     {
@@ -16013,7 +16013,7 @@
       "source_location": "L305",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate_test_merges_source_ids",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_merges_source_ids()"
     },
     {
@@ -16023,7 +16023,7 @@
       "source_location": "L320",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeduplicate_test_keeps_unique",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_keeps_unique()"
     },
     {
@@ -16033,7 +16033,7 @@
       "source_location": "L333",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeepsleep",
-      "community": 0,
+      "community": 62,
       "norm_label": "testdeepsleep"
     },
     {
@@ -16043,7 +16043,7 @@
       "source_location": "L334",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeepsleep_test_filters_by_confidence",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_filters_by_confidence()"
     },
     {
@@ -16053,7 +16053,7 @@
       "source_location": "L345",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdeepsleep_test_sorted_descending",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_sorted_descending()"
     },
     {
@@ -16063,7 +16063,7 @@
       "source_location": "L363",
       "_origin": "ast",
       "id": "tests_test_dreaming_testpromotefacts",
-      "community": 59,
+      "community": 0,
       "norm_label": "testpromotefacts"
     },
     {
@@ -16073,7 +16073,7 @@
       "source_location": "L364",
       "_origin": "ast",
       "id": "tests_test_dreaming_testpromotefacts_test_promotes_approved_facts",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_promotes_approved_facts()"
     },
     {
@@ -16093,7 +16093,7 @@
       "source_location": "L394",
       "_origin": "ast",
       "id": "tests_test_dreaming_testpromotefacts_test_no_facts",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_no_facts()"
     },
     {
@@ -16103,7 +16103,7 @@
       "source_location": "L405",
       "_origin": "ast",
       "id": "tests_test_dreaming_testfullpipeline",
-      "community": 59,
+      "community": 0,
       "norm_label": "testfullpipeline"
     },
     {
@@ -16113,7 +16113,7 @@
       "source_location": "L406",
       "_origin": "ast",
       "id": "tests_test_dreaming_testfullpipeline_test_run_produces_report",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_run_produces_report()"
     },
     {
@@ -16123,7 +16123,7 @@
       "source_location": "L425",
       "_origin": "ast",
       "id": "tests_test_dreaming_testfullpipeline_test_run_with_no_sessions",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_run_with_no_sessions()"
     },
     {
@@ -16133,7 +16133,7 @@
       "source_location": "L433",
       "_origin": "ast",
       "id": "tests_test_dreaming_testfullpipeline_test_run_writes_diary",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_run_writes_diary()"
     },
     {
@@ -16143,7 +16143,7 @@
       "source_location": "L443",
       "_origin": "ast",
       "id": "tests_test_dreaming_testfullpipeline_test_last_run_updated",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_last_run_updated()"
     },
     {
@@ -16153,7 +16153,7 @@
       "source_location": "L451",
       "_origin": "ast",
       "id": "tests_test_dreaming_testfullpipeline_test_run_idempotent",
-      "community": 59,
+      "community": 0,
       "norm_label": ".test_run_idempotent()"
     },
     {
@@ -16163,7 +16163,7 @@
       "source_location": "L470",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdiary",
-      "community": 0,
+      "community": 62,
       "norm_label": "testdiary"
     },
     {
@@ -16173,7 +16173,7 @@
       "source_location": "L471",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdiary_test_build_diary_entry",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_build_diary_entry()"
     },
     {
@@ -16183,7 +16183,7 @@
       "source_location": "L481",
       "_origin": "ast",
       "id": "tests_test_dreaming_testdiary_test_write_diary_prepends",
-      "community": 0,
+      "community": 62,
       "norm_label": ".test_write_diary_prepends()"
     },
     {
@@ -16273,7 +16273,7 @@
       "source_location": "L454",
       "_origin": "ast",
       "id": "tests_test_dreaming_rationale_454",
-      "community": 59,
+      "community": 0,
       "norm_label": "second run only picks up episodes since the first run."
     },
     {
@@ -16283,7 +16283,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_drift_py",
-      "community": 214,
+      "community": 4,
       "norm_label": "test_drift.py"
     },
     {
@@ -16293,7 +16293,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "tests_test_drift_tmp_memory_dir",
-      "community": 214,
+      "community": 4,
       "norm_label": "tmp_memory_dir()"
     },
     {
@@ -16303,7 +16303,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_drift_py_path",
-      "community": 214,
+      "community": 4,
       "norm_label": "path"
     },
     {
@@ -16313,7 +16313,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "tests_test_drift_config",
-      "community": 214,
+      "community": 4,
       "norm_label": "config()"
     },
     {
@@ -16323,7 +16323,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_drift_py_memoryconfig",
-      "community": 214,
+      "community": 4,
       "norm_label": "memoryconfig"
     },
     {
@@ -16333,7 +16333,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "tests_test_drift_file_layer",
-      "community": 214,
+      "community": 4,
       "norm_label": "file_layer()"
     },
     {
@@ -16353,7 +16353,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "tests_test_drift_detector",
-      "community": 214,
+      "community": 4,
       "norm_label": "detector()"
     },
     {
@@ -16373,7 +16373,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "tests_test_drift_testnodrift",
-      "community": 217,
+      "community": 4,
       "norm_label": "testnodrift"
     },
     {
@@ -16383,7 +16383,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "tests_test_drift_testnodrift_test_no_drift_after_snapshot",
-      "community": 217,
+      "community": 4,
       "norm_label": ".test_no_drift_after_snapshot()"
     },
     {
@@ -16393,7 +16393,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "tests_test_drift_testnodrift_test_no_drift_after_write_through_file_layer",
-      "community": 217,
+      "community": 4,
       "norm_label": ".test_no_drift_after_write_through_file_layer()"
     },
     {
@@ -16403,7 +16403,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "tests_test_drift_testnodrift_test_no_drift_on_nonexistent_file",
-      "community": 217,
+      "community": 4,
       "norm_label": ".test_no_drift_on_nonexistent_file()"
     },
     {
@@ -16483,7 +16483,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "tests_test_drift_testmultiplesnapshots",
-      "community": 222,
+      "community": 4,
       "norm_label": "testmultiplesnapshots"
     },
     {
@@ -16493,7 +16493,7 @@
       "source_location": "L185",
       "_origin": "ast",
       "id": "tests_test_drift_testmultiplesnapshots_test_resnapshot_updates",
-      "community": 222,
+      "community": 4,
       "norm_label": ".test_resnapshot_updates()"
     },
     {
@@ -16553,7 +16553,7 @@
       "source_location": "L263",
       "_origin": "ast",
       "id": "tests_test_drift_testproperties",
-      "community": 219,
+      "community": 4,
       "norm_label": "testproperties"
     },
     {
@@ -16563,7 +16563,7 @@
       "source_location": "L266",
       "_origin": "ast",
       "id": "tests_test_drift_testproperties_test_snapshot_mtime_after_take",
-      "community": 219,
+      "community": 4,
       "norm_label": ".test_snapshot_mtime_after_take()"
     },
     {
@@ -16573,7 +16573,7 @@
       "source_location": "L273",
       "_origin": "ast",
       "id": "tests_test_drift_testproperties_test_snapshot_mtime_before_take",
-      "community": 219,
+      "community": 4,
       "norm_label": ".test_snapshot_mtime_before_take()"
     },
     {
@@ -16583,7 +16583,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_drift_rationale_1",
-      "community": 214,
+      "community": 4,
       "norm_label": "tests for memory-core drift detection (frozen snapshot pattern)."
     },
     {
@@ -16593,7 +16593,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "tests_test_drift_rationale_45",
-      "community": 217,
+      "community": 4,
       "norm_label": "when memory.md is unchanged, check_drift returns false."
     },
     {
@@ -16603,7 +16603,7 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "tests_test_drift_rationale_58",
-      "community": 217,
+      "community": 4,
       "norm_label": "writing via filelayer updates the file but we snapshot after,         so no dri"
     },
     {
@@ -16613,7 +16613,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "tests_test_drift_rationale_69",
-      "community": 217,
+      "community": 4,
       "norm_label": "on first run with no memory.md, snapshot returns '' and mtime 0."
     },
     {
@@ -16643,7 +16643,7 @@
       "source_location": "L183",
       "_origin": "ast",
       "id": "tests_test_drift_rationale_183",
-      "community": 222,
+      "community": 4,
       "norm_label": "subsequent take_snapshot() calls overwrite the previous snapshot."
     },
     {
@@ -16673,7 +16673,7 @@
       "source_location": "L264",
       "_origin": "ast",
       "id": "tests_test_drift_rationale_264",
-      "community": 219,
+      "community": 4,
       "norm_label": "driftdetector property access."
     },
     {
@@ -18203,7 +18203,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "packages_memory_core_tests_test_retrieval_py_memoryconfig",
-      "community": 15,
+      "community": 210,
       "norm_label": "memoryconfig"
     },
     {
@@ -18213,7 +18213,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "tests_test_retrieval_file_layer",
-      "community": 15,
+      "community": 210,
       "norm_label": "file_layer()"
     },
     {
@@ -18233,7 +18233,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "tests_test_retrieval_vector_layer",
-      "community": 15,
+      "community": 210,
       "norm_label": "vector_layer()"
     },
     {
@@ -18273,7 +18273,7 @@
       "source_location": "L80",
       "_origin": "ast",
       "id": "tests_test_retrieval_testformatentry",
-      "community": 213,
+      "community": 28,
       "norm_label": "testformatentry"
     },
     {
@@ -18283,7 +18283,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "tests_test_retrieval_testformatentry_test_fact_format",
-      "community": 213,
+      "community": 28,
       "norm_label": ".test_fact_format()"
     },
     {
@@ -18293,7 +18293,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "tests_test_retrieval_testformatentry_test_episode_format_with_session_date",
-      "community": 213,
+      "community": 28,
       "norm_label": ".test_episode_format_with_session_date()"
     },
     {
@@ -18303,7 +18303,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "tests_test_retrieval_testformatentry_test_episode_format_fallback_date",
-      "community": 213,
+      "community": 28,
       "norm_label": ".test_episode_format_fallback_date()"
     },
     {
@@ -18313,7 +18313,7 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "tests_test_retrieval_testformatentry_test_long_content_truncated",
-      "community": 213,
+      "community": 28,
       "norm_label": ".test_long_content_truncated()"
     },
     {
@@ -18493,7 +18493,7 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "tests_test_retrieval_testknowledgegraphintegration",
-      "community": 210,
+      "community": 144,
       "norm_label": "testknowledgegraphintegration"
     },
     {
@@ -18503,7 +18503,7 @@
       "source_location": "L315",
       "_origin": "ast",
       "id": "tests_test_retrieval_testknowledgegraphintegration_test_kg_wired_into_retrieval",
-      "community": 15,
+      "community": 144,
       "norm_label": ".test_kg_wired_into_retrieval()"
     },
     {
@@ -18513,7 +18513,7 @@
       "source_location": "L344",
       "_origin": "ast",
       "id": "tests_test_retrieval_testknowledgegraphintegration_test_kg_none_does_not_break",
-      "community": 210,
+      "community": 144,
       "norm_label": ".test_kg_none_does_not_break()"
     },
     {
@@ -18553,7 +18553,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_54",
-      "community": 15,
+      "community": 210,
       "norm_label": "vectorlayer with a real db but mocked embedding."
     },
     {
@@ -18563,7 +18563,7 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_100",
-      "community": 213,
+      "community": 28,
       "norm_label": "when session_id has no date, use the timestamp."
     },
     {
@@ -18593,7 +18593,7 @@
       "source_location": "L318",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_318",
-      "community": 15,
+      "community": 144,
       "norm_label": "knowledge graph results appear in retrieval when kg is provided."
     },
     {
@@ -18603,7 +18603,7 @@
       "source_location": "L347",
       "_origin": "ast",
       "id": "tests_test_retrieval_rationale_347",
-      "community": 210,
+      "community": 144,
       "norm_label": "retrieval works fine without a knowledge graph."
     },
     {
@@ -19626,7 +19626,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_packages_skill_core_src_skill_core_models_py",
-      "community": 73,
+      "community": 36,
       "norm_label": "models.py"
     },
     {
@@ -19636,7 +19636,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "skill_core_models_skillsource",
-      "community": 73,
+      "community": 36,
       "norm_label": "skillsource"
     },
     {
@@ -19646,7 +19646,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "skill_core_models_severity",
-      "community": 73,
+      "community": 36,
       "norm_label": "severity"
     },
     {
@@ -19656,7 +19656,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "skill_core_models_verdict",
-      "community": 73,
+      "community": 36,
       "norm_label": "verdict"
     },
     {
@@ -19746,7 +19746,7 @@
       "source_location": "L158",
       "_origin": "ast",
       "id": "skill_core_models_scanfinding",
-      "community": 107,
+      "community": 215,
       "norm_label": "scanfinding"
     },
     {
@@ -19816,7 +19816,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "skill_core_models_rationale_1",
-      "community": 73,
+      "community": 36,
       "norm_label": "pydantic v2 models for the jalaagent skill system."
     },
     {
@@ -19826,7 +19826,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "skill_core_models_rationale_17",
-      "community": 73,
+      "community": 36,
       "norm_label": "where a skill was loaded from."
     },
     {
@@ -19836,7 +19836,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "skill_core_models_rationale_25",
-      "community": 73,
+      "community": 36,
       "norm_label": "finding severity for security scan results."
     },
     {
@@ -19846,7 +19846,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "skill_core_models_rationale_33",
-      "community": 73,
+      "community": 36,
       "norm_label": "overall security verdict for a scanned skill."
     },
     {
@@ -19936,7 +19936,7 @@
       "source_location": "L159",
       "_origin": "ast",
       "id": "skill_core_models_rationale_159",
-      "community": 107,
+      "community": 215,
       "norm_label": "a single issue found by the security scanner."
     },
     {
@@ -22157,7 +22157,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_tests_integration_test_memory_e2e_py",
-      "community": 215,
+      "community": 28,
       "norm_label": "test_memory_e2e.py"
     },
     {
@@ -22167,7 +22167,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_tmp_memory_dir",
-      "community": 215,
+      "community": 28,
       "norm_label": "tmp_memory_dir()"
     },
     {
@@ -22177,7 +22177,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "tests_integration_test_memory_e2e_py_path",
-      "community": 215,
+      "community": 28,
       "norm_label": "path"
     },
     {
@@ -22187,7 +22187,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_tmp_db_path",
-      "community": 215,
+      "community": 28,
       "norm_label": "tmp_db_path()"
     },
     {
@@ -22197,7 +22197,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_config",
-      "community": 215,
+      "community": 28,
       "norm_label": "config()"
     },
     {
@@ -22207,7 +22207,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "tests_integration_test_memory_e2e_py_memoryconfig",
-      "community": 23,
+      "community": 28,
       "norm_label": "memoryconfig"
     },
     {
@@ -22217,7 +22217,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_testmemorye2e",
-      "community": 23,
+      "community": 28,
       "norm_label": "testmemorye2e"
     },
     {
@@ -22227,7 +22227,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_testmemorye2e_test_full_flow",
-      "community": 23,
+      "community": 28,
       "norm_label": ".test_full_flow()"
     },
     {
@@ -22237,7 +22237,7 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_testmemoryretrievalthreshold",
-      "community": 11,
+      "community": 28,
       "norm_label": "testmemoryretrievalthreshold"
     },
     {
@@ -22247,7 +22247,7 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_testmemoryretrievalthreshold_test_threshold_filters_low_scores",
-      "community": 215,
+      "community": 28,
       "norm_label": ".test_threshold_filters_low_scores()"
     },
     {
@@ -22257,7 +22257,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_rationale_1",
-      "community": 215,
+      "community": 28,
       "norm_label": "integration test: end-to-end memory flow (file \u2192 vector \u2192 retrieval \u2192 drift)."
     },
     {
@@ -22267,7 +22267,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_rationale_43",
-      "community": 23,
+      "community": 28,
       "norm_label": "end-to-end: write episodes \u2192 vector index \u2192 retrieve \u2192 drift detect."
     },
     {
@@ -22277,7 +22277,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "integration_test_memory_e2e_rationale_116",
-      "community": 215,
+      "community": 28,
       "norm_label": "with a high threshold, low-similarity results are excluded."
     },
     {
@@ -22287,7 +22287,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_tests_integration_test_policy_pipeline_py",
-      "community": 73,
+      "community": 36,
       "norm_label": "test_policy_pipeline.py"
     },
     {
@@ -22377,7 +22377,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "integration_test_policy_pipeline_testcredentialpoolintegration",
-      "community": 73,
+      "community": 36,
       "norm_label": "testcredentialpoolintegration"
     },
     {
@@ -22387,7 +22387,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "integration_test_policy_pipeline_testcredentialpoolintegration_test_pool_rotation_trigger",
-      "community": 73,
+      "community": 36,
       "norm_label": ".test_pool_rotation_trigger()"
     },
     {
@@ -22397,7 +22397,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "integration_test_policy_pipeline_testcredentialpoolasync",
-      "community": 73,
+      "community": 36,
       "norm_label": "testcredentialpoolasync"
     },
     {
@@ -22407,7 +22407,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "integration_test_policy_pipeline_testcredentialpoolasync_test_acquire_and_fallback",
-      "community": 73,
+      "community": 36,
       "norm_label": ".test_acquire_and_fallback()"
     },
     {
@@ -22417,7 +22417,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "integration_test_policy_pipeline_rationale_1",
-      "community": 73,
+      "community": 36,
       "norm_label": "integration test: policy pipeline across all 4 approval modes."
     },
     {
@@ -30431,6 +30431,17 @@
       "target": "pkg_jalaagent_skill_core"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cli/src/jala/__init__.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "d_jalaagent_jalaagent2_cli_src_jala_init_py",
+      "target": "jala_main",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/__init__.py",
@@ -30668,9 +30679,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_build_agent"
+      "source": "jala_main",
+      "target": "jala_main_build_agent",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30678,59 +30689,59 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L154",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_build_auxiliary"
+      "source": "jala_main",
+      "target": "jala_main_build_auxiliary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L534",
+      "source_location": "L536",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_config_get"
+      "source": "jala_main",
+      "target": "jala_main_config_get",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L521",
+      "source_location": "L523",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_config_show"
+      "source": "jala_main",
+      "target": "jala_main_config_show",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L596",
+      "source_location": "L598",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_credentials_cmd"
+      "source": "jala_main",
+      "target": "jala_main_credentials_cmd",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L490",
+      "source_location": "L492",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_dream"
+      "source": "jala_main",
+      "target": "jala_main_dream",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L373",
+      "source_location": "L375",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_gateway"
+      "source": "jala_main",
+      "target": "jala_main_gateway",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30738,9 +30749,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L179",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_gateway_banner"
+      "source": "jala_main",
+      "target": "jala_main_gateway_banner",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30748,9 +30759,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L167",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_get_registry_safe"
+      "source": "jala_main",
+      "target": "jala_main_get_registry_safe",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30758,9 +30769,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L125",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_load_jala_config"
+      "source": "jala_main",
+      "target": "jala_main_load_jala_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30768,9 +30779,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L171",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_load_skills_into_registry"
+      "source": "jala_main",
+      "target": "jala_main_load_skills_into_registry",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30778,9 +30789,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L257",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_main"
+      "source": "jala_main",
+      "target": "jala_main_main",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30788,29 +30799,29 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L247",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_main_cli"
+      "source": "jala_main",
+      "target": "jala_main_main_cli",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L486",
+      "source_location": "L488",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_mcp"
+      "source": "jala_main",
+      "target": "jala_main_mcp",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L400",
+      "source_location": "L402",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_memory"
+      "source": "jala_main",
+      "target": "jala_main_memory",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30818,9 +30829,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L137",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_pick_provider"
+      "source": "jala_main",
+      "target": "jala_main_pick_provider",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -30828,59 +30839,59 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L194",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_run_gateway"
+      "source": "jala_main",
+      "target": "jala_main_run_gateway",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L390",
+      "source_location": "L392",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_serve"
+      "source": "jala_main",
+      "target": "jala_main_serve",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L554",
+      "source_location": "L556",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_sessions_cmd"
+      "source": "jala_main",
+      "target": "jala_main_sessions_cmd",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L386",
+      "source_location": "L388",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_setup"
+      "source": "jala_main",
+      "target": "jala_main_setup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L411",
+      "source_location": "L413",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_skills"
+      "source": "jala_main",
+      "target": "jala_main_skills",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L355",
+      "source_location": "L357",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_cli_src_jala_main_py",
-      "target": "jala_main_start_telegram"
+      "source": "jala_main",
+      "target": "jala_main_start_telegram",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -30888,9 +30899,9 @@
       "source_file": "cli/src/jala/main.py",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "jala_main_rationale_1",
-      "target": "d_jalaagent_jalaagent2_cli_src_jala_main_py"
+      "target": "jala_main",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31470,6 +31481,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
+      "source_location": "L296",
+      "weight": 1.0,
+      "source": "jala_main_main",
+      "target": "jala_main_load_skills_into_registry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cli/src/jala/main.py",
       "source_location": "L195",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -31812,11 +31834,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L376",
+      "source_location": "L378",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_376",
-      "target": "jala_main_gateway"
+      "source": "jala_main_rationale_378",
+      "target": "jala_main_gateway",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31833,11 +31855,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L395",
+      "source_location": "L397",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_395",
-      "target": "jala_main_serve"
+      "source": "jala_main_rationale_397",
+      "target": "jala_main_serve",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31876,41 +31898,41 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L491",
+      "source_location": "L493",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_491",
-      "target": "jala_main_dream"
+      "source": "jala_main_rationale_493",
+      "target": "jala_main_dream",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L522",
+      "source_location": "L524",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_522",
-      "target": "jala_main_config_show"
+      "source": "jala_main_rationale_524",
+      "target": "jala_main_config_show",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L535",
+      "source_location": "L537",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_535",
-      "target": "jala_main_config_get"
+      "source": "jala_main_rationale_537",
+      "target": "jala_main_config_get",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L555",
+      "source_location": "L557",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_555",
-      "target": "jala_main_sessions_cmd"
+      "source": "jala_main_rationale_557",
+      "target": "jala_main_sessions_cmd",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -31927,11 +31949,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "cli/src/jala/main.py",
-      "source_location": "L597",
+      "source_location": "L599",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "jala_main_rationale_597",
-      "target": "jala_main_credentials_cmd"
+      "source": "jala_main_rationale_599",
+      "target": "jala_main_credentials_cmd",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -35649,6 +35671,17 @@
       "target": "pkg_jalaagent_agent_core"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "extensions/providers/anthropic/src/provider_anthropic/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_init_py",
+      "target": "provider_anthropic_provider",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/__init__.py",
@@ -35664,19 +35697,19 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L24",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_provider_py",
-      "target": "provider_anthropic_provider_anthropicprovider"
+      "source": "provider_anthropic_provider",
+      "target": "provider_anthropic_provider_anthropicprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L230",
+      "source_location": "L237",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_provider_py",
-      "target": "provider_anthropic_provider_get_cache_ttl"
+      "source": "provider_anthropic_provider",
+      "target": "provider_anthropic_provider_get_cache_ttl",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -35684,9 +35717,20 @@
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "provider_anthropic_provider_rationale_1",
-      "target": "d_jalaagent_jalaagent2_extensions_providers_anthropic_src_provider_anthropic_provider_py"
+      "target": "provider_anthropic_provider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "tests_test_anthropic_provider",
+      "target": "provider_anthropic_provider",
+      "confidence_score": 1.0
     },
     {
       "relation": "uses",
@@ -36651,21 +36695,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L214",
+      "source_location": "L221",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "provider_anthropic_provider_rationale_214",
-      "target": "provider_anthropic_provider_anthropicprovider_apply_cache_control"
+      "source": "provider_anthropic_provider_rationale_221",
+      "target": "provider_anthropic_provider_anthropicprovider_apply_cache_control",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/src/provider_anthropic/provider.py",
-      "source_location": "L231",
+      "source_location": "L238",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "provider_anthropic_provider_rationale_231",
-      "target": "provider_anthropic_provider_get_cache_ttl"
+      "source": "provider_anthropic_provider_rationale_238",
+      "target": "provider_anthropic_provider_get_cache_ttl",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -36673,19 +36717,19 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py",
-      "target": "tests_test_anthropic_provider_provider"
+      "source": "tests_test_anthropic_provider",
+      "target": "tests_test_anthropic_provider_provider",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py",
-      "target": "tests_test_anthropic_provider_testcontextlimit"
+      "source": "tests_test_anthropic_provider",
+      "target": "tests_test_anthropic_provider_testcontextlimit",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -36693,29 +36737,29 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py",
-      "target": "tests_test_anthropic_provider_testmessageconversion"
+      "source": "tests_test_anthropic_provider",
+      "target": "tests_test_anthropic_provider_testmessageconversion",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py",
-      "target": "tests_test_anthropic_provider_testtokenestimation"
+      "source": "tests_test_anthropic_provider",
+      "target": "tests_test_anthropic_provider_testtokenestimation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py",
-      "target": "tests_test_anthropic_provider_testtoolconversion"
+      "source": "tests_test_anthropic_provider",
+      "target": "tests_test_anthropic_provider_testtoolconversion",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -36723,9 +36767,9 @@
       "source_file": "extensions/providers/anthropic/tests/test_anthropic_provider.py",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "tests_test_anthropic_provider_rationale_1",
-      "target": "d_jalaagent_jalaagent2_extensions_providers_anthropic_tests_test_anthropic_provider_py"
+      "target": "tests_test_anthropic_provider",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -36897,11 +36941,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_extensions_providers_deepseek_src_provider_deepseek_provider_py",
-      "target": "provider_deepseek_provider_deepseekprovider"
+      "source": "provider_deepseek_provider",
+      "target": "provider_deepseek_provider_deepseekprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -36909,9 +36953,9 @@
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "provider_deepseek_provider_rationale_1",
-      "target": "d_jalaagent_jalaagent2_extensions_providers_deepseek_src_provider_deepseek_provider_py"
+      "target": "provider_deepseek_provider",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -36983,6 +37027,16 @@
       "confidence_score": 0.5,
       "source": "provider_deepseek_provider_deepseekprovider",
       "target": "agent_core_models_providerchunktype"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "provider_deepseek_provider_deepseekprovider",
+      "target": "agent_core_models_toolcall",
+      "confidence_score": 0.5
     },
     {
       "relation": "method",
@@ -37058,11 +37112,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "provider_deepseek_provider_rationale_14",
-      "target": "provider_deepseek_provider_deepseekprovider"
+      "source": "provider_deepseek_provider_rationale_15",
+      "target": "provider_deepseek_provider_deepseekprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -37191,6 +37245,16 @@
       "target": "agent_core_models_providerchunktype"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_agentmessage",
+      "target": "agent_core_models_toolcall",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "references",
       "context": "generic_arg",
       "confidence": "EXTRACTED",
@@ -37273,6 +37337,16 @@
       "target": "agent_core_models_providerchunktype"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_any",
+      "target": "agent_core_models_toolcall",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
@@ -37344,6 +37418,16 @@
       "target": "agent_core_models_providerchunktype"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_providerchunk",
+      "target": "agent_core_models_toolcall",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -37353,6 +37437,17 @@
       "confidence_score": 1.0,
       "source": "provider_deepseek_provider_deepseekprovider_parse_event",
       "target": "extensions_providers_deepseek_src_provider_deepseek_provider_py_providerchunk"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "provider_deepseek_provider_deepseekprovider_parse_event",
+      "target": "agent_core_models_toolcall"
     },
     {
       "relation": "calls",
@@ -37457,6 +37552,16 @@
       "confidence_score": 0.5,
       "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_exception",
       "target": "agent_core_models_providerchunktype"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "extensions/providers/deepseek/src/provider_deepseek/provider.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "extensions_providers_deepseek_src_provider_deepseek_provider_py_exception",
+      "target": "agent_core_models_toolcall",
+      "confidence_score": 0.5
     },
     {
       "relation": "contains",
@@ -43408,6 +43513,17 @@
       "target": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_init_py"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/agent-core/src/agent_core/__init__.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_init_py",
+      "target": "agent_core_loop",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "packages/agent-core/src/agent_core/auxiliary.py",
@@ -49176,24 +49292,14 @@
       "target": "packages_agent_core_src_agent_core_hooks_py_any"
     },
     {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/agent-core/src/agent_core/loop.py",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "agent_core_loop_rationale_1",
-      "target": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_loop_py"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L41",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_loop_py",
-      "target": "agent_core_loop_agentloop"
+      "source": "agent_core_loop",
+      "target": "agent_core_loop_agentloop",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -49201,9 +49307,9 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_loop_py",
-      "target": "agent_core_loop_memoryretrieverprotocol"
+      "source": "agent_core_loop",
+      "target": "agent_core_loop_memoryretrieverprotocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -49211,9 +49317,30 @@
       "source_file": "packages/agent-core/src/agent_core/loop.py",
       "source_location": "L31",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "d_jalaagent_jalaagent2_packages_agent_core_src_agent_core_loop_py",
-      "target": "agent_core_loop_providerprotocol"
+      "source": "agent_core_loop",
+      "target": "agent_core_loop_providerprotocol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/agent-core/src/agent_core/loop.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agent_core_loop_rationale_1",
+      "target": "agent_core_loop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/agent-core/tests/test_loop.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "d_jalaagent_jalaagent2_packages_agent_core_tests_test_loop_py",
+      "target": "agent_core_loop",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -86394,5 +86521,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a98adabe43dc56b021eac3cdfe08aeef32d94e3a"
+  "built_at_commit": "0094ee530791f834b14ef795085066f808edbb27"
 }

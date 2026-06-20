@@ -15,9 +15,9 @@
     "semantic_hash": "3d48a68f358755e70c835998d68ae1ad"
   },
   "cli/src/jala/main.py": {
-    "mtime": 1781892807.3062742,
-    "ast_hash": "ebc3a7cbd8d23fbbfecb39cb88bafb37",
-    "semantic_hash": "ebc3a7cbd8d23fbbfecb39cb88bafb37"
+    "mtime": 1781925271.4551835,
+    "ast_hash": "3d5efd4031b8cd1000c34aa8d74766f8",
+    "semantic_hash": ""
   },
   "cli/src/jala/server.py": {
     "mtime": 1781892847.6158855,
@@ -140,19 +140,19 @@
     "semantic_hash": "1bb8820aebea6d63099339d32d0f6f2d"
   },
   "extensions/providers/anthropic/src/provider_anthropic/provider.py": {
-    "mtime": 1781891801.048043,
-    "ast_hash": "d9f199d9f635744de814be5d0b004a95",
-    "semantic_hash": "d9f199d9f635744de814be5d0b004a95"
+    "mtime": 1781925271.456167,
+    "ast_hash": "eb7a1b1a7f6033c9b19799d754520c93",
+    "semantic_hash": ""
   },
   "extensions/providers/anthropic/tests/test_anthropic_provider.py": {
-    "mtime": 1781891801.048043,
-    "ast_hash": "cd73d9a3cc351417658339d3a25f1e9c",
-    "semantic_hash": "cd73d9a3cc351417658339d3a25f1e9c"
+    "mtime": 1781925271.456167,
+    "ast_hash": "fd60893a613e8555c5001caf4daff26e",
+    "semantic_hash": ""
   },
   "extensions/providers/deepseek/src/provider_deepseek/provider.py": {
-    "mtime": 1781891801.048043,
-    "ast_hash": "d23b3a3239208df88c5358a011db5da3",
-    "semantic_hash": "d23b3a3239208df88c5358a011db5da3"
+    "mtime": 1781925271.456167,
+    "ast_hash": "243a37abbcb5e1c1c1d189aa6a7c4f61",
+    "semantic_hash": ""
   },
   "extensions/providers/gemini/src/provider_gemini/provider.py": {
     "mtime": 1781891801.048043,
@@ -300,9 +300,9 @@
     "semantic_hash": "1c1d863d6a791a3f3b6ee2a0cf47384c"
   },
   "packages/agent-core/src/agent_core/loop.py": {
-    "mtime": 1781891801.0580647,
-    "ast_hash": "dcefb72c8d763efe0ed3cfa3d47b1299",
-    "semantic_hash": "dcefb72c8d763efe0ed3cfa3d47b1299"
+    "mtime": 1781925271.4859765,
+    "ast_hash": "7baca4596255986c36b1522605c2317a",
+    "semantic_hash": ""
   },
   "packages/agent-core/src/agent_core/model_catalog.py": {
     "mtime": 1781891801.0580647,

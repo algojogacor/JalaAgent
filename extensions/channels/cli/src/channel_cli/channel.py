@@ -3,6 +3,8 @@
 import asyncio
 import logging
 import signal
+
+from jala import __version__
 from typing import Any, Protocol
 
 from agent_core.models import ChunkType
@@ -65,7 +67,6 @@ class CLIChannel:
         model = getattr(agent_loop, "_model", "default")
         skills = "66" if self._registry else "—"
         self._console.print(Panel(
-            from jala import __version__
             f"[bold cyan]🪼 JalaAgent v{__version__}[/] · {model}\n"
             f"Skills: {skills} bundled  |  MCP: filesystem ✓ shell ✓ fetch ✓\n"
             f"Type /help for commands, Ctrl+D to submit, Ctrl+C to quit",

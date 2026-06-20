@@ -3015,7 +3015,7 @@
       "source_location": "L172",
       "_origin": "ast",
       "id": "provider_anthropic_provider_anthropicprovider_classify_and_raise",
-      "community": 46,
+      "community": 75,
       "norm_label": "._classify_and_raise()"
     },
     {
@@ -3025,7 +3025,7 @@
       "source_location": "L172",
       "_origin": "ast",
       "id": "extensions_providers_anthropic_src_provider_anthropic_provider_py_exception",
-      "community": 46,
+      "community": 75,
       "norm_label": "exception"
     },
     {
@@ -3395,7 +3395,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_providers_gemini_src_provider_gemini_provider_py",
-      "community": 67,
+      "community": 75,
       "norm_label": "provider.py"
     },
     {
@@ -3405,7 +3405,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider",
-      "community": 67,
+      "community": 75,
       "norm_label": "geminiprovider"
     },
     {
@@ -3415,7 +3415,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider_init",
-      "community": 67,
+      "community": 75,
       "norm_label": ".__init__()"
     },
     {
@@ -3425,7 +3425,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider_context_limit",
-      "community": 67,
+      "community": 75,
       "norm_label": ".context_limit()"
     },
     {
@@ -3435,7 +3435,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider_stream_completion",
-      "community": 67,
+      "community": 75,
       "norm_label": ".stream_completion()"
     },
     {
@@ -3445,7 +3445,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "extensions_providers_gemini_src_provider_gemini_provider_py_agentmessage",
-      "community": 67,
+      "community": 75,
       "norm_label": "agentmessage"
     },
     {
@@ -3455,7 +3455,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "extensions_providers_gemini_src_provider_gemini_provider_py_any",
-      "community": 67,
+      "community": 75,
       "norm_label": "any"
     },
     {
@@ -3465,7 +3465,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "extensions_providers_gemini_src_provider_gemini_provider_py_providerchunk",
-      "community": 67,
+      "community": 75,
       "norm_label": "providerchunk"
     },
     {
@@ -3475,7 +3475,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider_count_tokens",
-      "community": 67,
+      "community": 75,
       "norm_label": ".count_tokens()"
     },
     {
@@ -3485,7 +3485,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider_convert_messages",
-      "community": 67,
+      "community": 75,
       "norm_label": "._convert_messages()"
     },
     {
@@ -3495,7 +3495,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "provider_gemini_provider_geminiprovider_classify_and_raise",
-      "community": 46,
+      "community": 75,
       "norm_label": "._classify_and_raise()"
     },
     {
@@ -3505,7 +3505,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "extensions_providers_gemini_src_provider_gemini_provider_py_exception",
-      "community": 46,
+      "community": 75,
       "norm_label": "exception"
     },
     {
@@ -3515,7 +3515,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "provider_gemini_provider_rationale_1",
-      "community": 67,
+      "community": 75,
       "norm_label": "google gemini provider \u2014 streaming via google-genai sdk."
     },
     {
@@ -3525,7 +3525,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "provider_gemini_provider_rationale_14",
-      "community": 67,
+      "community": 75,
       "norm_label": "google gemini models via the google-genai sdk."
     },
     {
@@ -4361,7 +4361,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "d_jalaagent_jalaagent2_extensions_providers_openai_tests_test_openai_provider_py",
-      "community": 75,
+      "community": 30,
       "norm_label": "test_openai_provider.py"
     },
     {
@@ -4371,7 +4371,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "tests_test_openai_provider_provider",
-      "community": 75,
+      "community": 30,
       "norm_label": "provider()"
     },
     {
@@ -4381,7 +4381,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "openaiprovider",
-      "community": 75,
+      "community": 30,
       "norm_label": "openaiprovider"
     },
     {
@@ -4391,7 +4391,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testmessageconversion",
-      "community": 75,
+      "community": 30,
       "norm_label": "testmessageconversion"
     },
     {
@@ -4401,7 +4401,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testmessageconversion_test_system_included",
-      "community": 75,
+      "community": 30,
       "norm_label": ".test_system_included()"
     },
     {
@@ -4411,7 +4411,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testmessageconversion_test_tool_call_included",
-      "community": 75,
+      "community": 30,
       "norm_label": ".test_tool_call_included()"
     },
     {
@@ -4421,7 +4421,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtoolconversion",
-      "community": 75,
+      "community": 30,
       "norm_label": "testtoolconversion"
     },
     {
@@ -4431,7 +4431,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtoolconversion_test_openai_format",
-      "community": 75,
+      "community": 30,
       "norm_label": ".test_openai_format()"
     },
     {
@@ -4441,7 +4441,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtokenestimation",
-      "community": 75,
+      "community": 30,
       "norm_label": "testtokenestimation"
     },
     {
@@ -4451,7 +4451,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "tests_test_openai_provider_testtokenestimation_test_count_tokens_fallback",
-      "community": 75,
+      "community": 30,
       "norm_label": ".test_count_tokens_fallback()"
     },
     {
@@ -4461,7 +4461,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_openai_provider_rationale_1",
-      "community": 75,
+      "community": 30,
       "norm_label": "tests for openai provider (message/tool conversion, token estimation)."
     },
     {
@@ -4837,7 +4837,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "extensions_providers_universal_src_provider_universal_provider_py_path",
-      "community": 75,
+      "community": 30,
       "norm_label": "path"
     },
     {
@@ -5007,7 +5007,7 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "provider_universal_provider_openaicompatibleprovider_classify_and_raise",
-      "community": 46,
+      "community": 75,
       "norm_label": "._classify_and_raise()"
     },
     {
@@ -5017,7 +5017,7 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "extensions_providers_universal_src_provider_universal_provider_py_exception",
-      "community": 46,
+      "community": 75,
       "norm_label": "exception"
     },
     {
@@ -5037,7 +5037,7 @@
       "source_location": "L284",
       "_origin": "ast",
       "id": "extensions_providers_universal_src_provider_universal_provider_py_asyncclient",
-      "community": 75,
+      "community": 30,
       "norm_label": "asyncclient"
     },
     {
@@ -6600,7 +6600,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "agent_core_errors_autherror",
-      "community": 46,
+      "community": 75,
       "norm_label": "autherror"
     },
     {
@@ -6610,7 +6610,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "agent_core_errors_contentpolicyerror",
-      "community": 46,
+      "community": 75,
       "norm_label": "contentpolicyerror"
     },
     {
@@ -6740,7 +6740,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "agent_core_errors_rationale_21",
-      "community": 46,
+      "community": 75,
       "norm_label": "authentication failure \u2014 rotate credential pool."
     },
     {
@@ -6750,7 +6750,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "agent_core_errors_rationale_25",
-      "community": 46,
+      "community": 75,
       "norm_label": "content policy violation \u2014 try fallback provider once, never retry same prompt."
     },
     {
@@ -8590,7 +8590,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "agent_core_models_providerchunktype",
-      "community": 67,
+      "community": 75,
       "norm_label": "providerchunktype"
     },
     {
@@ -8610,7 +8610,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "agent_core_models_toolcall",
-      "community": 75,
+      "community": 30,
       "norm_label": "toolcall"
     },
     {
@@ -8750,7 +8750,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "agent_core_models_rationale_66",
-      "community": 67,
+      "community": 75,
       "norm_label": "types of chunks from a provider's streaming response."
     },
     {
@@ -8770,7 +8770,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "agent_core_models_rationale_87",
-      "community": 75,
+      "community": 30,
       "norm_label": "a tool-use request from the model."
     },
     {
@@ -12277,14 +12277,14 @@
       "norm_label": ".get_stats()"
     },
     {
-      "label": "Memory Family Registry \u2014 relationship tracking between memory entries.  Links re",
+      "label": "Memory Family Registry \u2014 relationship tracking between memory entries.  Links",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_family_rationale_1",
       "community": 93,
-      "norm_label": "memory family registry \u2014 relationship tracking between memory entries.  links re"
+      "norm_label": "memory family registry \u2014 relationship tracking between memory entries.  links"
     },
     {
       "label": "Interface for the vector layer needed by the family registry.",
@@ -12317,14 +12317,14 @@
       "norm_label": "compute cosine similarity between two float vectors."
     },
     {
-      "label": "Tracks relationships between memory entries.      Stores relations in a dedicate",
+      "label": "Tracks relationships between memory entries.      Stores relations in a dedica",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L85",
       "_origin": "ast",
       "id": "memory_core_family_rationale_85",
       "community": 90,
-      "norm_label": "tracks relationships between memory entries.      stores relations in a dedicate"
+      "norm_label": "tracks relationships between memory entries.      stores relations in a dedica"
     },
     {
       "label": "Create the database and tables if they don't exist.",
@@ -12367,14 +12367,14 @@
       "norm_label": "auto-build relations for a memory entry.          creates relations based on:"
     },
     {
-      "label": "Build a family tree rooted at the given entry.          BFS traversal through ``",
+      "label": "Build a family tree rooted at the given entry.          BFS traversal through",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L263",
       "_origin": "ast",
       "id": "memory_core_family_rationale_263",
       "community": 90,
-      "norm_label": "build a family tree rooted at the given entry.          bfs traversal through ``"
+      "norm_label": "build a family tree rooted at the given entry.          bfs traversal through"
     },
     {
       "label": "Fetch all relations where the entry is the source.",
@@ -13067,14 +13067,14 @@
       "norm_label": "._collect_stats()"
     },
     {
-      "label": "Memory Governance Rebuild \u2014 periodic index maintenance and orphan cleanup.  Prov",
+      "label": "Memory Governance Rebuild \u2014 periodic index maintenance and orphan cleanup.  Pr",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_governance_rationale_1",
       "community": 93,
-      "norm_label": "memory governance rebuild \u2014 periodic index maintenance and orphan cleanup.  prov"
+      "norm_label": "memory governance rebuild \u2014 periodic index maintenance and orphan cleanup.  pr"
     },
     {
       "label": "Interface for the vector layer needed by governance.",
@@ -13097,14 +13097,14 @@
       "norm_label": "interface for the knowledge graph needed by governance."
     },
     {
-      "label": "Periodic index rebuild and orphan cleanup for the memory system.      Runs maint",
+      "label": "Periodic index rebuild and orphan cleanup for the memory system.      Runs mai",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L47",
       "_origin": "ast",
       "id": "memory_core_governance_rationale_47",
       "community": 95,
-      "norm_label": "periodic index rebuild and orphan cleanup for the memory system.      runs maint"
+      "norm_label": "periodic index rebuild and orphan cleanup for the memory system.      runs mai"
     },
     {
       "label": "Run all maintenance operations and return a report.",
@@ -13377,14 +13377,14 @@
       "norm_label": "._repair()"
     },
     {
-      "label": "Memory Guardian \u2014 integrity checks across all memory layers.  Runs periodic inte",
+      "label": "Memory Guardian \u2014 integrity checks across all memory layers.  Runs periodic in",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_1",
       "community": 93,
-      "norm_label": "memory guardian \u2014 integrity checks across all memory layers.  runs periodic inte"
+      "norm_label": "memory guardian \u2014 integrity checks across all memory layers.  runs periodic in"
     },
     {
       "label": "Interface for the file layer needed by the guardian.",
@@ -13417,24 +13417,24 @@
       "norm_label": "interface for the knowledge graph needed by the guardian."
     },
     {
-      "label": "Periodic integrity checker for the JalaAgent memory system.      Verifies consis",
+      "label": "Periodic integrity checker for the JalaAgent memory system.      Verifies cons",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L57",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_57",
       "community": 68,
-      "norm_label": "periodic integrity checker for the jalaagent memory system.      verifies consis"
+      "norm_label": "periodic integrity checker for the jalaagent memory system.      verifies cons"
     },
     {
-      "label": "Run all integrity checks and return a report.          Parameters         ------",
+      "label": "Run all integrity checks and return a report.          Parameters         ---",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L85",
       "_origin": "ast",
       "id": "memory_core_guardian_rationale_85",
       "community": 68,
-      "norm_label": "run all integrity checks and return a report.          parameters         ------"
+      "norm_label": "run all integrity checks and return a report.          parameters         ---"
     },
     {
       "label": "Check that MEMORY.md is readable.",
@@ -14477,14 +14477,14 @@
       "norm_label": "._load_all_snapshots()"
     },
     {
-      "label": "Memory Observability \u2014 centralized metrics and health reporting.  Collects stats",
+      "label": "Memory Observability \u2014 centralized metrics and health reporting.  Collects sta",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L1",
       "_origin": "ast",
       "id": "memory_core_observability_rationale_1",
       "community": 81,
-      "norm_label": "memory observability \u2014 centralized metrics and health reporting.  collects stats"
+      "norm_label": "memory observability \u2014 centralized metrics and health reporting.  collects sta"
     },
     {
       "label": "Interface for the file layer needed by observability.",
@@ -14527,14 +14527,14 @@
       "norm_label": "interface for the family registry needed by observability."
     },
     {
-      "label": "Centralized memory system health monitor.      Collects metrics from FileLayer,",
+      "label": "Centralized memory system health monitor.      Collects metrics from FileLayer",
       "file_type": "rationale",
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L55",
       "_origin": "ast",
       "id": "memory_core_observability_rationale_55",
       "community": 92,
-      "norm_label": "centralized memory system health monitor.      collects metrics from filelayer,"
+      "norm_label": "centralized memory system health monitor.      collects metrics from filelayer"
     },
     {
       "label": "Generate a full memory health report.",
@@ -32808,9 +32808,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_knowledgegraphprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32818,9 +32818,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_vectorlayerprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32828,9 +32828,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_knowledgegraphprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32838,9 +32838,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_vectorlayerprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32848,9 +32848,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_filelayerprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32858,9 +32858,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_knowledgegraphprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32868,9 +32868,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_vectorlayerprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32878,9 +32878,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_familyregistryprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32888,9 +32888,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_filelayerprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32898,9 +32898,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_knowledgegraphprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "inherits",
@@ -32908,9 +32908,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_vectorlayerprotocol",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "references",
@@ -35077,9 +35077,9 @@
       "source_file": "extensions/channels/whatsapp/src/channel_whatsapp/handlers.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_extensions_channels_whatsapp_src_channel_whatsapp_handlers_py",
-      "target": "agent_core_commands",
-      "confidence_score": 1.0
+      "target": "agent_core_commands"
     },
     {
       "relation": "contains",
@@ -43765,9 +43765,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L111",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_build_registry",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_build_registry"
     },
     {
       "relation": "contains",
@@ -43775,9 +43775,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_commandcontext",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_commandcontext"
     },
     {
       "relation": "contains",
@@ -43785,9 +43785,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_commanddef",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_commanddef"
     },
     {
       "relation": "contains",
@@ -43795,9 +43795,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_commandregistry",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_commandregistry"
     },
     {
       "relation": "contains",
@@ -43805,9 +43805,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_commandresult",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_commandresult"
     },
     {
       "relation": "contains",
@@ -43815,9 +43815,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_get_git_hash",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_get_git_hash"
     },
     {
       "relation": "contains",
@@ -43825,9 +43825,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands",
-      "target": "agent_core_commands_get_registry",
-      "confidence_score": 1.0
+      "target": "agent_core_commands_get_registry"
     },
     {
       "relation": "rationale_for",
@@ -43835,9 +43835,9 @@
       "source_file": "packages/agent-core/src/agent_core/commands.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agent_core_commands_rationale_1",
-      "target": "agent_core_commands",
-      "confidence_score": 1.0
+      "target": "agent_core_commands"
     },
     {
       "relation": "uses",
@@ -45425,9 +45425,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L382",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_familytree",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45435,9 +45435,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L372",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_familytreenode",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45445,9 +45445,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L331",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_governancereport",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45455,9 +45455,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L296",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_guardianfinding",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45465,9 +45465,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L314",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_guardianreport",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45475,9 +45475,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L395",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_layerhealth",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45495,9 +45495,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L405",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_memoryhealthreport",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -45515,9 +45515,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L358",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_memoryrelation",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -52432,9 +52432,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "inherits",
@@ -57954,9 +57954,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_family",
-      "confidence_score": 1.0
+      "target": "memory_core_family"
     },
     {
       "relation": "imports_from",
@@ -57965,9 +57965,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -57976,9 +57976,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_governance",
-      "confidence_score": 1.0
+      "target": "memory_core_governance"
     },
     {
       "relation": "imports_from",
@@ -57987,9 +57987,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_guardian",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian"
     },
     {
       "relation": "imports_from",
@@ -57998,9 +57998,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_knowledge_graph",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph"
     },
     {
       "relation": "imports_from",
@@ -58009,9 +58009,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -58020,9 +58020,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_observability",
-      "confidence_score": 1.0
+      "target": "memory_core_observability"
     },
     {
       "relation": "imports_from",
@@ -58031,9 +58031,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "rationale_for",
@@ -58041,9 +58041,9 @@
       "source_file": "packages/memory-core/src/memory_core/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_init_rationale_1",
-      "target": "memory_core_init",
-      "confidence_score": 1.0
+      "target": "memory_core_init"
     },
     {
       "relation": "contains",
@@ -58112,9 +58112,9 @@
       "source_file": "packages/memory-core/src/memory_core/dreaming.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -58123,9 +58123,9 @@
       "source_file": "packages/memory-core/src/memory_core/dreaming.py",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -58134,9 +58134,9 @@
       "source_file": "packages/memory-core/src/memory_core/dreaming.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "imports_from",
@@ -59413,9 +59413,9 @@
       "source_file": "packages/memory-core/src/memory_core/dreaming_runner.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_runner_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -59424,9 +59424,9 @@
       "source_file": "packages/memory-core/src/memory_core/dreaming_runner.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_runner_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -59435,9 +59435,9 @@
       "source_file": "packages/memory-core/src/memory_core/dreaming_runner.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_dreaming_runner_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "imports_from",
@@ -59929,9 +59929,9 @@
       "source_file": "packages/memory-core/src/memory_core/drift.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_drift_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "rationale_for",
@@ -60261,9 +60261,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family",
-      "target": "memory_core_family_cosine_similarity",
-      "confidence_score": 1.0
+      "target": "memory_core_family_cosine_similarity"
     },
     {
       "relation": "contains",
@@ -60271,9 +60271,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family",
-      "target": "memory_core_family_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_family_knowledgegraphprotocol"
     },
     {
       "relation": "contains",
@@ -60281,9 +60281,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family",
-      "target": "memory_core_family_memoryfamilyregistry",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry"
     },
     {
       "relation": "contains",
@@ -60291,9 +60291,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family",
-      "target": "memory_core_family_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_family_vectorlayerprotocol"
     },
     {
       "relation": "imports_from",
@@ -60302,9 +60302,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -60313,9 +60313,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family",
-      "target": "packages_memory_core_src_memory_core_family_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_memory_core_src_memory_core_family_py_uuid"
     },
     {
       "relation": "rationale_for",
@@ -60323,9 +60323,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_1",
-      "target": "memory_core_family",
-      "confidence_score": 1.0
+      "target": "memory_core_family"
     },
     {
       "relation": "references",
@@ -60334,9 +60334,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_init",
-      "target": "memory_core_family_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_family_vectorlayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -60344,9 +60344,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_32",
-      "target": "memory_core_family_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_family_vectorlayerprotocol"
     },
     {
       "relation": "method",
@@ -60354,9 +60354,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_vectorlayerprotocol",
-      "target": "memory_core_family_vectorlayerprotocol_embed",
-      "confidence_score": 1.0
+      "target": "memory_core_family_vectorlayerprotocol_embed"
     },
     {
       "relation": "calls",
@@ -60365,9 +60365,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L244",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_build_relations_for_entry",
-      "target": "memory_core_family_vectorlayerprotocol_embed",
-      "confidence_score": 1.0
+      "target": "memory_core_family_vectorlayerprotocol_embed"
     },
     {
       "relation": "method",
@@ -60375,9 +60375,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_knowledgegraphprotocol",
-      "target": "memory_core_family_knowledgegraphprotocol_search_entities",
-      "confidence_score": 1.0
+      "target": "memory_core_family_knowledgegraphprotocol_search_entities"
     },
     {
       "relation": "references",
@@ -60386,9 +60386,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_init",
-      "target": "memory_core_family_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_family_knowledgegraphprotocol"
     },
     {
       "relation": "rationale_for",
@@ -60396,9 +60396,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_38",
-      "target": "memory_core_family_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_family_knowledgegraphprotocol"
     },
     {
       "relation": "rationale_for",
@@ -60406,9 +60406,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_68",
-      "target": "memory_core_family_cosine_similarity",
-      "confidence_score": 1.0
+      "target": "memory_core_family_cosine_similarity"
     },
     {
       "relation": "method",
@@ -60416,9 +60416,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_build_relations_for_entry",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_build_relations_for_entry"
     },
     {
       "relation": "method",
@@ -60426,9 +60426,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_close",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_close"
     },
     {
       "relation": "method",
@@ -60436,9 +60436,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L260",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_get_family_tree",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_family_tree"
     },
     {
       "relation": "method",
@@ -60446,9 +60446,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_get_relations_for",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_relations_for"
     },
     {
       "relation": "method",
@@ -60456,9 +60456,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L338",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_stats"
     },
     {
       "relation": "method",
@@ -60466,9 +60466,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_init",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_init"
     },
     {
       "relation": "method",
@@ -60476,9 +60476,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_initialize",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_initialize"
     },
     {
       "relation": "method",
@@ -60486,9 +60486,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry",
-      "target": "memory_core_family_memoryfamilyregistry_register_relation",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_register_relation"
     },
     {
       "relation": "rationale_for",
@@ -60496,9 +60496,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_85",
-      "target": "memory_core_family_memoryfamilyregistry",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry"
     },
     {
       "relation": "references",
@@ -60507,9 +60507,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_init",
-      "target": "packages_memory_core_src_memory_core_family_py_path",
-      "confidence_score": 1.0
+      "target": "packages_memory_core_src_memory_core_family_py_path"
     },
     {
       "relation": "rationale_for",
@@ -60517,9 +60517,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_121",
-      "target": "memory_core_family_memoryfamilyregistry_initialize",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_initialize"
     },
     {
       "relation": "rationale_for",
@@ -60527,9 +60527,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L138",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_138",
-      "target": "memory_core_family_memoryfamilyregistry_close",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_close"
     },
     {
       "relation": "calls",
@@ -60538,9 +60538,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L234",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_build_relations_for_entry",
-      "target": "memory_core_family_memoryfamilyregistry_register_relation",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_register_relation"
     },
     {
       "relation": "references",
@@ -60549,9 +60549,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_register_relation",
-      "target": "memoryrelation",
-      "confidence_score": 1.0
+      "target": "memoryrelation"
     },
     {
       "relation": "references",
@@ -60560,9 +60560,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_register_relation",
-      "target": "packages_memory_core_src_memory_core_family_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_memory_core_src_memory_core_family_py_uuid"
     },
     {
       "relation": "references",
@@ -60571,9 +60571,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_register_relation",
-      "target": "relationtype",
-      "confidence_score": 1.0
+      "target": "relationtype"
     },
     {
       "relation": "rationale_for",
@@ -60581,9 +60581,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L159",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_159",
-      "target": "memory_core_family_memoryfamilyregistry_register_relation",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_register_relation"
     },
     {
       "relation": "references",
@@ -60592,9 +60592,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_build_relations_for_entry",
-      "target": "packages_memory_core_src_memory_core_family_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_memory_core_src_memory_core_family_py_uuid"
     },
     {
       "relation": "references",
@@ -60603,9 +60603,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L260",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_get_family_tree",
-      "target": "packages_memory_core_src_memory_core_family_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_memory_core_src_memory_core_family_py_uuid"
     },
     {
       "relation": "references",
@@ -60614,9 +60614,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_get_relations_for",
-      "target": "packages_memory_core_src_memory_core_family_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_memory_core_src_memory_core_family_py_uuid"
     },
     {
       "relation": "references",
@@ -60625,9 +60625,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_get_relations_for",
-      "target": "memoryrelation",
-      "confidence_score": 1.0
+      "target": "memoryrelation"
     },
     {
       "relation": "rationale_for",
@@ -60635,9 +60635,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L205",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_205",
-      "target": "memory_core_family_memoryfamilyregistry_build_relations_for_entry",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_build_relations_for_entry"
     },
     {
       "relation": "references",
@@ -60646,9 +60646,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L260",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_get_family_tree",
-      "target": "familytree",
-      "confidence_score": 1.0
+      "target": "familytree"
     },
     {
       "relation": "calls",
@@ -60657,9 +60657,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L280",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_memoryfamilyregistry_get_family_tree",
-      "target": "memory_core_family_memoryfamilyregistry_get_relations_for",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_relations_for"
     },
     {
       "relation": "calls",
@@ -60678,9 +60678,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L263",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_263",
-      "target": "memory_core_family_memoryfamilyregistry_get_family_tree",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_family_tree"
     },
     {
       "relation": "rationale_for",
@@ -60688,9 +60688,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L308",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_308",
-      "target": "memory_core_family_memoryfamilyregistry_get_relations_for",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_relations_for"
     },
     {
       "relation": "rationale_for",
@@ -60698,9 +60698,9 @@
       "source_file": "packages/memory-core/src/memory_core/family.py",
       "source_location": "L339",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_family_rationale_339",
-      "target": "memory_core_family_memoryfamilyregistry_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_family_memoryfamilyregistry_get_stats"
     },
     {
       "relation": "imports_from",
@@ -60709,9 +60709,9 @@
       "source_file": "packages/memory-core/src/memory_core/retrieval.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_retrieval_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -60720,9 +60720,9 @@
       "source_file": "packages/memory-core/tests/test_dreaming.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_dreaming_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -60731,9 +60731,9 @@
       "source_file": "packages/memory-core/tests/test_drift.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_drift_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -60742,9 +60742,9 @@
       "source_file": "packages/memory-core/tests/test_file_layer.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_file_layer_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -60753,9 +60753,9 @@
       "source_file": "packages/memory-core/tests/test_retrieval.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_retrieval_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "imports_from",
@@ -60764,9 +60764,9 @@
       "source_file": "tests/integration/test_memory_e2e.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_tests_integration_test_memory_e2e_py",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "contains",
@@ -60774,9 +60774,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer",
-      "target": "memory_core_file_layer_filelayer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer"
     },
     {
       "relation": "contains",
@@ -60784,9 +60784,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L331",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer",
-      "target": "memory_core_file_layer_filememorylayer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filememorylayer"
     },
     {
       "relation": "contains",
@@ -60794,9 +60794,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer",
-      "target": "memory_core_file_layer_lock_file",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_lock_file"
     },
     {
       "relation": "contains",
@@ -60804,9 +60804,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer",
-      "target": "memory_core_file_layer_unlock_file",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_unlock_file"
     },
     {
       "relation": "imports_from",
@@ -60815,9 +60815,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "rationale_for",
@@ -60825,9 +60825,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_1",
-      "target": "memory_core_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer"
     },
     {
       "relation": "rationale_for",
@@ -60967,9 +60967,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L248",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_filelayer",
-      "target": "memory_core_file_layer_filelayer_get_session_count",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_get_session_count"
     },
     {
       "relation": "method",
@@ -60977,9 +60977,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L256",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_filelayer",
-      "target": "memory_core_file_layer_filelayer_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_get_storage_stats"
     },
     {
       "relation": "method",
@@ -62106,9 +62106,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L263",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_filelayer_get_storage_stats",
-      "target": "memory_core_file_layer_filelayer_get_session_count",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_get_session_count"
     },
     {
       "relation": "rationale_for",
@@ -62116,9 +62116,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L249",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_249",
-      "target": "memory_core_file_layer_filelayer_get_session_count",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_get_session_count"
     },
     {
       "relation": "rationale_for",
@@ -62126,9 +62126,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L257",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_257",
-      "target": "memory_core_file_layer_filelayer_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_get_storage_stats"
     },
     {
       "relation": "rationale_for",
@@ -62146,9 +62146,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L282",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_282",
-      "target": "memory_core_file_layer_filelayer_snapshot_memory",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_snapshot_memory"
     },
     {
       "relation": "rationale_for",
@@ -62156,9 +62156,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L312",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_312",
-      "target": "memory_core_file_layer_filelayer_snapshot_mtime",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_snapshot_mtime"
     },
     {
       "relation": "rationale_for",
@@ -62166,9 +62166,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L317",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_317",
-      "target": "memory_core_file_layer_filelayer_memory_dir",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_memory_dir"
     },
     {
       "relation": "rationale_for",
@@ -62176,9 +62176,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L322",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_322",
-      "target": "memory_core_file_layer_filelayer_sessions_dir",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filelayer_sessions_dir"
     },
     {
       "relation": "rationale_for",
@@ -62186,9 +62186,9 @@
       "source_file": "packages/memory-core/src/memory_core/file_layer.py",
       "source_location": "L332",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_file_layer_rationale_332",
-      "target": "memory_core_file_layer_filememorylayer",
-      "confidence_score": 1.0
+      "target": "memory_core_file_layer_filememorylayer"
     },
     {
       "relation": "contains",
@@ -62196,9 +62196,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance",
-      "target": "memory_core_governance_governancerebuild",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild"
     },
     {
       "relation": "contains",
@@ -62206,9 +62206,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance",
-      "target": "memory_core_governance_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol"
     },
     {
       "relation": "contains",
@@ -62216,9 +62216,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance",
-      "target": "memory_core_governance_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol"
     },
     {
       "relation": "imports_from",
@@ -62227,9 +62227,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "rationale_for",
@@ -62237,9 +62237,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_rationale_1",
-      "target": "memory_core_governance",
-      "confidence_score": 1.0
+      "target": "memory_core_governance"
     },
     {
       "relation": "references",
@@ -62248,9 +62248,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_init",
-      "target": "memory_core_governance_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -62258,9 +62258,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_rationale_25",
-      "target": "memory_core_governance_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol"
     },
     {
       "relation": "method",
@@ -62268,9 +62268,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_vectorlayerprotocol",
-      "target": "memory_core_governance_vectorlayerprotocol_cleanup_orphans",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_cleanup_orphans"
     },
     {
       "relation": "method",
@@ -62278,9 +62278,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_vectorlayerprotocol",
-      "target": "memory_core_governance_vectorlayerprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_get_stats"
     },
     {
       "relation": "method",
@@ -62288,9 +62288,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_vectorlayerprotocol",
-      "target": "memory_core_governance_vectorlayerprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_get_storage_stats"
     },
     {
       "relation": "method",
@@ -62298,9 +62298,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_vectorlayerprotocol",
-      "target": "memory_core_governance_vectorlayerprotocol_rebuild_fts_index",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_rebuild_fts_index"
     },
     {
       "relation": "calls",
@@ -62309,9 +62309,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_collect_stats",
-      "target": "memory_core_governance_vectorlayerprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_get_storage_stats"
     },
     {
       "relation": "calls",
@@ -62320,9 +62320,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_rebuild_all",
-      "target": "memory_core_governance_vectorlayerprotocol_rebuild_fts_index",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_rebuild_fts_index"
     },
     {
       "relation": "calls",
@@ -62331,9 +62331,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_rebuild_all",
-      "target": "memory_core_governance_vectorlayerprotocol_cleanup_orphans",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_vectorlayerprotocol_cleanup_orphans"
     },
     {
       "relation": "references",
@@ -62342,9 +62342,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_init",
-      "target": "memory_core_governance_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol"
     },
     {
       "relation": "method",
@@ -62352,9 +62352,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_knowledgegraphprotocol",
-      "target": "memory_core_governance_knowledgegraphprotocol_cleanup_orphan_edges",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol_cleanup_orphan_edges"
     },
     {
       "relation": "method",
@@ -62362,9 +62362,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_knowledgegraphprotocol",
-      "target": "memory_core_governance_knowledgegraphprotocol_get_orphan_edge_count",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol_get_orphan_edge_count"
     },
     {
       "relation": "method",
@@ -62372,9 +62372,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_knowledgegraphprotocol",
-      "target": "memory_core_governance_knowledgegraphprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol_get_stats"
     },
     {
       "relation": "rationale_for",
@@ -62382,9 +62382,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_rationale_34",
-      "target": "memory_core_governance_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol"
     },
     {
       "relation": "calls",
@@ -62393,9 +62393,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_collect_stats",
-      "target": "memory_core_governance_knowledgegraphprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol_get_stats"
     },
     {
       "relation": "calls",
@@ -62404,9 +62404,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_rebuild_all",
-      "target": "memory_core_governance_knowledgegraphprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol_get_stats"
     },
     {
       "relation": "calls",
@@ -62415,9 +62415,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_rebuild_all",
-      "target": "memory_core_governance_knowledgegraphprotocol_cleanup_orphan_edges",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_knowledgegraphprotocol_cleanup_orphan_edges"
     },
     {
       "relation": "method",
@@ -62425,9 +62425,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild",
-      "target": "memory_core_governance_governancerebuild_collect_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild_collect_stats"
     },
     {
       "relation": "method",
@@ -62435,9 +62435,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild",
-      "target": "memory_core_governance_governancerebuild_init",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild_init"
     },
     {
       "relation": "method",
@@ -62445,9 +62445,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild",
-      "target": "memory_core_governance_governancerebuild_rebuild_all",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild_rebuild_all"
     },
     {
       "relation": "rationale_for",
@@ -62455,9 +62455,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_rationale_47",
-      "target": "memory_core_governance_governancerebuild",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild"
     },
     {
       "relation": "references",
@@ -62466,9 +62466,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_rebuild_all",
-      "target": "governancereport",
-      "confidence_score": 1.0
+      "target": "governancereport"
     },
     {
       "relation": "calls",
@@ -62477,9 +62477,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_governancerebuild_rebuild_all",
-      "target": "memory_core_governance_governancerebuild_collect_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild_collect_stats"
     },
     {
       "relation": "rationale_for",
@@ -62487,9 +62487,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_rationale_72",
-      "target": "memory_core_governance_governancerebuild_rebuild_all",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild_rebuild_all"
     },
     {
       "relation": "rationale_for",
@@ -62497,9 +62497,9 @@
       "source_file": "packages/memory-core/src/memory_core/governance.py",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_governance_rationale_127",
-      "target": "memory_core_governance_governancerebuild_collect_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_governance_governancerebuild_collect_stats"
     },
     {
       "relation": "contains",
@@ -62507,9 +62507,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian",
-      "target": "memory_core_guardian_filelayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol"
     },
     {
       "relation": "contains",
@@ -62517,9 +62517,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian",
-      "target": "memory_core_guardian_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol"
     },
     {
       "relation": "contains",
@@ -62527,9 +62527,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian",
-      "target": "memory_core_guardian_memoryguardian",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian"
     },
     {
       "relation": "contains",
@@ -62537,9 +62537,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian",
-      "target": "memory_core_guardian_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol"
     },
     {
       "relation": "imports_from",
@@ -62548,9 +62548,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "rationale_for",
@@ -62558,9 +62558,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_1",
-      "target": "memory_core_guardian",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian"
     },
     {
       "relation": "method",
@@ -62568,9 +62568,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_filelayerprotocol",
-      "target": "memory_core_guardian_filelayerprotocol_get_session_count",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol_get_session_count"
     },
     {
       "relation": "method",
@@ -62578,9 +62578,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_filelayerprotocol",
-      "target": "memory_core_guardian_filelayerprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol_get_storage_stats"
     },
     {
       "relation": "method",
@@ -62588,9 +62588,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_filelayerprotocol",
-      "target": "memory_core_guardian_filelayerprotocol_read_memory",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol_read_memory"
     },
     {
       "relation": "references",
@@ -62599,9 +62599,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_init",
-      "target": "memory_core_guardian_filelayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -62609,9 +62609,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_26",
-      "target": "memory_core_guardian_filelayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol"
     },
     {
       "relation": "calls",
@@ -62620,9 +62620,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_memory_readability",
-      "target": "memory_core_guardian_filelayerprotocol_read_memory",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_filelayerprotocol_read_memory"
     },
     {
       "relation": "references",
@@ -62631,9 +62631,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_init",
-      "target": "memory_core_guardian_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -62641,9 +62641,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_35",
-      "target": "memory_core_guardian_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol"
     },
     {
       "relation": "method",
@@ -62651,9 +62651,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_vectorlayerprotocol",
-      "target": "memory_core_guardian_vectorlayerprotocol_cleanup_orphans",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol_cleanup_orphans"
     },
     {
       "relation": "method",
@@ -62661,9 +62661,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_vectorlayerprotocol",
-      "target": "memory_core_guardian_vectorlayerprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol_get_stats"
     },
     {
       "relation": "method",
@@ -62671,9 +62671,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_vectorlayerprotocol",
-      "target": "memory_core_guardian_vectorlayerprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol_get_storage_stats"
     },
     {
       "relation": "method",
@@ -62681,9 +62681,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_vectorlayerprotocol",
-      "target": "memory_core_guardian_vectorlayerprotocol_rebuild_fts_index",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol_rebuild_fts_index"
     },
     {
       "relation": "calls",
@@ -62692,9 +62692,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L332",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_repair",
-      "target": "memory_core_guardian_vectorlayerprotocol_cleanup_orphans",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol_cleanup_orphans"
     },
     {
       "relation": "calls",
@@ -62703,9 +62703,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L334",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_repair",
-      "target": "memory_core_guardian_vectorlayerprotocol_rebuild_fts_index",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_vectorlayerprotocol_rebuild_fts_index"
     },
     {
       "relation": "method",
@@ -62713,9 +62713,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_knowledgegraphprotocol",
-      "target": "memory_core_guardian_knowledgegraphprotocol_cleanup_orphan_edges",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_cleanup_orphan_edges"
     },
     {
       "relation": "method",
@@ -62723,9 +62723,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_knowledgegraphprotocol",
-      "target": "memory_core_guardian_knowledgegraphprotocol_get_orphan_edge_count",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_get_orphan_edge_count"
     },
     {
       "relation": "method",
@@ -62733,9 +62733,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_knowledgegraphprotocol",
-      "target": "memory_core_guardian_knowledgegraphprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_get_stats"
     },
     {
       "relation": "references",
@@ -62744,9 +62744,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_init",
-      "target": "memory_core_guardian_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol"
     },
     {
       "relation": "rationale_for",
@@ -62754,9 +62754,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_44",
-      "target": "memory_core_guardian_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol"
     },
     {
       "relation": "calls",
@@ -62765,9 +62765,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L246",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_embedding_consistency",
-      "target": "memory_core_guardian_knowledgegraphprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_get_stats"
     },
     {
       "relation": "calls",
@@ -62776,9 +62776,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L285",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_fts_consistency",
-      "target": "memory_core_guardian_knowledgegraphprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_get_stats"
     },
     {
       "relation": "calls",
@@ -62787,9 +62787,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L311",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_kg_foreign_keys",
-      "target": "memory_core_guardian_knowledgegraphprotocol_get_orphan_edge_count",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_get_orphan_edge_count"
     },
     {
       "relation": "calls",
@@ -62798,9 +62798,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L337",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_repair",
-      "target": "memory_core_guardian_knowledgegraphprotocol_cleanup_orphan_edges",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_knowledgegraphprotocol_cleanup_orphan_edges"
     },
     {
       "relation": "method",
@@ -62808,9 +62808,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L243",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_check_embedding_consistency",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_embedding_consistency"
     },
     {
       "relation": "method",
@@ -62818,9 +62818,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L283",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_check_fts_consistency",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_fts_consistency"
     },
     {
       "relation": "method",
@@ -62828,9 +62828,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_check_kg_foreign_keys",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_kg_foreign_keys"
     },
     {
       "relation": "method",
@@ -62838,9 +62838,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_check_memory_readability",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_memory_readability"
     },
     {
       "relation": "method",
@@ -62848,9 +62848,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_check_session_integrity",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_session_integrity"
     },
     {
       "relation": "method",
@@ -62858,9 +62858,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_init",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_init"
     },
     {
       "relation": "method",
@@ -62868,9 +62868,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L329",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_repair",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_repair"
     },
     {
       "relation": "method",
@@ -62878,9 +62878,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian",
-      "target": "memory_core_guardian_memoryguardian_run",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_run"
     },
     {
       "relation": "rationale_for",
@@ -62888,9 +62888,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_57",
-      "target": "memory_core_guardian_memoryguardian",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian"
     },
     {
       "relation": "references",
@@ -62899,9 +62899,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "guardianreport",
-      "confidence_score": 1.0
+      "target": "guardianreport"
     },
     {
       "relation": "calls",
@@ -62910,9 +62910,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "memory_core_guardian_memoryguardian_check_embedding_consistency",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_embedding_consistency"
     },
     {
       "relation": "calls",
@@ -62921,9 +62921,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "memory_core_guardian_memoryguardian_check_fts_consistency",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_fts_consistency"
     },
     {
       "relation": "calls",
@@ -62932,9 +62932,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "memory_core_guardian_memoryguardian_check_kg_foreign_keys",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_kg_foreign_keys"
     },
     {
       "relation": "calls",
@@ -62943,9 +62943,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "memory_core_guardian_memoryguardian_check_memory_readability",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_memory_readability"
     },
     {
       "relation": "calls",
@@ -62954,9 +62954,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "memory_core_guardian_memoryguardian_check_session_integrity",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_session_integrity"
     },
     {
       "relation": "calls",
@@ -62965,9 +62965,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_run",
-      "target": "memory_core_guardian_memoryguardian_repair",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_repair"
     },
     {
       "relation": "rationale_for",
@@ -62975,9 +62975,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_85",
-      "target": "memory_core_guardian_memoryguardian_run",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_run"
     },
     {
       "relation": "references",
@@ -62986,9 +62986,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_memory_readability",
-      "target": "guardianfinding",
-      "confidence_score": 1.0
+      "target": "guardianfinding"
     },
     {
       "relation": "rationale_for",
@@ -62996,9 +62996,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L145",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_145",
-      "target": "memory_core_guardian_memoryguardian_check_memory_readability",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_memory_readability"
     },
     {
       "relation": "references",
@@ -63007,9 +63007,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L243",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_embedding_consistency",
-      "target": "guardianfinding",
-      "confidence_score": 1.0
+      "target": "guardianfinding"
     },
     {
       "relation": "references",
@@ -63018,9 +63018,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L283",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_fts_consistency",
-      "target": "guardianfinding",
-      "confidence_score": 1.0
+      "target": "guardianfinding"
     },
     {
       "relation": "references",
@@ -63029,9 +63029,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_kg_foreign_keys",
-      "target": "guardianfinding",
-      "confidence_score": 1.0
+      "target": "guardianfinding"
     },
     {
       "relation": "references",
@@ -63040,9 +63040,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_memoryguardian_check_session_integrity",
-      "target": "guardianfinding",
-      "confidence_score": 1.0
+      "target": "guardianfinding"
     },
     {
       "relation": "rationale_for",
@@ -63050,9 +63050,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L178",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_178",
-      "target": "memory_core_guardian_memoryguardian_check_session_integrity",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_session_integrity"
     },
     {
       "relation": "rationale_for",
@@ -63060,9 +63060,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L244",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_244",
-      "target": "memory_core_guardian_memoryguardian_check_embedding_consistency",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_embedding_consistency"
     },
     {
       "relation": "rationale_for",
@@ -63070,9 +63070,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L284",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_284",
-      "target": "memory_core_guardian_memoryguardian_check_fts_consistency",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_fts_consistency"
     },
     {
       "relation": "rationale_for",
@@ -63080,9 +63080,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L308",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_308",
-      "target": "memory_core_guardian_memoryguardian_check_kg_foreign_keys",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_check_kg_foreign_keys"
     },
     {
       "relation": "rationale_for",
@@ -63090,9 +63090,9 @@
       "source_file": "packages/memory-core/src/memory_core/guardian.py",
       "source_location": "L330",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_guardian_rationale_330",
-      "target": "memory_core_guardian_memoryguardian_repair",
-      "confidence_score": 1.0
+      "target": "memory_core_guardian_memoryguardian_repair"
     },
     {
       "relation": "imports_from",
@@ -63101,9 +63101,9 @@
       "source_file": "packages/memory-core/src/memory_core/retrieval.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_retrieval_py",
-      "target": "memory_core_knowledge_graph",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph"
     },
     {
       "relation": "imports_from",
@@ -63112,9 +63112,9 @@
       "source_file": "packages/memory-core/tests/test_knowledge_graph.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_knowledge_graph_py",
-      "target": "memory_core_knowledge_graph",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph"
     },
     {
       "relation": "contains",
@@ -63122,9 +63122,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph",
-      "target": "memory_core_knowledge_graph_knowledgegraph",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph"
     },
     {
       "relation": "contains",
@@ -63132,9 +63132,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph",
-      "target": "memory_core_knowledge_graph_row_to_dict",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_row_to_dict"
     },
     {
       "relation": "contains",
@@ -63142,9 +63142,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L377",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph",
-      "target": "memory_core_knowledge_graph_sync_brain_repo",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_sync_brain_repo"
     },
     {
       "relation": "rationale_for",
@@ -63152,9 +63152,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_rationale_1",
-      "target": "memory_core_knowledge_graph",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph"
     },
     {
       "relation": "references",
@@ -63183,9 +63183,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L296",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_knowledgegraph",
-      "target": "memory_core_knowledge_graph_knowledgegraph_cleanup_orphan_edges",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_cleanup_orphan_edges"
     },
     {
       "relation": "method",
@@ -63233,9 +63233,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L280",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_knowledgegraph",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_orphan_edge_count",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_orphan_edge_count"
     },
     {
       "relation": "method",
@@ -63253,9 +63253,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L271",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_knowledgegraph",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_storage_stats"
     },
     {
       "relation": "method",
@@ -63685,9 +63685,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L299",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_knowledgegraph_cleanup_orphan_edges",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_conn",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_conn"
     },
     {
       "relation": "references",
@@ -63707,9 +63707,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L283",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_knowledgegraph_get_orphan_edge_count",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_conn",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_conn"
     },
     {
       "relation": "calls",
@@ -63835,9 +63835,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L275",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_knowledgegraph_get_storage_stats",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_stats"
     },
     {
       "relation": "rationale_for",
@@ -63845,9 +63845,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L272",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_rationale_272",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_storage_stats"
     },
     {
       "relation": "rationale_for",
@@ -63855,9 +63855,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L281",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_rationale_281",
-      "target": "memory_core_knowledge_graph_knowledgegraph_get_orphan_edge_count",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_get_orphan_edge_count"
     },
     {
       "relation": "rationale_for",
@@ -63865,9 +63865,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_rationale_297",
-      "target": "memory_core_knowledge_graph_knowledgegraph_cleanup_orphan_edges",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_knowledgegraph_cleanup_orphan_edges"
     },
     {
       "relation": "rationale_for",
@@ -63875,9 +63875,9 @@
       "source_file": "packages/memory-core/src/memory_core/knowledge_graph.py",
       "source_location": "L378",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_knowledge_graph_rationale_378",
-      "target": "memory_core_knowledge_graph_sync_brain_repo",
-      "confidence_score": 1.0
+      "target": "memory_core_knowledge_graph_sync_brain_repo"
     },
     {
       "relation": "calls",
@@ -63897,9 +63897,9 @@
       "source_file": "packages/memory-core/src/memory_core/retrieval.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_retrieval_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63908,9 +63908,9 @@
       "source_file": "packages/memory-core/tests/test_dreaming.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_dreaming_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63919,9 +63919,9 @@
       "source_file": "packages/memory-core/tests/test_drift.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_drift_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63930,9 +63930,9 @@
       "source_file": "packages/memory-core/tests/test_file_layer.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_file_layer_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63941,9 +63941,9 @@
       "source_file": "packages/memory-core/tests/test_models.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_models_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63952,9 +63952,9 @@
       "source_file": "packages/memory-core/tests/test_retrieval.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_retrieval_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63963,9 +63963,9 @@
       "source_file": "packages/memory-core/tests/test_vector_layer.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_vector_layer_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -63974,9 +63974,9 @@
       "source_file": "tests/integration/test_memory_e2e.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_tests_integration_test_memory_e2e_py",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "contains",
@@ -63984,9 +63984,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_approvalmode",
-      "confidence_score": 1.0
+      "target": "memory_core_models_approvalmode"
     },
     {
       "relation": "contains",
@@ -63994,9 +63994,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_dreamreport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_dreamreport"
     },
     {
       "relation": "contains",
@@ -64004,9 +64004,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_episode",
-      "confidence_score": 1.0
+      "target": "memory_core_models_episode"
     },
     {
       "relation": "contains",
@@ -64014,9 +64014,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_fact",
-      "confidence_score": 1.0
+      "target": "memory_core_models_fact"
     },
     {
       "relation": "contains",
@@ -64024,9 +64024,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L382",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_familytree",
-      "confidence_score": 1.0
+      "target": "memory_core_models_familytree"
     },
     {
       "relation": "contains",
@@ -64034,9 +64034,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L372",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_familytreenode",
-      "confidence_score": 1.0
+      "target": "memory_core_models_familytreenode"
     },
     {
       "relation": "contains",
@@ -64044,9 +64044,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L331",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_governancereport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_governancereport"
     },
     {
       "relation": "contains",
@@ -64054,9 +64054,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L296",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_guardianfinding",
-      "confidence_score": 1.0
+      "target": "memory_core_models_guardianfinding"
     },
     {
       "relation": "contains",
@@ -64064,9 +64064,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L314",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_guardianreport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_guardianreport"
     },
     {
       "relation": "contains",
@@ -64074,9 +64074,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L395",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_layerhealth",
-      "confidence_score": 1.0
+      "target": "memory_core_models_layerhealth"
     },
     {
       "relation": "contains",
@@ -64084,9 +64084,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L210",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_memoryconfig",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryconfig"
     },
     {
       "relation": "contains",
@@ -64094,9 +64094,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_memoryentry",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryentry"
     },
     {
       "relation": "contains",
@@ -64104,9 +64104,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L405",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_memoryhealthreport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryhealthreport"
     },
     {
       "relation": "contains",
@@ -64114,9 +64114,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L423",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_memoryquery",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryquery"
     },
     {
       "relation": "contains",
@@ -64124,9 +64124,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L358",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_memoryrelation",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryrelation"
     },
     {
       "relation": "contains",
@@ -64134,9 +64134,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L431",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_memorysearchresult",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memorysearchresult"
     },
     {
       "relation": "contains",
@@ -64144,9 +64144,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L348",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_relationtype",
-      "confidence_score": 1.0
+      "target": "memory_core_models_relationtype"
     },
     {
       "relation": "contains",
@@ -64154,9 +64154,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models",
-      "target": "memory_core_models_skillindex",
-      "confidence_score": 1.0
+      "target": "memory_core_models_skillindex"
     },
     {
       "relation": "rationale_for",
@@ -64164,9 +64164,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_1",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -64175,9 +64175,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "imports_from",
@@ -64186,9 +64186,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_models",
-      "confidence_score": 1.0
+      "target": "memory_core_models"
     },
     {
       "relation": "inherits",
@@ -64216,9 +64216,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L348",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_relationtype",
-      "target": "strenum",
-      "confidence_score": 1.0
+      "target": "strenum"
     },
     {
       "relation": "method",
@@ -64437,9 +64437,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_297",
-      "target": "memory_core_models_guardianfinding",
-      "confidence_score": 1.0
+      "target": "memory_core_models_guardianfinding"
     },
     {
       "relation": "rationale_for",
@@ -64447,9 +64447,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L315",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_315",
-      "target": "memory_core_models_guardianreport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_guardianreport"
     },
     {
       "relation": "rationale_for",
@@ -64457,9 +64457,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L332",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_332",
-      "target": "memory_core_models_governancereport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_governancereport"
     },
     {
       "relation": "rationale_for",
@@ -64467,9 +64467,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L349",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_349",
-      "target": "memory_core_models_relationtype",
-      "confidence_score": 1.0
+      "target": "memory_core_models_relationtype"
     },
     {
       "relation": "rationale_for",
@@ -64477,9 +64477,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L359",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_359",
-      "target": "memory_core_models_memoryrelation",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryrelation"
     },
     {
       "relation": "rationale_for",
@@ -64487,9 +64487,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L373",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_373",
-      "target": "memory_core_models_familytreenode",
-      "confidence_score": 1.0
+      "target": "memory_core_models_familytreenode"
     },
     {
       "relation": "rationale_for",
@@ -64497,9 +64497,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L383",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_383",
-      "target": "memory_core_models_familytree",
-      "confidence_score": 1.0
+      "target": "memory_core_models_familytree"
     },
     {
       "relation": "rationale_for",
@@ -64507,9 +64507,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L396",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_396",
-      "target": "memory_core_models_layerhealth",
-      "confidence_score": 1.0
+      "target": "memory_core_models_layerhealth"
     },
     {
       "relation": "calls",
@@ -64528,9 +64528,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L406",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_406",
-      "target": "memory_core_models_memoryhealthreport",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryhealthreport"
     },
     {
       "relation": "rationale_for",
@@ -64538,9 +64538,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L424",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_424",
-      "target": "memory_core_models_memoryquery",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memoryquery"
     },
     {
       "relation": "calls",
@@ -64581,9 +64581,9 @@
       "source_file": "packages/memory-core/src/memory_core/models.py",
       "source_location": "L432",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_models_rationale_432",
-      "target": "memory_core_models_memorysearchresult",
-      "confidence_score": 1.0
+      "target": "memory_core_models_memorysearchresult"
     },
     {
       "relation": "contains",
@@ -64591,9 +64591,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability",
-      "target": "memory_core_observability_familyregistryprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_familyregistryprotocol"
     },
     {
       "relation": "contains",
@@ -64601,9 +64601,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability",
-      "target": "memory_core_observability_filelayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_filelayerprotocol"
     },
     {
       "relation": "contains",
@@ -64611,9 +64611,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability",
-      "target": "memory_core_observability_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_knowledgegraphprotocol"
     },
     {
       "relation": "contains",
@@ -64621,9 +64621,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability",
-      "target": "memory_core_observability_memoryobservability",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability"
     },
     {
       "relation": "contains",
@@ -64631,9 +64631,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability",
-      "target": "memory_core_observability_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_vectorlayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -64641,9 +64641,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_1",
-      "target": "memory_core_observability",
-      "confidence_score": 1.0
+      "target": "memory_core_observability"
     },
     {
       "relation": "method",
@@ -64651,9 +64651,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_filelayerprotocol",
-      "target": "memory_core_observability_filelayerprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_filelayerprotocol_get_storage_stats"
     },
     {
       "relation": "references",
@@ -64662,9 +64662,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_init",
-      "target": "memory_core_observability_filelayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_filelayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -64672,9 +64672,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_26",
-      "target": "memory_core_observability_filelayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_filelayerprotocol"
     },
     {
       "relation": "references",
@@ -64683,9 +64683,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_init",
-      "target": "memory_core_observability_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_vectorlayerprotocol"
     },
     {
       "relation": "rationale_for",
@@ -64693,9 +64693,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_32",
-      "target": "memory_core_observability_vectorlayerprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_vectorlayerprotocol"
     },
     {
       "relation": "method",
@@ -64703,9 +64703,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_vectorlayerprotocol",
-      "target": "memory_core_observability_vectorlayerprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_vectorlayerprotocol_get_storage_stats"
     },
     {
       "relation": "method",
@@ -64713,9 +64713,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_knowledgegraphprotocol",
-      "target": "memory_core_observability_knowledgegraphprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_knowledgegraphprotocol_get_storage_stats"
     },
     {
       "relation": "references",
@@ -64724,9 +64724,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_init",
-      "target": "memory_core_observability_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_knowledgegraphprotocol"
     },
     {
       "relation": "rationale_for",
@@ -64734,9 +64734,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_38",
-      "target": "memory_core_observability_knowledgegraphprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_knowledgegraphprotocol"
     },
     {
       "relation": "calls",
@@ -64745,9 +64745,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_knowledgegraphprotocol_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_knowledgegraphprotocol_get_storage_stats"
     },
     {
       "relation": "method",
@@ -64755,9 +64755,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_familyregistryprotocol",
-      "target": "memory_core_observability_familyregistryprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_familyregistryprotocol_get_stats"
     },
     {
       "relation": "references",
@@ -64766,9 +64766,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_init",
-      "target": "memory_core_observability_familyregistryprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_familyregistryprotocol"
     },
     {
       "relation": "rationale_for",
@@ -64776,9 +64776,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_44",
-      "target": "memory_core_observability_familyregistryprotocol",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_familyregistryprotocol"
     },
     {
       "relation": "calls",
@@ -64787,9 +64787,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_familyregistryprotocol_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_familyregistryprotocol_get_stats"
     },
     {
       "relation": "method",
@@ -64797,9 +64797,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L262",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_compute_growth",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_compute_growth"
     },
     {
       "relation": "method",
@@ -64807,9 +64807,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L227",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_file_issues",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_file_issues"
     },
     {
       "relation": "method",
@@ -64817,9 +64817,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_generate_report",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_generate_report"
     },
     {
       "relation": "method",
@@ -64827,9 +64827,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_init",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_init"
     },
     {
       "relation": "method",
@@ -64837,9 +64837,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L250",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_kg_issues",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_kg_issues"
     },
     {
       "relation": "method",
@@ -64847,9 +64847,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_load_all_snapshots",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_all_snapshots"
     },
     {
       "relation": "method",
@@ -64857,9 +64857,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L302",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_load_latest_snapshot",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_latest_snapshot"
     },
     {
       "relation": "method",
@@ -64867,9 +64867,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L277",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_save_snapshot",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_save_snapshot"
     },
     {
       "relation": "method",
@@ -64877,9 +64877,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L176",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_score_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_score_file_layer"
     },
     {
       "relation": "method",
@@ -64887,9 +64887,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L210",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_score_kg_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_score_kg_layer"
     },
     {
       "relation": "method",
@@ -64897,9 +64897,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L191",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_score_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_score_vector_layer"
     },
     {
       "relation": "method",
@@ -64907,9 +64907,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L236",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability",
-      "target": "memory_core_observability_memoryobservability_vector_issues",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_vector_issues"
     },
     {
       "relation": "rationale_for",
@@ -64917,9 +64917,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_55",
-      "target": "memory_core_observability_memoryobservability",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability"
     },
     {
       "relation": "calls",
@@ -64928,9 +64928,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L156",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_compute_growth",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_compute_growth"
     },
     {
       "relation": "calls",
@@ -64939,9 +64939,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_file_issues",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_file_issues"
     },
     {
       "relation": "calls",
@@ -64950,9 +64950,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_kg_issues",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_kg_issues"
     },
     {
       "relation": "calls",
@@ -64961,9 +64961,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L159",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_save_snapshot",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_save_snapshot"
     },
     {
       "relation": "calls",
@@ -64972,9 +64972,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_score_file_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_score_file_layer"
     },
     {
       "relation": "calls",
@@ -64983,9 +64983,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_score_kg_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_score_kg_layer"
     },
     {
       "relation": "calls",
@@ -64994,9 +64994,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_score_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_score_vector_layer"
     },
     {
       "relation": "calls",
@@ -65005,9 +65005,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L119",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memory_core_observability_memoryobservability_vector_issues",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_vector_issues"
     },
     {
       "relation": "references",
@@ -65016,9 +65016,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_generate_report",
-      "target": "memoryhealthreport",
-      "confidence_score": 1.0
+      "target": "memoryhealthreport"
     },
     {
       "relation": "rationale_for",
@@ -65026,9 +65026,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_90",
-      "target": "memory_core_observability_memoryobservability_generate_report",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_generate_report"
     },
     {
       "relation": "calls",
@@ -65037,9 +65037,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L266",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_compute_growth",
-      "target": "memory_core_observability_memoryobservability_load_latest_snapshot",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_latest_snapshot"
     },
     {
       "relation": "rationale_for",
@@ -65047,9 +65047,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L265",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_265",
-      "target": "memory_core_observability_memoryobservability_compute_growth",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_compute_growth"
     },
     {
       "relation": "calls",
@@ -65058,9 +65058,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L286",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_save_snapshot",
-      "target": "memory_core_observability_memoryobservability_load_all_snapshots",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_all_snapshots"
     },
     {
       "relation": "rationale_for",
@@ -65068,9 +65068,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L278",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_278",
-      "target": "memory_core_observability_memoryobservability_save_snapshot",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_save_snapshot"
     },
     {
       "relation": "calls",
@@ -65079,9 +65079,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L304",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_memoryobservability_load_latest_snapshot",
-      "target": "memory_core_observability_memoryobservability_load_all_snapshots",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_all_snapshots"
     },
     {
       "relation": "rationale_for",
@@ -65089,9 +65089,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L303",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_303",
-      "target": "memory_core_observability_memoryobservability_load_latest_snapshot",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_latest_snapshot"
     },
     {
       "relation": "rationale_for",
@@ -65099,9 +65099,9 @@
       "source_file": "packages/memory-core/src/memory_core/observability.py",
       "source_location": "L308",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_observability_rationale_308",
-      "target": "memory_core_observability_memoryobservability_load_all_snapshots",
-      "confidence_score": 1.0
+      "target": "memory_core_observability_memoryobservability_load_all_snapshots"
     },
     {
       "relation": "contains",
@@ -65130,9 +65130,9 @@
       "source_file": "packages/memory-core/src/memory_core/retrieval.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_src_memory_core_retrieval_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "rationale_for",
@@ -65923,9 +65923,9 @@
       "source_file": "packages/memory-core/tests/test_dreaming.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_dreaming_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "imports_from",
@@ -65934,9 +65934,9 @@
       "source_file": "packages/memory-core/tests/test_retrieval.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_retrieval_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "imports_from",
@@ -65945,9 +65945,9 @@
       "source_file": "packages/memory-core/tests/test_vector_layer.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_memory_core_tests_test_vector_layer_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "imports_from",
@@ -65956,9 +65956,9 @@
       "source_file": "tests/integration/test_memory_e2e.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_tests_integration_test_memory_e2e_py",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "contains",
@@ -65966,9 +65966,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_vector_layer_blob_to_floats",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_blob_to_floats"
     },
     {
       "relation": "contains",
@@ -65976,9 +65976,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_vector_layer_cosine",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_cosine"
     },
     {
       "relation": "contains",
@@ -65986,9 +65986,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_vector_layer_floats_to_blob",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_floats_to_blob"
     },
     {
       "relation": "contains",
@@ -65996,9 +65996,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_vector_layer_hash_text",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_hash_text"
     },
     {
       "relation": "contains",
@@ -66006,9 +66006,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_vector_layer_vectorlayer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer"
     },
     {
       "relation": "contains",
@@ -66016,9 +66016,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L614",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer",
-      "target": "memory_core_vector_layer_vectormemorylayer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectormemorylayer"
     },
     {
       "relation": "rationale_for",
@@ -66026,9 +66026,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_1",
-      "target": "memory_core_vector_layer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer"
     },
     {
       "relation": "rationale_for",
@@ -66226,9 +66226,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L555",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_vectorlayer",
-      "target": "memory_core_vector_layer_vectorlayer_cleanup_orphans",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_cleanup_orphans"
     },
     {
       "relation": "method",
@@ -66336,9 +66336,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L522",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_vectorlayer",
-      "target": "memory_core_vector_layer_vectorlayer_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_get_storage_stats"
     },
     {
       "relation": "method",
@@ -66386,9 +66386,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L530",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_vectorlayer",
-      "target": "memory_core_vector_layer_vectorlayer_rebuild_fts_index",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_rebuild_fts_index"
     },
     {
       "relation": "method",
@@ -67008,9 +67008,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L560",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_vectorlayer_cleanup_orphans",
-      "target": "memory_core_vector_layer_vectorlayer_get_db",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_get_db"
     },
     {
       "relation": "calls",
@@ -67096,9 +67096,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L535",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_vectorlayer_rebuild_fts_index",
-      "target": "memory_core_vector_layer_vectorlayer_get_db",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_get_db"
     },
     {
       "relation": "calls",
@@ -67602,9 +67602,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L525",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_vectorlayer_get_storage_stats",
-      "target": "memory_core_vector_layer_vectorlayer_get_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_get_stats"
     },
     {
       "relation": "rationale_for",
@@ -67612,9 +67612,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L523",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_523",
-      "target": "memory_core_vector_layer_vectorlayer_get_storage_stats",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_get_storage_stats"
     },
     {
       "relation": "rationale_for",
@@ -67622,9 +67622,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L531",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_531",
-      "target": "memory_core_vector_layer_vectorlayer_rebuild_fts_index",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_rebuild_fts_index"
     },
     {
       "relation": "rationale_for",
@@ -67632,9 +67632,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L556",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_556",
-      "target": "memory_core_vector_layer_vectorlayer_cleanup_orphans",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_cleanup_orphans"
     },
     {
       "relation": "rationale_for",
@@ -67642,9 +67642,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L586",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_586",
-      "target": "memory_core_vector_layer_vectorlayer_close",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_close"
     },
     {
       "relation": "rationale_for",
@@ -67652,9 +67652,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L605",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_605",
-      "target": "memory_core_vector_layer_vectorlayer_embedding_cache_size",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectorlayer_embedding_cache_size"
     },
     {
       "relation": "rationale_for",
@@ -67672,9 +67672,9 @@
       "source_file": "packages/memory-core/src/memory_core/vector_layer.py",
       "source_location": "L615",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "memory_core_vector_layer_rationale_615",
-      "target": "memory_core_vector_layer_vectormemorylayer",
-      "confidence_score": 1.0
+      "target": "memory_core_vector_layer_vectormemorylayer"
     },
     {
       "relation": "imports_from",
@@ -75365,9 +75365,9 @@
       "source_file": "packages/skill-core/src/skill_core/workshop.py",
       "source_location": "L10",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "packages_skill_core_src_skill_core_workshop_py_uuid",
-      "target": "skill_core_scanner_skillscanner",
-      "confidence_score": 0.5
+      "target": "skill_core_scanner_skillscanner"
     },
     {
       "relation": "uses",
@@ -75611,9 +75611,9 @@
       "source_file": "packages/skill-core/src/skill_core/workshop.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "d_jalaagent_jalaagent2_packages_skill_core_src_skill_core_workshop_py",
-      "target": "packages_skill_core_src_skill_core_workshop_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_skill_core_src_skill_core_workshop_py_uuid"
     },
     {
       "relation": "contains",
@@ -76096,9 +76096,9 @@
       "source_file": "packages/skill-core/src/skill_core/workshop.py",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "skill_core_workshop_skillworkshop_review",
-      "target": "packages_skill_core_src_skill_core_workshop_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_skill_core_src_skill_core_workshop_py_uuid"
     },
     {
       "relation": "calls",
@@ -76118,9 +76118,9 @@
       "source_file": "packages/skill-core/src/skill_core/workshop.py",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "skill_core_workshop_skillworkshop_apply",
-      "target": "packages_skill_core_src_skill_core_workshop_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_skill_core_src_skill_core_workshop_py_uuid"
     },
     {
       "relation": "references",
@@ -76129,9 +76129,9 @@
       "source_file": "packages/skill-core/src/skill_core/workshop.py",
       "source_location": "L243",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "skill_core_workshop_skillworkshop_proposal_dir",
-      "target": "packages_skill_core_src_skill_core_workshop_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_skill_core_src_skill_core_workshop_py_uuid"
     },
     {
       "relation": "references",
@@ -76140,9 +76140,9 @@
       "source_file": "packages/skill-core/src/skill_core/workshop.py",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "skill_core_workshop_skillworkshop_reject",
-      "target": "packages_skill_core_src_skill_core_workshop_py_uuid",
-      "confidence_score": 1.0
+      "target": "packages_skill_core_src_skill_core_workshop_py_uuid"
     },
     {
       "relation": "rationale_for",

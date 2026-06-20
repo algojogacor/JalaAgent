@@ -402,8 +402,8 @@ Cohesion: 0.11
 Nodes (12): Plan, PlanMode, A structured implementation plan., Format the plan for user review (rich/CLI friendly)., Structured design-before-implementation workflow.      Follows Claude Code's p, Create a new plan and save it for review., Mark the current plan as approved., Discard the current plan. (+4 more)
 
 ### Community 30 - "Community 30"
-Cohesion: 0.20
-Nodes (9): TTFB watchdog timeout — kill and retry., TimeoutError, AgentMessage, Any, Exception, ProviderChunk, OpenRouterProvider, OpenRouter (unified API gateway) provider — OpenAI-compatible SDK. (+1 more)
+Cohesion: 0.12
+Nodes (19): TTFB watchdog timeout — kill and retry., TimeoutError, A tool-use request from the model., ToolCall, AgentMessage, Any, Exception, ProviderChunk (+11 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.15
@@ -466,8 +466,8 @@ Cohesion: 0.11
 Nodes (5): Tests for skill-core pydantic v2 models., TestEnums, TestProposal, TestScanFinding, TestScanResult
 
 ### Community 46 - "Community 46"
-Cohesion: 0.16
-Nodes (14): AuthError, ContentPolicyError, Authentication failure — rotate credential pool., Content policy violation — try fallback provider once, never retry same prompt., Exception, Exception, AgentMessage, Any (+6 more)
+Cohesion: 0.21
+Nodes (7): AgentMessage, Any, Exception, ProviderChunk, OpenAIProvider, OpenAI / OpenAI-compatible provider — streaming via official SDK., Provider for OpenAI and OpenAI-compatible API endpoints (GPT-4o, etc.).
 
 ### Community 47 - "Community 47"
 Cohesion: 0.22
@@ -550,8 +550,8 @@ Cohesion: 0.22
 Nodes (6): DiffEditor, Safe file editing using unified diffs.      The agent generates a diff, the us, Generate a unified diff for user review., Apply a unified diff to a file, with optional drift check.          Parses uni, Read file content and record mtime for later drift detection., Context
 
 ### Community 67 - "Community 67"
-Cohesion: 0.09
-Nodes (28): AgentMessage, ProviderChunk, ProviderChunkType, A single chunk from a provider's streaming response., Types of chunks from a provider's streaming response., An LLM conversation message., Any, AgentMessage (+20 more)
+Cohesion: 0.11
+Nodes (20): AgentMessage, ProviderChunk, A single chunk from a provider's streaming response., An LLM conversation message., Any, AgentMessage, Any, ProviderChunk (+12 more)
 
 ### Community 68 - "Community 68"
 Cohesion: 0.09
@@ -578,8 +578,8 @@ Cohesion: 0.32
 Nodes (4): MessageSanitizer, Message sanitization — provider-aware pre-flight cleanup., Provider-aware message sanitization pipeline., Any
 
 ### Community 75 - "Community 75"
-Cohesion: 0.21
-Nodes (10): A tool-use request from the model., ToolCall, AsyncClient, Path, OpenAIProvider, provider(), Tests for OpenAI provider (message/tool conversion, token estimation)., TestMessageConversion (+2 more)
+Cohesion: 0.18
+Nodes (15): AuthError, ContentPolicyError, Authentication failure — rotate credential pool., Content policy violation — try fallback provider once, never retry same prompt., ProviderChunkType, Types of chunks from a provider's streaming response., Exception, AgentMessage (+7 more)
 
 ### Community 76 - "Community 76"
 Cohesion: 0.15
@@ -595,7 +595,7 @@ Nodes (16): career (1 skill), Categories, communication (4 skills), creative (8 
 
 ### Community 81 - "Community 81"
 Cohesion: 0.11
-Nodes (15): KnowledgeGraphProtocol, Interface for the vector layer needed by the family registry., Interface for the knowledge graph needed by the family registry., VectorLayerProtocol, FamilyRegistryProtocol, FileLayerProtocol, KnowledgeGraphProtocol, Memory Observability — centralized metrics and health reporting.  Collects stats (+7 more)
+Nodes (15): KnowledgeGraphProtocol, Interface for the vector layer needed by the family registry., Interface for the knowledge graph needed by the family registry., VectorLayerProtocol, FamilyRegistryProtocol, FileLayerProtocol, KnowledgeGraphProtocol, Memory Observability — centralized metrics and health reporting.  Collects sta (+7 more)
 
 ### Community 82 - "Community 82"
 Cohesion: 0.16
@@ -619,7 +619,7 @@ Nodes (4): The result of scanning a skill for security issues., True if any find
 
 ### Community 90 - "Community 90"
 Cohesion: 0.12
-Nodes (15): FamilyTree, MemoryFamilyRegistry, Create the database and tables if they don't exist., Close the database connection., Register a single relation between two entries., Auto-build relations for a memory entry.          Creates relations based on:, Build a family tree rooted at the given entry.          BFS traversal through ``, Fetch all relations where the entry is the source. (+7 more)
+Nodes (15): FamilyTree, MemoryFamilyRegistry, Create the database and tables if they don't exist., Close the database connection., Register a single relation between two entries., Auto-build relations for a memory entry.          Creates relations based on:, Build a family tree rooted at the given entry.          BFS traversal through, Fetch all relations where the entry is the source. (+7 more)
 
 ### Community 91 - "Community 91"
 Cohesion: 0.12
@@ -627,11 +627,11 @@ Nodes (17): API Server, Approval Modes, Chatting with JalaAgent, Configuration, 
 
 ### Community 92 - "Community 92"
 Cohesion: 0.15
-Nodes (10): LayerHealth, Health metrics for a single memory layer., MemoryObservability, Compare current stats with the most recent snapshot to compute growth., Append current stats to the snapshot file., Load the most recent snapshot., Load all snapshots from disk., Centralized memory system health monitor.      Collects metrics from FileLayer, (+2 more)
+Nodes (10): LayerHealth, Health metrics for a single memory layer., MemoryObservability, Compare current stats with the most recent snapshot to compute growth., Append current stats to the snapshot file., Load the most recent snapshot., Load all snapshots from disk., Centralized memory system health monitor.      Collects metrics from FileLayer (+2 more)
 
 ### Community 93 - "Community 93"
 Cohesion: 0.10
-Nodes (19): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links re, Compute cosine similarity between two float vectors., FileMemoryLayer, Layer 1 — Raw file storage: MEMORY.md, USER.md, session JSONL transcripts., Legacy alias for :class:`FileLayer`., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Prov (+11 more)
+Nodes (19): BaseSettings, _cosine_similarity(), Memory Family Registry — relationship tracking between memory entries.  Links, Compute cosine similarity between two float vectors., FileMemoryLayer, Layer 1 — Raw file storage: MEMORY.md, USER.md, session JSONL transcripts., Legacy alias for :class:`FileLayer`., Memory Governance Rebuild — periodic index maintenance and orphan cleanup.  Pr (+11 more)
 
 ### Community 94 - "Community 94"
 Cohesion: 0.09
@@ -639,7 +639,7 @@ Nodes (20): Requesting Code Review, Common Rationalizations, Four Phases, Integr
 
 ### Community 95 - "Community 95"
 Cohesion: 0.15
-Nodes (9): GovernanceReport, GovernanceRebuild, KnowledgeGraphProtocol, Collect stats from all available layers., Interface for the vector layer needed by governance., Interface for the knowledge graph needed by governance., Periodic index rebuild and orphan cleanup for the memory system.      Runs maint, Run all maintenance operations and return a report. (+1 more)
+Nodes (9): GovernanceReport, GovernanceRebuild, KnowledgeGraphProtocol, Collect stats from all available layers., Interface for the vector layer needed by governance., Interface for the knowledge graph needed by governance., Periodic index rebuild and orphan cleanup for the memory system.      Runs mai, Run all maintenance operations and return a report. (+1 more)
 
 ### Community 96 - "Community 96"
 Cohesion: 0.20

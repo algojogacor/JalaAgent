@@ -293,7 +293,7 @@ def main(
     agent_loop = _build_agent(model, plan, base_url=base_url)
     if prompt:
         # Load skills into registry so skill-based slash commands work.
-        await _load_skills_into_registry(agent_loop)
+        asyncio.run(_load_skills_into_registry(agent_loop))
         # Intercept slash commands — dispatch through command registry.
         if prompt.strip().startswith("/"):
             from agent_core.commands import CommandContext, get_registry
